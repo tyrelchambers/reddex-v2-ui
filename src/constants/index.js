@@ -20,3 +20,18 @@ export const subredditCategories = [
     value: "top",
   },
 ];
+
+export const upvoteOptions = [
+  {
+    label: "Over",
+    value: "over",
+  },
+  {
+    label: "Under",
+    value: "under",
+  },
+  {
+    label: "Equal",
+    value: "equal",
+  },
+];
