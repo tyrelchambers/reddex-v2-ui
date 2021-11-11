@@ -1,6 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --white: #ffffffff;
+  --off-white: #f5f5f5ff;
+  --accent-primary: #da4167ff;
+  --dark-blue: #12162bff;
+  --black: #0d0c1dff;
+}
+
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;

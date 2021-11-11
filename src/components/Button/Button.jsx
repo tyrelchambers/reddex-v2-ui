@@ -1,7 +1,7 @@
 const primary = (props) => (
   <button
     type="button"
-    className={`bg-accent-primary text-white p-4 rounded-md font-semibold ${
+    className={`bg-accent-primary text-white  h-12 px-4 rounded-md font-semibold ${
       props.className ? props.className : ""
     }`}
   >

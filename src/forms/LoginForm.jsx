@@ -6,10 +6,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
-import { FORGOT_PASSWORD, REGISTER } from "../../routes/index.routes";
-import { Button } from "../Button/Button";
-import Input from "../Input/Input";
-import InputWrapper from "../InputWrapper/InputWrapper";
+import { FORGOT_PASSWORD, REGISTER } from "../routes/index.routes";
+import { Button } from "../components/Button/Button";
+import Input from "../components/Input/Input";
+import InputWrapper from "../components/InputWrapper/InputWrapper";
 import Form from "./Form";
 
 const LoginForm = () => {
