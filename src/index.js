@@ -3,9 +3,10 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { INDEX, LOGIN } from "./routes/index.routes";
+import { INDEX, LOGIN, REGISTER } from "./routes/index.routes";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
+import Register from "./pages/Register/Register";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,6 +14,7 @@ ReactDOM.render(
       <Routes>
         <Route path={LOGIN} element={<Login />} />
         <Route path={INDEX} element={<Home />} />
+        <Route path={REGISTER} element={<Register />} />
       </Routes>
     </Router>
   </React.StrictMode>,

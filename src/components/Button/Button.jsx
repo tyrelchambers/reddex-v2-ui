@@ -9,6 +9,6 @@ const primary = (props) => (
   </button>
 );
 
-export const Buttons = ({ variant, ...props }) => {
+export const Button = ({ variant, ...props }) => {
   return primary(props);
 };
