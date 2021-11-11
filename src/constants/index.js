@@ -21,7 +21,7 @@ export const subredditCategories = [
   },
 ];
 
-export const upvoteOptions = [
+export const quantityOptions = [
   {
     label: "Over",
     value: "over",

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import RecentlySearched from "../../components/RecentlySearched/RecentlySearched";
 import SubredditFilters from "../../components/SubredditFilters/SubredditFilters";
 import SubredditSearch from "../../components/SubredditSearch/SubredditSearch";
 import Wrapper from "../../layouts/Wrapper/Wrapper";
@@ -14,6 +15,8 @@ const Home = () => {
           <SubredditSearch />
           <hr className="mt-6 mb-6" />
           <SubredditFilters />
+          <hr className="mt-6 mb-6" />
+          <RecentlySearched />
         </div>
         <StyledGrid></StyledGrid>
       </main>
