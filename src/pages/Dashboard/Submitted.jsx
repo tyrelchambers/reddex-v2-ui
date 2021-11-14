@@ -3,7 +3,6 @@ import DashWrapper from "../../layouts/DashWrapper/DashWrapper";
 import { H1 } from "../../components/headings/h1";
 import Input from "../../components/Input/Input";
 import { faSearch } from "@fortawesome/pro-duotone-svg-icons";
-import { Button } from "../../components/Button/Button";
 
 const Submitted = () => {
   return (
