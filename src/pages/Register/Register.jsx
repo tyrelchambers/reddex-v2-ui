@@ -6,7 +6,9 @@ const Register = () => {
   return (
     <Wrapper>
       <main className="flex flex-col mt-20 items-center">
-        <H1>It'll be nice to have you onboard!</H1>
+        <H1 className="text-5xl max-w-lg text-center ">
+          It'll be nice to have you onboard!
+        </H1>
         <div className="w-full max-w-md mt-10">
           <RegisterForm />
         </div>

@@ -1,12 +1,23 @@
+import styled, { ThemeProvider } from "styled-components";
+import { currentTheme } from "../../constants/theme";
+
+const StyledButton = styled.button`
+  background-color: ${(props) => props.theme["accent-primary"]};
+`;
+
+StyledButton.defaultProps = {
+  theme: currentTheme,
+};
+
 const primary = (props) => (
-  <button
+  <StyledButton
     type="button"
     className={`bg-accent-primary text-white  h-12 px-4 rounded-md  ${
       props.className ? props.className : ""
     }`}
   >
     {props.children}
-  </button>
+  </StyledButton>
 );
 
 const secondary = (props) => (

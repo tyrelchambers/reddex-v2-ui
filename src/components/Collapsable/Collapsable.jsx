@@ -11,7 +11,7 @@ const StyledCollapsable = styled.details`
     list-style-type: none;
     transition: all 0.2s ease-in-out;
     background-color: ${(props) =>
-      props.toggled ? "var(--dark-blue)" : "transparent"};
+      props.toggled ? "var(--dark-blue)" : "white"};
     border-radius: 0.5rem;
     border: 2px solid
       ${(props) => (props.toggled ? "var(--dark-blue)" : "var(--gray)")};

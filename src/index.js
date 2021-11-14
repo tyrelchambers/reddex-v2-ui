@@ -7,19 +7,25 @@ import { INDEX, LOGIN, REGISTER } from "./routes/index.routes";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
 import Register from "./pages/Register/Register";
+import Store from "./contexts/themeContext";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <Routes>
-        <Route path={LOGIN} element={<Login />} />
-        <Route path={INDEX} element={<Home />} />
-        <Route path={REGISTER} element={<Register />} />
-      </Routes>
-    </Router>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+const App = () => {
+  return (
+    <React.StrictMode>
+      <Store>
+        <Router>
+          <Routes>
+            <Route path={LOGIN} element={<Login />} />
+            <Route path={INDEX} element={<Home />} />
+            <Route path={REGISTER} element={<Register />} />
+          </Routes>
+        </Router>
+      </Store>
+    </React.StrictMode>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

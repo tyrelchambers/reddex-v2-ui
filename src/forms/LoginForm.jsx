@@ -27,7 +27,7 @@ const LoginForm = () => {
         <FontAwesomeIcon icon={faRightToBracket} className="mr-2" /> Login
       </Button>
 
-      <Link to={REGISTER} className="underline text-gray-500">
+      <Link to={REGISTER} className="underline text-gray-500 ">
         Don't have an account?
       </Link>
       <Link to={FORGOT_PASSWORD} className="underline text-gray-500">
