@@ -1,8 +1,11 @@
 import {
   faArrowAltCircleUp,
+  faBooksMedical,
   faClock,
+  faFolder,
   faHashtag,
   faPlusCircle,
+  faTags,
   faThumbsUp,
   faUserCircle,
 } from "@fortawesome/pro-duotone-svg-icons";
@@ -12,6 +15,10 @@ import styled from "styled-components";
 
 const StyledCard = styled.div`
   background-color: ${(props) => props.theme.backgroundSecondary};
+
+  .card-author {
+    width: 90%;
+  }
 
   .card-main {
     height: calc(100% - 190px);
@@ -31,7 +38,7 @@ const StyledCard = styled.div`
   }
 `;
 
-const Card = ({ data }) => {
+const Card = ({ data, isReadingItem, subreddit }) => {
   return (
     <StyledCard className="w-full rounded-lg  overflow-hidden shadow-md justify-between">
       <header className="relative">
@@ -50,7 +57,7 @@ const Card = ({ data }) => {
               icon={faUserCircle}
               className="text-accent-primary mr-2"
             />
-            <p className="text-gray-600 truncate w-2/3">{data.author}</p>
+            <p className="text-gray-600 truncate card-author">{data.author}</p>
           </div>
         </div>
       </header>
@@ -62,9 +69,16 @@ const Card = ({ data }) => {
       <hr />
 
       <footer className="p-2">
-        <section className="flex items-center gap-2 ml-2 mr-2">
-          <FontAwesomeIcon icon={faHashtag} className="text-accent-primary" />{" "}
-          <p className="text-gray-600 text-sm">{data.flair}</p>
+        <section className="flex items-center gap-4 ml-2 mr-2">
+          <div className="flex items-center gap-2">
+            <FontAwesomeIcon icon={faHashtag} className="text-accent-primary" />{" "}
+            <p className="text-gray-600 text-sm">{data.flair}</p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <FontAwesomeIcon icon={faFolder} className="text-accent-primary" />{" "}
+            <p className="text-gray-600 text-sm">{data.subreddit}</p>
+          </div>
         </section>
 
         <section className="flex items-center  mt-4 card-floating-footer p-3 rounded-md justify-between">
@@ -84,10 +98,26 @@ const Card = ({ data }) => {
               <p className="text-sm text-gray-600">{data.upvoteRatio}%</p>
             </div>
           </div>
-          <FontAwesomeIcon
-            icon={faPlusCircle}
-            className="text-accent-primary text-lg"
-          />
+          {!isReadingItem && (
+            <FontAwesomeIcon
+              icon={faPlusCircle}
+              className="text-accent-primary "
+            />
+          )}
+          {isReadingItem && (
+            <div className="flex gap-4">
+              <FontAwesomeIcon
+                icon={faTags}
+                className="text-accent-primary"
+                title="Add tags"
+              />
+              <FontAwesomeIcon
+                title="Add to completed list"
+                icon={faBooksMedical}
+                className="text-accent-primary"
+              />
+            </div>
+          )}
         </section>
       </footer>
     </StyledCard>

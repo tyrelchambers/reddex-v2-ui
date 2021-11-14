@@ -31,7 +31,7 @@ const StyledNav = styled.details`
     list-style-type: none;
     transition: all 0.2s ease-in-out;
     background-color: ${(props) =>
-      props.toggled ? props.theme.accentPrimary : props.theme.backgroundMain};
+      props.toggled ? props.theme.accentPrimary : "transparent"};
     border-radius: 0.5rem 0.5em 0 0;
     padding: 0.5em 1em;
     * {

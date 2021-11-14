@@ -13,7 +13,7 @@ const SubredditSearchForm = () => {
     <Form>
       <InputWrapper label="Enter the subreddit">
         <Input
-          customIcon={<p className="text-white  font-black">R/</p>}
+          customIcon={<p className="  font-black">R/</p>}
           placeholder="subreddit"
         />
       </InputWrapper>

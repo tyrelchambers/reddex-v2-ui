@@ -7,120 +7,10 @@ import SubredditSearchForm from "../../forms/SubredditSearchForm";
 import Wrapper from "../../layouts/Wrapper/Wrapper";
 
 const StyledGrid = styled.section`
-  grid-auto-rows: 400px;
+  grid-auto-rows: 350px;
 `;
 
-const data = [
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-  },
-];
-
+const data = [];
 const Home = () => {
   return (
     <Wrapper>
@@ -134,9 +24,8 @@ const Home = () => {
           <RecentlySearched />
         </div>
         <StyledGrid className="grid grid-cols-3 flex-1 gap-6 ">
-          {data.map((item, index) => (
-            <Card data={item} key={index} />
-          ))}
+          {data.length > 0 &&
+            data.map((item, index) => <Card data={item} key={index} />)}
         </StyledGrid>
       </main>
     </Wrapper>

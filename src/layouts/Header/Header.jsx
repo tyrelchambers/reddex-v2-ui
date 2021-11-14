@@ -25,7 +25,9 @@ const Header = () => {
       />
       <div className="flex items-center">
         <Nav />
-        <ThemeSwitcher toggleTheme={toggleTheme} theme={theme} />
+        <div className="mr-8 ml-8">
+          <ThemeSwitcher toggleTheme={toggleTheme} theme={theme} />
+        </div>
       </div>
     </StyledHeader>
   );

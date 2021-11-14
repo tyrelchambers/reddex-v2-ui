@@ -3,16 +3,18 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledInput = styled.input`
-  background-color: ${(props) => props.theme.backgroundSecondary};
+  background-color: ${(props) => props.theme.input};
   color: ${(props) => props.theme.text};
 `;
 
 const StyledInputWrapper = styled.div`
+  background-color: ${({ theme }) => theme.input};
   .input-icon {
-    background-color: ${({ theme }) => theme.contrast};
-
+    svg {
+      color: ${({ theme }) => theme.text};
+    }
     p {
-      color: ${({ theme }) => theme.backgroundMain};
+      color: ${({ theme }) => theme.textLight};
     }
   }
 `;
@@ -24,14 +26,14 @@ const Input = ({
   customIcon,
   ...props
 }) => (
-  <StyledInputWrapper className="flex items-center w-full h-12 rounded-md overflow-hidden">
+  <StyledInputWrapper className="flex items-center w-full h-12 rounded-md overflow-hidden px-4">
     {typeof icon === "object" && (
-      <div className="w-16 h-full input-icon  flex items-center justify-center">
-        <FontAwesomeIcon icon={icon} className="text-white text-xl" />
+      <div className="h-full input-icon  flex items-center justify-center">
+        <FontAwesomeIcon icon={icon} />
       </div>
     )}
     {customIcon && (
-      <div className="w-16 h-full input-icon  flex items-center justify-center">
+      <div className="h-full input-icon  flex items-center justify-center">
         {customIcon}
       </div>
     )}

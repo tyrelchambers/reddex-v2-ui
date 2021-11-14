@@ -7,7 +7,7 @@ const ThemeSwitcher = ({ theme, toggleTheme }) => {
     return (
       <FontAwesomeIcon
         icon={faSunBright}
-        className="text-yellow-500 ml-8 mr-8"
+        className="text-yellow-500 "
         onClick={toggleTheme}
       />
     );
@@ -15,7 +15,7 @@ const ThemeSwitcher = ({ theme, toggleTheme }) => {
     return (
       <FontAwesomeIcon
         icon={faMoonStars}
-        className="text-blue-200 ml-8 mr-8"
+        className="text-blue-200 "
         onClick={toggleTheme}
       />
     );

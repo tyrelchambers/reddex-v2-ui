@@ -7,6 +7,10 @@ import DashHeader from "../DashHeader/DashHeader";
 const StyledGrid = styled.main`
   display: grid;
   grid-template-columns: 242px 1fr;
+
+  .dash-body {
+    background-color: ${(props) => props.theme.backgroundMain};
+  }
 `;
 
 const DashWrapper = (props) => {
@@ -20,9 +24,9 @@ const DashWrapper = (props) => {
     >
       <GlobalStyles />
 
-      <StyledGrid className=" w-full">
-        <DashHeader theme={theme} />
-        <section>{props.children}</section>
+      <StyledGrid className=" w-full h-screen">
+        <DashHeader theme={theme} toggleTheme={toggleTheme} />
+        <section className="p-4 dash-body">{props.children}</section>
       </StyledGrid>
     </ThemeProvider>
   );

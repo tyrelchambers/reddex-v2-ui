@@ -8,6 +8,9 @@ const colours = {
   "dark-blue": "#12162bff",
   black: "#0d0c1dff",
   "gray-100": "rgba(243, 244, 246)",
+  "gray-200": "rgba(229, 231, 235)",
+  "gray-300": "rgba(209, 213, 219)",
+  "gray-600": "rgba(75, 85, 99)",
   "gray-700": "rgba(55, 65, 81)",
   "gray-800": "rgba(31, 41, 55)",
   "gray-900": "rgba(17, 24, 39)",
@@ -22,6 +25,8 @@ const light = {
   accentPrimaryLight: colours["accent-primary-light"],
   text: colours["gray-800"],
   textLight: colours["gray-700"],
+  border: colours["gray-300"],
+  input: colours["off-white"],
 };
 
 const dark = {
@@ -32,6 +37,9 @@ const dark = {
   accentPrimary: colours["accent-primary"],
   accent2: colours["accent-2"],
   accentPrimaryLight: colours["accent-primary-light"],
+  border: colours["gray-600"],
+  textLight: colours["gray-200"],
+  input: colours["gray-600"],
 };
 
 const themes = {

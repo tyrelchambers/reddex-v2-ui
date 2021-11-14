@@ -4,5 +4,7 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.backgroundMain};
   }
 
- 
+  hr {
+    border-color: ${({ theme }) => theme.border};
+  }
 `;

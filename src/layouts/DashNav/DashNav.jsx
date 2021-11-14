@@ -20,11 +20,11 @@ const nav = [
     children: [
       {
         label: "Approved",
-        slug: "/reading_list/approved",
+        slug: "/reading_list?tab=approved",
       },
       {
         label: "Completed",
-        slug: "/reading_list/completed",
+        slug: "/reading_list?tab=completed",
       },
     ],
   },
@@ -69,7 +69,28 @@ const nav = [
   {
     label: "Site Builder",
     icon: faHammer,
-    children: [],
+    children: [
+      {
+        label: "General Settings",
+        slug: "/site_builder/general",
+      },
+      {
+        label: "Colour Theme",
+        slug: "/site_builder/colour",
+      },
+      {
+        label: "Submission Form",
+        slug: "/site_builder/submission",
+      },
+      {
+        label: "Timelines",
+        slug: "/site_builder/timelines",
+      },
+      {
+        label: "Miscellaneous",
+        slug: "/site_builder/miscellaneous",
+      },
+    ],
   },
 ];
 
@@ -89,7 +110,7 @@ const DashNav = () => {
           <StyledLi key={index}>
             {item.slug ? (
               <Link
-                to={item.slug}
+                to={`/dashboard${item.slug}`}
                 className="py-2 px-4 gap-4 flex items-center"
               >
                 <FontAwesomeIcon icon={item.icon} />
@@ -109,7 +130,7 @@ const DashNav = () => {
                     <>
                       {item.children.map((item) => (
                         <Link
-                          to={item.slug}
+                          to={`/dashboard${item.slug}`}
                           key={item.slug}
                           className="p-3 text-sm"
                         >

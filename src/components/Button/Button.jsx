@@ -1,4 +1,4 @@
-import styled, { ThemeProvider } from "styled-components";
+import styled from "styled-components";
 import { currentTheme } from "../../constants/theme";
 
 const StyledButton = styled.button`
