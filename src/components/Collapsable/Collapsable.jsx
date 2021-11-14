@@ -8,16 +8,13 @@ const StyledCollapsable = styled.details`
     list-style-type: none;
     transition: all 0.2s ease-in-out;
     background-color: ${(props) =>
-      props.toggled ? props.theme.contrast : props.theme.backgroundMain};
+      props.toggled ? props.theme.accent2 : props.theme.backgroundMain};
     border-radius: 0.5rem;
     border: 2px solid
       ${(props) =>
-        props.toggled
-          ? props.theme.backgroundSecondary
-          : props.theme.accentPrimary};
+        props.toggled ? props.theme.accent2 : props.theme.accentPrimary};
     * {
-      color: ${(props) =>
-        props.toggled ? props.text : "var(--accent-primary)"};
+      color: ${(props) => (props.toggled ? "white" : "var(--accent-primary)")};
     }
   } /* Firefox */
   summary::-webkit-details-marker {

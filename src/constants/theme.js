@@ -2,6 +2,7 @@ const colours = {
   white: "#ffffff",
   "off-white": "#f5f5f5",
   "accent-primary": "#da4167ff",
+  "accent-2": "#657153",
   gray: "#d6d6d6",
   "dark-blue": "#12162bff",
   black: "#0d0c1dff",
@@ -15,6 +16,7 @@ const light = {
   backgroundSecondary: colours["off-white"],
   accentPrimary: colours["accent-primary"],
   contrast: colours.black,
+  accent2: colours["accent-2"],
 };
 
 const dark = {
@@ -23,6 +25,7 @@ const dark = {
   text: colours["gray-100"],
   contrast: colours.white,
   accentPrimary: colours["accent-primary"],
+  accent2: colours["accent-2"],
 };
 
 const themes = {

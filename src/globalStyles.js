@@ -3,4 +3,6 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.backgroundMain};
   }
+
+ 
 `;

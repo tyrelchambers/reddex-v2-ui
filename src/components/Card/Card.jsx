@@ -11,10 +11,23 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledCard = styled.div`
-  background-color: var(--off-white);
+  background-color: ${(props) => props.theme.backgroundSecondary};
 
   .card-main {
     height: calc(100% - 190px);
+  }
+
+  p {
+    color: ${(props) => props.theme.text};
+  }
+
+  .card {
+    &-floating-header {
+      background-color: ${(props) => props.theme.backgroundMain};
+    }
+    &-floating-footer {
+      background-color: ${(props) => props.theme.backgroundMain};
+    }
   }
 `;
 
@@ -24,7 +37,7 @@ const Card = ({ data }) => {
       <header className="relative">
         <div className="h-14 bg-accent-primary"></div>
 
-        <div className="absolute top-7 p-4 bg-white flex left-3 right-3 rounded-lg shadow-lg gap-8">
+        <div className="card-floating-header absolute top-7 p-4 bg-white flex left-3 right-3 rounded-lg shadow-lg gap-8">
           <div className="flex items-center">
             <FontAwesomeIcon
               icon={faArrowAltCircleUp}
@@ -54,7 +67,7 @@ const Card = ({ data }) => {
           <p className="text-gray-600 text-sm">{data.flair}</p>
         </section>
 
-        <section className="flex items-center  mt-4 bg-white p-3 rounded-md justify-between">
+        <section className="flex items-center  mt-4 card-floating-footer p-3 rounded-md justify-between">
           <div className="flex gap-6">
             <div className="flex items-center">
               <FontAwesomeIcon
