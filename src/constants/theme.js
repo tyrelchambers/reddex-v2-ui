@@ -14,12 +14,15 @@ const light = {
   backgroundMain: colours.white,
   backgroundSecondary: colours["off-white"],
   accentPrimary: colours["accent-primary"],
+  contrast: colours.black,
 };
 
 const dark = {
   backgroundMain: colours["gray-900"],
   backgroundSecondary: colours["gray-800"],
   text: colours["gray-100"],
+  contrast: colours.white,
+  accentPrimary: colours["accent-primary"],
 };
 
 const themes = {

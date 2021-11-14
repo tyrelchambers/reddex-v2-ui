@@ -21,13 +21,13 @@ const StyledLi = styled.li`
   color: ${(props) => props.theme.text};
 `;
 
-const Nav = ({ themeStyles }) => {
+const Nav = () => {
   const user = false;
   return (
     <nav>
       <ul className="flex gap-10">
         {routes.map((route, index) => (
-          <StyledLi theme={themeStyles} key={index}>
+          <StyledLi key={index}>
             <Link
               className=" opacity-70 hover:opacity-100 transition-all "
               to={route.path}

@@ -1,11 +1,16 @@
 import React from "react";
+import styled from "styled-components";
+
+const StyledLabel = styled.label`
+  color: ${({ theme }) => theme.text};
+`;
 
 const InputWrapper = ({ label, htmlFor, children }) => {
   return (
     <div className="flex flex-col">
-      <label className="font-semibold text-gray-700 mb-2 " htmlFor={htmlFor}>
+      <StyledLabel className="font-semibold  mb-2 " htmlFor={htmlFor}>
         {label}
-      </label>
+      </StyledLabel>
       {children}
     </div>
   );

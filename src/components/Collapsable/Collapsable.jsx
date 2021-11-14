@@ -1,7 +1,4 @@
-import {
-  faChevronDown,
-  faChevronRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import styled from "styled-components";
@@ -11,12 +8,16 @@ const StyledCollapsable = styled.details`
     list-style-type: none;
     transition: all 0.2s ease-in-out;
     background-color: ${(props) =>
-      props.toggled ? "var(--dark-blue)" : "white"};
+      props.toggled ? props.theme.contrast : props.theme.backgroundMain};
     border-radius: 0.5rem;
     border: 2px solid
-      ${(props) => (props.toggled ? "var(--dark-blue)" : "var(--gray)")};
+      ${(props) =>
+        props.toggled
+          ? props.theme.backgroundSecondary
+          : props.theme.accentPrimary};
     * {
-      color: ${(props) => (props.toggled ? "white" : "var(--accent-primary)")};
+      color: ${(props) =>
+        props.toggled ? props.text : "var(--accent-primary)"};
     }
   } /* Firefox */
   summary::-webkit-details-marker {

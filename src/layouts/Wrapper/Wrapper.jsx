@@ -8,7 +8,11 @@ const Wrapper = ({ children }) => {
   const [theme, toggleTheme, themeStyles] = useContext(ThemeContext);
 
   return (
-    <ThemeProvider theme={themeStyles} toggleTheme={toggleTheme}>
+    <ThemeProvider
+      theme={themeStyles}
+      toggleTheme={toggleTheme}
+      themeString={theme}
+    >
       <GlobalStyles />
 
       <section>
