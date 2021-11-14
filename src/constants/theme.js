@@ -3,10 +3,12 @@ const colours = {
   "off-white": "#f5f5f5",
   "accent-primary": "#da4167ff",
   "accent-2": "#657153",
+  "accent-primary-light": "#F1BBC9",
   gray: "#d6d6d6",
   "dark-blue": "#12162bff",
   black: "#0d0c1dff",
   "gray-100": "rgba(243, 244, 246)",
+  "gray-700": "rgba(55, 65, 81)",
   "gray-800": "rgba(31, 41, 55)",
   "gray-900": "rgba(17, 24, 39)",
 };
@@ -17,6 +19,9 @@ const light = {
   accentPrimary: colours["accent-primary"],
   contrast: colours.black,
   accent2: colours["accent-2"],
+  accentPrimaryLight: colours["accent-primary-light"],
+  text: colours["gray-800"],
+  textLight: colours["gray-700"],
 };
 
 const dark = {
@@ -26,6 +31,7 @@ const dark = {
   contrast: colours.white,
   accentPrimary: colours["accent-primary"],
   accent2: colours["accent-2"],
+  accentPrimaryLight: colours["accent-primary-light"],
 };
 
 const themes = {

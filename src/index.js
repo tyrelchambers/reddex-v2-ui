@@ -3,11 +3,12 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { INDEX, LOGIN, REGISTER } from "./routes/index.routes";
+import { DASHBOARD, INDEX, LOGIN, REGISTER } from "./routes/index.routes";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
 import Register from "./pages/Register/Register";
 import Store from "./contexts/themeContext";
+import ReadingList from "./pages/Dashboard/ReadingList";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
             <Route path={LOGIN} element={<Login />} />
             <Route path={INDEX} element={<Home />} />
             <Route path={REGISTER} element={<Register />} />
+            <Route path={DASHBOARD} element={<ReadingList />} />
           </Routes>
         </Router>
       </Store>
