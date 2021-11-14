@@ -1,5 +1,7 @@
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import {
   faArrowAltCircleUp,
+  faBookCircleArrowRight,
   faBooksMedical,
   faClock,
   faFolder,
@@ -38,7 +40,7 @@ const StyledCard = styled.div`
   }
 `;
 
-const Card = ({ data, isReadingItem, subreddit }) => {
+const Card = ({ data, isReadingItem, isCompletedItem }) => {
   return (
     <StyledCard className="w-full rounded-lg  overflow-hidden shadow-md justify-between">
       <header className="relative">
@@ -98,7 +100,7 @@ const Card = ({ data, isReadingItem, subreddit }) => {
               <p className="text-sm text-gray-600">{data.upvoteRatio}%</p>
             </div>
           </div>
-          {!isReadingItem && (
+          {!isReadingItem && !isCompletedItem && (
             <FontAwesomeIcon
               icon={faPlusCircle}
               className="text-accent-primary "
@@ -114,6 +116,20 @@ const Card = ({ data, isReadingItem, subreddit }) => {
               <FontAwesomeIcon
                 title="Add to completed list"
                 icon={faBooksMedical}
+                className="text-accent-primary"
+              />
+            </div>
+          )}
+          {isCompletedItem && (
+            <div className="flex gap-4">
+              <FontAwesomeIcon
+                icon={faBookCircleArrowRight}
+                title="Add back to reading list"
+                className="text-accent-primary"
+              />
+              <FontAwesomeIcon
+                icon={faTrashCan}
+                title="Remove from completed list"
                 className="text-accent-primary"
               />
             </div>

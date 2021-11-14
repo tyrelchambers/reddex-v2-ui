@@ -31,9 +31,23 @@ const secondary = (props) => (
   </button>
 );
 
+const third = (props) => (
+  <button
+    type="button"
+    className={` text-accent-primary underline flex items-center  ${
+      props.className ? props.className : ""
+    }`}
+  >
+    {props.children}
+  </button>
+);
 export const Button = ({ variant, ...props }) => {
   if (variant === "secondary") {
     return secondary(props);
+  }
+
+  if (variant === "third") {
+    return third(props);
   }
 
   return primary(props);
