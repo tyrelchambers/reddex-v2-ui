@@ -9,19 +9,22 @@ import Home from "./pages/Home/Home";
 import Register from "./pages/Register/Register";
 import Store from "./contexts/themeContext";
 import ReadingList from "./pages/Dashboard/ReadingList";
+import { TabProvider } from "./contexts/tabContext";
 
 const App = () => {
   return (
     <React.StrictMode>
       <Store>
-        <Router>
-          <Routes>
-            <Route path={LOGIN} element={<Login />} />
-            <Route path={INDEX} element={<Home />} />
-            <Route path={REGISTER} element={<Register />} />
-            <Route path={DASHBOARD} element={<ReadingList />} />
-          </Routes>
-        </Router>
+        <TabProvider>
+          <Router>
+            <Routes>
+              <Route path={LOGIN} element={<Login />} />
+              <Route path={INDEX} element={<Home />} />
+              <Route path={REGISTER} element={<Register />} />
+              <Route path={DASHBOARD} element={<ReadingList />} />
+            </Routes>
+          </Router>
+        </TabProvider>
       </Store>
     </React.StrictMode>
   );

@@ -7,129 +7,6 @@ import { H1 } from "../../components/headings/h1";
 import RSelect from "../../components/RSelect/RSelect";
 import { extractSubreddit } from "../../utils/extractSubreddit";
 
-const data = [
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-    subreddit: "nosleep",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-    subreddit: "nosleep",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-    subreddit: "nosleep",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-    subreddit: "nosleep",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-    subreddit: "nosleep",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-    subreddit: "nosleep",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-    subreddit: "nosleep",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-    subreddit: "nosleep",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-    subreddit: "nosleep",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-    subreddit: "nosleep",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-    subreddit: "nosleep",
-  },
-  {
-    upvotes: 2000,
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-    upvoteRatio: "50",
-    flair: "Animal abuse",
-    subreddit: "letsnotmeet",
-  },
-];
-
 const StyledGrid = styled.section`
   grid-auto-rows: 350px;
 `;
@@ -140,7 +17,7 @@ const StyledWrapper = styled.section`
   }
 `;
 
-const Approved = () => {
+const Approved = ({ data = [] }) => {
   const [filters, setFilters] = useState(() =>
     extractSubreddit(data).map((sub) => ({
       value: sub,
@@ -151,7 +28,7 @@ const Approved = () => {
   const [selected, setSelected] = useState("");
 
   return (
-    <StyledWrapper>
+    <StyledWrapper className="w-full">
       <div className="flex justify-between">
         <H1>Approved</H1>
         <div className="w-60">
