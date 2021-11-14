@@ -3,13 +3,20 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { DASHBOARD, INDEX, LOGIN, REGISTER } from "./routes/index.routes";
+import {
+  DASHBOARD,
+  INDEX,
+  LOGIN,
+  REGISTER,
+  SUBMITTED,
+} from "./routes/index.routes";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
 import Register from "./pages/Register/Register";
 import Store from "./contexts/themeContext";
 import ReadingList from "./pages/Dashboard/ReadingList";
 import { TabProvider } from "./contexts/tabContext";
+import Submitted from "./pages/Dashboard/Submitted";
 
 const App = () => {
   return (
@@ -22,6 +29,7 @@ const App = () => {
               <Route path={INDEX} element={<Home />} />
               <Route path={REGISTER} element={<Register />} />
               <Route path={DASHBOARD} element={<ReadingList />} />
+              <Route path={SUBMITTED} element={<Submitted />} />
             </Routes>
           </Router>
         </TabProvider>
