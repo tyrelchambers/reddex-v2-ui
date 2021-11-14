@@ -18,7 +18,7 @@ const StyledWrapper = styled.section`
 `;
 
 const Approved = ({ data = [] }) => {
-  const [filters, setFilters] = useState(() =>
+  const [filters] = useState(() =>
     extractSubreddit(data).map((sub) => ({
       value: sub,
       label: sub,
