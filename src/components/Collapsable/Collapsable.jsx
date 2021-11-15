@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const StyledDropdown = styled.details`
-  summary {
+const StyledDropdown = styled.section`
+  .collapse-header {
     list-style-type: none;
     transition: all 0.2s ease-in-out;
     background-color: ${(props) =>
@@ -17,17 +17,11 @@ const StyledDropdown = styled.details`
     * {
       color: ${(props) => (props.toggled ? "white" : "var(--accent-primary)")};
     }
-  } /* Firefox */
-  summary::-webkit-details-marker {
-    display: none;
-  } /* Chrome */
-  summary::marker {
-    display: none;
   }
 `;
 
-const StyledNav = styled.details`
-  summary {
+const StyledNav = styled.section`
+  .collapse-header {
     list-style-type: none;
     transition: all 0.2s ease-in-out;
     background-color: ${(props) =>
@@ -38,12 +32,6 @@ const StyledNav = styled.details`
       color: ${(props) =>
         props.toggled ? "white !important" : props.theme.text};
     }
-  } /* Firefox */
-  summary::-webkit-details-marker {
-    display: none;
-  } /* Chrome */
-  summary::marker {
-    display: none;
   }
 
   .collapsable-body {
@@ -56,17 +44,17 @@ const StyledNav = styled.details`
   }
 `;
 
-const Collapsable = ({ header, body, className = "", isNav }) => {
-  const [state, setState] = useState(false);
+const Collapsable = ({ header, className = "", isNav, isActive, children }) => {
+  const [state, setState] = useState(isActive || false);
   const StyledCollapsable = isNav ? StyledNav : StyledDropdown;
 
   return (
     <StyledCollapsable
       className={className}
       toggled={state}
-      onToggle={() => setState(!state)}
+      onClick={() => setState(!state)}
     >
-      <summary className="flex items-center justify-between">
+      <div className="flex items-center justify-between collapse-header">
         <span className="text-gray-600 flex items-center">{header}</span>
         <FontAwesomeIcon
           icon={faChevronRight}
@@ -75,8 +63,8 @@ const Collapsable = ({ header, body, className = "", isNav }) => {
             transform: state ? "rotate(90deg)" : "rotate(0deg)",
           }}
         />
-      </summary>
-      {state && <div className="collapsable-body">{body}</div>}
+      </div>
+      {state && <div className="collapsable-body">{children}</div>}
     </StyledCollapsable>
   );
 };
