@@ -14,7 +14,6 @@ const StyledLink = styled(Link)`
 
 const DashNav = () => {
   const location = useLocation();
-  console.log(location);
   return (
     <nav className="mt-10">
       <ul className="flex flex-col gap-4">
@@ -42,6 +41,7 @@ const DashNav = () => {
                 {item.children.map((item) => {
                   const itemTab = item.slug.split("?")[1];
                   const isActive = location.search.includes(itemTab);
+
                   return (
                     <StyledLink
                       to={`/dashboard${item.slug}`}
