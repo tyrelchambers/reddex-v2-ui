@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Card from "../../components/Card/Card";
 import { H1 } from "../../components/headings/h1";
 import RSelect from "../../components/RSelect/RSelect";
+import Grid from "../../layouts/Grid/Grid";
 import { extractSubreddit } from "../../utils/extractSubreddit";
 
 const StyledGrid = styled.section`
@@ -49,7 +50,8 @@ const Approved = ({ data = [] }) => {
           <p className="text-accent-primary">{selected}</p>
         </div>
       )}
-      <StyledGrid className="grid grid-cols-3 flex-1 gap-6  mt-8">
+
+      <Grid>
         {data.length > 0 &&
           data
             .filter((el) => {
@@ -61,7 +63,7 @@ const Approved = ({ data = [] }) => {
             .map((item, index) => (
               <Card data={item} key={index} isReadingItem />
             ))}
-      </StyledGrid>
+      </Grid>
     </StyledWrapper>
   );
 };

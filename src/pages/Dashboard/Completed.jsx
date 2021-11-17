@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Card from "../../components/Card/Card";
 import { H1 } from "../../components/headings/h1";
+import Grid from "../../layouts/Grid/Grid";
 
 const data = [
   {
@@ -126,10 +127,6 @@ const data = [
   },
 ];
 
-const StyledGrid = styled.section`
-  grid-auto-rows: 350px;
-`;
-
 const Completed = () => {
   return (
     <section>
@@ -137,12 +134,12 @@ const Completed = () => {
         <H1>Completed</H1>
       </div>
 
-      <StyledGrid className="grid grid-cols-3 flex-1 gap-6  mt-8">
+      <Grid>
         {data.length > 0 &&
           data.map((item, index) => (
             <Card data={item} key={index} isCompletedItem />
           ))}
-      </StyledGrid>
+      </Grid>
     </section>
   );
 };

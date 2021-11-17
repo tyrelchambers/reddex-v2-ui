@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import Collapsable from "../../components/Collapsable/Collapsable";
-import { useLocation } from "react-router-dom";
 import { nav } from "../../routes/dashboard.routes";
 
 const StyledLink = styled(Link)`
@@ -13,7 +12,8 @@ const StyledLink = styled(Link)`
 `;
 
 const DashNav = () => {
-  const location = useLocation();
+  const { page, sub_page } = useParams();
+
   return (
     <nav className="mt-10">
       <ul className="flex flex-col gap-4">
@@ -30,7 +30,7 @@ const DashNav = () => {
             ) : (
               <Collapsable
                 isNav
-                isActive={location.pathname.includes(item.value)}
+                isActive={page === item.value}
                 header={
                   <>
                     <FontAwesomeIcon icon={item.icon} className=" mr-4" />
@@ -39,8 +39,8 @@ const DashNav = () => {
                 }
               >
                 {item.children.map((item) => {
-                  const itemTab = item.slug.split("?")[1];
-                  const isActive = location.search.includes(itemTab);
+                  const url = item.slug.split("/").slice(1, 3);
+                  const isActive = url[0] === page && url[1] === sub_page;
 
                   return (
                     <StyledLink

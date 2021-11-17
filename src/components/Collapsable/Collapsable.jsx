@@ -45,7 +45,7 @@ const StyledNav = styled.section`
 `;
 
 const Collapsable = ({ header, className = "", isNav, isActive, children }) => {
-  const [state, setState] = useState(false);
+  const [state, setState] = useState(isActive);
   const StyledCollapsable = isNav ? StyledNav : StyledDropdown;
 
   return (

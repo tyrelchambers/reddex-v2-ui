@@ -15,11 +15,11 @@ export const nav = [
     children: [
       {
         label: "Approved",
-        slug: "/reading_list?tab=approved",
+        slug: "/reading_list/approved",
       },
       {
         label: "Completed",
-        slug: "/reading_list?tab=completed",
+        slug: "/reading_list/completed",
       },
     ],
   },
