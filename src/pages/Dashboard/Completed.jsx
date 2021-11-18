@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import Card from "../../components/Card/Card";
 import { H1 } from "../../components/headings/h1";
 import Grid from "../../layouts/Grid/Grid";

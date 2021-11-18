@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { currentTheme } from "../../constants/theme";
 
 const StyledButton = styled.button`
+  width: fit-content;
+  white-space: nowrap;
   background-color: ${(props) => props.theme["accent-primary"]};
 `;
 

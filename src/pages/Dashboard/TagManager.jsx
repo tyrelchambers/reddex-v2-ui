@@ -32,6 +32,9 @@ const StyledWrapper = styled.section`
       color: white;
     }
   }
+  .edit-action {
+    color: ${(props) => props.theme.green};
+  }
 `;
 
 const TagManager = () => {
@@ -58,10 +61,7 @@ const TagManager = () => {
                 <p className="mr-4">{tag.label}</p>
               </div>
               <div className="flex items-center gap-6 p-3">
-                <FontAwesomeIcon
-                  icon={faPenToSquare}
-                  className="text-accent-primary"
-                />
+                <FontAwesomeIcon icon={faPenToSquare} className="edit-action" />
                 <FontAwesomeIcon
                   icon={faTrashCan}
                   className="text-accent-primary"

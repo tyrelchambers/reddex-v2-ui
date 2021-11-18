@@ -14,6 +14,7 @@ const colours = {
   "gray-700": "rgba(55, 65, 81)",
   "gray-800": "rgba(31, 41, 55)",
   "gray-900": "rgba(17, 24, 39)",
+  "green-500": "rgba(16, 185, 129)",
 };
 
 const light = {
@@ -27,6 +28,7 @@ const light = {
   textLight: colours["gray-700"],
   border: colours["gray-300"],
   input: colours["off-white"],
+  green: colours["green-500"],
 };
 
 const dark = {
@@ -40,6 +42,7 @@ const dark = {
   border: colours["gray-600"],
   textLight: colours["gray-200"],
   input: colours["gray-600"],
+  green: colours["green-500"],
 };
 
 const themes = {

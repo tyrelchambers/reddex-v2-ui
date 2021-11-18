@@ -8,10 +8,6 @@ import RSelect from "../../components/RSelect/RSelect";
 import Grid from "../../layouts/Grid/Grid";
 import { extractSubreddit } from "../../utils/extractSubreddit";
 
-const StyledGrid = styled.section`
-  grid-auto-rows: 350px;
-`;
-
 const StyledWrapper = styled.section`
   .active-filter {
     color: ${(props) => props.theme.text};
