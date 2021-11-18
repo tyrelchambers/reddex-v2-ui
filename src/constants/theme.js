@@ -25,7 +25,7 @@ const light = {
   accent2: colours["accent-2"],
   accentPrimaryLight: colours["accent-primary-light"],
   text: colours["gray-800"],
-  textLight: colours["gray-700"],
+  textLight: colours["gray-600"],
   border: colours["gray-300"],
   input: colours["off-white"],
   green: colours["green-500"],
@@ -40,7 +40,7 @@ const dark = {
   accent2: colours["accent-2"],
   accentPrimaryLight: colours["accent-primary-light"],
   border: colours["gray-600"],
-  textLight: colours["gray-200"],
+  textLight: colours["gray-300"],
   input: colours["gray-600"],
   green: colours["green-500"],
 };

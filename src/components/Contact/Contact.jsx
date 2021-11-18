@@ -13,11 +13,14 @@ const StyledDiv = styled.div`
   .body {
     color: ${(props) => props.theme.textLight};
   }
+  .edit-action {
+    color: ${(props) => props.theme.green};
+  }
 `;
 
 const Contact = ({ username, body }) => {
   return (
-    <StyledDiv className="rounded-lg overflow-hidden">
+    <StyledDiv className="rounded-lg overflow-hidden shadow-md">
       <div className="bg-accent-primary p-3">
         <p className="text-white font-bold">
           <FontAwesomeIcon icon={faCircleUser} className="mr-2" />
