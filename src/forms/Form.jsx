@@ -9,7 +9,7 @@ const StyledForm = styled.form`
 
 const Form = ({ className = "", children }) => {
   return (
-    <StyledForm className={`flex flex-col gap-4 ${className}`}>
+    <StyledForm className={`flex flex-col gap-6 ${className}`}>
       {children}
     </StyledForm>
   );

@@ -38,7 +38,6 @@ const StyledNav = styled.section`
     display: flex;
     flex-direction: column;
     background-color: ${(props) => props.theme.accentPrimaryLight};
-    color: ${(props) => props.theme.text};
     border-radius: 0 0 0.5rem 0.5rem;
     font-weight: 300;
   }

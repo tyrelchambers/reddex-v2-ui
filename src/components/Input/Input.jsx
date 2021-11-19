@@ -28,7 +28,7 @@ const Input = ({
 }) => (
   <StyledInputWrapper className="flex items-center w-full h-12 rounded-md overflow-hidden px-4">
     {typeof icon === "object" && (
-      <div className="h-full input-icon mr-2 flex items-center justify-center">
+      <div className="h-full input-icon mr-4 flex items-center justify-center">
         <FontAwesomeIcon icon={icon} />
       </div>
     )}

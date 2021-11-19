@@ -6,8 +6,10 @@ import Collapsable from "../../components/Collapsable/Collapsable";
 import { nav } from "../../routes/dashboard.routes";
 
 const StyledLink = styled(Link)`
-  color: ${(props) =>
-    props.isActive ? props.theme.accentPrimary : props.theme.textLight};
+  .header {
+    color: ${(props) =>
+      props.isActive ? props.theme.accentPrimary : props.theme.textLight};
+  }
   font-weight: ${(props) => (props.isActive ? "bold" : "normal")};
 `;
 
@@ -20,12 +22,11 @@ const DashNav = () => {
         {nav.map((item, index) => (
           <li key={index}>
             {item.slug ? (
-              <StyledLink
-                to={`/dashboard${item.slug}`}
-                className="py-2 px-4 gap-4 flex items-center font-bold"
-              >
-                <FontAwesomeIcon icon={item.icon} />
-                <p>{item.label}</p>
+              <StyledLink to={`/dashboard${item.slug}`}>
+                <div className="header py-2 px-4 gap-4 flex items-center font-bold">
+                  <FontAwesomeIcon icon={item.icon} />
+                  <p>{item.label}</p>
+                </div>
               </StyledLink>
             ) : (
               <Collapsable
@@ -46,7 +47,7 @@ const DashNav = () => {
                     <StyledLink
                       to={`/dashboard${item.slug}`}
                       key={item.slug}
-                      className="p-3 text-sm"
+                      className="p-3 text-sm text-gray-700"
                       isActive={isActive}
                     >
                       {item.label}
