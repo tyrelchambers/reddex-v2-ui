@@ -8,7 +8,7 @@ import { Button } from "../../../components/Button/Button";
 
 const Security = () => {
   return (
-    <div>
+    <>
       <H1>Security</H1>
 
       <main className="mt-10 max-w-md">
@@ -27,7 +27,7 @@ const Security = () => {
           Delete Account
         </Button>
       </main>
-    </div>
+    </>
   );
 };
 
