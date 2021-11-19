@@ -1,8 +1,7 @@
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import Input from "../../components/Input/Input";
+import Input from "../../../components/Input/Input";
 import Approved from "./Approved";
-import { Button } from "../../components/Button/Button";
 import Completed from "./Completed";
 import { useParams } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,6 +9,7 @@ import {
   faArrowDownFromDottedLine,
   faArrowUpFromDottedLine,
 } from "@fortawesome/pro-duotone-svg-icons";
+import { Button } from "../../../components/Button/Button";
 
 const ReadingList = () => {
   const { sub_page } = useParams();

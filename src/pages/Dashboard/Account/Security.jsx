@@ -11,7 +11,7 @@ const Security = () => {
     <>
       <H1>Security</H1>
 
-      <main className="mt-10 max-w-md">
+      <main className="mt-10 max-w-xl">
         <ChangeEmailForm />
         <hr className="mt-10 mb-10" />
         <ChangePasswordForm />

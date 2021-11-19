@@ -2,11 +2,11 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import styled from "styled-components";
-import Card from "../../components/Card/Card";
-import { H1 } from "../../components/headings/h1";
-import RSelect from "../../components/RSelect/RSelect";
-import Grid from "../../layouts/Grid/Grid";
-import { extractSubreddit } from "../../utils/extractSubreddit";
+import { H1 } from "../../../components/headings/h1";
+import { extractSubreddit } from "../../../utils/extractSubreddit";
+import RSelect from "../../../components/RSelect/RSelect";
+import Grid from "../../../layouts/Grid/Grid";
+import Card from "../../../components/Card/Card";
 
 const StyledWrapper = styled.section`
   .active-filter {

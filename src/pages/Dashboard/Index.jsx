@@ -4,7 +4,7 @@ import DashWrapper from "../../layouts/DashWrapper/DashWrapper";
 import Account from "./Account/Account";
 import Contacts from "./Contacts";
 import Inbox from "./Inbox";
-import ReadingList from "./ReadingList";
+import ReadingList from "./ReadingList/ReadingList";
 import Submitted from "./Submitted";
 import TagManager from "./TagManager";
 
