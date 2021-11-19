@@ -1,5 +1,6 @@
 import {
   faCalendarClock,
+  faCircleUser,
   faMessageLines,
 } from "@fortawesome/pro-duotone-svg-icons";
 import { faArrowRightLong } from "@fortawesome/pro-regular-svg-icons";
@@ -27,7 +28,10 @@ const InboxItem = ({ data }) => {
   return (
     <StyledWrapper className="flex flex-col rounded-md overflow-hidden shadow-md">
       <div className="flex items-center bg-accent-primary p-3 justify-between">
-        <p className="text-white font-bold">{username}</p>
+        <p className="text-white font-bold">
+          <FontAwesomeIcon icon={faCircleUser} className="mr-2" />
+          {username}
+        </p>
         <div className="flex items-center">
           <FontAwesomeIcon icon={faCalendarClock} className="text-white mr-4" />
           <p className="text-white ">{date}</p>

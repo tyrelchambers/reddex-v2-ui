@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router";
 import DashWrapper from "../../layouts/DashWrapper/DashWrapper";
+import Account from "./Account/Account";
 import Contacts from "./Contacts";
 import Inbox from "./Inbox";
 import ReadingList from "./ReadingList";
@@ -17,6 +18,7 @@ const Index = () => {
       {page === "tags" && <TagManager />}
       {page === "contacts" && <Contacts />}
       {page === "inbox" && <Inbox />}
+      {page === "account" && <Account />}
     </DashWrapper>
   );
 };

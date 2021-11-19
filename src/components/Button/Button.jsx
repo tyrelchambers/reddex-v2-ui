@@ -43,6 +43,18 @@ const third = (props) => (
     {props.children}
   </button>
 );
+
+const danger = (props) => (
+  <button
+    type="button"
+    className={`border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-all  h-12 px-4 rounded-md  ${
+      props.className ? props.className : ""
+    }`}
+  >
+    {props.children}
+  </button>
+);
+
 export const Button = ({ variant, ...props }) => {
   if (variant === "secondary") {
     return secondary(props);
@@ -50,6 +62,10 @@ export const Button = ({ variant, ...props }) => {
 
   if (variant === "third") {
     return third(props);
+  }
+
+  if (variant === "danger") {
+    return danger(props);
   }
 
   return primary(props);
