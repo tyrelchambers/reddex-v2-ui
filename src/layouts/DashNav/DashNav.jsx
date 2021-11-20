@@ -8,7 +8,7 @@ import { nav } from "../../routes/dashboard.routes";
 const StyledLink = styled(Link)`
   .header {
     color: ${(props) =>
-      props.isActive ? props.theme.accentPrimary : props.theme.textLight};
+      props.isActive ? props.theme.accentPrimary : props.theme.text};
   }
   font-weight: ${(props) => (props.isActive ? "bold" : "normal")};
 `;

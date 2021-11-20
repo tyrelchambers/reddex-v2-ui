@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import reddexDark from "../../assets/images/reddex-dark.svg";
 import reddexLight from "../../assets/images/reddex-light.svg";
@@ -15,11 +16,13 @@ const DashHeader = ({ theme, toggleTheme }) => {
   return (
     <StyledHeader className="p-3">
       <div className="flex items-center w-full justify-between">
-        <img
-          src={theme === "light" ? reddexDark : reddexLight}
-          alt="Reddex"
-          className="w-14 h-14"
-        />
+        <Link to="/">
+          <img
+            src={theme === "light" ? reddexDark : reddexLight}
+            alt="Reddex"
+            className="w-14 h-14"
+          />
+        </Link>
         <ThemeSwitcher theme={theme} toggleTheme={toggleTheme} />
       </div>
       <DashNav />
