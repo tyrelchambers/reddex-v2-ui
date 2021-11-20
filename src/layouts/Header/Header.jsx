@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import reddexDark from "../../assets/images/reddex-dark.svg";
 import reddexLight from "../../assets/images/reddex-light.svg";
+import Avatar from "../../components/Avatar/Avatar";
 
 import ThemeSwitcher from "../../components/ThemeSwitcher/ThemeSwitcher";
 import { ThemeContext } from "../../contexts/themeContext";
@@ -9,6 +10,10 @@ import Nav from "../Nav/Nav";
 
 const StyledHeader = styled.header`
   background-color: ${(props) => props.theme.backgroundSecondary};
+
+  .username {
+    color: ${(props) => props.theme.text};
+  }
 `;
 
 const Header = () => {
@@ -28,6 +33,12 @@ const Header = () => {
         <div className="mr-8 ml-8">
           <ThemeSwitcher toggleTheme={toggleTheme} theme={theme} />
         </div>
+        <Avatar
+          size="small"
+          url="https://en.gravatar.com/avatar"
+          className="mr-2"
+        />
+        <p className="font-semibold username">StoriesAfterMidnight</p>
       </div>
     </StyledHeader>
   );
