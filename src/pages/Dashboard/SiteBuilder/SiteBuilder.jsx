@@ -4,6 +4,8 @@ import { H1 } from "../../../components/headings/h1";
 import Subtitle from "../../../components/Subtitle/Subtitle";
 import Colour from "./Colour";
 import General from "./General";
+import SubmissionForms from "./SubmissionForms";
+import Timelines from "./Timelines";
 
 const SiteBuilder = () => {
   const { sub_page } = useParams();
@@ -25,6 +27,8 @@ const SiteBuilder = () => {
       <main className="mt-10 max-w-xl">
         {sub_page === "general" && <General />}
         {sub_page === "colour" && <Colour />}
+        {sub_page === "submission_forms" && <SubmissionForms />}
+        {sub_page === "timelines" && <Timelines />}
       </main>
     </section>
   );

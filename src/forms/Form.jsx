@@ -5,6 +5,18 @@ const StyledForm = styled.form`
   .from {
     color: ${({ theme }) => theme.textLight};
   }
+
+  .module {
+    background-color: ${(props) => props.theme.backgroundSecondary};
+  }
+
+  .headline {
+    color: ${({ theme }) => theme.text};
+  }
+
+  .subtitle {
+    color: ${({ theme }) => theme.textLight};
+  }
 `;
 
 const Form = ({ className = "", children }) => {

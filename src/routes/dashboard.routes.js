@@ -77,7 +77,7 @@ export const nav = [
       },
       {
         label: "Submission Form",
-        slug: "/site_builder/submission",
+        slug: "/site_builder/submission_forms",
       },
       {
         label: "Timelines",
