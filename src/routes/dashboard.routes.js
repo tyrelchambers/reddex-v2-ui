@@ -83,10 +83,6 @@ export const nav = [
         label: "Timelines",
         slug: "/site_builder/timelines",
       },
-      {
-        label: "Miscellaneous",
-        slug: "/site_builder/miscellaneous",
-      },
     ],
   },
 ];
