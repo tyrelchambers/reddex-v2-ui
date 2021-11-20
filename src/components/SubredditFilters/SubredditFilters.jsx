@@ -31,8 +31,9 @@ const SubredditFilters = () => {
             Upvotes
           </>
         }
-        body={<UpvoteFilter />}
-      />
+      >
+        <UpvoteFilter />
+      </Collapsable>
       <Collapsable
         className="mt-6"
         header={
@@ -44,8 +45,9 @@ const SubredditFilters = () => {
             Reading Time (minutes)
           </>
         }
-        body={<ReadtimeFilter />}
-      />
+      >
+        <ReadtimeFilter />
+      </Collapsable>
 
       <Collapsable
         className="mt-6"
@@ -58,8 +60,9 @@ const SubredditFilters = () => {
             Keywords
           </>
         }
-        body={<KeywordsFilter />}
-      />
+      >
+        <KeywordsFilter />
+      </Collapsable>
 
       <Collapsable
         className="mt-6"
@@ -72,8 +75,9 @@ const SubredditFilters = () => {
             Misc
           </>
         }
-        body={<MiscFilters />}
-      />
+      >
+        <MiscFilters />
+      </Collapsable>
       <Button className="mt-6">
         <FontAwesomeIcon icon={faCheck} className="mr-2" /> Apply Filters
       </Button>

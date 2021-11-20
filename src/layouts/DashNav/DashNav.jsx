@@ -1,3 +1,4 @@
+import { faArrowUpLeftFromCircle } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link, useParams } from "react-router-dom";
@@ -11,6 +12,8 @@ const StyledLink = styled(Link)`
       props.isActive ? props.theme.accentPrimary : props.theme.text};
   }
   font-weight: ${(props) => (props.isActive ? "bold" : "normal")};
+  color: ${(props) =>
+    props.isActive ? props.theme.accentPrimary : props.theme.textLight};
 `;
 
 const DashNav = () => {
@@ -47,7 +50,7 @@ const DashNav = () => {
                     <StyledLink
                       to={`/dashboard${item.slug}`}
                       key={item.slug}
-                      className="p-3 text-sm text-gray-700"
+                      className="p-3 text-sm "
                       isActive={isActive}
                     >
                       {item.label}
@@ -58,6 +61,14 @@ const DashNav = () => {
             )}
           </li>
         ))}
+        <li>
+          <StyledLink to={`/`}>
+            <div className="header py-2 px-4 gap-4 flex items-center font-bold">
+              <FontAwesomeIcon icon={faArrowUpLeftFromCircle} />
+              <p>Get Posts</p>
+            </div>
+          </StyledLink>
+        </li>
       </ul>
     </nav>
   );

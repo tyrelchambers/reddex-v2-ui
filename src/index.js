@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
   DASHBOARD,
   DASHBOARD_DETAIL,
+  DASHBOARD_PAGE,
   INDEX,
   LOGIN,
   REGISTER,
@@ -28,6 +29,7 @@ const App = () => {
               <Route path={INDEX} element={<Home />} />
               <Route path={REGISTER} element={<Register />} />
               <Route path={DASHBOARD} element={<Index />} />
+              <Route path={DASHBOARD_PAGE} element={<Index />} />
               <Route path={DASHBOARD_DETAIL} element={<Index />} />
             </Routes>
           </Router>

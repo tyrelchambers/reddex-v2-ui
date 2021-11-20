@@ -12,7 +12,7 @@ const routes = [
     label: "About",
   },
   {
-    path: "help",
+    path: "/help",
     label: "Help",
   },
 ];

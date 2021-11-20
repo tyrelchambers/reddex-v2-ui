@@ -1,6 +1,5 @@
 import {
   faAddressBook,
-  faArrowUpLeftFromCircle,
   faBooks,
   faHammer,
   faInbox,

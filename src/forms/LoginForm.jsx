@@ -27,6 +27,11 @@ const LoginForm = () => {
         <FontAwesomeIcon icon={faRightToBracket} className="mr-2" /> Login
       </Button>
 
+      <div className="flex items-center">
+        <input type="checkbox" name="remember_me" className="mr-4" />
+        <p className="subtitle">Remember me</p>
+      </div>
+
       <Link to={REGISTER} className="underline text-gray-500 ">
         Don't have an account?
       </Link>

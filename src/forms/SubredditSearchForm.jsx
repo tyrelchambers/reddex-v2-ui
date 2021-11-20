@@ -20,7 +20,7 @@ const SubredditSearchForm = () => {
 
       <RSelect options={subredditCategories} />
 
-      <Button>
+      <Button className="w-full">
         <FontAwesomeIcon icon={faSearch} className="mr-4" />
         Search
       </Button>
