@@ -14,7 +14,7 @@ const data = [];
 const Home = () => {
   return (
     <Wrapper>
-      <main className="w-full max-w-screen-2xl ml-auto mr-auto p-4 flex gap-6">
+      <main className="w-full max-w-screen-3xl ml-auto mr-auto p-4 flex gap-6">
         <div className="min-w-80 w-80 ">
           <SubredditSearchForm />
 

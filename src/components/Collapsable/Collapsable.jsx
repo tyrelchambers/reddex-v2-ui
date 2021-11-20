@@ -48,12 +48,11 @@ const Collapsable = ({ header, className = "", isNav, isActive, children }) => {
   const StyledCollapsable = isNav ? StyledNav : StyledDropdown;
 
   return (
-    <StyledCollapsable
-      className={className}
-      toggled={state}
-      onClick={() => setState(!state)}
-    >
-      <div className="flex items-center justify-between collapse-header">
+    <StyledCollapsable className={className} toggled={state}>
+      <div
+        className="flex items-center justify-between collapse-header"
+        onClick={() => setState(!state)}
+      >
         <span className="text-gray-600 flex items-center">{header}</span>
         <FontAwesomeIcon
           icon={faChevronRight}
