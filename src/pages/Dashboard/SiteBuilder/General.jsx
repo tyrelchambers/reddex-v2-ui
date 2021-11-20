@@ -15,7 +15,7 @@ const StyledWrapper = styled.section`
 
 const General = () => {
   return (
-    <StyledWrapper className="max-w-xl">
+    <StyledWrapper>
       <SiteBuilderGeneralForm />
       <hr className="mt-10 mb-10" />
       <H2>Social Media</H2>

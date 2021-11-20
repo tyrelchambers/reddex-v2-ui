@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router";
 import { H1 } from "../../../components/headings/h1";
 import Subtitle from "../../../components/Subtitle/Subtitle";
+import Colour from "./Colour";
 import General from "./General";
 
 const SiteBuilder = () => {
@@ -21,7 +22,10 @@ const SiteBuilder = () => {
         </a>
       </div>
 
-      <main className="mt-10">{sub_page === "general" && <General />}</main>
+      <main className="mt-10 max-w-xl">
+        {sub_page === "general" && <General />}
+        {sub_page === "colour" && <Colour />}
+      </main>
     </section>
   );
 };
