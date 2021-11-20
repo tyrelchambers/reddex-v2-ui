@@ -5,10 +5,11 @@ import { faAt, faCheck, faKey } from "@fortawesome/pro-duotone-svg-icons";
 import Input from "../components/Input/Input";
 import { Button } from "../components/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { LOGIN } from "../routes/index.routes";
-import { Link } from "react-router-dom";
+import { LINK_REDDIT, LOGIN } from "../routes/index.routes";
+import { Link, useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
   return (
     <Form>
       <InputWrapper label="Email" htmlFor="email">
@@ -23,7 +24,12 @@ const RegisterForm = () => {
       </InputWrapper>
 
       <Button>
-        <FontAwesomeIcon icon={faCheck} className="mr-2" /> Sign up
+        <FontAwesomeIcon
+          icon={faCheck}
+          className="mr-2"
+          onClick={navigate(LINK_REDDIT)}
+        />
+        Sign up
       </Button>
       <Link to={LOGIN} className="underline text-gray-500">
         Already have an account?

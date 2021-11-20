@@ -8,6 +8,7 @@ import {
   DASHBOARD_DETAIL,
   DASHBOARD_PAGE,
   INDEX,
+  LINK_REDDIT,
   LOGIN,
   REGISTER,
 } from "./routes/index.routes";
@@ -17,6 +18,7 @@ import Register from "./pages/Register/Register";
 import Store from "./contexts/themeContext";
 import { TabProvider } from "./contexts/tabContext";
 import Index from "./pages/Dashboard/Index";
+import LinkReddit from "./pages/LinkReddit/LinkReddit";
 
 const App = () => {
   return (
@@ -31,6 +33,7 @@ const App = () => {
               <Route path={DASHBOARD} element={<Index />} />
               <Route path={DASHBOARD_PAGE} element={<Index />} />
               <Route path={DASHBOARD_DETAIL} element={<Index />} />
+              <Route path={LINK_REDDIT} element={<LinkReddit />} />
             </Routes>
           </Router>
         </TabProvider>
