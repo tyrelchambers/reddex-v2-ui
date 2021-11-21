@@ -7,5 +7,5 @@ export const useUser = () => {
     enabled: !!token,
   });
 
-  return [query];
+  return { query };
 };

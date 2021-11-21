@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import reddexDark from "../../assets/images/reddex-dark.svg";
 import reddexLight from "../../assets/images/reddex-light.svg";
@@ -6,18 +7,21 @@ import Avatar from "../../components/Avatar/Avatar";
 
 import ThemeSwitcher from "../../components/ThemeSwitcher/ThemeSwitcher";
 import { ThemeContext } from "../../contexts/themeContext";
+import { useUser } from "../../hooks/useUser";
 import Nav from "../Nav/Nav";
 
 const StyledHeader = styled.header`
   background-color: ${(props) => props.theme.backgroundSecondary};
 
   .username {
-    color: ${(props) => props.theme.text};
+    color: ${(props) => props.theme.textLight};
   }
 `;
 
 const Header = () => {
   const [theme, toggleTheme, themeStyles] = useContext(ThemeContext);
+  const { query } = useUser();
+
   return (
     <StyledHeader
       theme={themeStyles}
@@ -38,7 +42,9 @@ const Header = () => {
           url="https://en.gravatar.com/avatar"
           className="mr-2"
         />
-        <p className="username">StoriesAfterMidnight</p>
+        <Link to="/dashboard/reading_list/approved">
+          <p className="username">{query.data && query.data.email}</p>
+        </Link>
       </div>
     </StyledHeader>
   );

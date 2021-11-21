@@ -1,5 +1,5 @@
 import { request } from "../config/axios";
 
 export const getUser = () => {
-  return request.get("/v1/user/me");
+  return request.get("/user/v1/me");
 };

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import reddexDark from "../../assets/images/reddex-dark.svg";
 import reddexLight from "../../assets/images/reddex-light.svg";
 import ThemeSwitcher from "../../components/ThemeSwitcher/ThemeSwitcher";
+import { useUser } from "../../hooks/useUser";
 import DashNav from "../DashNav/DashNav";
 
 const StyledHeader = styled.header`
@@ -13,6 +14,8 @@ const StyledHeader = styled.header`
 `;
 
 const DashHeader = ({ theme, toggleTheme }) => {
+  const { query } = useUser();
+  console.log(query);
   return (
     <StyledHeader className="p-3">
       <div className="flex items-center w-full justify-between">
