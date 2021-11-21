@@ -8,12 +8,14 @@ const RSelect = ({ options, onChange, className = "", theme, ...rest }) => {
       options={options}
       onChange={onChange}
       className={className}
+      defaultValue={options[0]}
       styles={{
         menu: (provided) => ({
           ...provided,
           backgroundColor: theme.backgroundSecondary,
           color: theme.text,
         }),
+
         control: (provided) => ({
           ...provided,
           backgroundColor: theme.backgroundSecondary,
@@ -29,6 +31,11 @@ const RSelect = ({ options, onChange, className = "", theme, ...rest }) => {
         singleValue: (provided) => ({
           ...provided,
           color: theme.text,
+        }),
+        option: (provided, state) => ({
+          ...provided,
+          backgroundColor: state.isFocused ? theme.accentPrimary : "",
+          color: state.isFocused ? "var(--white)" : theme.text,
         }),
       }}
       {...rest}

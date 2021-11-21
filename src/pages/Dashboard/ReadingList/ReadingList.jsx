@@ -10,9 +10,13 @@ import {
   faArrowUpFromDottedLine,
 } from "@fortawesome/pro-duotone-svg-icons";
 import { Button } from "../../../components/Button/Button";
+import { useUser } from "../../../hooks/useUser";
 
 const ReadingList = () => {
   const { sub_page } = useParams();
+  const { query } = useUser();
+
+  if (!query.data) return null;
 
   return (
     <>
@@ -43,8 +47,8 @@ const ReadingList = () => {
       </section>
       <section className="section mt-10">
         <div className="flex items-center">
-          {sub_page === "approved" && <Approved />}
-          {sub_page === "completed" && <Completed />}
+          {sub_page === "approved" && <Approved user={query.data} />}
+          {sub_page === "completed" && <Completed user={query.data} />}
         </div>
       </section>
     </>
