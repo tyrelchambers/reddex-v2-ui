@@ -5,14 +5,27 @@ const StyledLabel = styled.label`
   color: ${({ theme }) => theme.text};
 `;
 
-const InputWrapper = ({ label, htmlFor, children, className }) => {
+const StyledWrapper = styled.div`
+  .sub-label {
+    color: ${({ theme }) => theme.textLight};
+  }
+`;
+
+const InputWrapper = ({
+  label,
+  htmlFor,
+  children,
+  className,
+  subLabel = "",
+}) => {
   return (
-    <div className={`flex flex-col ${className ? className : ""}`}>
+    <StyledWrapper className={`flex flex-col ${className ? className : ""}`}>
       <StyledLabel className="font-semibold  mb-2 " htmlFor={htmlFor}>
         {label}
       </StyledLabel>
+      {subLabel && <p className="text-sm sub-label mb-2">{subLabel}</p>}
       {children}
-    </div>
+    </StyledWrapper>
   );
 };
 

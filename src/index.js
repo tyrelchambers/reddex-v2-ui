@@ -4,6 +4,7 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
+  CALLBACK_REDDIT,
   DASHBOARD,
   DASHBOARD_DETAIL,
   DASHBOARD_PAGE,
@@ -22,6 +23,7 @@ import LinkReddit from "./pages/LinkReddit/LinkReddit";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { QueryClient, QueryClientProvider } from "react-query";
+import CallbackReddit from "./pages/CallbackReddit";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +44,7 @@ const App = () => {
                 <Route path={DASHBOARD_PAGE} element={<Index />} />
                 <Route path={DASHBOARD_DETAIL} element={<Index />} />
                 <Route path={LINK_REDDIT} element={<LinkReddit />} />
+                <Route path={CALLBACK_REDDIT} element={<CallbackReddit />} />
               </Routes>
             </Router>
           </TabProvider>

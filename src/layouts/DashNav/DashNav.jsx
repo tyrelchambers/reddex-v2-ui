@@ -13,7 +13,7 @@ const StyledLink = styled(Link)`
   }
   font-weight: ${(props) => (props.isActive ? "bold" : "normal")};
   color: ${(props) =>
-    props.isActive ? props.theme.accentPrimary : props.theme.textLight};
+    props.isActive ? props.theme.accentPrimary : "var(--black)"};
 `;
 
 const StyledHeader = styled(Link)`

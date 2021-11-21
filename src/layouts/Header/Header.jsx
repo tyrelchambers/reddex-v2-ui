@@ -37,14 +37,20 @@ const Header = () => {
         <div className="mr-8 ml-8">
           <ThemeSwitcher toggleTheme={toggleTheme} theme={theme} />
         </div>
-        <Avatar
-          size="small"
-          url="https://en.gravatar.com/avatar"
-          className="mr-2"
-        />
-        <Link to="/dashboard/reading_list/approved">
-          <p className="username">{query.data && query.data.email}</p>
-        </Link>
+        {query.data && (
+          <>
+            <Avatar
+              size="small"
+              url={query.data.Profile.reddit_profile.snoovatar_img}
+              className="mr-2"
+            />
+            <Link to="/dashboard/reading_list/approved">
+              <p className="username">
+                {query.data.Profile.reddit_profile.name}
+              </p>
+            </Link>
+          </>
+        )}
       </div>
     </StyledHeader>
   );

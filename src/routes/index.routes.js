@@ -6,3 +6,4 @@ export const DASHBOARD_PAGE = "/dashboard/:page";
 export const DASHBOARD_DETAIL = "/dashboard/:page/:sub_page";
 export const FORGOT_PASSWORD = "/forgot-password";
 export const LINK_REDDIT = "/link-reddit";
+export const CALLBACK_REDDIT = "/callback/reddit";

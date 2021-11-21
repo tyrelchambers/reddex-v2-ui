@@ -1,3 +1,5 @@
+import config from "../config/config";
+
 export const subredditCategories = [
   {
     label: "Hot",
@@ -35,3 +37,9 @@ export const quantityOptions = [
     value: "equal",
   },
 ];
+
+export const redditUrl = `https://www.reddit.com/api/v1/authorize?client_id=${
+  config[process.env.NODE_ENV].redditApp
+}&response_type=code&state=storiesaftermidnightreddex&redirect_uri=${
+  config[process.env.NODE_ENV].redditRedirect
+}&duration=permanent&scope=privatemessages identity`;

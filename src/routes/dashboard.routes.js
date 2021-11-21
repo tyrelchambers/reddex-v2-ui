@@ -53,6 +53,10 @@ export const nav = [
         slug: "/account/security",
       },
       {
+        label: "Profile",
+        slug: "/account/profile",
+      },
+      {
         label: "Greeting message",
         slug: "/account/greeting",
       },
