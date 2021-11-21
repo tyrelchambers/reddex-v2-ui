@@ -16,6 +16,11 @@ const StyledLink = styled(Link)`
     props.isActive ? props.theme.accentPrimary : props.theme.textLight};
 `;
 
+const StyledHeader = styled(Link)`
+  color: ${(props) =>
+    props.isActive ? props.theme.accentPrimary : props.theme.text};
+`;
+
 const DashNav = () => {
   const { page, sub_page } = useParams();
 
@@ -25,12 +30,15 @@ const DashNav = () => {
         {nav.map((item, index) => (
           <li key={index}>
             {item.slug ? (
-              <StyledLink to={`/dashboard${item.slug}`}>
+              <StyledHeader
+                to={`/dashboard${item.slug}`}
+                isActive={page === item.slug.replace("/", "")}
+              >
                 <div className="header py-2 px-4 gap-4 flex items-center font-bold">
                   <FontAwesomeIcon icon={item.icon} />
                   <p>{item.label}</p>
                 </div>
-              </StyledLink>
+              </StyledHeader>
             ) : (
               <Collapsable
                 isNav

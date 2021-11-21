@@ -34,12 +34,13 @@ const RegisterForm = () => {
     });
   };
 
-  const submitHandler = () => {
+  const submitHandler = async () => {
     if (state.password !== state.confirmPassword) {
       return toast.error("Passwords do not match");
     }
 
-    registerMutation.mutate(state);
+    await registerMutation.mutate(state);
+    navigate(LINK_REDDIT);
   };
 
   return (
