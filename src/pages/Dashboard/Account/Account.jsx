@@ -9,6 +9,9 @@ import Security from "./Security";
 const Account = () => {
   const { sub_page } = useParams();
   const { query } = useUser();
+
+  if (!query.data) return null;
+
   return (
     <>
       {sub_page === "security" && <Security user={query.data} />}

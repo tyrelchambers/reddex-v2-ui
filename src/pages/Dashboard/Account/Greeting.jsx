@@ -3,7 +3,7 @@ import { H1 } from "../../../components/headings/h1";
 import Subtitle from "../../../components/Subtitle/Subtitle";
 import GreetingForm from "../../../forms/GreetingForm";
 
-const Greeting = () => {
+const Greeting = ({ user }) => {
   return (
     <section className="max-w-xl">
       <H1>Greeting Message</H1>
@@ -13,7 +13,7 @@ const Greeting = () => {
         there.
       </Subtitle>
       <main className="mt-10">
-        <GreetingForm />
+        <GreetingForm user={user} />
       </main>
     </section>
   );

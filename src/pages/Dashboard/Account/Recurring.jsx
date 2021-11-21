@@ -3,7 +3,7 @@ import { H1 } from "../../../components/headings/h1";
 import Subtitle from "../../../components/Subtitle/Subtitle";
 import RecurringForm from "../../../forms/RecurringForm";
 
-const Recurring = () => {
+const Recurring = ({ user }) => {
   return (
     <section className="max-w-xl">
       <H1>Recurring Message</H1>
@@ -13,7 +13,7 @@ const Recurring = () => {
       </Subtitle>
 
       <main className="mt-10">
-        <RecurringForm />
+        <RecurringForm user={user} />
       </main>
     </section>
   );

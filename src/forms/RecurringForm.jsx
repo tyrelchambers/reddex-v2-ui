@@ -6,7 +6,7 @@ import InputWrapper from "../components/InputWrapper/InputWrapper";
 import Textarea from "../components/Textarea/Textarea";
 import Form from "./Form";
 
-const RecurringForm = () => {
+const RecurringForm = ({ user }) => {
   return (
     <Form>
       <InputWrapper label="Recurring Message">
@@ -14,7 +14,8 @@ const RecurringForm = () => {
       </InputWrapper>
       <div className="w-full flex items-center justify-between">
         <p className="from">
-          From: <span className="font-bold">StoriesAfterMidnight</span>
+          From:{" "}
+          <span className="font-bold">{user.Profile.reddit_profile.name}</span>
         </p>
         <Button>
           <FontAwesomeIcon icon={faFloppyDisk} className="mr-4" />
