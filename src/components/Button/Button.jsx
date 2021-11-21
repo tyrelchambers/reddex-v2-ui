@@ -12,7 +12,7 @@ StyledButton.defaultProps = {
 
 const primary = (props) => (
   <StyledButton
-    type="button"
+    type={props.type || "button"}
     className={`bg-accent-primary text-white  h-12 px-4 rounded-md  ${
       props.className ? props.className : ""
     }`}
@@ -23,7 +23,7 @@ const primary = (props) => (
 
 const secondary = (props) => (
   <button
-    type="button"
+    type={props.type || "button"}
     className={`bg-gray-200 text-gray-700  h-12 px-4 rounded-md  ${
       props.className ? props.className : ""
     }`}
@@ -34,7 +34,7 @@ const secondary = (props) => (
 
 const third = (props) => (
   <button
-    type="button"
+    type={props.type || "button"}
     className={` text-accent-primary underline flex items-center  ${
       props.className ? props.className : ""
     }`}
@@ -45,7 +45,7 @@ const third = (props) => (
 
 const danger = (props) => (
   <button
-    type="button"
+    type={props.type || "button"}
     className={`border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-all  h-12 px-4 rounded-md  ${
       props.className ? props.className : ""
     }`}

@@ -38,7 +38,7 @@ const Header = () => {
           url="https://en.gravatar.com/avatar"
           className="mr-2"
         />
-        <p className="font-semibold username">StoriesAfterMidnight</p>
+        <p className="username">StoriesAfterMidnight</p>
       </div>
     </StyledHeader>
   );

@@ -19,25 +19,34 @@ import Store from "./contexts/themeContext";
 import { TabProvider } from "./contexts/tabContext";
 import Index from "./pages/Dashboard/Index";
 import LinkReddit from "./pages/LinkReddit/LinkReddit";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
     <React.StrictMode>
-      <Store>
-        <TabProvider>
-          <Router>
-            <Routes>
-              <Route path={LOGIN} element={<Login />} />
-              <Route path={INDEX} element={<Home />} />
-              <Route path={REGISTER} element={<Register />} />
-              <Route path={DASHBOARD} element={<Index />} />
-              <Route path={DASHBOARD_PAGE} element={<Index />} />
-              <Route path={DASHBOARD_DETAIL} element={<Index />} />
-              <Route path={LINK_REDDIT} element={<LinkReddit />} />
-            </Routes>
-          </Router>
-        </TabProvider>
-      </Store>
+      <QueryClientProvider client={queryClient}>
+        <ToastContainer />
+
+        <Store>
+          <TabProvider>
+            <Router>
+              <Routes>
+                <Route path={LOGIN} element={<Login />} />
+                <Route path={INDEX} element={<Home />} />
+                <Route path={REGISTER} element={<Register />} />
+                <Route path={DASHBOARD} element={<Index />} />
+                <Route path={DASHBOARD_PAGE} element={<Index />} />
+                <Route path={DASHBOARD_DETAIL} element={<Index />} />
+                <Route path={LINK_REDDIT} element={<LinkReddit />} />
+              </Routes>
+            </Router>
+          </TabProvider>
+        </Store>
+      </QueryClientProvider>
     </React.StrictMode>
   );
 };
