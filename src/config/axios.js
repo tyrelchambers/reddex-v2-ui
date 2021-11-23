@@ -8,8 +8,13 @@ const instance = axios.create({
 instance.interceptors.request.use(
   function (config) {
     const token = localStorage.getItem("token");
+    const postToken = localStorage.getItem("postToken");
     if (token) {
       config.headers["token"] = token;
+    }
+
+    if (postToken) {
+      config.headers["postToken"] = postToken;
     }
     return config;
   },

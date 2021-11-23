@@ -3,6 +3,7 @@ import {
   faArrowAltCircleUp,
   faBookCircleArrowRight,
   faBooksMedical,
+  faCalendarClock,
   faClock,
   faFolder,
   faHashtag,
@@ -12,8 +13,10 @@ import {
   faUserCircle,
 } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { formatDistanceToNow } from "date-fns";
 import React from "react";
 import styled from "styled-components";
+import { averageReadingTime } from "../../utils/averageReadingTime";
 
 const StyledCard = styled.div`
   background-color: ${(props) => props.theme.backgroundSecondary};
@@ -40,7 +43,7 @@ const StyledCard = styled.div`
   }
 `;
 
-const Card = ({ data, isReadingItem, isCompletedItem, isSubmitted }) => {
+const Card = ({ data, isReadingItem, isCompletedItem, isSubmitted, user }) => {
   return (
     <StyledCard className="w-full rounded-lg  overflow-hidden shadow-md justify-between">
       <header className="relative">
@@ -53,7 +56,7 @@ const Card = ({ data, isReadingItem, isCompletedItem, isSubmitted }) => {
                 icon={faArrowAltCircleUp}
                 className="text-accent-primary mr-2"
               />
-              <p className="font-bold text-gray-800">{data.upvotes}</p>
+              <p className="font-bold text-gray-800">{data.ups}</p>
             </div>
           )}
           <div className="flex items-center">
@@ -67,7 +70,14 @@ const Card = ({ data, isReadingItem, isCompletedItem, isSubmitted }) => {
       </header>
 
       <main className="mt-8 p-4 card-main">
-        <p className="leading-7 text-gray-600 mt-2">{data.title}</p>
+        <a
+          href={data.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline"
+        >
+          <p className="leading-7 text-gray-600 mt-2">{data.title}</p>
+        </a>
       </main>
 
       <hr />
@@ -75,13 +85,15 @@ const Card = ({ data, isReadingItem, isCompletedItem, isSubmitted }) => {
       <footer className="p-2">
         {!isSubmitted && (
           <section className="flex items-center gap-4 ml-2 mr-2">
-            <div className="flex items-center gap-2">
-              <FontAwesomeIcon
-                icon={faHashtag}
-                className="text-accent-primary"
-              />{" "}
-              <p className="text-gray-600 text-sm">{data.flair}</p>
-            </div>
+            {data.link_flair_text && (
+              <div className="flex items-center gap-2">
+                <FontAwesomeIcon
+                  icon={faHashtag}
+                  className="text-accent-primary"
+                />{" "}
+                <p className="text-gray-600 text-sm">{data.link_flair_text}</p>
+              </div>
+            )}
 
             <div className="flex items-center gap-2">
               <FontAwesomeIcon
@@ -89,6 +101,16 @@ const Card = ({ data, isReadingItem, isCompletedItem, isSubmitted }) => {
                 className="text-accent-primary"
               />{" "}
               <p className="text-gray-600 text-sm">{data.subreddit}</p>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <FontAwesomeIcon
+                icon={faCalendarClock}
+                className="text-accent-primary"
+              />{" "}
+              <p className="text-gray-600 text-sm">
+                {formatDistanceToNow(new Date(data.created * 1000), "yyyyMMdd")}
+              </p>
             </div>
           </section>
         )}
@@ -100,7 +122,10 @@ const Card = ({ data, isReadingItem, isCompletedItem, isSubmitted }) => {
                 icon={faClock}
                 className="mr-2 text-accent-primary"
               />
-              <p className="text-sm text-gray-600">{data.readingTime}</p>
+              <p className="text-sm text-gray-600">
+                {averageReadingTime(data.self_text, user.Profile.reading_time)}
+                min
+              </p>
             </div>
             {!isSubmitted && (
               <div className="flex items-center">
@@ -108,7 +133,9 @@ const Card = ({ data, isReadingItem, isCompletedItem, isSubmitted }) => {
                   icon={faThumbsUp}
                   className="mr-2 text-accent-primary"
                 />
-                <p className="text-sm text-gray-600">{data.upvoteRatio}%</p>
+                <p className="text-sm text-gray-600">
+                  {(data.upvote_ratio * 100).toFixed(2)}%
+                </p>
               </div>
             )}
           </div>

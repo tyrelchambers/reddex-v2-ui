@@ -1,32 +1,106 @@
-import React from "react";
+import { Pagination } from "@mui/material";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { getPostsFromReddit } from "../../api/getPostsFromReddit";
+import { savePostsToDatabase } from "../../api/savePostsToDatabase";
 import Card from "../../components/Card/Card";
 import RecentlySearched from "../../components/RecentlySearched/RecentlySearched";
+import RPagination from "../../components/RPagination/RPagination";
 import SubredditFilters from "../../components/SubredditFilters/SubredditFilters";
 import SubredditSearchForm from "../../forms/SubredditSearchForm";
+import { usePostFilter } from "../../hooks/usePostFilter";
+import { usePosts } from "../../hooks/usePosts";
+import { usePostToken } from "../../hooks/usePostToken";
+import { useUser } from "../../hooks/useUser";
 import Wrapper from "../../layouts/Wrapper/Wrapper";
+import { formatRedditPosts } from "../../utils/formatRedditPosts";
+import { structureEndpoint } from "../../utils/structureEndpoint";
 
 const StyledGrid = styled.section`
   grid-auto-rows: 350px;
 `;
 
-const data = [];
 const Home = () => {
+  const { query } = useUser();
+  const { filters } = usePostFilter();
+  const [postToken] = usePostToken();
+  const [subreddit, setSubreddit] = useState("");
+  const [page, setPage] = useState(1);
+  const [categoryState, setCategoryState] = useState({
+    category: "hot",
+    timeframe: "day",
+  });
+
+  const { posts, setPostsHandler, clearPosts, getPosts } = usePosts({
+    page,
+    filterQuery: filters,
+  });
+
+  const categoryHandler = (data) => {
+    setCategoryState({
+      ...categoryState,
+      category: data.value,
+    });
+  };
+
+  const timeframeHandler = (data) => {
+    setCategoryState({
+      ...categoryState,
+      timeframe: data.value,
+    });
+  };
+
+  const executeSearch = async () => {
+    const endpoint = structureEndpoint({
+      category: categoryState,
+      subreddit,
+    });
+    const results = await getPostsFromReddit({ endpoint });
+    const formattedPosts = await formatRedditPosts(results);
+    setPostsHandler({
+      subreddit,
+      posts: formattedPosts,
+    });
+    savePostsToDatabase({
+      posts: formattedPosts,
+      subreddit,
+    });
+  };
+
   return (
     <Wrapper>
       <main className="w-full max-w-screen-3xl ml-auto mr-auto p-4 flex gap-6">
         <div className="min-w-80 w-80 ">
-          <SubredditSearchForm />
+          <SubredditSearchForm
+            executeSearch={executeSearch}
+            setSubreddit={setSubreddit}
+            categoryHandler={categoryHandler}
+            timeframeHandler={timeframeHandler}
+            categoryState={categoryState}
+            subreddit={subreddit}
+          />
 
           <hr className="mt-6 mb-6" />
           <SubredditFilters />
           <hr className="mt-6 mb-6" />
           <RecentlySearched />
         </div>
-        <StyledGrid className="grid grid-cols-3 flex-1 gap-6 ">
-          {data.length > 0 &&
-            data.map((item, index) => <Card data={item} key={index} />)}
-        </StyledGrid>
+        {console.log(posts)}
+        <section className="w-full flex-col">
+          <StyledGrid className="grid grid-cols-3 flex-1 gap-6 ">
+            {posts.posts.length > 0 &&
+              posts.posts.map((item, index) => (
+                <Card data={item} key={index} user={query.data} />
+              ))}
+          </StyledGrid>
+          <RPagination
+            count={posts.maxPages}
+            shape="rounded"
+            onChange={(_, page) => {
+              setPage(page);
+            }}
+          />
+        </section>
       </main>
     </Wrapper>
   );

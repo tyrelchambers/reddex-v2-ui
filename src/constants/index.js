@@ -38,6 +38,33 @@ export const quantityOptions = [
   },
 ];
 
+export const timeframeOptions = [
+  {
+    label: "Past Hour",
+    value: "hour",
+  },
+  {
+    label: "Past 24 Hours",
+    value: "day",
+  },
+  {
+    label: "Past Week",
+    value: "week",
+  },
+  {
+    label: "Past Month",
+    value: "month",
+  },
+  {
+    label: "Past Year",
+    value: "year",
+  },
+  {
+    label: "Of All Time",
+    value: "all",
+  },
+];
+
 export const redditUrl = `https://www.reddit.com/api/v1/authorize?client_id=${
   config[process.env.NODE_ENV].redditApp
 }&response_type=code&state=storiesaftermidnightreddex&redirect_uri=${
