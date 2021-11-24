@@ -30,7 +30,7 @@ const StyledCard = styled.div`
   }
 
   p {
-    color: ${(props) => props.theme.text};
+    color: ${(props) => props.theme.textLight};
   }
 
   .card {

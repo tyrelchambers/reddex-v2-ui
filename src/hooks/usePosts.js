@@ -7,7 +7,6 @@ export const usePosts = ({ page, filterQuery }) => {
     maxPages: 0,
     posts: [],
   });
-
   const setPostsHandler = ({ subreddit, posts }) => {
     setPosts({
       subreddit,
@@ -23,16 +22,19 @@ export const usePosts = ({ page, filterQuery }) => {
   };
 
   const getPosts = useQuery(
-    ["posts", page],
+    ["posts", { page, filterQuery }],
     () => getPostsFromDatabase({ page, query: filterQuery }),
     {
       onSuccess: (res) => {
+        console.log("res", res);
         setPosts({
           subreddit: res.post.subreddit,
           posts: res.post.posts,
           maxPages: res.maxPages,
         });
       },
+      retry: 1,
+      staleTime: 1000 * 60 * 60,
       keepPreviousData: true,
     }
   );

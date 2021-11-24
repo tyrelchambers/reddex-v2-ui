@@ -1,4 +1,3 @@
-import { Pagination } from "@mui/material";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { getPostsFromReddit } from "../../api/getPostsFromReddit";
@@ -22,7 +21,7 @@ const StyledGrid = styled.section`
 
 const Home = () => {
   const { query } = useUser();
-  const { filters } = usePostFilter();
+  const { filters, addFilters } = usePostFilter();
   const [postToken] = usePostToken();
   const [subreddit, setSubreddit] = useState("");
   const [page, setPage] = useState(1);
@@ -81,11 +80,15 @@ const Home = () => {
           />
 
           <hr className="mt-6 mb-6" />
-          <SubredditFilters />
+          <SubredditFilters
+            getPosts={getPosts}
+            filters={filters}
+            addFilters={addFilters}
+            page={page}
+          />
           <hr className="mt-6 mb-6" />
           <RecentlySearched />
         </div>
-        {console.log(posts)}
         <section className="w-full flex-col">
           <StyledGrid className="grid grid-cols-3 flex-1 gap-6 ">
             {posts.posts.length > 0 &&

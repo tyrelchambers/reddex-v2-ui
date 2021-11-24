@@ -5,17 +5,22 @@ import {
   faTimer,
 } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import Collapsable from "../Collapsable/Collapsable";
 import { H3 } from "../headings/H3";
-import UpvoteFilter from "../UpvoteFilter/UpvoteFilter";
-import ReadtimeFilter from "../ReadtimeFilter/ReadtimeFilter";
-import KeywordsFilter from "../KeywordsFilter/KeywordsFilter";
 import { Button } from "../Button/Button";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import MiscFilters from "../MiscFilters/MiscFilters";
+import RSelect from "../RSelect/RSelect";
+import { quantityOptions } from "../../constants";
+import Input from "../../components/Input/Input";
 
-const SubredditFilters = () => {
+const SubredditFilters = ({ filters, addFilters, getPosts }) => {
+  const [state, setState] = useState(filters);
+  const executeSearch = () => {
+    addFilters(state);
+    console.log(state);
+  };
+
   return (
     <section className="flex flex-col w-full">
       <H3>Filters</H3>
@@ -32,7 +37,17 @@ const SubredditFilters = () => {
           </>
         }
       >
-        <UpvoteFilter />
+        <div className="flex items-center gap-4 h-12 mt-2">
+          <RSelect
+            options={quantityOptions}
+            className="w-56"
+            onChange={(e) => setState({ ...state, operator: e.value })}
+          />
+          <Input
+            type="number"
+            onInput={(e) => setState({ ...state, upvotes: e.target.value })}
+          />
+        </div>
       </Collapsable>
       <Collapsable
         className="mt-6"
@@ -46,7 +61,17 @@ const SubredditFilters = () => {
           </>
         }
       >
-        <ReadtimeFilter />
+        <div className="flex items-center gap-4 h-12 mt-2">
+          <RSelect
+            options={quantityOptions}
+            className="w-56"
+            onChange={(e) => setState({ ...state, readTimeOperator: e.value })}
+          />
+          <Input
+            type="number"
+            onInput={(e) => setState({ ...state, readTime: e.target.value })}
+          />
+        </div>
       </Collapsable>
 
       <Collapsable
@@ -61,7 +86,13 @@ const SubredditFilters = () => {
           </>
         }
       >
-        <KeywordsFilter />
+        <div className="flex items-center gap-4 h-12 mt-2">
+          <Input
+            type="text"
+            placeholder="Comma separated..."
+            onInput={(e) => setState({ ...state, keywords: e.target.value })}
+          />
+        </div>
       </Collapsable>
 
       <Collapsable
@@ -76,9 +107,17 @@ const SubredditFilters = () => {
           </>
         }
       >
-        <MiscFilters />
+        <div className="flex flex-col gap-2 pt-2">
+          <Button variant="secondary">Series Only</Button>
+          <Button variant="secondary">Exclude Series</Button>
+        </div>
       </Collapsable>
-      <Button className="mt-6">
+
+      <Button className="mt-6" variant="secondary">
+        Reset Filters
+      </Button>
+
+      <Button className="mt-2" onClick={executeSearch}>
         <FontAwesomeIcon icon={faCheck} className="mr-2" /> Apply Filters
       </Button>
     </section>

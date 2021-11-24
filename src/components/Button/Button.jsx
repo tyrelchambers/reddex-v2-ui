@@ -16,6 +16,7 @@ const primary = (props) => (
     className={`bg-accent-primary text-white  h-12 px-4 rounded-md  ${
       props.className ? props.className : ""
     }`}
+    onClick={props.onClick}
   >
     {props.children}
   </StyledButton>
@@ -27,6 +28,7 @@ const secondary = (props) => (
     className={`bg-gray-200 text-gray-700  h-12 px-4 rounded-md  ${
       props.className ? props.className : ""
     }`}
+    onClick={props.onClick}
   >
     {props.children}
   </button>
@@ -38,6 +40,7 @@ const third = (props) => (
     className={` text-accent-primary underline flex items-center  ${
       props.className ? props.className : ""
     }`}
+    onClick={props.onClick}
   >
     {props.children}
   </button>
