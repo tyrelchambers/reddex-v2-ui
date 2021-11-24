@@ -43,7 +43,14 @@ const StyledNav = styled.section`
   }
 `;
 
-const Collapsable = ({ header, className = "", isNav, isActive, children }) => {
+const Collapsable = ({
+  header,
+  className = "",
+  isNav,
+  isActive,
+  children,
+  onClick,
+}) => {
   const [state, setState] = useState(isActive);
   const StyledCollapsable = isNav ? StyledNav : StyledDropdown;
 
@@ -51,7 +58,10 @@ const Collapsable = ({ header, className = "", isNav, isActive, children }) => {
     <StyledCollapsable className={className} toggled={state}>
       <div
         className="flex items-center justify-between collapse-header"
-        onClick={() => setState(!state)}
+        onClick={() => {
+          setState(!state);
+          onClick();
+        }}
       >
         <span className="text-gray-600 flex items-center">{header}</span>
         <FontAwesomeIcon

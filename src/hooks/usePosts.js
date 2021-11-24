@@ -26,7 +26,6 @@ export const usePosts = ({ page, filterQuery }) => {
     () => getPostsFromDatabase({ page, query: filterQuery }),
     {
       onSuccess: (res) => {
-        console.log("res", res);
         setPosts({
           subreddit: res.post.subreddit,
           posts: res.post.posts,
