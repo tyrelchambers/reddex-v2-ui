@@ -81,7 +81,7 @@ const Card = ({ data, isReadingItem, isCompletedItem, isSubmitted, user }) => {
 
       <hr />
 
-      <footer className="p-2">
+      <footer className="p-2 mt-2">
         {!isSubmitted && (
           <section className="flex items-center gap-4 ml-2 mr-2">
             {data.link_flair_text && (

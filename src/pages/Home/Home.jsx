@@ -4,6 +4,7 @@ import { deleteExistingPosts } from "../../api/deleteExistingPosts";
 import { getPostsFromReddit } from "../../api/getPostsFromReddit";
 import { savePostsToDatabase } from "../../api/savePostsToDatabase";
 import Card from "../../components/Card/Card";
+import Loader from "../../components/Loader/Loader";
 import RecentlySearched from "../../components/RecentlySearched/RecentlySearched";
 import RPagination from "../../components/RPagination/RPagination";
 import SubredditFilters from "../../components/SubredditFilters/SubredditFilters";
@@ -96,19 +97,28 @@ const Home = () => {
           <RecentlySearched />
         </StyledSide>
         <section className="w-full flex-col">
-          <StyledGrid className="grid grid-cols-3 flex-1 gap-6 ">
-            {posts.posts.length > 0 &&
-              posts.posts.map((item, index) => (
-                <Card data={item} key={index} user={query.data} />
-              ))}
-          </StyledGrid>
-          <RPagination
-            count={posts.maxPages}
-            shape="rounded"
-            onChange={(_, page) => {
-              setPage(page);
-            }}
-          />
+          {getPosts.isLoading && (
+            <div className="mt-20 mb-20 flex justify-center">
+              <Loader size="2xl" />
+            </div>
+          )}
+          {getPosts.isSuccess && (
+            <>
+              <StyledGrid className="grid grid-cols-3 flex-1 gap-6 ">
+                {posts.posts.length > 0 &&
+                  posts.posts.map((item, index) => (
+                    <Card data={item} key={index} user={query.data} />
+                  ))}
+              </StyledGrid>
+              <RPagination
+                count={posts.maxPages}
+                shape="rounded"
+                onChange={(_, page) => {
+                  setPage(page);
+                }}
+              />
+            </>
+          )}
         </section>
       </main>
     </Wrapper>
