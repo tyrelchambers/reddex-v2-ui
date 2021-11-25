@@ -1,27 +1,11 @@
-import React from "react";
+import { useReducer } from "react";
+import { filterReducer } from "../reducers/filterReducer";
 
 export const usePostFilter = () => {
-  const [filters, setFilters] = React.useState({});
-
-  const addFilters = (f) => {
-    setFilters({ ...filters, ...f });
-  };
-
-  const resetFilters = () => {
-    setFilters({
-      seriesOnly: false,
-      upvotes: "",
-      operator: "over",
-      omitSeries: false,
-      keywords: "",
-      readTime: "",
-      readTimeOperator: "over",
-    });
-  };
+  const [filters, dispatch] = useReducer(filterReducer, {});
 
   return {
     filters,
-    addFilters,
-    resetFilters,
+    dispatch,
   };
 };

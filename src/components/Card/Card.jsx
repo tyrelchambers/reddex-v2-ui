@@ -16,7 +16,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { formatDistanceToNow } from "date-fns";
 import React from "react";
 import styled from "styled-components";
-import { averageReadingTime } from "../../utils/averageReadingTime";
 
 const StyledCard = styled.div`
   background-color: ${(props) => props.theme.backgroundSecondary};
@@ -123,7 +122,7 @@ const Card = ({ data, isReadingItem, isCompletedItem, isSubmitted, user }) => {
                 className="mr-2 text-accent-primary"
               />
               <p className="text-sm text-gray-600">
-                {averageReadingTime(data.self_text, user.Profile.reading_time)}
+                ~{data.reading_time}
                 min
               </p>
             </div>

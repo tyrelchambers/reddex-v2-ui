@@ -20,7 +20,7 @@ const CallbackReddit = () => {
         navigate(DASHBOARD);
       }
     })();
-  }, []);
+  }, [navigate]);
 
   return (
     <div>

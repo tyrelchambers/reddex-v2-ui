@@ -22,7 +22,7 @@ export const usePosts = ({ page, filterQuery }) => {
   };
 
   const getPosts = useQuery(
-    ["posts", { page, filterQuery }],
+    ["posts", page],
     () => getPostsFromDatabase({ page, query: filterQuery }),
     {
       onSuccess: (res) => {

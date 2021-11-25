@@ -5,7 +5,7 @@ import {
   faTimer,
 } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useReducer } from "react";
+import React from "react";
 import Collapsable from "../Collapsable/Collapsable";
 import { H3 } from "../headings/H3";
 import { Button } from "../Button/Button";
@@ -13,13 +13,10 @@ import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import RSelect from "../RSelect/RSelect";
 import { quantityOptions } from "../../constants";
 import Input from "../../components/Input/Input";
-import { filterReducer } from "../../reducers/filterReducer";
 
-const SubredditFilters = ({ filters, addFilters, getPosts }) => {
-  const [state, dispatch] = useReducer(filterReducer, {});
+const SubredditFilters = ({ dispatch, getPosts }) => {
   const executeSearch = () => {
-    // addFilters(state);
-    console.log(state);
+    getPosts.refetch();
   };
 
   return (
@@ -28,7 +25,16 @@ const SubredditFilters = ({ filters, addFilters, getPosts }) => {
 
       <Collapsable
         className="mt-6"
-        onClick={() => dispatch({ type: "set_filter", filter: "upvotes" })}
+        onClick={() =>
+          dispatch({
+            type: "set_filter",
+            filter: "upvotes",
+            defaults: {
+              value: 0,
+              operator: quantityOptions[0].value,
+            },
+          })
+        }
         header={
           <>
             <FontAwesomeIcon
@@ -42,6 +48,7 @@ const SubredditFilters = ({ filters, addFilters, getPosts }) => {
         <div className="flex items-center gap-4 h-12 mt-2">
           <RSelect
             options={quantityOptions}
+            defaultValue={quantityOptions[0]}
             className="w-56"
             onChange={(e) =>
               dispatch({
@@ -53,6 +60,7 @@ const SubredditFilters = ({ filters, addFilters, getPosts }) => {
           />
           <Input
             type="number"
+            defaultValue={0}
             onInput={(e) =>
               dispatch({
                 type: "set_filter_value",
@@ -65,7 +73,16 @@ const SubredditFilters = ({ filters, addFilters, getPosts }) => {
       </Collapsable>
       <Collapsable
         className="mt-6"
-        onClick={() => dispatch({ type: "set_filter", filter: "readTime" })}
+        onClick={() =>
+          dispatch({
+            type: "set_filter",
+            filter: "readTime",
+            defaults: {
+              value: 0,
+              operator: quantityOptions[0].value,
+            },
+          })
+        }
         header={
           <>
             <FontAwesomeIcon
@@ -80,18 +97,41 @@ const SubredditFilters = ({ filters, addFilters, getPosts }) => {
           <RSelect
             options={quantityOptions}
             className="w-56"
-            // onChange={(e) => setState({ ...state, readTimeOperator: e.value })}
+            defaultValue={quantityOptions[0]}
+            onChange={(e) =>
+              dispatch({
+                type: "set_filter_value",
+                filter: "readTime",
+                operator: e.value,
+              })
+            }
           />
           <Input
             type="number"
-            // onInput={(e) => setState({ ...state, readTime: e.target.value })}
+            defaultValue={0}
+            onInput={(e) =>
+              dispatch({
+                type: "set_filter_value",
+                filter: "readTime",
+                value: e.target.value,
+              })
+            }
           />
         </div>
       </Collapsable>
 
       <Collapsable
         className="mt-6"
-        onClick={() => dispatch({ type: "set_filter", filter: "keywords" })}
+        onClick={() =>
+          dispatch({
+            type: "set_filter",
+            filter: "keywords",
+            defaults: {
+              value: "",
+              operator: null,
+            },
+          })
+        }
         header={
           <>
             <FontAwesomeIcon
@@ -106,7 +146,13 @@ const SubredditFilters = ({ filters, addFilters, getPosts }) => {
           <Input
             type="text"
             placeholder="Comma separated..."
-            // onInput={(e) => setState({ ...state, keywords: e.target.value })}
+            onInput={(e) =>
+              dispatch({
+                type: "set_filter_value",
+                filter: "keywords",
+                value: e.target.value,
+              })
+            }
           />
         </div>
       </Collapsable>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { deleteExistingPosts } from "../../api/deleteExistingPosts";
 import { getPostsFromReddit } from "../../api/getPostsFromReddit";
 import { savePostsToDatabase } from "../../api/savePostsToDatabase";
 import Card from "../../components/Card/Card";
@@ -21,8 +22,8 @@ const StyledGrid = styled.section`
 
 const Home = () => {
   const { query } = useUser();
-  const { filters, addFilters } = usePostFilter();
-  const [postToken] = usePostToken();
+  const { filters, dispatch } = usePostFilter();
+  usePostToken();
   const [subreddit, setSubreddit] = useState("");
   const [page, setPage] = useState(1);
   const [categoryState, setCategoryState] = useState({
@@ -30,7 +31,7 @@ const Home = () => {
     timeframe: "day",
   });
 
-  const { posts, setPostsHandler, clearPosts, getPosts } = usePosts({
+  const { posts, setPostsHandler, getPosts } = usePosts({
     page,
     filterQuery: filters,
   });
@@ -50,6 +51,7 @@ const Home = () => {
   };
 
   const executeSearch = async () => {
+    await deleteExistingPosts();
     const endpoint = structureEndpoint({
       category: categoryState,
       subreddit,
@@ -82,8 +84,7 @@ const Home = () => {
           <hr className="mt-6 mb-6" />
           <SubredditFilters
             getPosts={getPosts}
-            filters={filters}
-            addFilters={addFilters}
+            dispatch={dispatch}
             page={page}
           />
           <hr className="mt-6 mb-6" />
