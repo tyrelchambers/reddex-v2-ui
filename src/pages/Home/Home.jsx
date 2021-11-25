@@ -20,6 +20,10 @@ const StyledGrid = styled.section`
   grid-auto-rows: 350px;
 `;
 
+const StyledSide = styled.section`
+  width: 400px;
+`;
+
 const Home = () => {
   const { query } = useUser();
   const { filters, dispatch } = usePostFilter();
@@ -71,7 +75,7 @@ const Home = () => {
   return (
     <Wrapper>
       <main className="w-full max-w-screen-3xl ml-auto mr-auto p-4 flex gap-6">
-        <div className="min-w-80 w-80 ">
+        <StyledSide>
           <SubredditSearchForm
             executeSearch={executeSearch}
             setSubreddit={setSubreddit}
@@ -90,7 +94,7 @@ const Home = () => {
           />
           <hr className="mt-6 mb-6" />
           <RecentlySearched />
-        </div>
+        </StyledSide>
         <section className="w-full flex-col">
           <StyledGrid className="grid grid-cols-3 flex-1 gap-6 ">
             {posts.posts.length > 0 &&
