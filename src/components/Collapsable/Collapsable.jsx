@@ -9,13 +9,16 @@ const StyledDropdown = styled.section`
     transition: all 0.2s ease-in-out;
     background-color: ${(props) =>
       props.toggled ? props.theme.accent2 : props.theme.backgroundMain};
-    border-radius: 0.5rem;
     padding: 1rem;
-    border: 2px solid
-      ${(props) =>
-        props.toggled ? props.theme.accent2 : props.theme.accentPrimary};
+    border-radius: ${(props) => (props.toggled ? "0.5em" : "0")};
+    cursor: pointer;
     * {
       color: ${(props) => (props.toggled ? "white" : "var(--accent-primary)")};
+    }
+
+    &:hover {
+      background-color: ${(props) =>
+        !props.toggled ? props.theme.backgroundSecondary : "accent2"};
     }
   }
 `;

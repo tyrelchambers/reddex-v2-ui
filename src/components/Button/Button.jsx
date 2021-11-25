@@ -12,7 +12,9 @@ const StyledButtonMain = styled(StyledButton)`
 const StyledButtonSecond = styled(StyledButton)`
   border: 2px solid
     ${(props) => (props.isSelected ? props.theme.accentPrimary : "transparent")};
-  color: ${(props) => (props.isSelected ? props.theme.accentPrimary : "")};
+  color: ${(props) =>
+    props.isSelected ? props.theme.accentPrimary : props.theme.text};
+  background-color: ${(props) => props.theme.backgroundSecondary};
 `;
 
 StyledButton.defaultProps = {
