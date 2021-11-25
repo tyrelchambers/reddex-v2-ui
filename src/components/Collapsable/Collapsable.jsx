@@ -60,7 +60,7 @@ const Collapsable = ({
         className="flex items-center justify-between collapse-header"
         onClick={() => {
           setState(!state);
-          onClick();
+          if (onClick) onClick();
         }}
       >
         <span className="text-gray-600 flex items-center">{header}</span>

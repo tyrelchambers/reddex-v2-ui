@@ -14,7 +14,7 @@ import RSelect from "../RSelect/RSelect";
 import { quantityOptions } from "../../constants";
 import Input from "../../components/Input/Input";
 
-const SubredditFilters = ({ dispatch, getPosts }) => {
+const SubredditFilters = ({ filters, dispatch, getPosts }) => {
   const executeSearch = () => {
     getPosts.refetch();
   };
@@ -168,18 +168,45 @@ const SubredditFilters = ({ dispatch, getPosts }) => {
             Misc
           </>
         }
+        onClick={() =>
+          dispatch({
+            type: "set_misc_filter",
+            filter: "misc",
+          })
+        }
       >
         <div className="flex flex-col gap-2 pt-2">
-          <Button variant="secondary">Series Only</Button>
-          <Button variant="secondary">Exclude Series</Button>
+          {console.log(filters)}
+          <Button
+            variant="secondary"
+            isSelected={filters.misc && filters.misc.value === "seriesOnly"}
+            onClick={() =>
+              dispatch({
+                type: "set_misc_value",
+                filter: "misc",
+                value: "seriesOnly",
+              })
+            }
+          >
+            Series Only
+          </Button>
+          <Button
+            variant="secondary"
+            isSelected={filters.misc && filters.misc.value === "excludeSeries"}
+            onClick={() =>
+              dispatch({
+                type: "set_misc_value",
+                filter: "misc",
+                value: "excludeSeries",
+              })
+            }
+          >
+            Exclude Series
+          </Button>
         </div>
       </Collapsable>
 
-      <Button className="mt-6" variant="secondary">
-        Reset Filters
-      </Button>
-
-      <Button className="mt-2" onClick={executeSearch}>
+      <Button className="mt-4" onClick={executeSearch}>
         <FontAwesomeIcon icon={faCheck} className="mr-2" /> Apply Filters
       </Button>
     </section>

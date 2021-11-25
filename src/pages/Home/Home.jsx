@@ -86,6 +86,7 @@ const Home = () => {
             getPosts={getPosts}
             dispatch={dispatch}
             page={page}
+            filters={filters}
           />
           <hr className="mt-6 mb-6" />
           <RecentlySearched />
