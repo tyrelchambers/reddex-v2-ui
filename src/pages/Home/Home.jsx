@@ -14,6 +14,7 @@ import { usePosts } from "../../hooks/usePosts";
 import { usePostToken } from "../../hooks/usePostToken";
 import { useUser } from "../../hooks/useUser";
 import Wrapper from "../../layouts/Wrapper/Wrapper";
+import QueueStore from "../../stores/QueueStore";
 import { formatRedditPosts } from "../../utils/formatRedditPosts";
 import { structureEndpoint } from "../../utils/structureEndpoint";
 
@@ -107,7 +108,12 @@ const Home = () => {
               <StyledGrid className="grid grid-cols-3 flex-1 gap-6 ">
                 {posts.posts.length > 0 &&
                   posts.posts.map((item, index) => (
-                    <Card data={item} key={index} user={query.data} />
+                    <Card
+                      data={item}
+                      key={index}
+                      user={query.data}
+                      QueueStore={QueueStore}
+                    />
                   ))}
               </StyledGrid>
               <RPagination
