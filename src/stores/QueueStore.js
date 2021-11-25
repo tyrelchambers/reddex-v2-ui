@@ -19,6 +19,10 @@ class QueueStore {
     const newQueue = clone.filter(({ _id }) => _id !== post._id);
     this.queue = newQueue;
   }
+
+  clearQueue() {
+    this.queue = [];
+  }
 }
 
 export default new QueueStore();

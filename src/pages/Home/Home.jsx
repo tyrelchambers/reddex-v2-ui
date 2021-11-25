@@ -5,6 +5,7 @@ import { getPostsFromReddit } from "../../api/getPostsFromReddit";
 import { savePostsToDatabase } from "../../api/savePostsToDatabase";
 import Card from "../../components/Card/Card";
 import Loader from "../../components/Loader/Loader";
+import QueueIndicator from "../../components/QueueIndicator/QueueIndicator";
 import RecentlySearched from "../../components/RecentlySearched/RecentlySearched";
 import RPagination from "../../components/RPagination/RPagination";
 import SubredditFilters from "../../components/SubredditFilters/SubredditFilters";
@@ -98,6 +99,7 @@ const Home = () => {
           <RecentlySearched />
         </StyledSide>
         <section className="w-full flex-col">
+          <QueueIndicator QueueStore={QueueStore} />
           {getPosts.isLoading && (
             <div className="mt-20 mb-20 flex justify-center">
               <Loader size="2xl" />
