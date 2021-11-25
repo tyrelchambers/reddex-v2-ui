@@ -27,26 +27,16 @@ export const filterReducer = (state, action) => {
       return clone;
     }
 
-    case "set_misc_filter": {
-      const clone = { ...state };
-
-      if (!clone[action.filter]) {
-        clone[action.filter] = {
-          value: "",
-        };
-      } else {
-        delete clone[action.filter];
-      }
-      console.log(clone);
-      return clone;
-    }
-
     case "set_misc_value": {
       const clone = { ...state };
-      console.log(clone);
 
-      if (clone[action.filter]) {
-        clone[action.filter].value = action.value;
+      if (clone[action.filter] && clone[action.filter].value === action.value) {
+        delete clone[action.filter];
+        return clone;
+      }
+
+      if (action.filter && action.value) {
+        clone[action.filter] = { value: action.value };
       }
 
       return clone;

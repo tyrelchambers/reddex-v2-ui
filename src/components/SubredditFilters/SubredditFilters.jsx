@@ -22,7 +22,6 @@ const SubredditFilters = ({ filters, dispatch, getPosts }) => {
   return (
     <section className="flex flex-col w-full">
       <H3>Filters</H3>
-
       <Collapsable
         className="mt-6"
         onClick={() =>
@@ -119,7 +118,6 @@ const SubredditFilters = ({ filters, dispatch, getPosts }) => {
           />
         </div>
       </Collapsable>
-
       <Collapsable
         className="mt-6"
         onClick={() =>
@@ -156,56 +154,35 @@ const SubredditFilters = ({ filters, dispatch, getPosts }) => {
           />
         </div>
       </Collapsable>
-
-      <Collapsable
-        className="mt-6"
-        header={
-          <>
-            <FontAwesomeIcon
-              icon={faBoxOpenFull}
-              className="mr-2 text-accent-primary"
-            />{" "}
-            Misc
-          </>
-        }
-        onClick={() =>
-          dispatch({
-            type: "set_misc_filter",
-            filter: "misc",
-          })
-        }
-      >
-        <div className="flex flex-col gap-2 pt-2">
-          {console.log(filters)}
-          <Button
-            variant="secondary"
-            isSelected={filters.misc && filters.misc.value === "seriesOnly"}
-            onClick={() =>
-              dispatch({
-                type: "set_misc_value",
-                filter: "misc",
-                value: "seriesOnly",
-              })
-            }
-          >
-            Series Only
-          </Button>
-          <Button
-            variant="secondary"
-            isSelected={filters.misc && filters.misc.value === "excludeSeries"}
-            onClick={() =>
-              dispatch({
-                type: "set_misc_value",
-                filter: "misc",
-                value: "excludeSeries",
-              })
-            }
-          >
-            Exclude Series
-          </Button>
-        </div>
-      </Collapsable>
-
+      <hr className="mt-4" />
+      <div className="flex flex-col gap-2 mt-4">
+        <Button
+          variant="secondary"
+          isSelected={filters.misc && filters.misc.value === "seriesOnly"}
+          onClick={() =>
+            dispatch({
+              type: "set_misc_value",
+              filter: "misc",
+              value: "seriesOnly",
+            })
+          }
+        >
+          Series Only
+        </Button>
+        <Button
+          variant="secondary"
+          isSelected={filters.misc && filters.misc.value === "excludeSeries"}
+          onClick={() =>
+            dispatch({
+              type: "set_misc_value",
+              filter: "misc",
+              value: "excludeSeries",
+            })
+          }
+        >
+          Exclude Series
+        </Button>
+      </div>
       <Button className="mt-4" onClick={executeSearch}>
         <FontAwesomeIcon icon={faCheck} className="mr-2" /> Apply Filters
       </Button>
