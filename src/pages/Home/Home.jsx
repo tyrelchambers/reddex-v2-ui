@@ -19,7 +19,6 @@ import { useUser } from "../../hooks/useUser";
 import Wrapper from "../../layouts/Wrapper/Wrapper";
 import QueueStore from "../../stores/QueueStore";
 import { formatRedditPosts } from "../../utils/formatRedditPosts";
-import { structureEndpoint } from "../../utils/structureEndpoint";
 
 const StyledGrid = styled.section`
   grid-auto-rows: 350px;
@@ -49,6 +48,8 @@ const Home = () => {
     page,
     filterQuery: filters,
   });
+
+  const isLoading = getPosts.isLoading || redditPostQuery.isFetching;
 
   const categoryHandler = (data) => {
     setCategoryState({
@@ -103,13 +104,13 @@ const Home = () => {
         <section className="w-full flex-col">
           <QueueIndicator QueueStore={QueueStore} />
 
-          {(getPosts.isLoading || redditPostQuery.isFetching) && (
+          {isLoading && (
             <div className="mt-20 mb-20 flex justify-center">
               <Loader size="2x" />
             </div>
           )}
 
-          {!getPosts.isLoading && !redditPostQuery.isFetching && (
+          {!isLoading && (
             <>
               {posts.posts.length > 0 && (
                 <>
