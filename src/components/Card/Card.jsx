@@ -121,10 +121,7 @@ const Card = ({ data, isReadingItem, isCompletedItem, isSubmitted, user }) => {
                 icon={faClock}
                 className="mr-2 text-accent-primary"
               />
-              <p className="text-sm text-gray-600">
-                ~{data.reading_time}
-                min
-              </p>
+              <p className="text-sm text-gray-600">~{data.reading_time} min</p>
             </div>
             {!isSubmitted && (
               <div className="flex items-center">

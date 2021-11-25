@@ -71,7 +71,7 @@ const SubredditFilters = ({ filters, dispatch, getPosts }) => {
         </div>
       </Collapsable>
       <Collapsable
-        className="mt-6"
+        className="mt-2"
         onClick={() =>
           dispatch({
             type: "set_filter",
@@ -119,7 +119,7 @@ const SubredditFilters = ({ filters, dispatch, getPosts }) => {
         </div>
       </Collapsable>
       <Collapsable
-        className="mt-6"
+        className="mt-2"
         onClick={() =>
           dispatch({
             type: "set_filter",
