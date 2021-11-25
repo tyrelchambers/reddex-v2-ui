@@ -1,5 +1,4 @@
 import {
-  faBoxOpenFull,
   faHashtag,
   faThumbsUp,
   faTimer,

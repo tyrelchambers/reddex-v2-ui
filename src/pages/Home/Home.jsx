@@ -13,6 +13,7 @@ import SubredditSearchForm from "../../forms/SubredditSearchForm";
 import { usePostFilter } from "../../hooks/usePostFilter";
 import { usePosts } from "../../hooks/usePosts";
 import { usePostToken } from "../../hooks/usePostToken";
+import { useRedditPosts } from "../../hooks/useRedditPosts";
 import { useUser } from "../../hooks/useUser";
 import Wrapper from "../../layouts/Wrapper/Wrapper";
 import QueueStore from "../../stores/QueueStore";
@@ -38,6 +39,10 @@ const Home = () => {
     timeframe: "day",
   });
 
+  const redditPostQuery = useRedditPosts({
+    subreddit,
+    category: categoryState,
+  });
   const { posts, setPostsHandler, getPosts } = usePosts({
     page,
     filterQuery: filters,
@@ -59,12 +64,9 @@ const Home = () => {
 
   const executeSearch = async () => {
     await deleteExistingPosts();
-    const endpoint = structureEndpoint({
-      category: categoryState,
-      subreddit,
-    });
-    const results = await getPostsFromReddit({ endpoint });
-    const formattedPosts = await formatRedditPosts(results);
+
+    const results = await redditPostQuery.refetch();
+    const formattedPosts = await formatRedditPosts(results.data);
     setPostsHandler({
       subreddit,
       posts: formattedPosts,
@@ -98,13 +100,16 @@ const Home = () => {
           <hr className="mt-6 mb-6" />
           <RecentlySearched />
         </StyledSide>
+
         <section className="w-full flex-col">
           <QueueIndicator QueueStore={QueueStore} />
-          {getPosts.isLoading && (
+
+          {(getPosts.isLoading || redditPostQuery.isLoading) && (
             <div className="mt-20 mb-20 flex justify-center">
-              <Loader size="2xl" />
+              <Loader size="2x" />
             </div>
           )}
+
           {getPosts.isSuccess && (
             <>
               <StyledGrid className="grid grid-cols-3 flex-1 gap-6 ">
