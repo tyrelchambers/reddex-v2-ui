@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useQueryClient } from "react-query";
 import styled from "styled-components";
 import { deleteExistingPosts } from "../../api/deleteExistingPosts";
 import { getPostsFromReddit } from "../../api/getPostsFromReddit";
@@ -29,6 +30,7 @@ const StyledSide = styled.section`
 `;
 
 const Home = () => {
+  const queryClient = useQueryClient();
   const { query } = useUser();
   const { filters, dispatch } = usePostFilter();
   usePostToken();
@@ -43,7 +45,7 @@ const Home = () => {
     subreddit,
     category: categoryState,
   });
-  const { posts, setPostsHandler, getPosts } = usePosts({
+  const { posts, getPosts } = usePosts({
     page,
     filterQuery: filters,
   });
@@ -67,14 +69,11 @@ const Home = () => {
 
     const results = await redditPostQuery.refetch();
     const formattedPosts = await formatRedditPosts(results.data);
-    setPostsHandler({
-      subreddit,
-      posts: formattedPosts,
-    });
-    savePostsToDatabase({
+    await savePostsToDatabase({
       posts: formattedPosts,
       subreddit,
     });
+    queryClient.invalidateQueries("posts");
   };
 
   return (
@@ -104,36 +103,39 @@ const Home = () => {
         <section className="w-full flex-col">
           <QueueIndicator QueueStore={QueueStore} />
 
-          {(getPosts.isLoading || redditPostQuery.isLoading) && (
+          {(getPosts.isLoading || redditPostQuery.isFetching) && (
             <div className="mt-20 mb-20 flex justify-center">
               <Loader size="2x" />
             </div>
           )}
 
-          {getPosts.isSuccess && (
+          {!getPosts.isLoading && !redditPostQuery.isFetching && (
             <>
-              <StyledGrid className="grid grid-cols-3 flex-1 gap-6 ">
-                {posts.posts.length > 0 &&
-                  posts.posts
-                    .sort((a, b) => {
-                      return b.created - a.created;
-                    })
-                    .map((item, index) => (
-                      <Card
-                        data={item}
-                        key={index}
-                        user={query.data}
-                        QueueStore={QueueStore}
-                      />
-                    ))}
-              </StyledGrid>
-              <RPagination
-                count={posts.maxPages}
-                shape="rounded"
-                onChange={(_, page) => {
-                  setPage(page);
-                }}
-              />
+              {posts.posts.length > 0 && (
+                <>
+                  <StyledGrid className="grid grid-cols-3 flex-1 gap-6 ">
+                    {posts.posts
+                      .sort((a, b) => {
+                        return b.created - a.created;
+                      })
+                      .map((item, index) => (
+                        <Card
+                          data={item}
+                          key={index}
+                          user={query.data}
+                          QueueStore={QueueStore}
+                        />
+                      ))}
+                  </StyledGrid>
+                  <RPagination
+                    count={posts.maxPages}
+                    shape="rounded"
+                    onChange={(_, page) => {
+                      setPage(page);
+                    }}
+                  />
+                </>
+              )}
             </>
           )}
         </section>
