@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useQueryClient } from "react-query";
 import styled from "styled-components";
 import { deleteExistingPosts } from "../../api/deleteExistingPosts";
-import { getPostsFromReddit } from "../../api/getPostsFromReddit";
 import { savePostsToDatabase } from "../../api/savePostsToDatabase";
 import Card from "../../components/Card/Card";
 import Loader from "../../components/Loader/Loader";
@@ -17,6 +16,7 @@ import { usePostToken } from "../../hooks/usePostToken";
 import { useRedditPosts } from "../../hooks/useRedditPosts";
 import { useUser } from "../../hooks/useUser";
 import Wrapper from "../../layouts/Wrapper/Wrapper";
+import ModalStore from "../../stores/ModalStore";
 import QueueStore from "../../stores/QueueStore";
 import { formatRedditPosts } from "../../utils/formatRedditPosts";
 
@@ -102,7 +102,7 @@ const Home = () => {
         </StyledSide>
 
         <section className="w-full flex-col">
-          <QueueIndicator QueueStore={QueueStore} />
+          <QueueIndicator ModalStore={ModalStore} QueueStore={QueueStore} />
 
           {isLoading && (
             <div className="mt-20 mb-20 flex justify-center">

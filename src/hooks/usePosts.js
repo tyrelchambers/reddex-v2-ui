@@ -32,8 +32,6 @@ export const usePosts = ({ page, filterQuery }) => {
           maxPages: res.maxPages,
         });
       },
-      retry: 1,
-      staleTime: 1000 * 60 * 60,
       keepPreviousData: true,
     }
   );

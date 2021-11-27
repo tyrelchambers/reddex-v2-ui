@@ -2,6 +2,7 @@ import { observer } from "mobx-react";
 import React from "react";
 import { Button } from "../Button/Button";
 import styled from "styled-components";
+import PostQueue from "../../layouts/PostQueue/PostQueue";
 
 const StyledWrapper = styled.div`
   background-color: ${(props) => props.theme.backgroundSecondary};
@@ -11,8 +12,15 @@ const StyledWrapper = styled.div`
   }
 `;
 
-const QueueIndicator = observer(({ QueueStore }) => {
+const QueueIndicator = observer(({ QueueStore, ModalStore }) => {
   if (QueueStore.queue.length === 0) return null;
+
+  const openModal = () => {
+    ModalStore.openModal();
+    ModalStore.setModalContent(
+      <PostQueue ModalStore={ModalStore} QueueStore={QueueStore} />
+    );
+  };
 
   return (
     <StyledWrapper className="w-full flex items-center justify-between rounded-lg mb-6 p-3">
@@ -28,7 +36,7 @@ const QueueIndicator = observer(({ QueueStore }) => {
         <Button variant="third" onClick={() => QueueStore.clearQueue()}>
           Deselect all
         </Button>
-        <Button>Open Queue</Button>
+        <Button onClick={openModal}>Open Queue</Button>
       </div>
     </StyledWrapper>
   );

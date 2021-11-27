@@ -24,6 +24,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { QueryClient, QueryClientProvider } from "react-query";
 import CallbackReddit from "./pages/CallbackReddit";
+import Modal from "./layouts/Modal/Modal";
+import ModalStore from "./stores/ModalStore";
 
 const queryClient = new QueryClient();
 
@@ -32,8 +34,8 @@ const App = () => {
     <React.StrictMode>
       <QueryClientProvider client={queryClient}>
         <ToastContainer />
-
         <Store>
+          <Modal ModalStore={ModalStore} />
           <TabProvider>
             <Router>
               <Routes>

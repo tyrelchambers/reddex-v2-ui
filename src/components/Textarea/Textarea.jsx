@@ -8,8 +8,13 @@ const StyledTextarea = styled.textarea`
   min-height: 200px;
 `;
 
-const Textarea = (props) => {
-  return <StyledTextarea className="rounded-lg p-3" {...props} />;
+const Textarea = ({ className, ...props }) => {
+  return (
+    <StyledTextarea
+      className={`rounded-lg p-3 ${className ? className : ""}`}
+      {...props}
+    />
+  );
 };
 
 export default Textarea;

@@ -8,7 +8,7 @@ const StyledDropdown = styled.section`
     list-style-type: none;
     transition: all 0.2s ease-in-out;
     background-color: ${(props) =>
-      props.toggled ? props.theme.accent2 : props.theme.backgroundMain};
+      props.toggled ? props.theme.accent2 : "transparent"};
     padding: 1rem;
     border-radius: ${(props) => (props.toggled ? "0.5em" : "0")};
     cursor: pointer;
