@@ -2,7 +2,6 @@ import { faCirclePlus, faSearch } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
 import Contact from "../../components/Contact/Contact";
 import { H1 } from "../../components/headings/h1";
 import Input from "../../components/Input/Input";

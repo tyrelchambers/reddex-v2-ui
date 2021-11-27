@@ -1,5 +1,5 @@
 import { observer } from "mobx-react";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { ThemeContext } from "../../contexts/themeContext";
 
@@ -25,6 +25,16 @@ const StyledBody = styled.div`
 
 const Modal = observer(({ ModalStore }) => {
   const [theme, toggleTheme, themeStyles] = useContext(ThemeContext);
+
+  useEffect(() => {
+    if (ModalStore.isOpen) {
+      document.querySelector("body").style.overflow = "hidden";
+    }
+
+    return () => {
+      document.querySelector("body").style.overflow = "auto";
+    };
+  }, [ModalStore.isOpen]);
 
   if (!ModalStore.isOpen) return null;
 
