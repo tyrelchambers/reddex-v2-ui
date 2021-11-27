@@ -39,6 +39,7 @@ const PostQueueItem = ({
   showNext,
   showPrevious,
   user,
+  removeHandler,
 }) => {
   const { contactQuery } = useContacts();
   const { contactedQuery, contactedMutation } = useContacted();
@@ -168,7 +169,11 @@ const PostQueueItem = ({
             />
 
             <div className="flex w-full items-center justify-between mt-4">
-              <FontAwesomeIcon icon={faTrash} className="text-gray-500" />
+              <FontAwesomeIcon
+                icon={faTrash}
+                className="text-gray-500"
+                onClick={() => removeHandler(post)}
+              />
               <Button onClick={(e) => submitHandler(e)}>
                 <FontAwesomeIcon icon={faPaperPlaneTop} className="mr-2" /> Send
                 Message

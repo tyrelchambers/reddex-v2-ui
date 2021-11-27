@@ -15,6 +15,13 @@ const PostQueue = observer(({ ModalStore, QueueStore }) => {
   const previous = () => {
     setActiveItem(activeItem - 1);
   };
+
+  const removeHandler = (post) => {
+    QueueStore.removeFromQueue(post);
+    if (QueueStore.queue.length === 0) {
+      ModalStore.closeModal();
+    }
+  };
   return (
     <PostQueueItem
       post={posts[activeItem]}
@@ -24,6 +31,7 @@ const PostQueue = observer(({ ModalStore, QueueStore }) => {
       showPrevious={activeItem > 0}
       ModalStore={ModalStore}
       user={query.data}
+      removeHandler={removeHandler}
     />
   );
 });
