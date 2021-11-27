@@ -7,8 +7,9 @@ import {
   faTrash,
 } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { useContacts } from "../../hooks/useContacts";
 import { Button } from "../Button/Button";
 import { H2 } from "../headings/h2";
 import Textarea from "../Textarea/Textarea";
@@ -30,7 +31,13 @@ const PostQueueItem = ({
   previous,
   showNext,
   showPrevious,
+  user,
 }) => {
+  const { contactQuery } = useContacts();
+  const [message, setMessage] = useState(() => {
+    return "";
+  });
+
   return (
     <StyledWrapper>
       <header className="flex justify-between w-full p-6">
