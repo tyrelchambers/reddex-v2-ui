@@ -4,20 +4,32 @@ import React from "react";
 import { Button } from "../components/Button/Button";
 import InputWrapper from "../components/InputWrapper/InputWrapper";
 import Textarea from "../components/Textarea/Textarea";
+import { useUser } from "../hooks/useUser";
 import Form from "./Form";
 
 const GreetingForm = ({ user }) => {
+  const [greeting, setGreeting] = React.useState(user.Profile.greeting);
+  const { update } = useUser();
+
+  const submitHandler = () => {
+    update.mutate({ greeting });
+  };
+
   return (
     <Form>
       <InputWrapper label="Greeting Message">
-        <Textarea placeholder="Recurring message..." />
+        <Textarea
+          placeholder="Recurring message..."
+          value={greeting}
+          onInput={(e) => setGreeting(e.target.value)}
+        />
       </InputWrapper>
       <div className="w-full flex items-center justify-between">
         <p className="from">
           From:{" "}
           <span className="font-bold">{user.Profile.reddit_profile.name}</span>
         </p>
-        <Button>
+        <Button onClick={submitHandler}>
           <FontAwesomeIcon icon={faFloppyDisk} className="mr-4" />
           Save Message
         </Button>
