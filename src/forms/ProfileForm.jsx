@@ -10,7 +10,6 @@ const ProfileForm = ({ user }) => {
   const { update } = useUser();
 
   const handleChange = (e) => {
-    console.log(e);
     setState({ ...state, [e.target.name]: e.target.value });
   };
 

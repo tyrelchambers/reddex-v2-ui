@@ -15,8 +15,6 @@ const Contacts = () => {
   const { contactQuery } = useContacts();
   const { sub_page } = useParams();
 
-  console.log(contactQuery.data);
-
   return (
     <section>
       <div className="flex gap-4  w-full">

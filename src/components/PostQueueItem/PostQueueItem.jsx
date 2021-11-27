@@ -1,3 +1,4 @@
+import { faNotes } from "@fortawesome/pro-duotone-svg-icons";
 import {
   faArrowLeft,
   faArrowRight,
@@ -22,6 +23,10 @@ const StyledWrapper = styled.div`
   .text {
     color: ${(props) => props.theme.textLight};
   }
+
+  .contact-info {
+    background: ${(props) => props.theme.backgroundSecondary};
+  }
 `;
 
 const PostQueueItem = ({
@@ -34,9 +39,17 @@ const PostQueueItem = ({
   user,
 }) => {
   const { contactQuery } = useContacts();
+
+  const [showContactInfo, setShowContactInfo] = useState(false);
   const [message, setMessage] = useState(() => {
     return "";
   });
+
+  console.log(contactQuery);
+
+  const contactExists =
+    contactQuery.data &&
+    contactQuery.data.filter((c) => c.name === post.author)[0];
 
   return (
     <StyledWrapper>
@@ -44,23 +57,45 @@ const PostQueueItem = ({
         <H2>Request Permission</H2>
 
         <div className="flex items-center gap-8">
-          <FontAwesomeIcon icon={faCircleInfo} className="text-blue-500" />
+          {contactExists && (
+            <FontAwesomeIcon
+              icon={faCircleInfo}
+              className="text-blue-500"
+              title={`${post.author} is a contact`}
+              onClick={() => setShowContactInfo(!showContactInfo)}
+            />
+          )}
+
           {showPrevious ? (
             <FontAwesomeIcon icon={faArrowLeft} onClick={previous} />
           ) : (
             <FontAwesomeIcon icon={faArrowLeft} className="opacity-40" />
           )}
+
           {showNext ? (
             <FontAwesomeIcon icon={faArrowRight} onClick={next} />
           ) : (
             <FontAwesomeIcon icon={faArrowRight} className="opacity-40" />
           )}
+
           <FontAwesomeIcon
             icon={faTimes}
             onClick={() => ModalStore.closeModal()}
           />
         </div>
       </header>
+      {showContactInfo && (
+        <section className="contact-info p-6">
+          <p className="font-bold text-header">
+            <FontAwesomeIcon
+              icon={faNotes}
+              className="text-accent-primary mr-4"
+            />{" "}
+            Contact Notes
+          </p>
+          <p className="text mt-4 ml-10">{contactExists.notes}</p>
+        </section>
+      )}
       <hr className=" mb-6" />
 
       <section className="px-6">
