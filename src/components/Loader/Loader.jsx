@@ -9,7 +9,7 @@ const StyledLoader = styled.div`
 
 const Loader = ({ size }) => {
   return (
-    <StyledLoader>
+    <StyledLoader className="w-full flex justify-center mt-10 ">
       <FontAwesomeIcon icon={faSpinnerThird} className="fa-spin" size={size} />
     </StyledLoader>
   );

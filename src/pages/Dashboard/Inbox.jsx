@@ -15,7 +15,6 @@ import { useUser } from "../../hooks/useUser";
 import { useRedditInboxSearch } from "../../hooks/useRedditInboxSearch";
 import RSelect from "../../components/RSelect/RSelect";
 import { inboxSearchOptions } from "../../constants";
-import { useQueryClient } from "react-query";
 
 const StyledWrapper = styled.div`
   max-height: calc(100vh - 40px);
@@ -23,7 +22,6 @@ const StyledWrapper = styled.div`
 `;
 
 const Inbox = () => {
-  const queryClient = useQueryClient();
   const [search, setSearch] = useState({
     value: "",
     category: inboxSearchOptions[0].value,
@@ -75,8 +73,8 @@ const Inbox = () => {
 
             {inboxSearch.data && (
               <div className="mt-10 grid grid-cols-2 gap-8 ">
-                {inboxSearch.data.map((message) => (
-                  <InboxListItem data={message} user={query.data} />
+                {inboxSearch.data.map((message, i) => (
+                  <InboxListItem data={message} user={query.data} key={i} />
                 ))}
               </div>
             )}
@@ -84,8 +82,8 @@ const Inbox = () => {
             {!inboxQuery.isLoading && !inboxSearch.data && (
               <div className="mt-10 grid grid-cols-2 gap-8 ">
                 {inboxQuery.data &&
-                  inboxQuery.data.data.data.children.map((message) => (
-                    <InboxListItem data={message} user={query.data} />
+                  inboxQuery.data.data.data.children.map((message, i) => (
+                    <InboxListItem data={message} user={query.data} key={i} />
                   ))}
               </div>
             )}

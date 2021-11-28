@@ -5,14 +5,17 @@ import {
 } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useContacts } from "../../hooks/useContacts";
 
 const StyledDiv = styled.div`
   background-color: ${(props) => props.theme.backgroundSecondary};
-
+  height: 200px;
   .body {
     color: ${(props) => props.theme.textLight};
+    height: calc(100% - 90px);
+    overflow-y: auto;
   }
   .edit-action {
     color: ${(props) => props.theme.green};
@@ -30,10 +33,12 @@ const Contact = ({ contact }) => {
           {contact.name}
         </p>
       </div>
-      <p className="body p-3">{contact.notes}</p>
+      <p className="body p-3 ">{contact.notes}</p>
       <hr />
       <div className="flex items-center gap-6 p-3 w-full justify-end">
-        <FontAwesomeIcon icon={faPenToSquare} className="edit-action" />
+        <Link to={`/dashboard/contacts/edit/${contact.uuid}`}>
+          <FontAwesomeIcon icon={faPenToSquare} className="edit-action" />
+        </Link>
         <FontAwesomeIcon
           icon={faTrashCan}
           className="text-accent-primary"

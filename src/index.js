@@ -8,6 +8,7 @@ import {
   DASHBOARD,
   DASHBOARD_DETAIL,
   DASHBOARD_PAGE,
+  DASHBOARD_THIRD,
   INDEX,
   LINK_REDDIT,
   LOGIN,
@@ -45,6 +46,8 @@ const App = () => {
                 <Route path={DASHBOARD} element={<Index />} />
                 <Route path={DASHBOARD_PAGE} element={<Index />} />
                 <Route path={DASHBOARD_DETAIL} element={<Index />} />
+                <Route path={DASHBOARD_THIRD} element={<Index />} />
+
                 <Route path={LINK_REDDIT} element={<LinkReddit />} />
                 <Route path={CALLBACK_REDDIT} element={<CallbackReddit />} />
               </Routes>

@@ -8,12 +8,13 @@ import { format } from "date-fns";
 import { H2 } from "../headings/h2";
 import { useUser } from "../../hooks/useUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faReply } from "@fortawesome/free-solid-svg-icons";
-import Avatar from "../Avatar/Avatar";
 import IsInReadingList from "../IsInReadingList/IsInReadingList";
 import { useReadingList } from "../../hooks/useReadingList";
 import { Button } from "../Button/Button";
-import { faBookCircleArrowRight } from "@fortawesome/pro-duotone-svg-icons";
+import {
+  faBookCircleArrowRight,
+  faCircleUser,
+} from "@fortawesome/pro-duotone-svg-icons";
 import { isInReadingList } from "../../utils/isInReadingList";
 import Chat from "../Chat/Chat";
 
@@ -66,11 +67,7 @@ const InboxItem = () => {
 
   return (
     <StyledWrapper>
-      {redditMessage.isLoading && (
-        <section className="w-full flex justify-center mt-10 ">
-          <Loader size="2x" />
-        </section>
-      )}
+      {redditMessage.isLoading && <Loader size="2x" />}
 
       {redditMessage.data && (
         <main>
@@ -96,7 +93,13 @@ const InboxItem = () => {
               )}
             </div>
             <H2 className="mt-6 text-3xl">{redditMessage.data.subject}</H2>
-            <p className="mt-2 text-light">{redditMessage.data.dest}</p>
+            <p className="mt-2 text-light">
+              <FontAwesomeIcon
+                icon={faCircleUser}
+                className="text-accent-primary mr-4"
+              />
+              {redditMessage.data.dest}
+            </p>
             <div className="flex items-center">
               <IsInReadingList
                 approvedList={approvedList}

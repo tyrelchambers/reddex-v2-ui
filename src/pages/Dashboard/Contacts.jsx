@@ -7,6 +7,7 @@ import { H1 } from "../../components/headings/h1";
 import Input from "../../components/Input/Input";
 import Subtitle from "../../components/Subtitle/Subtitle";
 import ContactForm from "../../forms/ContactForm";
+import EditContactForm from "../../forms/EditContactForm";
 import { StyledLink } from "../../globalStyles";
 import { useContacts } from "../../hooks/useContacts";
 
@@ -38,6 +39,12 @@ const Contacts = () => {
                 <Contact key={index} contact={contact} />
               ))}
           </div>
+        )}
+
+        {sub_page === "edit" && (
+          <section className="max-w-md mt-10">
+            <EditContactForm />
+          </section>
         )}
 
         {sub_page === "save" && (
