@@ -92,6 +92,8 @@ const PostQueueItem = ({
       });
 
       storyMutation.mutate(post);
+
+      removeHandler(post);
     });
   };
 

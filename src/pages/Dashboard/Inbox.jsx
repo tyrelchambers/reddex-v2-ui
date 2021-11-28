@@ -2,11 +2,14 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
+import { getRedditAccessToken } from "../../api/getRedditAccessToken";
 import { Button } from "../../components/Button/Button";
 import { H1 } from "../../components/headings/h1";
 import InboxItem from "../../components/InboxItem/InboxItem";
 import Input from "../../components/Input/Input";
 import Subtitle from "../../components/Subtitle/Subtitle";
+import { useRedditInbox } from "../../hooks/useRedditInbox";
+import { useTokens } from "../../hooks/useTokens";
 
 const data = [
   {
@@ -233,6 +236,11 @@ const StyledWrapper = styled.div`
 `;
 
 const Inbox = () => {
+  const { redditAccessToken } = useTokens();
+  const { inboxQuery } = useRedditInbox({
+    access_token: redditAccessToken.data.access_token,
+  });
+
   return (
     <StyledWrapper>
       <div className="flex gap-4  w-full">
