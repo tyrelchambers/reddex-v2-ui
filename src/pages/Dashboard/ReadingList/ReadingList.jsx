@@ -11,12 +11,19 @@ import {
 } from "@fortawesome/pro-duotone-svg-icons";
 import { Button } from "../../../components/Button/Button";
 import { useUser } from "../../../hooks/useUser";
+import { observer } from "mobx-react";
+import ImportStory from "../../../components/ImportStory/ImportStory";
 
-const ReadingList = () => {
+const ReadingList = observer(({ ModalStore }) => {
   const { sub_page } = useParams();
   const { query } = useUser();
 
   if (!query.data) return null;
+
+  const handleImport = () => {
+    ModalStore.openModal();
+    ModalStore.setModalContent(<ImportStory ModalStore={ModalStore} />);
+  };
 
   return (
     <>
@@ -28,7 +35,7 @@ const ReadingList = () => {
 
         {sub_page !== "completed" && (
           <div className="flex items-center gap-6">
-            <Button variant="third" className="gap-4">
+            <Button variant="third" className="gap-4" onClick={handleImport}>
               <FontAwesomeIcon
                 icon={faArrowDownFromDottedLine}
                 className="text-accent-primary"
@@ -53,6 +60,6 @@ const ReadingList = () => {
       </section>
     </>
   );
-};
+});
 
 export default ReadingList;

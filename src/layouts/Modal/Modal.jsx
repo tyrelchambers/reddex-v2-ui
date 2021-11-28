@@ -21,6 +21,7 @@ const StyledBody = styled.div`
   max-height: 85%;
   overflow-y: auto;
   padding-bottom: 3em;
+  height: fit-content;
 `;
 
 const Modal = observer(({ ModalStore }) => {

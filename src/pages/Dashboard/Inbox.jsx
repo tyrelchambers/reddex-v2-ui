@@ -25,7 +25,7 @@ const Inbox = () => {
   });
   const { sub_page } = useParams();
   const { query } = useUser();
-  console.log(query.data);
+
   return (
     <StyledWrapper>
       {sub_page && <InboxItem />}

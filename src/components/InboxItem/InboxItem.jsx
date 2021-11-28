@@ -10,6 +10,12 @@ import { useUser } from "../../hooks/useUser";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReply } from "@fortawesome/free-solid-svg-icons";
 import Avatar from "../Avatar/Avatar";
+import IsInReadingList from "../IsInReadingList/IsInReadingList";
+import { useReadingList } from "../../hooks/useReadingList";
+import { Button } from "../Button/Button";
+import { faBookCircleArrowRight } from "@fortawesome/pro-duotone-svg-icons";
+import { isInReadingList } from "../../utils/isInReadingList";
+import Chat from "../Chat/Chat";
 
 const StyledWrapper = styled.section`
   .text {
@@ -45,13 +51,16 @@ const InboxItem = () => {
     id: sub_page,
     access_token: access_token,
   });
+  const { approvedList, saveToApproved } = useReadingList();
 
   const user = query.data;
 
   if (!redditMessage.data) return null;
 
   const chatList = {
-    replies: redditMessage.data.replies.data.children,
+    ...(redditMessage.data.replies && {
+      replies: redditMessage.data.replies.data.children,
+    }),
     firstMessage: { ...redditMessage.data },
   };
 
@@ -66,84 +75,45 @@ const InboxItem = () => {
       {redditMessage.data && (
         <main>
           <header>
-            <p className="text-light">
-              {format(
-                new Date(redditMessage.data.created) * 1000,
-                "MMMM do, yyy"
+            <div className="flex items-center justify-between">
+              <p className="text-light">
+                {format(
+                  new Date(redditMessage.data.created) * 1000,
+                  "MMMM do, yyy"
+                )}
+              </p>
+              {!isInReadingList(approvedList, redditMessage.data) && (
+                <Button
+                  onClick={() => saveToApproved.mutate(redditMessage.data)}
+                  className="text-sm"
+                >
+                  <FontAwesomeIcon
+                    icon={faBookCircleArrowRight}
+                    className="mr-2 "
+                  />
+                  Add to reading list
+                </Button>
               )}
-            </p>
+            </div>
             <H2 className="mt-6 text-3xl">{redditMessage.data.subject}</H2>
+            <p className="mt-2 text-light">{redditMessage.data.dest}</p>
+            <div className="flex items-center">
+              <IsInReadingList
+                approvedList={approvedList}
+                message={redditMessage.data}
+              />
+            </div>
           </header>
 
           <hr className="mt-10 mb-10" />
 
           <section className="chat-list flex flex-col gap-6 max-w-3xl">
-            <div className="chat flex">
-              <div className="chat-avatar mr-4">
-                <Avatar
-                  size="medium"
-                  url={user.Profile.reddit_profile.snoovatar_img}
-                  className="mr-4 block"
-                  hasBorder
-                />
-              </div>
-              <div className="flex flex-col">
-                <header className="flex items-center justify-between">
-                  <div className="flex items-center">
-                    <p className="text font-bold text-lg chat-body">
-                      {chatList.firstMessage.author ===
-                        user.Profile.reddit_profile.name && "You"}{" "}
-                      ({user.Profile.reddit_profile.name})
-                    </p>
-                  </div>
-                  <p className="text-super-light">
-                    {format(
-                      new Date(chatList.firstMessage.created) * 1000,
-                      "MMM do, yyy"
-                    )}
-                  </p>
-                </header>
-                <p className="text-light mt-4 whitespace-pre-wrap">
-                  {chatList.firstMessage.body}
-                </p>
-              </div>
-            </div>
-            {chatList.replies.map((reply) => (
-              <div className="chat flex">
-                <div className="chat-avatar mr-4">
-                  {reply.data.author === user.Profile.reddit_profile.name ? (
-                    <Avatar
-                      size="medium"
-                      url={user.Profile.reddit_profile.snoovatar_img}
-                      className="mr-4 block"
-                      hasBorder
-                    />
-                  ) : (
-                    <Avatar size="medium" className="mr-4 block" hasBorder />
-                  )}
-                </div>
-                <div className="flex flex-col">
-                  <header className="flex items-center justify-between">
-                    <p className="text font-bold text-lg">
-                      <FontAwesomeIcon
-                        icon={faReply}
-                        className="text-accent-primary mr-4"
-                      />{" "}
-                      {reply.data.author}
-                    </p>
-                    <p className="text-super-light ">
-                      {format(
-                        new Date(reply.data.created) * 1000,
-                        "MMM do, yyy"
-                      )}
-                    </p>
-                  </header>
-                  <p className="text-light mt-4 whitespace-pre-wrap">
-                    {reply.data.body}
-                  </p>
-                </div>
-              </div>
-            ))}
+            <Chat message={chatList.firstMessage} user={user} isFirstMessage />
+
+            {chatList.replies &&
+              chatList.replies.map((reply) => (
+                <Chat message={reply.data} user={user} />
+              ))}
           </section>
         </main>
       )}
