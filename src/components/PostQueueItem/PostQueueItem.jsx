@@ -16,6 +16,11 @@ import { Button } from "../Button/Button";
 import { H2 } from "../headings/h2";
 import Textarea from "../Textarea/Textarea";
 import Loader from "../Loader/Loader";
+import { formatSubject } from "../../utils/formatSubject";
+import { getRedditAccessToken } from "../../api/getRedditAccessToken";
+import { sendMessageToAuthor } from "../../api/sendMessageToAuthor";
+import { composeUrl } from "../../constants";
+import { useStory } from "../../hooks/useStory";
 
 const StyledWrapper = styled.div`
   .text-header {
@@ -43,6 +48,7 @@ const PostQueueItem = ({
 }) => {
   const { contactQuery } = useContacts();
   const { contactedQuery, contactedMutation } = useContacted();
+  const { storyMutation } = useStory();
 
   const contactExists =
     contactQuery.data &&
@@ -68,9 +74,24 @@ const PostQueueItem = ({
     };
   }, [post, user.Profile.recurring, user.Profile.greeting, hasBeenContacted]);
 
-  const submitHandler = () => {
-    contactedMutation.mutate({
-      name: post.author,
+  const submitHandler = async () => {
+    const { access_token } = await getRedditAccessToken();
+
+    const body = new FormData();
+    body.set("to", `/u/StoriesAfterMidnight`);
+    body.set("subject", formatSubject(post.title));
+    body.set("text", message);
+
+    sendMessageToAuthor({
+      link: composeUrl,
+      access_token,
+      body,
+    }).then(() => {
+      contactedMutation.mutate({
+        name: post.author,
+      });
+
+      storyMutation.mutate(post);
     });
   };
 

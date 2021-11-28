@@ -70,3 +70,5 @@ export const redditUrl = `https://www.reddit.com/api/v1/authorize?client_id=${
 }&response_type=code&state=storiesaftermidnightreddex&redirect_uri=${
   config[process.env.NODE_ENV].redditRedirect
 }&duration=permanent&scope=privatemessages identity`;
+
+export const composeUrl = `https://oauth.reddit.com/api/compose`;
