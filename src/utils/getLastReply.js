@@ -1,17 +1,11 @@
-import isEmpty from "./isEmpty";
-import { format } from "date-fns";
-
 export const getLastReply = (message) => {
-  let date;
-  if (isEmpty(message.replies)) {
-    date = format(message.created_utc * 1000, "MMM dd");
+  let lastReply;
+  if (message.replies.length === 0) {
+    lastReply = message;
   } else {
-    date = format(
+    lastReply =
       message.replies.data.children[message.replies.data.children.length - 1]
-        .data.created_utc * 1000,
-      "MMM dd"
-    );
+        .data;
   }
-
-  return date;
+  return lastReply;
 };

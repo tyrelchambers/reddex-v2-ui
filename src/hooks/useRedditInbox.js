@@ -1,5 +1,4 @@
 import { useQuery } from "react-query";
-import { getRedditAccessToken } from "../api/getRedditAccessToken";
 import { getRedditInbox } from "../api/getRedditInbox";
 
 export const useRedditInbox = ({ access_token }) => {
