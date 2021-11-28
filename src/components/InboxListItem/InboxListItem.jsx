@@ -27,7 +27,7 @@ const StyledWrapper = styled.section`
 
 const InboxListItem = ({ data }) => {
   const { subject, id, dest } = data.data;
-  console.log(data.data);
+
   return (
     <Link to={`/dashboard/inbox/${id}`}>
       <StyledWrapper className="flex flex-col rounded-md overflow-hidden shadow-md">
