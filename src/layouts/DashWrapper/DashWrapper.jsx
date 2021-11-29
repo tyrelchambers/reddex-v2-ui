@@ -26,7 +26,7 @@ const DashWrapper = (props) => {
 
       <StyledGrid className=" w-full h-screen">
         <DashHeader theme={theme} toggleTheme={toggleTheme} />
-        <section className="p-4 dash-body">{props.children}</section>
+        <section className="p-8 dash-body">{props.children}</section>
       </StyledGrid>
     </ThemeProvider>
   );

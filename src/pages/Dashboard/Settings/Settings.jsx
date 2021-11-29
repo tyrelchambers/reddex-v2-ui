@@ -6,7 +6,7 @@ import Profile from "./Profile";
 import Recurring from "./Recurring";
 import Security from "./Security";
 
-const Account = () => {
+const Settings = () => {
   const { sub_page } = useParams();
   const { query } = useUser();
 
@@ -22,4 +22,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default Settings;

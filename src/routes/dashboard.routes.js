@@ -44,25 +44,29 @@ export const nav = [
     slug: "/inbox",
   },
   {
-    label: "Account",
+    label: "Settings",
     icon: faUserCog,
-    value: "account",
+    value: "settings",
     children: [
       {
+        label: "Subscription",
+        slug: "/settings/subscription",
+      },
+      {
         label: "Login & Security",
-        slug: "/account/security",
+        slug: "/settings/security",
       },
       {
         label: "Profile",
-        slug: "/account/profile",
+        slug: "/settings/profile",
       },
       {
         label: "Greeting message",
-        slug: "/account/greeting",
+        slug: "/settings/greeting",
       },
       {
         label: "Recurring Message",
-        slug: "/account/recurring",
+        slug: "/settings/recurring",
       },
     ],
   },
