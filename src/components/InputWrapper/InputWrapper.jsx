@@ -20,7 +20,7 @@ const InputWrapper = ({
 }) => {
   return (
     <StyledWrapper className={`flex flex-col ${className ? className : ""}`}>
-      <StyledLabel className="font-semibold  mb-2 " htmlFor={htmlFor}>
+      <StyledLabel className="font-semibold  mb-1 " htmlFor={htmlFor}>
         {label}
       </StyledLabel>
       {subLabel && <p className="text-sm sub-label mb-2">{subLabel}</p>}

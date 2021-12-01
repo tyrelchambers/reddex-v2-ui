@@ -44,8 +44,14 @@ const StyledCard = styled.div`
 `;
 
 const Card = observer(
-  ({ data, isReadingItem, isCompletedItem, isSubmitted, QueueStore }) => {
-    const isInQueue = QueueStore.isInQueue(data._id);
+  ({
+    data,
+    isReadingItem,
+    isCompletedItem,
+    isSubmitted,
+    QueueStore = null,
+  }) => {
+    const isInQueue = QueueStore && QueueStore.isInQueue(data._id);
 
     const addIcon = isInQueue ? (
       <FontAwesomeIcon

@@ -1,12 +1,14 @@
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { H1 } from "../../../components/headings/h1";
 import { extractSubreddit } from "../../../utils/extractSubreddit";
 import RSelect from "../../../components/RSelect/RSelect";
 import Grid from "../../../layouts/Grid/Grid";
 import Card from "../../../components/Card/Card";
+import { useReadingList } from "../../../hooks/useReadingList";
+import Loader from "../../../components/Loader/Loader";
 
 const StyledWrapper = styled.section`
   .active-filter {
@@ -14,13 +16,21 @@ const StyledWrapper = styled.section`
   }
 `;
 
-const Approved = ({ data = [] }) => {
-  const [filters] = useState(() =>
-    extractSubreddit(data).map((sub) => ({
-      value: sub,
-      label: sub,
-    }))
-  );
+const Approved = () => {
+  const { approvedList } = useReadingList();
+
+  const [filters, setFilters] = useState([]);
+
+  useEffect(() => {
+    if (approvedList.data) {
+      setFilters(
+        extractSubreddit(approvedList.data).map((sub) => ({
+          value: sub,
+          label: sub,
+        }))
+      );
+    }
+  }, [approvedList.data]);
 
   const [selected, setSelected] = useState("");
 
@@ -47,19 +57,23 @@ const Approved = ({ data = [] }) => {
         </div>
       )}
 
-      <Grid>
-        {data.length > 0 &&
-          data
-            .filter((el) => {
-              if (selected) {
-                return el.subreddit === selected;
-              }
-              return true;
-            })
-            .map((item, index) => (
-              <Card data={item} key={index} isReadingItem />
-            ))}
-      </Grid>
+      {approvedList.isLoading && <Loader />}
+
+      {!approvedList.isLoading && (
+        <Grid>
+          {approvedList.data.length > 0 &&
+            approvedList.data
+              .filter((el) => {
+                if (selected) {
+                  return el.subreddit === selected;
+                }
+                return true;
+              })
+              .map((item, index) => (
+                <Card data={item} key={index} isReadingItem />
+              ))}
+        </Grid>
+      )}
     </StyledWrapper>
   );
 };
