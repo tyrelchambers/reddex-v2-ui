@@ -57,7 +57,7 @@ const Approved = () => {
         </div>
       )}
 
-      {approvedList.isLoading && <Loader />}
+      {approvedList.isLoading && <Loader size="2x" />}
 
       {!approvedList.isLoading && (
         <Grid>

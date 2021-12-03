@@ -51,7 +51,7 @@ const Card = observer(
     isSubmitted,
     QueueStore = null,
   }) => {
-    const isInQueue = QueueStore && QueueStore.isInQueue(data._id);
+    const isInQueue = QueueStore && QueueStore.isInQueue(data.post_id);
 
     const addIcon = isInQueue ? (
       <FontAwesomeIcon
@@ -145,7 +145,7 @@ const Card = observer(
                 />{" "}
                 <p className="text-gray-600 text-sm">
                   {formatDistanceToNow(
-                    new Date(data.created * 1000),
+                    new Date(data.created) * 1000,
                     "yyyyMMdd"
                   )}
                 </p>
@@ -155,18 +155,20 @@ const Card = observer(
 
           <section className="flex items-center  mt-4 card-floating-footer p-3 rounded-md justify-between">
             <div className="flex gap-6">
-              <div className="flex items-center">
-                <FontAwesomeIcon
-                  icon={faClock}
-                  className="mr-2 text-accent-primary"
-                />
-                <p className="text-sm text-gray-600">
-                  ~{data.reading_time} min
-                </p>
-              </div>
+              {data.reading_time && (
+                <div className="flex items-center">
+                  <FontAwesomeIcon
+                    icon={faClock}
+                    className="mr-2 text-accent-primary"
+                  />
+                  <p className="text-sm text-gray-600">
+                    ~{data.reading_time} min
+                  </p>
+                </div>
+              )}
               {/* is not submitted through the form on custom webpage */}
 
-              {!isSubmitted && (
+              {data.upvote_ratio && (
                 <div className="flex items-center">
                   <FontAwesomeIcon
                     icon={faThumbsUp}

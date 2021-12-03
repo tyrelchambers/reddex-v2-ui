@@ -2,7 +2,7 @@ export const formatRedditPost = (post) => {
   return {
     author: post.author,
     title: post.title,
-    self_text: post.selftext,
+    self_text: post.selftext.length,
     ups: post.ups,
     url: post.url,
     num_comments: post.num_comments,

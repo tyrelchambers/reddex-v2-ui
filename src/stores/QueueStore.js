@@ -11,12 +11,12 @@ class QueueStore {
   }
 
   isInQueue(post) {
-    return this.queue.filter(({ _id }) => _id === post).length > 0;
+    return this.queue.filter(({ post_id }) => post_id === post).length > 0;
   }
 
   removeFromQueue(post) {
     const clone = [...this.queue];
-    const newQueue = clone.filter(({ _id }) => _id !== post._id);
+    const newQueue = clone.filter(({ post_id }) => post_id !== post.post_id);
     this.queue = newQueue;
   }
 

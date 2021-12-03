@@ -117,7 +117,7 @@ const Home = () => {
                   <StyledGrid className="grid grid-cols-3 flex-1 gap-6 ">
                     {posts.posts
                       .sort((a, b) => {
-                        return b.created - a.created;
+                        return b.createdAt - a.createdAt;
                       })
                       .map((item, index) => (
                         <Card
