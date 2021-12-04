@@ -2,13 +2,20 @@ import React from "react";
 import Select from "react-select";
 import { withTheme } from "styled-components";
 
-const RSelect = ({ options, onChange, className = "", theme, ...rest }) => {
+const RSelect = ({
+  options,
+  onChange,
+  className = "",
+  theme,
+  setDefault,
+  ...rest
+}) => {
   return (
     <Select
       options={options}
       onChange={onChange}
       className={className}
-      defaultValue={options[0]}
+      defaultValue={setDefault ? (options[0] ? options[0] : []) : null}
       styles={{
         menu: (provided) => ({
           ...provided,
