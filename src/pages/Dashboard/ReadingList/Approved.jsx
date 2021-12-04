@@ -1,4 +1,4 @@
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -9,6 +9,14 @@ import Grid from "../../../layouts/Grid/Grid";
 import Card from "../../../components/Card/Card";
 import { useReadingList } from "../../../hooks/useReadingList";
 import Loader from "../../../components/Loader/Loader";
+import { Button } from "../../../components/Button/Button";
+import Input from "../../../components/Input/Input";
+import {
+  faArrowDownFromDottedLine,
+  faArrowUpFromDottedLine,
+} from "@fortawesome/pro-duotone-svg-icons";
+import ImportStory from "../../../components/ImportStory/ImportStory";
+import { observer } from "mobx-react-lite";
 
 const StyledWrapper = styled.section`
   .active-filter {
@@ -16,9 +24,9 @@ const StyledWrapper = styled.section`
   }
 `;
 
-const Approved = ({ user }) => {
-  const { approvedList } = useReadingList();
-
+const Approved = observer(({ user, ModalStore }) => {
+  const { approvedList, transferToCompleted } = useReadingList();
+  const [search, setSearch] = useState("");
   const [filters, setFilters] = useState([]);
 
   useEffect(() => {
@@ -34,9 +42,44 @@ const Approved = ({ user }) => {
 
   const [selected, setSelected] = useState("");
 
+  const handleImport = () => {
+    ModalStore.openModal();
+    ModalStore.setModalContent(<ImportStory ModalStore={ModalStore} />);
+  };
+
+  const inputHandler = (e) => {
+    setSearch(e.target.value);
+  };
+
   return (
     <StyledWrapper className="w-full">
-      <div className="flex justify-between">
+      <div className="flex justify-between w-full">
+        <div className="flex items-center gap-4 max-w-xl w-full">
+          <Input
+            placeholder="Search by keywords..."
+            icon={faSearch}
+            onInput={(e) => inputHandler(e)}
+          />
+        </div>
+
+        <div className="flex items-center gap-6">
+          <Button variant="third" className="gap-4" onClick={handleImport}>
+            <FontAwesomeIcon
+              icon={faArrowDownFromDottedLine}
+              className="text-accent-primary"
+            />
+            Import
+          </Button>
+          <Button variant="third" className="gap-4">
+            <FontAwesomeIcon
+              icon={faArrowUpFromDottedLine}
+              className="text-accent-primary"
+            />
+            Request
+          </Button>
+        </div>
+      </div>
+      <div className="flex justify-between mt-10">
         <H1>Approved</H1>
         <div className="w-60">
           <RSelect
@@ -69,13 +112,24 @@ const Approved = ({ user }) => {
                 }
                 return true;
               })
+              .filter((el) =>
+                search
+                  ? el.title.toLowerCase().includes(search.toLowerCase())
+                  : el
+              )
               .map((item, index) => (
-                <Card data={item} key={index} user={user} isReadingItem />
+                <Card
+                  data={item}
+                  key={index}
+                  user={user}
+                  transferToCompleted={transferToCompleted}
+                  isReadingItem
+                />
               ))}
         </Grid>
       )}
     </StyledWrapper>
   );
-};
+});
 
 export default Approved;

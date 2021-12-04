@@ -74,7 +74,10 @@ const TagManager = () => {
             <main className="grid grid-cols-4 gap-6 mt-10">
               {tagsQuery.data &&
                 tagsQuery.data.map((tag) => (
-                  <div className="tag flex items-center flex-col rounded-lg overflow-hidden shadow-md">
+                  <div
+                    className="tag flex items-center flex-col rounded-lg overflow-hidden shadow-md"
+                    key={tag.uuid}
+                  >
                     <div className="flex bg-accent-primary px-4 py-2 w-full">
                       <p className="mr-4">
                         <FontAwesomeIcon icon={faTag} className="mr-2" />

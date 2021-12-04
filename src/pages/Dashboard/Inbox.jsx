@@ -50,7 +50,7 @@ const Inbox = () => {
               onChange={(e) => setSearch({ ...search, category: e.value })}
             />
             <Input
-              placeholder={`Search by ${search.category}`}
+              placeholder={`Search...`}
               icon={faSearch}
               value={search.value}
               onInput={(e) => setSearch({ ...search, value: e.target.value })}

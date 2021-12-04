@@ -23,7 +23,7 @@ const Input = React.forwardRef(
   ({ type = "text", className = "", icon, customIcon, ...props }, ref) => (
     <StyledInputWrapper className="flex items-center w-full h-12 rounded-md overflow-hidden ">
       {icon && (
-        <div className="h-full input-icon mr-4 flex items-center justify-center px-2">
+        <div className="h-full input-icon mr-2 ml-2 flex items-center justify-center px-2">
           <FontAwesomeIcon icon={icon} />
         </div>
       )}

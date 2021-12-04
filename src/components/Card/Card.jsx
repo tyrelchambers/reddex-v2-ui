@@ -52,6 +52,9 @@ const Card = observer(
     isSubmitted,
     QueueStore = null,
     user,
+    transferToCompleted,
+    transferToApproved,
+    deleteStoryMutation,
   }) => {
     const isInQueue = QueueStore && QueueStore.isInQueue(data.post_id);
 
@@ -204,6 +207,7 @@ const Card = observer(
                   title="Add to completed list"
                   icon={faBooksMedical}
                   className="text-accent-primary"
+                  onClick={() => transferToCompleted.mutate(data.uuid)}
                 />
               </div>
             )}
@@ -216,11 +220,13 @@ const Card = observer(
                   icon={faBookCircleArrowRight}
                   title="Add back to reading list"
                   className="text-accent-primary"
+                  onClick={() => transferToApproved.mutate(data.uuid)}
                 />
                 <FontAwesomeIcon
                   icon={faTrashCan}
                   title="Remove from completed list"
                   className="text-accent-primary"
+                  onClick={() => deleteStoryMutation.mutate(data.uuid)}
                 />
               </div>
             )}
