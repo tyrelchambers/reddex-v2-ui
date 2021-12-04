@@ -5,7 +5,6 @@ import Input from "../components/Input/Input";
 import { Button } from "../components/Button/Button";
 import { useTag } from "../hooks/useTag";
 import RSelect from "../components/RSelect/RSelect";
-import { useTags } from "../hooks/useTags";
 import { useReadingList } from "../hooks/useReadingList";
 
 const NewTagForm = () => {

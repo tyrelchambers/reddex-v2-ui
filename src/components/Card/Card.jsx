@@ -17,6 +17,7 @@ import { formatDistanceToNow } from "date-fns";
 import { observer } from "mobx-react";
 import React from "react";
 import styled from "styled-components";
+import { averageReadingTime } from "../../utils/averageReadingTime";
 
 const StyledCard = styled.div`
   background-color: ${(props) => props.theme.backgroundSecondary};
@@ -50,6 +51,7 @@ const Card = observer(
     isCompletedItem,
     isSubmitted,
     QueueStore = null,
+    user,
   }) => {
     const isInQueue = QueueStore && QueueStore.isInQueue(data.post_id);
 
@@ -118,15 +120,13 @@ const Card = observer(
           {/* is not submitted through the form on custom webpage */}
           {!isSubmitted && (
             <section className="flex items-center gap-4 ml-2 mr-2">
-              {data.link_flair_text && (
+              {data.flair && (
                 <div className="flex items-center gap-2">
                   <FontAwesomeIcon
                     icon={faHashtag}
                     className="text-accent-primary"
                   />{" "}
-                  <p className="text-gray-600 text-sm">
-                    {data.link_flair_text}
-                  </p>
+                  <p className="text-gray-600 text-sm">{data.flair}</p>
                 </div>
               )}
 
@@ -147,7 +147,8 @@ const Card = observer(
                   {formatDistanceToNow(
                     new Date(data.created) * 1000,
                     "yyyyMMdd"
-                  )}
+                  )}{" "}
+                  ago
                 </p>
               </div>
             </section>
@@ -155,14 +156,19 @@ const Card = observer(
 
           <section className="flex items-center  mt-4 card-floating-footer p-3 rounded-md justify-between">
             <div className="flex gap-6">
-              {data.reading_time && (
+              {data.self_text && (
                 <div className="flex items-center">
                   <FontAwesomeIcon
                     icon={faClock}
                     className="mr-2 text-accent-primary"
                   />
                   <p className="text-sm text-gray-600">
-                    ~{data.reading_time} min
+                    ~
+                    {averageReadingTime(
+                      data.self_text,
+                      user.Profile.words_per_minute
+                    )}{" "}
+                    min
                   </p>
                 </div>
               )}

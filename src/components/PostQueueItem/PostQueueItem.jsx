@@ -46,7 +46,6 @@ const PostQueueItem = ({
   user,
   removeHandler,
 }) => {
-  console.log(post);
   const { contactQuery } = useContacts();
   const { contactedQuery, contactedMutation } = useContacted();
   const { storyMutation } = useStory();
@@ -77,33 +76,31 @@ const PostQueueItem = ({
   if (!post) return null;
 
   const submitHandler = async () => {
-    // const { access_token } = await getRedditAccessToken();
+    const { access_token } = await getRedditAccessToken();
 
-    // const body = new FormData();
-    // body.set("to", `/u/StoriesAfterMidnight`);
-    // body.set("subject", formatSubject(post.title));
-    // body.set("text", message);
+    const body = new FormData();
+    body.set("to", `/u/StoriesAfterMidnight`);
+    body.set("subject", formatSubject(post.title));
+    body.set("text", message);
 
-    // // sendMessageToAuthor({
-    // //   link: composeUrl,
-    // //   access_token,
-    // //   body,
-    // // }).then(() => {
-    // //   // contactedMutation.mutate({
-    // //   //   name: post.author,
-    // //   // });
+    // sendMessageToAuthor({
+    //   link: composeUrl,
+    //   access_token,
+    //   body,
+    // }).then(() => {
+    //   // contactedMutation.mutate({
+    //   //   name: post.author,
+    //   // });
 
-    // //   // storyMutation.mutate(post);
+    //   // storyMutation.mutate(post);
 
-    // //   // removeHandler(post);
-    // // });
+    //   // removeHandler(post);
+    // });
     contactedMutation.mutate({
       name: post.author,
     });
 
     storyMutation.mutate(post);
-
-    console.log(post.author);
 
     removeHandler(post);
   };

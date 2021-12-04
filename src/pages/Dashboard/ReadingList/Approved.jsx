@@ -16,7 +16,7 @@ const StyledWrapper = styled.section`
   }
 `;
 
-const Approved = () => {
+const Approved = ({ user }) => {
   const { approvedList } = useReadingList();
 
   const [filters, setFilters] = useState([]);
@@ -70,7 +70,7 @@ const Approved = () => {
                 return true;
               })
               .map((item, index) => (
-                <Card data={item} key={index} isReadingItem />
+                <Card data={item} key={index} user={user} isReadingItem />
               ))}
         </Grid>
       )}

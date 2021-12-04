@@ -1,5 +1,4 @@
 export const extractSubreddit = (data) => {
-  console.log(data);
   // Extract the subreddit from the array of objects
   const subreddit = data.map((item) => item.subreddit);
   // Remove duplicates
