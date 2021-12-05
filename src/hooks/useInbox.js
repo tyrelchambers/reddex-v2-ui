@@ -1,10 +1,14 @@
 import { useQuery } from "react-query";
-import { getInboxMessage } from "../api/getInboxMessage";
+import { checkInboxStoryExists } from "../api/checkInboxStoryExists";
 
-export const useInbox = ({ id }) => {
-  const messageQuery = useQuery("inboxMessage", () => getInboxMessage(id), {
-    enabled: !!id,
-  });
+export const useInbox = (data) => {
+  const messageQuery = useQuery(
+    ["inboxMessage", data.author, data.subject],
+    () => checkInboxStoryExists(data),
+    {
+      enabled: !!data.author || !!data.subject,
+    }
+  );
 
   return { messageQuery };
 };

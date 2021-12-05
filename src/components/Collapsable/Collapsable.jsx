@@ -1,6 +1,6 @@
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const StyledDropdown = styled.section`
@@ -56,6 +56,10 @@ const Collapsable = ({
 }) => {
   const [state, setState] = useState(isActive);
   const StyledCollapsable = isNav ? StyledNav : StyledDropdown;
+
+  useEffect(() => {
+    setState(isActive);
+  }, [isActive]);
 
   return (
     <StyledCollapsable className={className} toggled={state}>

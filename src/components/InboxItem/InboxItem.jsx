@@ -17,6 +17,7 @@ import {
 } from "@fortawesome/pro-duotone-svg-icons";
 import { isInReadingList } from "../../utils/isInReadingList";
 import Chat from "../Chat/Chat";
+import { useInbox } from "../../hooks/useInbox";
 
 const StyledWrapper = styled.section`
   .text {
@@ -53,6 +54,10 @@ const InboxItem = () => {
     access_token: access_token,
   });
   const { approvedList, saveToApproved } = useReadingList();
+  const { messageQuery } = useInbox({
+    author: redditMessage.data?.dest,
+    subject: redditMessage.data?.subject,
+  });
 
   const user = query.data;
 
@@ -79,17 +84,21 @@ const InboxItem = () => {
                   "MMMM do, yyy"
                 )}
               </p>
-              {!isInReadingList(approvedList, redditMessage.data) && (
-                <Button
-                  onClick={() => saveToApproved.mutate(redditMessage.data)}
-                  className="text-sm"
-                >
-                  <FontAwesomeIcon
-                    icon={faBookCircleArrowRight}
-                    className="mr-2 "
-                  />
-                  Add to reading list
-                </Button>
+              {messageQuery.data && (
+                <>
+                  {!isInReadingList(approvedList, redditMessage.data) && (
+                    <Button
+                      onClick={() => saveToApproved.mutate(redditMessage.data)}
+                      className="text-sm"
+                    >
+                      <FontAwesomeIcon
+                        icon={faBookCircleArrowRight}
+                        className="mr-2 "
+                      />
+                      Add to reading list
+                    </Button>
+                  )}
+                </>
               )}
             </div>
             <H2 className="mt-6 text-3xl">{redditMessage.data.subject}</H2>
@@ -114,8 +123,8 @@ const InboxItem = () => {
             <Chat message={chatList.firstMessage} user={user} isFirstMessage />
 
             {chatList.replies &&
-              chatList.replies.map((reply) => (
-                <Chat message={reply.data} user={user} />
+              chatList.replies.map((reply, id) => (
+                <Chat message={reply.data} user={user} key={id} />
               ))}
           </section>
         </main>

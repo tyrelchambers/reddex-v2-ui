@@ -12,7 +12,11 @@ export const useReadingList = () => {
   const approvedList = useQuery("approvedList", getApprovedList);
   const completedList = useQuery("completedList", getCompletedList);
 
-  const saveToApproved = useMutation((data) => addToApprovedList(data));
+  const saveToApproved = useMutation((data) => addToApprovedList(data), {
+    onSuccess: () => {
+      toast.success("Story added to approved list");
+    },
+  });
 
   const transferToCompleted = useMutation((data) => addToCompleted(data), {
     onError: (error) => {

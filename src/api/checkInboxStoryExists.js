@@ -1,9 +1,9 @@
 import { request } from "../config/axios";
 
-export const getInboxMessage = (id) => {
+export const checkInboxStoryExists = (data) => {
   return request.get("/inbox/v1/", {
     params: {
-      id,
+      data,
     },
   });
 };
