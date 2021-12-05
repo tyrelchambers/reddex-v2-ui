@@ -1,4 +1,4 @@
-import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { faLink, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import styled from "styled-components";
@@ -7,17 +7,45 @@ import { H2 } from "../../../components/headings/h2";
 import Subtitle from "../../../components/Subtitle/Subtitle";
 import { redditUrl } from "../../../constants";
 import ProfileForm from "../../../forms/ProfileForm";
+import { useSearched } from "../../../hooks/useSearched";
 
 const StyledLink = styled.a`
   background-color: ${(props) => props.theme.backgroundSecondary};
   color: ${(props) => props.theme.textLight};
 `;
 
+const StyledWrapper = styled.section`
+  .searches {
+    background-color: ${(props) => props.theme.backgroundSecondary};
+    color: ${(props) => props.theme.text};
+    svg path {
+      fill: ${(props) => props.theme.textLight};
+    }
+  }
+`;
+
 const Profile = ({ user }) => {
+  const { searchedQuery, deleteSearch } = useSearched();
+
   return (
-    <section className="max-w-lg">
+    <StyledWrapper className="max-w-lg">
       <H1>Profile</H1>
       <ProfileForm user={user} />
+
+      <div className="mt-10 flex flex-col gap-4">
+        <H2>Recent Searches</H2>
+        {searchedQuery.data &&
+          searchedQuery.data.map((item) => (
+            <div className="p-3 searches rounded-md">
+              <FontAwesomeIcon
+                icon={faTimes}
+                className="mr-4"
+                onClick={() => deleteSearch.mutate(item)}
+              />
+              {item.subreddit}
+            </div>
+          ))}
+      </div>
 
       <hr className="mt-10 mb-10" />
 
@@ -36,7 +64,7 @@ const Profile = ({ user }) => {
           </StyledLink>
         </div>
       </section>
-    </section>
+    </StyledWrapper>
   );
 };
 
