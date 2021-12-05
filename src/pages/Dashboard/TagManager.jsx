@@ -24,6 +24,10 @@ const StyledWrapper = styled.section`
     p {
       color: white;
     }
+
+    .text-light {
+      color: ${(props) => props.theme.textLight} !important;
+    }
   }
   .edit-action {
     color: ${(props) => props.theme.green};
@@ -84,18 +88,24 @@ const TagManager = () => {
                         {tag.tag}
                       </p>
                     </div>
-                    <div className="flex items-center gap-6 p-3">
-                      <Link to={`/dashboard/tags/edit/${tag.uuid}`}>
+                    <div className="flex justify-between gap-6 p-3 w-full">
+                      <p className="text-light ">
+                        <span className="font-bold">{tag.stories.length}</span>{" "}
+                        stories
+                      </p>
+                      <div className="flex items-center gap-4">
+                        <Link to={`/dashboard/tags/edit/${tag.uuid}`}>
+                          <FontAwesomeIcon
+                            icon={faPenToSquare}
+                            className="edit-action"
+                          />
+                        </Link>
                         <FontAwesomeIcon
-                          icon={faPenToSquare}
-                          className="edit-action"
+                          icon={faTrashCan}
+                          className="text-accent-primary"
+                          onClick={() => deleteHandler(tag.uuid)}
                         />
-                      </Link>
-                      <FontAwesomeIcon
-                        icon={faTrashCan}
-                        className="text-accent-primary"
-                        onClick={() => deleteHandler(tag.uuid)}
-                      />
+                      </div>
                     </div>
                   </div>
                 ))}
