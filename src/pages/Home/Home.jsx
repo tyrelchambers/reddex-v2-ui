@@ -14,6 +14,7 @@ import { usePostFilter } from "../../hooks/usePostFilter";
 import { usePosts } from "../../hooks/usePosts";
 import { usePostToken } from "../../hooks/usePostToken";
 import { useRedditPosts } from "../../hooks/useRedditPosts";
+import { useSearched } from "../../hooks/useSearched";
 import { useUser } from "../../hooks/useUser";
 import Wrapper from "../../layouts/Wrapper/Wrapper";
 import ModalStore from "../../stores/ModalStore";
@@ -39,6 +40,7 @@ const Home = () => {
     category: "hot",
     timeframe: "day",
   });
+  const { saveSearched } = useSearched();
 
   const redditPostQuery = useRedditPosts({
     subreddit,
@@ -66,6 +68,7 @@ const Home = () => {
   };
 
   const executeSearch = async () => {
+    if (!subreddit) return;
     await deleteExistingPosts();
 
     const results = await redditPostQuery.refetch();
@@ -74,6 +77,8 @@ const Home = () => {
       posts: formattedPosts,
       subreddit,
     });
+
+    saveSearched.mutate(subreddit);
     queryClient.invalidateQueries("posts");
   };
 
@@ -98,7 +103,11 @@ const Home = () => {
             filters={filters}
           />
           <hr className="mt-6 mb-6" />
-          <RecentlySearched />
+          <RecentlySearched
+            user={query.data}
+            executeSearch={executeSearch}
+            setSubreddit={setSubreddit}
+          />
         </StyledSide>
 
         <section className="w-full flex-col">
