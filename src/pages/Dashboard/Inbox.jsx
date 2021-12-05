@@ -71,22 +71,24 @@ const Inbox = () => {
               </section>
             )}
 
-            {inboxSearch.data && (
-              <div className="mt-10 grid grid-cols-2 gap-8 ">
-                {inboxSearch.data.map((message, i) => (
-                  <InboxListItem data={message} user={query.data} key={i} />
-                ))}
-              </div>
-            )}
-
-            {!inboxQuery.isLoading && !inboxSearch.data && (
-              <div className="mt-10 grid grid-cols-2 gap-8 ">
-                {inboxQuery.data &&
-                  inboxQuery.data.data.data.children.map((message, i) => (
+            <section className="max-w-3xl">
+              {inboxSearch.data && (
+                <div className="mt-10 grid grid-cols-1 gap-8 ">
+                  {inboxSearch.data.map((message, i) => (
                     <InboxListItem data={message} user={query.data} key={i} />
                   ))}
-              </div>
-            )}
+                </div>
+              )}
+
+              {!inboxQuery.isLoading && !inboxSearch.data && (
+                <div className="mt-10 grid grid-cols-1 gap-8 ">
+                  {inboxQuery.data &&
+                    inboxQuery.data.data.data.children.map((message, i) => (
+                      <InboxListItem data={message} user={query.data} key={i} />
+                    ))}
+                </div>
+              )}
+            </section>
           </main>
         </>
       )}

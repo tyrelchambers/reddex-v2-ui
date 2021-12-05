@@ -28,7 +28,7 @@ const Input = React.forwardRef(
         </div>
       )}
       {customIcon && (
-        <div className="h-full input-icon mr-2 flex items-center justify-center px-2">
+        <div className="h-full input-icon mr-2 ml-2 flex items-center justify-center px-2">
           {customIcon}
         </div>
       )}
