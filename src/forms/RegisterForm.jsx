@@ -40,7 +40,6 @@ const RegisterForm = () => {
     }
 
     await registerMutation.mutate(state);
-    navigate(LINK_REDDIT);
   };
 
   return (

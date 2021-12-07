@@ -4,6 +4,7 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {
+  CALLBACK_EMAIL,
   CALLBACK_REDDIT,
   DASHBOARD,
   DASHBOARD_DETAIL,
@@ -27,6 +28,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import CallbackReddit from "./pages/CallbackReddit";
 import Modal from "./layouts/Modal/Modal";
 import ModalStore from "./stores/ModalStore";
+import CallbackConfirmEmail from "./pages/CallbackConfirmEmail";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +52,10 @@ const App = () => {
 
                 <Route path={LINK_REDDIT} element={<LinkReddit />} />
                 <Route path={CALLBACK_REDDIT} element={<CallbackReddit />} />
+                <Route
+                  path={CALLBACK_EMAIL}
+                  element={<CallbackConfirmEmail />}
+                />
               </Routes>
             </Router>
           </TabProvider>

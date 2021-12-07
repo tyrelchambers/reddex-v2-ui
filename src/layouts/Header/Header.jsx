@@ -41,12 +41,12 @@ const Header = () => {
           <>
             <Avatar
               size="small"
-              url={query.data.Profile.reddit_profile.snoovatar_img}
+              url={query.data.Profile?.reddit_profile?.snoovatar_img}
               className="mr-2"
             />
             <Link to="/dashboard/reading_list/approved">
               <p className="username">
-                {query.data.Profile.reddit_profile.name}
+                {query.data.Profile?.reddit_profile?.name || query.data.email}
               </p>
             </Link>
           </>
