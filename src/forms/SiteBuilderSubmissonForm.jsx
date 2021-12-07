@@ -8,11 +8,22 @@ import Textarea from "../components/Textarea/Textarea";
 import Form from "./Form";
 import modules from "../constants/modules";
 
-const SiteBuilderSubmissonForm = () => {
+const SiteBuilderSubmissonForm = ({ state, dispatch }) => {
   return (
     <Form className="mt-6">
       <div className="flex">
-        <RToggle name="submission_form" className="mr-4" />
+        <RToggle
+          name="submission_form"
+          className="mr-4"
+          value={state.submissionForm.enabled}
+          onChange={(e) => {
+            dispatch({
+              type: "SET_SUBMISSION_FORM",
+              field: "enabled",
+              payload: e.target.checked,
+            });
+          }}
+        />
         <div className="flex flex-col">
           <p className="font-bold headline">Activate Submission Form</p>
           <p className="subtitle">
@@ -23,18 +34,47 @@ const SiteBuilderSubmissonForm = () => {
       </div>
 
       <InputWrapper label="Page Title">
-        <Input placeholder="Name of your submission page" icon={faInputText} />
+        <Input
+          placeholder="Name of your submission page"
+          icon={faInputText}
+          value={state.submissionForm.title}
+          onInput={(e) =>
+            dispatch({
+              type: "SET_SUBMISSION_FORM",
+              field: "title",
+              payload: e.target.value,
+            })
+          }
+        />
       </InputWrapper>
 
       <InputWrapper label="Subtitle">
         <Input
           placeholder="Subtitle for your submission page"
           icon={faInputText}
+          value={state.submissionForm.subTitle}
+          onInput={(e) =>
+            dispatch({
+              type: "SET_SUBMISSION_FORM",
+              field: "subTitle",
+              payload: e.target.value,
+            })
+          }
         />
       </InputWrapper>
 
       <InputWrapper label="Rules for Submission">
-        <Textarea placeholder="Add your rules for submission here" />
+        <Textarea
+          placeholder="Add your rules for submission here"
+          value={state.submissionForm.rules}
+          onInput={(e) =>
+            dispatch({
+              type: "SET_SUBMISSION_FORM",
+              field: "rules",
+              payload: e.target.value,
+            })
+          }
+        />
       </InputWrapper>
 
       <H2>Customize Modules</H2>
@@ -47,6 +87,19 @@ const SiteBuilderSubmissonForm = () => {
                 type="checkbox"
                 className="mr-2"
                 name={`${module.value}_required`}
+                value={() =>
+                  state.submissionForm.modules.find(
+                    (m) => m.value === module.value
+                  ).required
+                }
+                onInput={(e) =>
+                  dispatch({
+                    type: "SET_SUBMISSION_FORM_MODULE",
+                    field: module.value,
+                    payload: e.target.checked,
+                    subField: "required",
+                  })
+                }
               />
               <p className="subtitle">Required</p>
             </div>
@@ -55,6 +108,15 @@ const SiteBuilderSubmissonForm = () => {
                 type="checkbox"
                 className="mr-2"
                 name={`${module.value}_enabled`}
+                value={module.value}
+                onInput={(e) =>
+                  dispatch({
+                    type: "SET_SUBMISSION_FORM_MODULE",
+                    field: module.value,
+                    payload: e.target.checked,
+                    subField: "required",
+                  })
+                }
               />
               <p className="subtitle">Enabled</p>
             </div>

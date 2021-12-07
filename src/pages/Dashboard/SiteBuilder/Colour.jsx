@@ -1,12 +1,8 @@
 import React from "react";
 import SiteBuilderColorForm from "../../../forms/SiteBuilderColorForm";
 
-const Colour = () => {
-  return (
-    <div>
-      <SiteBuilderColorForm />
-    </div>
-  );
+const Colour = (props) => {
+  return <SiteBuilderColorForm {...props} />;
 };
 
 export default Colour;

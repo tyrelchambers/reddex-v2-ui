@@ -19,7 +19,7 @@ const initialState = {
   },
   theme: {
     mode: "light",
-    color: "",
+    color: "#000000",
   },
   submissionForm: {
     enabled: false,
@@ -29,23 +29,23 @@ const initialState = {
     modules: [
       {
         type: "author",
-        enabled: true,
-        required: true,
+        enabled: false,
+        required: false,
       },
       {
         type: "title",
-        enabled: true,
-        required: true,
+        enabled: false,
+        required: false,
       },
       {
         type: "sentToOthers",
-        enabled: true,
-        required: true,
+        enabled: false,
+        required: false,
       },
       {
         type: "email",
-        enabled: true,
-        required: true,
+        enabled: false,
+        required: false,
       },
     ],
   },

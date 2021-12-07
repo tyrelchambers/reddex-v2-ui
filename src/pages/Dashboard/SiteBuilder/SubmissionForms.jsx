@@ -13,11 +13,11 @@ const StyledWrapper = styled.section`
   }
 `;
 
-const SubmissionForms = () => {
+const SubmissionForms = (props) => {
   return (
     <StyledWrapper>
       <H2>Submission Form</H2>
-      <SiteBuilderSubmissonForm />
+      <SiteBuilderSubmissonForm {...props} />
     </StyledWrapper>
   );
 };
