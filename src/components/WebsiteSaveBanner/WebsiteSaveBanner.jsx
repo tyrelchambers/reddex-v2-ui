@@ -8,6 +8,10 @@ const StyledWrapper = styled.section`
   .header {
     color: ${(props) => props.theme.backgroundMain};
   }
+
+  .discard-btn {
+    color: ${(props) => props.theme.accent2};
+  }
 `;
 
 const WebsiteSaveBanner = () => {
@@ -17,7 +21,12 @@ const WebsiteSaveBanner = () => {
         You have unsaved changes to your website
       </p>
 
-      <Button variant="third">Save</Button>
+      <div className="flex items-center gap-6">
+        <Button variant="third" className="discard-btn">
+          Discard
+        </Button>
+        <Button variant="third">Save</Button>
+      </div>
     </StyledWrapper>
   );
 };

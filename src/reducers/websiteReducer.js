@@ -18,7 +18,6 @@ export const websiteReducer = (state = {}, action) => {
     case "SET_COLOR": {
       const clone = { ...state };
       clone.theme[action.field] = action.payload;
-      console.log(clone);
       return clone;
     }
 

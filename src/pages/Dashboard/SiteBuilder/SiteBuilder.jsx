@@ -19,7 +19,7 @@ const SiteBuilder = () => {
   };
 
   return (
-    <section className="max-w-xl">
+    <section className="max-w-2xl">
       {isChanged && <WebsiteSaveBanner />}
       <div className="flex justify-between mt-10">
         <div className="flex flex-col">
