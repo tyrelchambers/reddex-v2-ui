@@ -19,13 +19,21 @@ const StyledBanner = styled.div`
   }
 `;
 
-const SiteBuilderGeneralForm = () => {
+const SiteBuilderGeneralForm = ({ state, dispatch }) => {
   return (
     <Form>
       <InputWrapper label="Subdomain" htmlFor="subdomain">
         <Input
           customIcon={<p className="font-bold">https://</p>}
           placeholder="your_domain"
+          value={state.general.domain}
+          onInput={(e) =>
+            dispatch({
+              type: "SET_GENERAL",
+              field: "domain",
+              payload: e.target.value,
+            })
+          }
         />
       </InputWrapper>
 
@@ -35,11 +43,32 @@ const SiteBuilderGeneralForm = () => {
       </p>
 
       <InputWrapper label="Site Name" htmlFor="siteName" className="mt-6">
-        <Input icon={faInputText} placeholder="Stories After Midnight" />
+        <Input
+          icon={faInputText}
+          placeholder="Your site's headline"
+          value={state.general.siteName}
+          onInput={(e) =>
+            dispatch({
+              type: "SET_GENERAL",
+              field: "siteName",
+              payload: e.target.value,
+            })
+          }
+        />
       </InputWrapper>
 
       <InputWrapper label="Site Description" htmlFor="siteDescription">
-        <Textarea placeholder="Who are you and what do you do?" />
+        <Textarea
+          placeholder="Who are you and what do you do?"
+          value={state.general.description}
+          onInput={(e) =>
+            dispatch({
+              type: "SET_GENERAL",
+              field: "description",
+              payload: e.target.value,
+            })
+          }
+        />
       </InputWrapper>
 
       <InputWrapper label="Banner Image">

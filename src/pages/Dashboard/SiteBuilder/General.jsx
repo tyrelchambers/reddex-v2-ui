@@ -13,10 +13,10 @@ const StyledWrapper = styled.section`
   }
 `;
 
-const General = () => {
+const General = (props) => {
   return (
     <StyledWrapper>
-      <SiteBuilderGeneralForm />
+      <SiteBuilderGeneralForm {...props} />
       <hr className="mt-10 mb-10" />
       <H2>Social Media</H2>
       <Subtitle>
@@ -25,7 +25,7 @@ const General = () => {
         blank.
       </Subtitle>
       <div className="mt-10">
-        <SiteBuilderSocialForm />
+        <SiteBuilderSocialForm {...props} />
       </div>
       <hr className="mt-10 mb-10" />
       <H2 className="mt-10">Danger Zone</H2>
