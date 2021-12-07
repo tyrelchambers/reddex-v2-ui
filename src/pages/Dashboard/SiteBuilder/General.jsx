@@ -27,6 +27,7 @@ const General = () => {
       <div className="mt-10">
         <SiteBuilderSocialForm />
       </div>
+      <hr className="mt-10 mb-10" />
       <H2 className="mt-10">Danger Zone</H2>
       <Subtitle>
         This action is permanent. This will delete your account forever.

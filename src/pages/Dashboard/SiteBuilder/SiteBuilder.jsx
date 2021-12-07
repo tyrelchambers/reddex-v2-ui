@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router";
 import { H1 } from "../../../components/headings/h1";
 import Subtitle from "../../../components/Subtitle/Subtitle";
+import WebsiteSaveBanner from "../../../components/WebsiteSaveBanner/WebsiteSaveBanner";
 import Colour from "./Colour";
 import General from "./General";
 import SubmissionForms from "./SubmissionForms";
@@ -11,8 +12,9 @@ const SiteBuilder = () => {
   const { sub_page } = useParams();
 
   return (
-    <section>
-      <div className="flex justify-between">
+    <section className="max-w-xl">
+      <WebsiteSaveBanner />
+      <div className="flex justify-between mt-10">
         <div className="flex flex-col">
           <H1>Site Builder</H1>
           <Subtitle className="mt-2">

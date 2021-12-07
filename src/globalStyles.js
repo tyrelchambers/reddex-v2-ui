@@ -10,6 +10,10 @@ export const GlobalStyles = createGlobalStyle`
   hr {
     border-color: ${({ theme }) => theme.border};
   }
+
+  .text-light {
+    color: ${({ theme }) => theme.textLight};
+  }
 `;
 
 export const StyledLink = styled(Link)`
