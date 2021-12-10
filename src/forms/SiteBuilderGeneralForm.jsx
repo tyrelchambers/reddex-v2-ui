@@ -1,5 +1,5 @@
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
-import { faInputText } from "@fortawesome/pro-duotone-svg-icons";
+import { faCircleCheck, faInputText } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import Input from "../components/Input/Input";
@@ -16,6 +16,10 @@ const StyledBanner = styled.div`
 
   p {
     color: ${(props) => props.theme.textSuperLight};
+  }
+
+  .domain-check {
+    background-color: ${(props) => props.theme.backgroundSecondary};
   }
 `;
 
@@ -37,9 +41,22 @@ const SiteBuilderGeneralForm = ({ state, dispatch }) => {
         />
       </InputWrapper>
 
-      <p className="text">
-        <FontAwesomeIcon icon={faGlobe} className="text-accent-primary mr-2" />
-        {formatSiteUrl(state.general.domain)}
+      <p className="text flex items-center gap-6 text-xs">
+        <span className="flex items-center">
+          <FontAwesomeIcon
+            icon={faGlobe}
+            className="text-accent-primary mr-2"
+          />
+          {formatSiteUrl(state.general.domain)}
+        </span>
+
+        <span className="domain-check flex items-center">
+          <FontAwesomeIcon
+            icon={faCircleCheck}
+            className="text-green-500 mr-2"
+          />
+          <p className="text-green-500 text-xs">domain available</p>
+        </span>
       </p>
 
       <InputWrapper label="Site Name" htmlFor="siteName" className="mt-6">
