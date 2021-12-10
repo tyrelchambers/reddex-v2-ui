@@ -11,6 +11,10 @@ export const GlobalStyles = createGlobalStyle`
     border-color: ${({ theme }) => theme.border};
   }
 
+  .text {
+    color: ${({ theme }) => theme.text};
+  }
+
   .text-light {
     color: ${({ theme }) => theme.textLight};
   }

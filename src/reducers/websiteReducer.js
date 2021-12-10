@@ -1,7 +1,15 @@
-export const websiteReducer = (state = {}, action) => {
+export const websiteReducer = (state, action) => {
   switch (action.type) {
-    case "SET_WEBSITE":
-      return action.website;
+    case "INIT_WEBSITE": {
+      return {
+        ...action.payload,
+      };
+    }
+    case "SET_WEBSITE": {
+      const clone = { ...state };
+      clone.enabled = action.payload;
+      return clone;
+    }
 
     case "SET_GENERAL": {
       const clone = { ...state };
@@ -55,6 +63,11 @@ export const websiteReducer = (state = {}, action) => {
         ..._,
       };
     }
+
+    case "RESET": {
+      return action.payload;
+    }
+
     default:
       return state;
   }

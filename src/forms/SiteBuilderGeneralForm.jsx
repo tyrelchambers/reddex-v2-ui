@@ -39,7 +39,7 @@ const SiteBuilderGeneralForm = ({ state, dispatch }) => {
 
       <p className="text">
         <FontAwesomeIcon icon={faGlobe} className="text-accent-primary mr-2" />
-        {formatSiteUrl("storiesaftermidnight")}
+        {formatSiteUrl(state.general.domain)}
       </p>
 
       <InputWrapper label="Site Name" htmlFor="siteName" className="mt-6">

@@ -18,8 +18,6 @@ import Textarea from "../Textarea/Textarea";
 import Loader from "../Loader/Loader";
 import { formatSubject } from "../../utils/formatSubject";
 import { getRedditAccessToken } from "../../api/getRedditAccessToken";
-import { sendMessageToAuthor } from "../../api/sendMessageToAuthor";
-import { composeUrl } from "../../constants";
 import { useStory } from "../../hooks/useStory";
 
 const StyledWrapper = styled.div`

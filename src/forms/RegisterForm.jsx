@@ -5,8 +5,8 @@ import { faAt, faCheck, faKey } from "@fortawesome/pro-duotone-svg-icons";
 import Input from "../components/Input/Input";
 import { Button } from "../components/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { LINK_REDDIT, LOGIN } from "../routes/index.routes";
-import { Link, useNavigate } from "react-router-dom";
+import { LOGIN } from "../routes/index.routes";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import FormError from "../components/FormError/FormError";
 import { toast } from "react-toastify";
@@ -18,7 +18,6 @@ const RegisterForm = () => {
     password: "",
     confirmPassword: "",
   });
-  const navigate = useNavigate();
   const { registerMutation } = useAuth();
 
   const {

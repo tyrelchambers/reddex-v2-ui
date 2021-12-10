@@ -6,6 +6,7 @@ import Subtitle from "../../../components/Subtitle/Subtitle";
 import SiteBuilderSocialForm from "../../../forms/SiteBuilderSocialForm";
 import Form from "../../../forms/Form";
 import { Button } from "../../../components/Button/Button";
+import EnabledWarning from "../../../components/EnabledWarning/EnabledWarning";
 
 const StyledWrapper = styled.section`
   .text {
@@ -14,6 +15,9 @@ const StyledWrapper = styled.section`
 `;
 
 const General = (props) => {
+  if (!props.state.enabled) {
+    return <EnabledWarning />;
+  }
   return (
     <StyledWrapper>
       <SiteBuilderGeneralForm {...props} />

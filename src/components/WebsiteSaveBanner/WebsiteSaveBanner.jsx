@@ -14,7 +14,7 @@ const StyledWrapper = styled.section`
   }
 `;
 
-const WebsiteSaveBanner = () => {
+const WebsiteSaveBanner = ({ reset, save }) => {
   return (
     <StyledWrapper className="p-4 rounded-lg flex items-center justify-between shadow-lg ">
       <p className="header font-bold">
@@ -22,10 +22,12 @@ const WebsiteSaveBanner = () => {
       </p>
 
       <div className="flex items-center gap-6">
-        <Button variant="third" className="discard-btn">
+        <Button variant="third" className="discard-btn" onClick={reset}>
           Discard
         </Button>
-        <Button variant="third">Save</Button>
+        <Button variant="third" onClick={save}>
+          Save
+        </Button>
       </div>
     </StyledWrapper>
   );
