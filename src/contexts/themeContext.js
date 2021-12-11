@@ -20,10 +20,17 @@ const Store = ({ children }) => {
     }
   };
 
+  const setThemeHandler = (theme) => {
+    setTheme(theme);
+    localStorage.setItem("theme", theme);
+  };
+
   const themeStyles = currentTheme(theme);
 
   return (
-    <ThemeContext.Provider value={[theme, toggleTheme, themeStyles]}>
+    <ThemeContext.Provider
+      value={[theme, toggleTheme, themeStyles, setThemeHandler]}
+    >
       {children}
     </ThemeContext.Provider>
   );

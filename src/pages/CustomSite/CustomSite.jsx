@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { GlobalStyles } from "../../globalStyles";
 import { ThemeContext } from "../../contexts/themeContext";
 import YouTube from "react-youtube";
+import { useEffect } from "react";
 
 const StyledWrapper = styled.section`
   .link {
@@ -53,11 +54,23 @@ const StyledWrapper = styled.section`
   .footer-link {
     color: ${(props) => props.theme.textLight};
   }
+
+  .site-name,
+  .social-icon {
+    color: ${(props) => props.theme.text};
+  }
 `;
 
 const CustomSite = ({ subdomain }) => {
   const { website, youtube } = useCustomWebsite({ subdomain });
-  const [theme, toggleTheme, themeStyles] = useContext(ThemeContext);
+  const [theme, toggleTheme, themeStyles, setThemeHandler] =
+    useContext(ThemeContext);
+
+  useEffect(() => {
+    if (website.data) {
+      setThemeHandler(website.data.theme.mode);
+    }
+  }, [website.data]);
 
   const isYoutubeEnabled = website.data?.timelines.find(
     (item) => item.type === "youtube"
@@ -76,7 +89,9 @@ const CustomSite = ({ subdomain }) => {
         {website.data && (
           <>
             <header className="flex items-center p-4 justify-between">
-              <h1 className="font-bold">{website.data.general.siteName}</h1>
+              <h1 className="font-bold site-name">
+                {website.data.general.siteName}
+              </h1>
               <SiteSocials socials={website.data.social} />
               <Link to="/submit" className="link">
                 Submit a story

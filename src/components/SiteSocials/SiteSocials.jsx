@@ -16,27 +16,27 @@ const SiteSocials = ({ socials }) => {
     <div className="flex gap-6 socials">
       {facebook && (
         <a href={facebook} target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faFacebook} />
+          <FontAwesomeIcon icon={faFacebook} className="social-icon" />
         </a>
       )}
       {twitter && (
         <a href={twitter} target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faTwitter} />
+          <FontAwesomeIcon icon={faTwitter} className="social-icon" />
         </a>
       )}
       {instagram && (
         <a href={instagram} target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faInstagram} />
+          <FontAwesomeIcon icon={faInstagram} className="social-icon" />
         </a>
       )}
       {youtube && (
         <a href={youtube} target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faYoutube} />
+          <FontAwesomeIcon icon={faYoutube} className="social-icon" />
         </a>
       )}
       {podcast && (
         <a href={podcast} target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faPodcast} />
+          <FontAwesomeIcon icon={faPodcast} className="social-icon" />
         </a>
       )}
     </div>
