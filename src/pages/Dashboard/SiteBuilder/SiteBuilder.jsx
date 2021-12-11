@@ -30,7 +30,7 @@ const SiteBuilder = () => {
 
   useEffect(() => {
     setIsChanged(isObjectDifferent(websiteQuery.data?.config, state));
-  }, [state]);
+  }, [state, websiteQuery.data?.config]);
 
   const reset = () => {
     dispatch({ type: "RESET", payload: websiteQuery.data.config });

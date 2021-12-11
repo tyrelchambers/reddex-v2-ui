@@ -70,7 +70,7 @@ const CustomSite = ({ subdomain }) => {
     if (website.data) {
       setThemeHandler(website.data.theme.mode);
     }
-  }, [website.data]);
+  }, [setThemeHandler, website.data]);
 
   const isYoutubeEnabled = website.data?.timelines.find(
     (item) => item.type === "youtube"

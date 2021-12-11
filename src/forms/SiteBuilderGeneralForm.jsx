@@ -8,6 +8,7 @@ import { formatSiteUrl } from "../utils/formatSiteUrl";
 import Form from "./Form";
 import Textarea from "../components/Textarea/Textarea";
 import styled from "styled-components";
+import { checkSubdomain } from "../api/checkSubdomain";
 
 const StyledBanner = styled.div`
   background-color: ${(props) => props.theme.backgroundSecondary};
@@ -24,6 +25,18 @@ const StyledBanner = styled.div`
 `;
 
 const SiteBuilderGeneralForm = ({ state, dispatch }) => {
+  const [isDomainAvailable, setIsDomainAvailable] = React.useState(null);
+
+  const checkSubdomainAvailability = async (e) => {
+    const { isDomainTaken } = await checkSubdomain(e.target.value);
+
+    if (isDomainTaken) {
+      setIsDomainAvailable(true);
+    } else {
+      setIsDomainAvailable(false);
+    }
+  };
+
   return (
     <Form>
       <InputWrapper label="Subdomain" htmlFor="subdomain">
@@ -31,13 +44,14 @@ const SiteBuilderGeneralForm = ({ state, dispatch }) => {
           customIcon={<p className="font-bold">https://</p>}
           placeholder="your_domain"
           value={state.general.domain}
-          onInput={(e) =>
+          onInput={(e) => {
             dispatch({
               type: "SET_GENERAL",
               field: "domain",
               payload: e.target.value,
-            })
-          }
+            });
+            checkSubdomainAvailability(e);
+          }}
         />
       </InputWrapper>
 
@@ -50,13 +64,15 @@ const SiteBuilderGeneralForm = ({ state, dispatch }) => {
           {formatSiteUrl(state.general.domain)}
         </span>
 
-        <span className="domain-check flex items-center">
-          <FontAwesomeIcon
-            icon={faCircleCheck}
-            className="text-green-500 mr-2"
-          />
-          <p className="text-green-500 text-xs">domain available</p>
-        </span>
+        {!isDomainAvailable && (
+          <span className="domain-check flex items-center">
+            <FontAwesomeIcon
+              icon={faCircleCheck}
+              className="text-green-500 mr-2"
+            />
+            <p className="text-green-500 text-xs">domain available</p>
+          </span>
+        )}
       </p>
 
       <InputWrapper label="Site Name" htmlFor="siteName" className="mt-6">

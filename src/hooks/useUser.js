@@ -1,6 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
-import { confirmEmail } from "../api/confirmEmail";
 import { getUser } from "../api/getUser";
 import { updateUser } from "../api/updateUser";
 
@@ -11,13 +10,6 @@ export const useUser = () => {
   const query = useQuery("currentUser", getUser, {
     enabled: !!token,
   });
-
-  // const confirmEmailQuery = useQuery(() => confirmEmail(emailToken), {
-  //   enabled: !!emailToken,
-  //   onSuccess: () => {
-  //     toast.success("Email confirmed!");
-  //   },
-  // });
 
   const update = useMutation((data) => updateUser(data), {
     onSuccess: () => {
