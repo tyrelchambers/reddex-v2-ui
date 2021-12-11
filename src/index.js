@@ -29,40 +29,68 @@ import CallbackReddit from "./pages/CallbackReddit";
 import Modal from "./layouts/Modal/Modal";
 import ModalStore from "./stores/ModalStore";
 import CallbackConfirmEmail from "./pages/CallbackConfirmEmail";
+import CustomSite from "./pages/CustomSite/CustomSite";
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  return (
-    <React.StrictMode>
-      <QueryClientProvider client={queryClient}>
-        <ToastContainer />
-        <Store>
-          <Modal ModalStore={ModalStore} />
-          <TabProvider>
-            <Router>
-              <Routes>
-                <Route path={LOGIN} element={<Login />} />
-                <Route path={INDEX} element={<Home />} />
-                <Route path={REGISTER} element={<Register />} />
-                <Route path={DASHBOARD} element={<Index />} />
-                <Route path={DASHBOARD_PAGE} element={<Index />} />
-                <Route path={DASHBOARD_DETAIL} element={<Index />} />
-                <Route path={DASHBOARD_THIRD} element={<Index />} />
+  const excludedSubdomains = ["www", "localhost"];
+  // get subdomain from url and exclude www from it
+  const subdomain = window.location.hostname.split(".")[0].replace("www.", "");
 
-                <Route path={LINK_REDDIT} element={<LinkReddit />} />
-                <Route path={CALLBACK_REDDIT} element={<CallbackReddit />} />
-                <Route
-                  path={CALLBACK_EMAIL}
-                  element={<CallbackConfirmEmail />}
-                />
-              </Routes>
-            </Router>
-          </TabProvider>
-        </Store>
-      </QueryClientProvider>
-    </React.StrictMode>
-  );
+  if (!excludedSubdomains.includes(subdomain)) {
+    return (
+      <React.StrictMode>
+        <QueryClientProvider client={queryClient}>
+          <ToastContainer />
+          <Store>
+            <Modal ModalStore={ModalStore} />
+            <TabProvider>
+              <Router>
+                <Routes>
+                  <Route
+                    path="/"
+                    element={<CustomSite subdomain={subdomain} />}
+                  />
+                </Routes>
+              </Router>
+            </TabProvider>
+          </Store>
+        </QueryClientProvider>
+      </React.StrictMode>
+    );
+  } else {
+    return (
+      <React.StrictMode>
+        <QueryClientProvider client={queryClient}>
+          <ToastContainer />
+          <Store>
+            <Modal ModalStore={ModalStore} />
+            <TabProvider>
+              <Router>
+                <Routes>
+                  <Route path={LOGIN} element={<Login />} />
+                  <Route path={INDEX} element={<Home />} />
+                  <Route path={REGISTER} element={<Register />} />
+                  <Route path={DASHBOARD} element={<Index />} />
+                  <Route path={DASHBOARD_PAGE} element={<Index />} />
+                  <Route path={DASHBOARD_DETAIL} element={<Index />} />
+                  <Route path={DASHBOARD_THIRD} element={<Index />} />
+
+                  <Route path={LINK_REDDIT} element={<LinkReddit />} />
+                  <Route path={CALLBACK_REDDIT} element={<CallbackReddit />} />
+                  <Route
+                    path={CALLBACK_EMAIL}
+                    element={<CallbackConfirmEmail />}
+                  />
+                </Routes>
+              </Router>
+            </TabProvider>
+          </Store>
+        </QueryClientProvider>
+      </React.StrictMode>
+    );
+  }
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));

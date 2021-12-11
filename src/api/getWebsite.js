@@ -1,5 +1,5 @@
 import { request } from "../config/axios";
 
 export const getWebsite = () => {
-  return request.get("/website/v1/");
+  return request.get("/website/v1/me");
 };

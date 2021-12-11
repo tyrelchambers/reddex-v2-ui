@@ -88,6 +88,12 @@ const SiteBuilderGeneralForm = ({ state, dispatch }) => {
         />
       </InputWrapper>
 
+      <InputWrapper label="Logo">
+        <StyledBanner className="logo-image rounded-lg flex items-center justify-center">
+          <p className="font-bold">Upload a logo</p>
+        </StyledBanner>
+      </InputWrapper>
+
       <InputWrapper label="Banner Image">
         <StyledBanner className="banner-image rounded-lg flex items-center justify-center">
           <p className="font-bold">Upload a banner</p>

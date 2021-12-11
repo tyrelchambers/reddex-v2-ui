@@ -4,6 +4,7 @@ const config = {
     frontend: "http://localhost:3000",
     redditApp: "pDIeQvykXv_neg",
     redditRedirect: "http://localhost:3000/callback/reddit",
+    youtubeKey: "AIzaSyBzE5hSoh6JZsLsepRXULe9yx2o-KcoJrs",
   },
 };
 
