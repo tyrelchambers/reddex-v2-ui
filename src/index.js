@@ -30,6 +30,7 @@ import Modal from "./layouts/Modal/Modal";
 import ModalStore from "./stores/ModalStore";
 import CallbackConfirmEmail from "./pages/CallbackConfirmEmail";
 import CustomSite from "./pages/CustomSite/CustomSite";
+import SubmitStory from "./pages/CustomSite/SubmitStory";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,10 @@ const App = () => {
                   <Route
                     path="/"
                     element={<CustomSite subdomain={subdomain} />}
+                  />
+                  <Route
+                    path="/submit"
+                    element={<SubmitStory subdomain={subdomain} />}
                   />
                 </Routes>
               </Router>

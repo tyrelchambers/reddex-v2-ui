@@ -79,23 +79,19 @@ const SiteBuilderSubmissonForm = ({ state, dispatch }) => {
 
       <H2>Customize Modules</H2>
       <div className="flex flex-col gap-4">
-        {modules.map((module, index) => (
+        {state.submissionForm.modules.map((module, index) => (
           <div key={index} className="grid grid-cols-4 module p-3 rounded-lg">
             <p className="col-span-2 headline font-bold">{module.label}</p>
             <div className="flex items-center">
               <input
                 type="checkbox"
                 className="mr-2"
-                name={`${module.value}_required`}
-                value={() =>
-                  state.submissionForm.modules.find(
-                    (m) => m.value === module.value
-                  ).required
-                }
-                onInput={(e) =>
+                name={`${module.type}_required`}
+                checked={module.required}
+                onChange={(e) =>
                   dispatch({
                     type: "SET_SUBMISSION_FORM_MODULE",
-                    field: module.value,
+                    field: module.type,
                     payload: e.target.checked,
                     subField: "required",
                   })
@@ -107,14 +103,14 @@ const SiteBuilderSubmissonForm = ({ state, dispatch }) => {
               <input
                 type="checkbox"
                 className="mr-2"
-                name={`${module.value}_enabled`}
-                value={module.value}
-                onInput={(e) =>
+                name={`${module.type}_enabled`}
+                checked={module.enabled}
+                onChange={(e) =>
                   dispatch({
                     type: "SET_SUBMISSION_FORM_MODULE",
-                    field: module.value,
+                    field: module.type,
                     payload: e.target.checked,
-                    subField: "required",
+                    subField: "enabled",
                   })
                 }
               />

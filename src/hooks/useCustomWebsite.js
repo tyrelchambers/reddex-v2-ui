@@ -1,17 +1,19 @@
-import { useQuery } from "react-query";
+import { useMutation, useQuery } from "react-query";
+import { toast } from "react-toastify";
 import { getCustomWebsite } from "../api/getCustomWebsite";
 import { getYoutubeFeed } from "../api/getYoutubeFeed";
+import { saveStory } from "../api/saveStory";
 
 export const useCustomWebsite = ({ subdomain }) => {
   const website = useQuery("customWebsite", () => getCustomWebsite(subdomain), {
     enabled: !!subdomain,
   });
 
-  const isYoutubeEnabled = website.data?.timelines.find(
+  const isYoutubeEnabled = website.data?.config.timelines.find(
     (item) => item.type === "youtube"
   ).enabled;
 
-  const youtubeUsername = website.data?.timelines.find(
+  const youtubeUsername = website.data?.config.timelines.find(
     (item) => item.type === "youtube"
   ).username;
 
@@ -19,8 +21,15 @@ export const useCustomWebsite = ({ subdomain }) => {
     enabled: !!isYoutubeEnabled && !!youtubeUsername,
   });
 
+  const submitStory = useMutation((data) => saveStory(data), {
+    onSuccess: (data) => {
+      toast.success("Story submitted successfully!");
+    },
+  });
+
   return {
     website,
     youtube,
+    submitStory,
   };
 };

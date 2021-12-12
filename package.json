@@ -19,6 +19,8 @@
     "@mui/material": "^5.1.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/user-event": "^12.1.10",
+    "@tiptap/react": "^2.0.0-beta.98",
+    "@tiptap/starter-kit": "^2.0.0-beta.156",
     "axios": "^0.24.0",
     "date-fns": "^2.25.0",
     "framer-motion": "^5.3.0",

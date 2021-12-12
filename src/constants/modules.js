@@ -15,10 +15,6 @@ const options = [
     label: "Author",
     value: "author",
   },
-  {
-    label: "Tags",
-    value: "tags",
-  },
 ];
 
 export default options;

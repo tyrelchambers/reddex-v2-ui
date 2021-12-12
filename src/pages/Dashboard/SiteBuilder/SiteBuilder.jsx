@@ -55,7 +55,7 @@ const SiteBuilder = () => {
             Build your website and advertise what you do.
           </Subtitle>
         </div>
-        <a href="/" className="text-accent-primary underline">
+        <a href="/submit" className="text-accent-primary underline">
           View your site
         </a>
       </div>

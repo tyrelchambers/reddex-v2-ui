@@ -26,21 +26,25 @@ export const initialState = {
     modules: [
       {
         type: "author",
+        label: "Author",
         enabled: false,
         required: false,
       },
       {
         type: "title",
+        label: "Title",
         enabled: false,
         required: false,
       },
       {
         type: "sentToOthers",
+        label: "Sent to others",
         enabled: false,
         required: false,
       },
       {
         type: "email",
+        label: "Email",
         enabled: false,
         required: false,
       },

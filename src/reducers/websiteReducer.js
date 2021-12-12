@@ -37,16 +37,14 @@ export const websiteReducer = (state, action) => {
 
     case "SET_SUBMISSION_FORM_MODULE": {
       const clone = { ...state };
-      const _ = clone.submissionForm.modules.map((module) => {
+      clone.submissionForm.modules.map((module) => {
         if (module.type === action.field) {
           module[action.subField] = action.payload;
         }
         return module;
       });
-      return {
-        ...clone,
-        ..._,
-      };
+
+      return clone;
     }
 
     case "SET_TIMELINES": {

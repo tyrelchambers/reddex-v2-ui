@@ -8,6 +8,7 @@ import { GlobalStyles } from "../../globalStyles";
 import { ThemeContext } from "../../contexts/themeContext";
 import YouTube from "react-youtube";
 import { useEffect } from "react";
+import CustomHeader from "../../layouts/CustomHeader/CustomHeader";
 
 const StyledWrapper = styled.section`
   .link {
@@ -66,15 +67,17 @@ const CustomSite = ({ subdomain }) => {
   const [theme, toggleTheme, themeStyles, setThemeHandler] =
     useContext(ThemeContext);
 
+  const websiteData = website.data?.config;
+
   useEffect(() => {
     if (website.data) {
-      setThemeHandler(website.data.theme.mode);
+      setThemeHandler(websiteData.theme.mode);
     }
   }, [setThemeHandler, website.data]);
 
-  const isYoutubeEnabled = website.data?.timelines.find(
-    (item) => item.type === "youtube"
-  ).enabled;
+  const isYoutubeEnabled =
+    websiteData &&
+    websiteData.timelines.find((item) => item.type === "youtube").enabled;
 
   return (
     <ThemeProvider
@@ -88,15 +91,7 @@ const CustomSite = ({ subdomain }) => {
         {website.isLoading && <Loader />}
         {website.data && (
           <>
-            <header className="flex items-center p-4 justify-between">
-              <h1 className="font-bold site-name">
-                {website.data.general.siteName}
-              </h1>
-              <SiteSocials socials={website.data.social} />
-              <Link to="/submit" className="link">
-                Submit a story
-              </Link>
-            </header>
+            <CustomHeader website={website.data.config} />
 
             <main className="max-w-screen-2xl ml-auto mr-auto mt-10">
               <div className="hero  rounded-lg ">
@@ -109,7 +104,7 @@ const CustomSite = ({ subdomain }) => {
               <section className="bio max-w-screen-sm p-8 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold header">About me</h2>
                 <p className="whitespace-pre-wrap description mt-6">
-                  {website.data.general.description}
+                  {websiteData.general.description}
                 </p>
               </section>
 
