@@ -14,6 +14,7 @@ import {
   LINK_REDDIT,
   LOGIN,
   REGISTER,
+  STORY,
 } from "./routes/index.routes";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
@@ -81,7 +82,6 @@ const App = () => {
                   <Route path={DASHBOARD_PAGE} element={<Index />} />
                   <Route path={DASHBOARD_DETAIL} element={<Index />} />
                   <Route path={DASHBOARD_THIRD} element={<Index />} />
-
                   <Route path={LINK_REDDIT} element={<LinkReddit />} />
                   <Route path={CALLBACK_REDDIT} element={<CallbackReddit />} />
                   <Route

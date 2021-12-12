@@ -10,6 +10,7 @@ import Submitted from "./Submitted";
 import TagManager from "./TagManager";
 import ModalStore from "../../stores/ModalStore";
 import { useUser } from "../../hooks/useUser";
+import Story from "../Story";
 
 const Index = () => {
   const { page } = useParams();
@@ -24,6 +25,7 @@ const Index = () => {
       {page === "inbox" && <Inbox />}
       {page === "settings" && <Settings />}
       {page === "site_builder" && <SiteBuilder />}
+      {page === "story" && <Story />}
     </DashWrapper>
   );
 };

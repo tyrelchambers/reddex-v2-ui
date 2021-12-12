@@ -11,13 +11,16 @@ import { useSubmitted } from "../../hooks/useSubmitted";
 import styled from "styled-components";
 import { averageReadingTimeWithText } from "../../utils/averageReadingTimeWithText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import { useSubmittedStory } from "../../hooks/useSubmittedStory";
 
 const StyledStory = styled.div`
   border: 1.5px solid ${(props) => props.theme.border};
 `;
 
 const Submitted = ({ user }) => {
-  const { submittedQuery, deleteSubmitted } = useSubmitted();
+  const { submittedQuery } = useSubmitted();
+  const { deleteSubmitted } = useSubmittedStory();
 
   return (
     <>
@@ -38,9 +41,12 @@ const Submitted = ({ user }) => {
                   />
                   {item.author}
                 </p>
-                <p className="text-2xl font-bold text mt-4">
+                <Link
+                  className="text-2xl font-bold text mt-4"
+                  to={`/dashboard/story/${item.uuid}`}
+                >
                   {item.story_title}
-                </p>
+                </Link>
 
                 <footer className="mt-4 flex justify-between">
                   <p className="text-light  text-sm">
