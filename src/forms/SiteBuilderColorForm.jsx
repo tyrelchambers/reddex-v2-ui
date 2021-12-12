@@ -6,22 +6,6 @@ import Form from "./Form";
 const SiteBuilderColorForm = ({ state, dispatch }) => {
   return (
     <Form className="flex flex-col">
-      <InputWrapper label="Accent colour (click to change)">
-        <input
-          type="color"
-          name="color"
-          className="h-10 w-10"
-          value={state.theme.color}
-          onChange={(e) =>
-            dispatch({
-              type: "SET_COLOR",
-              field: "color",
-              payload: e.target.value,
-            })
-          }
-        />
-      </InputWrapper>
-
       <InputWrapper label="Theme Mode">
         <RSelect
           options={[
@@ -29,7 +13,12 @@ const SiteBuilderColorForm = ({ state, dispatch }) => {
             { value: "dark", label: "Dark" },
           ]}
           className="max-w-xs"
-          defaultValue={state.theme.mode}
+          defaultValue={{
+            value: state.theme.mode,
+            label:
+              state.theme.mode.charAt(0).toUpperCase() +
+              state.theme.mode.substr(1).toLowerCase(),
+          }}
           onChange={(e) =>
             dispatch({
               type: "SET_COLOR",

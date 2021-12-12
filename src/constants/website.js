@@ -16,7 +16,6 @@ export const initialState = {
   },
   theme: {
     mode: "light",
-    color: "#000000",
   },
   submissionForm: {
     enabled: false,

@@ -8,6 +8,7 @@ const RSelect = ({
   className = "",
   theme,
   setDefault,
+  defaultValue,
   ...rest
 }) => {
   return (
@@ -15,7 +16,7 @@ const RSelect = ({
       options={options}
       onChange={onChange}
       className={className}
-      defaultValue={setDefault ? (options[0] ? options[0] : []) : null}
+      defaultValue={setDefault ? (options[0] ? options[0] : []) : defaultValue}
       styles={{
         menu: (provided) => ({
           ...provided,
