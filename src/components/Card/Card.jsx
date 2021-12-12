@@ -3,17 +3,13 @@ import {
   faArrowAltCircleUp,
   faBookCircleArrowRight,
   faBooksMedical,
-  faCalendarClock,
   faClock,
-  faFolder,
-  faHashtag,
   faPlusCircle,
   faTags,
   faThumbsUp,
   faUserCircle,
 } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { formatDistanceToNow } from "date-fns";
 import { observer } from "mobx-react";
 import React, { useState } from "react";
 import styled from "styled-components";

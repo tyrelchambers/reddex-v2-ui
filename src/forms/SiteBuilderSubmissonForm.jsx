@@ -6,7 +6,6 @@ import InputWrapper from "../components/InputWrapper/InputWrapper";
 import RToggle from "../components/RToggle/RToggle";
 import Textarea from "../components/Textarea/Textarea";
 import Form from "./Form";
-import modules from "../constants/modules";
 
 const SiteBuilderSubmissonForm = ({ state, dispatch }) => {
   return (

@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import styled, { ThemeProvider } from "styled-components";
 import { useCustomWebsite } from "../../hooks/useCustomWebsite";
 import Loader from "../../components/Loader/Loader";
-import SiteSocials from "../../components/SiteSocials/SiteSocials";
-import { Link } from "react-router-dom";
 import { GlobalStyles } from "../../globalStyles";
 import { ThemeContext } from "../../contexts/themeContext";
 import YouTube from "react-youtube";
@@ -73,7 +71,7 @@ const CustomSite = ({ subdomain }) => {
     if (website.data) {
       setThemeHandler(websiteData.theme.mode);
     }
-  }, [setThemeHandler, website.data]);
+  }, [setThemeHandler, website.data, websiteData.theme.mode]);
 
   const isYoutubeEnabled =
     websiteData &&

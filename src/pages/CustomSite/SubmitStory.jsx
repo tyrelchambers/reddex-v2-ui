@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import Loader from "../../components/Loader/Loader";
 import { ThemeContext } from "../../contexts/themeContext";
@@ -12,7 +11,6 @@ import MenuBar from "../../components/MenuBar/MenuBar";
 import { Button } from "../../components/Button/Button";
 import InputWrapper from "../../components/InputWrapper/InputWrapper";
 import Input from "../../components/Input/Input";
-import { getStringLength } from "../../utils/getStringLength";
 import StringCount from "../../components/StringCount/StringCount";
 import { useForm } from "react-hook-form";
 import FormError from "../../components/FormError/FormError";
@@ -117,11 +115,11 @@ const SubmitStory = ({ subdomain }) => {
 
   const submitHandler = () => {
     const content = editor.getHTML();
-    // submitStory.mutate({
-    //   siteOwner: website.data.userId,
-    //   ...state,
-    //   content,
-    // });
+    submitStory.mutate({
+      siteOwner: website.data.userId,
+      ...state,
+      content,
+    });
   };
   return (
     <ThemeProvider
@@ -162,7 +160,11 @@ const SubmitStory = ({ subdomain }) => {
                     {websiteData.submissionForm.modules
                       .filter((mod) => mod.enabled)
                       .map((mod) => (
-                        <InputWrapper label={mod.label} key={mod.type}>
+                        <InputWrapper
+                          label={mod.label}
+                          key={mod.type}
+                          required={mod.required}
+                        >
                           <Input
                             placeholder={mod.label}
                             name={mod.type}
