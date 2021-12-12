@@ -97,7 +97,6 @@ const SubmitStory = ({ subdomain }) => {
     author: "",
     title: "",
     content: "",
-    sentToOthers: "",
     email: "",
   });
 

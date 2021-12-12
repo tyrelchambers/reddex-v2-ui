@@ -35,12 +35,7 @@ export const initialState = {
         enabled: false,
         required: false,
       },
-      {
-        type: "sentToOthers",
-        label: "Sent to others",
-        enabled: false,
-        required: false,
-      },
+
       {
         type: "email",
         label: "Email",

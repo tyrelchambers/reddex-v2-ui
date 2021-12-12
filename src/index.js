@@ -14,7 +14,6 @@ import {
   LINK_REDDIT,
   LOGIN,
   REGISTER,
-  STORY,
 } from "./routes/index.routes";
 import Login from "./pages/Login/Login";
 import Home from "./pages/Home/Home";
