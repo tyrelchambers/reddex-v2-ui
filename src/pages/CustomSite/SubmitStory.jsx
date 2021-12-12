@@ -12,6 +12,8 @@ import MenuBar from "../../components/MenuBar/MenuBar";
 import { Button } from "../../components/Button/Button";
 import InputWrapper from "../../components/InputWrapper/InputWrapper";
 import Input from "../../components/Input/Input";
+import { getStringLength } from "../../utils/getStringLength";
+import StringCount from "../../components/StringCount/StringCount";
 
 const StyledWrapper = styled.div`
   .rules {
@@ -163,6 +165,12 @@ const SubmitStory = ({ subdomain }) => {
                               setstate({ ...state, [mod.type]: e.target.value })
                             }
                           />
+                          <div className="flex justify-end">
+                            <StringCount
+                              str={state[mod.type]}
+                              maxLength={255}
+                            />
+                          </div>
                         </InputWrapper>
                       ))}
                   </div>

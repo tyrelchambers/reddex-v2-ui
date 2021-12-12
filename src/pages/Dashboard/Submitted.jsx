@@ -1,26 +1,24 @@
 import React from "react";
 import { H1 } from "../../components/headings/h1";
 import Input from "../../components/Input/Input";
-import { faSearch } from "@fortawesome/pro-duotone-svg-icons";
-import Grid from "../../layouts/Grid/Grid";
-import Card from "../../components/Card/Card";
+import {
+  faClock,
+  faSearch,
+  faTrashCan,
+  faUserCircle,
+} from "@fortawesome/pro-duotone-svg-icons";
+import { useSubmitted } from "../../hooks/useSubmitted";
+import styled from "styled-components";
+import { averageReadingTimeWithText } from "../../utils/averageReadingTimeWithText";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const data = [
-  {
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-  },
-  {
-    author: "JohnDoeJohnDoeJohnDoeJohnDoe",
-    title:
-      "Welcome to Blackwell National Park. Please be respectful of fellow hikers, don't litter the campgrounds and watch out for the Others. [Part 3]",
-    readingTime: "5 min read",
-  },
-];
+const StyledStory = styled.div`
+  border: 1.5px solid ${(props) => props.theme.border};
+`;
 
-const Submitted = () => {
+const Submitted = ({ user }) => {
+  const { submittedQuery, deleteSubmitted } = useSubmitted();
+
   return (
     <>
       <div className="flex gap-4 max-w-xl w-full">
@@ -29,12 +27,43 @@ const Submitted = () => {
       <section className="mt-10">
         <H1>Submitted</H1>
 
-        <Grid>
-          {data.length > 0 &&
-            data.map((item, index) => (
-              <Card data={item} key={index} isSubmitted />
+        <div className="grid grid-cols-3 gap-3 mt-10">
+          {submittedQuery.data &&
+            submittedQuery.data.map((item, index) => (
+              <StyledStory className="p-4 rounded-lg">
+                <p className="text-light flex items-center">
+                  <FontAwesomeIcon
+                    icon={faUserCircle}
+                    className="text-accent-primary mr-2"
+                  />
+                  {item.author}
+                </p>
+                <p className="text-2xl font-bold text mt-4">
+                  {item.story_title}
+                </p>
+
+                <footer className="mt-4 flex justify-between">
+                  <p className="text-light  text-sm">
+                    <FontAwesomeIcon
+                      icon={faClock}
+                      className="mr-2 text-accent-primary"
+                    />
+                    ~
+                    {averageReadingTimeWithText(
+                      item.body,
+                      user.Profile.words_per_minute
+                    )}{" "}
+                    minutes
+                  </p>
+                  <FontAwesomeIcon
+                    icon={faTrashCan}
+                    className="text-accent-primary"
+                    onClick={() => deleteSubmitted.mutate(item.uuid)}
+                  />
+                </footer>
+              </StyledStory>
             ))}
-        </Grid>
+        </div>
       </section>
     </>
   );

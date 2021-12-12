@@ -129,43 +129,6 @@ const Card = observer(
             <hr />
 
             <footer className="p-2 mt-2">
-              {/* is not submitted through the form on custom webpage */}
-              {!isSubmitted && (
-                <section className="flex items-center gap-4 ml-2 mr-2">
-                  {data.flair && (
-                    <div className="flex items-center gap-2">
-                      <FontAwesomeIcon
-                        icon={faHashtag}
-                        className="text-accent-primary"
-                      />{" "}
-                      <p className="text-gray-600 text-sm">{data.flair}</p>
-                    </div>
-                  )}
-
-                  <div className="flex items-center gap-2">
-                    <FontAwesomeIcon
-                      icon={faFolder}
-                      className="text-accent-primary"
-                    />{" "}
-                    <p className="text-gray-600 text-sm">{data.subreddit}</p>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <FontAwesomeIcon
-                      icon={faCalendarClock}
-                      className="text-accent-primary"
-                    />{" "}
-                    <p className="text-gray-600 text-sm">
-                      {formatDistanceToNow(
-                        new Date(data.created) * 1000,
-                        "yyyyMMdd"
-                      )}{" "}
-                      ago
-                    </p>
-                  </div>
-                </section>
-              )}
-
               <section className="flex items-center  mt-4 card-floating-footer p-3 rounded-md justify-between">
                 <div className="flex gap-6">
                   {data.self_text && (

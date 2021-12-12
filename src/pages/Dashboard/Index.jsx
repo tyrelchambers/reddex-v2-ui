@@ -9,14 +9,16 @@ import SiteBuilder from "./SiteBuilder/SiteBuilder";
 import Submitted from "./Submitted";
 import TagManager from "./TagManager";
 import ModalStore from "../../stores/ModalStore";
+import { useUser } from "../../hooks/useUser";
 
 const Index = () => {
   const { page } = useParams();
-
+  const { query } = useUser();
+  const user = query.data;
   return (
     <DashWrapper>
       {page === "reading_list" && <ReadingList ModalStore={ModalStore} />}
-      {page === "submitted" && <Submitted />}
+      {page === "submitted" && <Submitted user={user} />}
       {page === "tags" && <TagManager />}
       {page === "contacts" && <Contacts />}
       {page === "inbox" && <Inbox />}
