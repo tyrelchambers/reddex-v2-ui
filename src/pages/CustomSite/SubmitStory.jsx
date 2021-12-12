@@ -14,6 +14,8 @@ import InputWrapper from "../../components/InputWrapper/InputWrapper";
 import Input from "../../components/Input/Input";
 import { getStringLength } from "../../utils/getStringLength";
 import StringCount from "../../components/StringCount/StringCount";
+import { useForm } from "react-hook-form";
+import FormError from "../../components/FormError/FormError";
 
 const StyledWrapper = styled.div`
   .rules {
@@ -87,6 +89,11 @@ const SubmitStory = ({ subdomain }) => {
   const { website, submitStory } = useCustomWebsite({ subdomain });
   const [theme, toggleTheme, themeStyles, setThemeHandler] =
     useContext(ThemeContext);
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
 
   const [state, setstate] = useState({
     author: "",
@@ -110,12 +117,11 @@ const SubmitStory = ({ subdomain }) => {
 
   const submitHandler = () => {
     const content = editor.getHTML();
-    console.log(website.data);
-    submitStory.mutate({
-      siteOwner: website.data.userId,
-      ...state,
-      content,
-    });
+    // submitStory.mutate({
+    //   siteOwner: website.data.userId,
+    //   ...state,
+    //   content,
+    // });
   };
   return (
     <ThemeProvider
@@ -152,7 +158,7 @@ const SubmitStory = ({ subdomain }) => {
                 </h2>
                 {websiteData.submissionForm.modules.filter((mod) => mod.enabled)
                   .length > 0 && (
-                  <div className="flex flex-col gap-6 mb-10">
+                  <form className="flex flex-col gap-2 mb-10">
                     {websiteData.submissionForm.modules
                       .filter((mod) => mod.enabled)
                       .map((mod) => (
@@ -164,7 +170,17 @@ const SubmitStory = ({ subdomain }) => {
                             onInput={(e) =>
                               setstate({ ...state, [mod.type]: e.target.value })
                             }
+                            {...register(mod.type, {
+                              required: {
+                                value: mod.required,
+                                message: `${mod.label} is required`,
+                              },
+                            })}
                           />
+
+                          {errors[mod.type] && (
+                            <FormError message={errors[mod.type].message} />
+                          )}
                           <div className="flex justify-end">
                             <StringCount
                               str={state[mod.type]}
@@ -173,14 +189,16 @@ const SubmitStory = ({ subdomain }) => {
                           </div>
                         </InputWrapper>
                       ))}
-                  </div>
+                  </form>
                 )}
 
                 <MenuBar editor={editor} />
                 <EditorContent editor={editor} className="editor" />
 
                 <div className="flex justify-end mt-6">
-                  <Button onClick={submitHandler}>Submit story</Button>
+                  <Button onClick={handleSubmit(submitHandler)}>
+                    Submit story
+                  </Button>
                 </div>
               </section>
             </main>

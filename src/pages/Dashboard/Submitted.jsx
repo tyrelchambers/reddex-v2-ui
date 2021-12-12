@@ -30,7 +30,7 @@ const Submitted = ({ user }) => {
         <div className="grid grid-cols-3 gap-3 mt-10">
           {submittedQuery.data &&
             submittedQuery.data.map((item, index) => (
-              <StyledStory className="p-4 rounded-lg">
+              <StyledStory className="p-4 rounded-lg" key={index}>
                 <p className="text-light flex items-center">
                   <FontAwesomeIcon
                     icon={faUserCircle}
