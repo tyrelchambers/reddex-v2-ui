@@ -4,8 +4,10 @@ import React from "react";
 import styled from "styled-components";
 import { H1 } from "../../../components/headings/h1";
 import { H2 } from "../../../components/headings/h2";
+import { H3 } from "../../../components/headings/H3";
 import Subtitle from "../../../components/Subtitle/Subtitle";
 import { redditUrl } from "../../../constants";
+import NotificationsForm from "../../../forms/NotificationsForm";
 import ProfileForm from "../../../forms/ProfileForm";
 import { useSearched } from "../../../hooks/useSearched";
 
@@ -34,6 +36,9 @@ const Profile = ({ user }) => {
 
       <div className="mt-10 flex flex-col gap-4">
         <H2>Recent Searches</H2>
+        {searchedQuery.data && searchedQuery.data.length === 0 && (
+          <p className="text-light text-sm">Nothing to show</p>
+        )}
         {searchedQuery.data &&
           searchedQuery.data.map((item) => (
             <div className="p-3 searches rounded-md">
@@ -46,6 +51,11 @@ const Profile = ({ user }) => {
             </div>
           ))}
       </div>
+
+      <hr className="mt-10 mb-10" />
+      <H2>Notifications</H2>
+      <H3 className="mt-8">Emails</H3>
+      <NotificationsForm />
 
       <hr className="mt-10 mb-10" />
 
