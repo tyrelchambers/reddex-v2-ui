@@ -71,7 +71,7 @@ const CustomSite = ({ subdomain }) => {
     if (website.data) {
       setThemeHandler(websiteData.theme.mode);
     }
-  }, [setThemeHandler, website.data, websiteData.theme.mode]);
+  }, [setThemeHandler, website.data, websiteData?.theme.mode]);
 
   const isYoutubeEnabled =
     websiteData &&
@@ -99,12 +99,14 @@ const CustomSite = ({ subdomain }) => {
                 />
               </div>
 
-              <section className="bio max-w-screen-sm p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-bold header">About me</h2>
-                <p className="whitespace-pre-wrap description mt-6">
-                  {websiteData.general.description}
-                </p>
-              </section>
+              {websiteData.general.description && (
+                <section className="bio max-w-screen-sm p-8 rounded-lg shadow-lg">
+                  <h2 className="text-2xl font-bold header">About me</h2>
+                  <p className="whitespace-pre-wrap description mt-6">
+                    {websiteData.general.description}
+                  </p>
+                </section>
+              )}
 
               {isYoutubeEnabled && (
                 <section className="youtube-videos mt-10">

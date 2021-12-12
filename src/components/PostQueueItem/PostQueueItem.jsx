@@ -46,7 +46,7 @@ const PostQueueItem = ({
 }) => {
   const { contactQuery } = useContacts();
   const { contactedQuery, contactedMutation } = useContacted();
-  const { storyMutation } = useStory();
+  const { storyMutation, addToUsed } = useStory();
   const contactExists =
     contactQuery.data &&
     contactQuery.data.filter((c) => c.name === post.author)[0];
@@ -94,13 +94,14 @@ const PostQueueItem = ({
 
     //   // removeHandler(post);
     // });
-    contactedMutation.mutate({
-      name: post.author,
-    });
+    // contactedMutation.mutate({
+    //   name: post.author,
+    // });
 
-    storyMutation.mutate(post);
+    // storyMutation.mutate(post);
+    addToUsed.mutate({ post_id: post.post_id });
 
-    removeHandler(post);
+    // removeHandler(post);
   };
 
   return (

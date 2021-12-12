@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { deleteStory } from "../api/deleteStory";
 import { saveStoryToUser } from "../api/saveStoryToUser";
 import { saveTagToStory } from "../api/saveTagToStory";
+import { setUsedOnStory } from "../api/setUsedOnStory";
 
 export const useStory = () => {
   const queryClient = useQueryClient();
@@ -32,9 +33,12 @@ export const useStory = () => {
     },
   });
 
+  const addToUsed = useMutation((data) => setUsedOnStory(data));
+
   return {
     storyMutation,
     deleteStoryMutation,
     addTagToStory,
+    addToUsed,
   };
 };
