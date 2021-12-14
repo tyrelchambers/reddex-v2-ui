@@ -53,11 +53,11 @@ const Profile = ({ user }) => {
       </div>
 
       <hr className="mt-10 mb-10" />
-      <H2>Notifications</H2>
+      {/* <H2>Notifications</H2>
       <H3 className="mt-8">Emails</H3>
       <NotificationsForm />
 
-      <hr className="mt-10 mb-10" />
+      <hr className="mt-10 mb-10" /> */}
 
       <section>
         <H2>Reddit Settings</H2>

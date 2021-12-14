@@ -5,6 +5,7 @@ import Greeting from "./Greeting";
 import Profile from "./Profile";
 import Recurring from "./Recurring";
 import Security from "./Security";
+import Subscription from "./Subscription";
 
 const Settings = () => {
   const { sub_page } = useParams();
@@ -14,6 +15,7 @@ const Settings = () => {
 
   return (
     <>
+      {sub_page === "subscription" && <Subscription />}
       {sub_page === "security" && <Security user={query.data} />}
       {sub_page === "greeting" && <Greeting user={query.data} />}
       {sub_page === "recurring" && <Recurring user={query.data} />}
