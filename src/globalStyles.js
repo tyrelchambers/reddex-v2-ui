@@ -18,6 +18,10 @@ export const GlobalStyles = createGlobalStyle`
   .text-light {
     color: ${({ theme }) => theme.textLight};
   }
+
+  .text-super-light {
+    color: ${({ theme }) => theme.textSuperLight};
+  }
 `;
 
 export const StyledLink = styled(Link)`

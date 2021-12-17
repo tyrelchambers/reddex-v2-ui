@@ -15,6 +15,10 @@ const routes = [
     path: "/help",
     label: "Help",
   },
+  {
+    path: "/pricing",
+    label: "Pricing",
+  },
 ];
 
 const StyledLi = styled.li`

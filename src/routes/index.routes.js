@@ -9,3 +9,4 @@ export const FORGOT_PASSWORD = "/forgot-password";
 export const LINK_REDDIT = "/link-reddit";
 export const CALLBACK_REDDIT = "/callback/reddit";
 export const CALLBACK_EMAIL = "/callback/confirm_email";
+export const PRICING = "/pricing";

@@ -13,6 +13,7 @@ import {
   INDEX,
   LINK_REDDIT,
   LOGIN,
+  PRICING,
   REGISTER,
 } from "./routes/index.routes";
 import Login from "./pages/Login/Login";
@@ -31,6 +32,7 @@ import ModalStore from "./stores/ModalStore";
 import CallbackConfirmEmail from "./pages/CallbackConfirmEmail";
 import CustomSite from "./pages/CustomSite/CustomSite";
 import SubmitStory from "./pages/CustomSite/SubmitStory";
+import Pricing from "./pages/Pricing";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +41,7 @@ const App = () => {
   // get subdomain from url and exclude www from it
   const subdomain = window.location.hostname.split(".")[0].replace("www.", "");
 
+  // custom site
   if (!excludedSubdomains.includes(subdomain)) {
     return (
       <React.StrictMode>
@@ -65,6 +68,7 @@ const App = () => {
       </React.StrictMode>
     );
   } else {
+    // production site
     return (
       <React.StrictMode>
         <QueryClientProvider client={queryClient}>
@@ -83,6 +87,7 @@ const App = () => {
                   <Route path={DASHBOARD_THIRD} element={<Index />} />
                   <Route path={LINK_REDDIT} element={<LinkReddit />} />
                   <Route path={CALLBACK_REDDIT} element={<CallbackReddit />} />
+                  <Route path={PRICING} element={<Pricing />} />
                   <Route
                     path={CALLBACK_EMAIL}
                     element={<CallbackConfirmEmail />}

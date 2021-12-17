@@ -17,6 +17,17 @@ const StyledButtonSecond = styled(StyledButton)`
   background-color: ${(props) => props.theme.backgroundSecondary};
 `;
 
+const StyledOutlinePrimary = styled(StyledButtonMain)`
+  background-color: transparent;
+  border: 2px solid ${(props) => props.theme.accentPrimary};
+  color: ${(props) => props.theme.accentPrimary};
+  transition: all 0.2s ease;
+  &:hover {
+    background-color: ${(props) => props.theme.accentPrimary};
+    color: white;
+  }
+`;
+
 StyledButton.defaultProps = {
   theme: currentTheme,
 };
@@ -69,6 +80,18 @@ const danger = (props) => (
   </StyledButton>
 );
 
+const outlinePrimary = (props) => (
+  <StyledOutlinePrimary
+    type={props.type || "button"}
+    className={` text-white  h-12 px-4 rounded-md  ${
+      props.className ? props.className : ""
+    }`}
+    onClick={props.onClick}
+  >
+    {props.children}
+  </StyledOutlinePrimary>
+);
+
 export const Button = ({ variant, ...props }) => {
   if (variant === "secondary") {
     return secondary(props);
@@ -82,5 +105,8 @@ export const Button = ({ variant, ...props }) => {
     return danger(props);
   }
 
+  if (variant === "outline-primary") {
+    return outlinePrimary(props);
+  }
   return primary(props);
 };
