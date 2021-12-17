@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-location";
 import { getRedditAccessToken } from "../api/getRedditAccessToken";
 import { getRedditProfile } from "../api/getRedditProfile";
 import { getRedditTokens } from "../api/getRedditTokens";
-import { DASHBOARD } from "../routes/index.routes";
 
 const CallbackReddit = () => {
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ const CallbackReddit = () => {
         await getRedditTokens(code);
         const { access_token } = await getRedditAccessToken();
         getRedditProfile(access_token);
-        navigate(DASHBOARD);
+        navigate({ to: "/dashboard" });
       }
     })();
   }, [navigate]);

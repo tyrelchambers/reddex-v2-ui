@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-location";
 import { toast } from "react-toastify";
 import { confirmEmail } from "../api/confirmEmail";
-import { LOGIN } from "../routes/index.routes";
 
 const CallbackConfirmEmail = () => {
   const navigate = useNavigate();
@@ -16,7 +15,7 @@ const CallbackConfirmEmail = () => {
       if (token) {
         confirmEmail({ emailToken: token }).then(() => {
           toast.success("Email confirmed successfully. You can now login!");
-          navigate(LOGIN);
+          navigate({ to: "/login" });
         });
       }
     })();

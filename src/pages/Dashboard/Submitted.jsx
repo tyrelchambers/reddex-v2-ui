@@ -11,8 +11,8 @@ import { useSubmitted } from "../../hooks/useSubmitted";
 import styled from "styled-components";
 import { averageReadingTimeWithText } from "../../utils/averageReadingTimeWithText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
 import { useSubmittedStory } from "../../hooks/useSubmittedStory";
+import { Link } from "react-location";
 
 const StyledStory = styled.div`
   border: 1.5px solid ${(props) => props.theme.border};

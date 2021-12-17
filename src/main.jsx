@@ -2,39 +2,21 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import {
-  CALLBACK_EMAIL,
-  CALLBACK_REDDIT,
-  DASHBOARD,
-  DASHBOARD_DETAIL,
-  DASHBOARD_PAGE,
-  DASHBOARD_THIRD,
-  INDEX,
-  LINK_REDDIT,
-  LOGIN,
-  PRICING,
-  REGISTER,
-} from "./routes/index.routes";
-import Login from "./pages/Login/Login";
-import Home from "./pages/Home/Home";
-import Register from "./pages/Register/Register";
 import Store from "./contexts/themeContext";
 import { TabProvider } from "./contexts/tabContext";
-import Index from "./pages/Dashboard/Index";
-import LinkReddit from "./pages/LinkReddit/LinkReddit";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { QueryClient, QueryClientProvider } from "react-query";
-import CallbackReddit from "./pages/CallbackReddit";
 import Modal from "./layouts/Modal/Modal";
 import ModalStore from "./stores/ModalStore";
-import CallbackConfirmEmail from "./pages/CallbackConfirmEmail";
 import CustomSite from "./pages/CustomSite/CustomSite";
 import SubmitStory from "./pages/CustomSite/SubmitStory";
-import Pricing from "./pages/Pricing";
+import { Outlet, ReactLocation, Router } from "react-location";
+import { routes } from "./routes/index.jsx";
 
 const queryClient = new QueryClient();
+
+const location = new ReactLocation();
 
 const App = () => {
   const excludedSubdomains = ["www", "localhost"];
@@ -49,20 +31,7 @@ const App = () => {
           <ToastContainer />
           <Store>
             <Modal ModalStore={ModalStore} />
-            <TabProvider>
-              <Router>
-                <Routes>
-                  <Route
-                    path="/"
-                    element={<CustomSite subdomain={subdomain} />}
-                  />
-                  <Route
-                    path="/submit"
-                    element={<SubmitStory subdomain={subdomain} />}
-                  />
-                </Routes>
-              </Router>
-            </TabProvider>
+            <TabProvider></TabProvider>
           </Store>
         </QueryClientProvider>
       </React.StrictMode>
@@ -76,23 +45,8 @@ const App = () => {
           <Store>
             <Modal ModalStore={ModalStore} />
             <TabProvider>
-              <Router>
-                <Routes>
-                  <Route path={LOGIN} element={<Login />} />
-                  <Route path={INDEX} element={<Home />} />
-                  <Route path={REGISTER} element={<Register />} />
-                  <Route path={DASHBOARD} element={<Index />} />
-                  <Route path={DASHBOARD_PAGE} element={<Index />} />
-                  <Route path={DASHBOARD_DETAIL} element={<Index />} />
-                  <Route path={DASHBOARD_THIRD} element={<Index />} />
-                  <Route path={LINK_REDDIT} element={<LinkReddit />} />
-                  <Route path={CALLBACK_REDDIT} element={<CallbackReddit />} />
-                  <Route path={PRICING} element={<Pricing />} />
-                  <Route
-                    path={CALLBACK_EMAIL}
-                    element={<CallbackConfirmEmail />}
-                  />
-                </Routes>
+              <Router location={location} routes={routes}>
+                <Outlet />
               </Router>
             </TabProvider>
           </Store>

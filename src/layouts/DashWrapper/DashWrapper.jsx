@@ -1,11 +1,10 @@
 import React, { useContext, useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-location";
 import { toast } from "react-toastify";
 import styled, { ThemeProvider } from "styled-components";
 import { ThemeContext } from "../../contexts/themeContext";
 import { GlobalStyles } from "../../globalStyles";
 import { useUser } from "../../hooks/useUser";
-import { LINK_REDDIT, LOGIN } from "../../routes/index.routes";
 import DashHeader from "../DashHeader/DashHeader";
 
 const StyledGrid = styled.main`
@@ -25,12 +24,12 @@ const DashWrapper = (props) => {
   useEffect(() => {
     if (query.data && !query.data.Profile.reddit_profile) {
       toast.warning("Please link your reddit account to your profile");
-      navigate(LINK_REDDIT);
+      navigate("/link-reddit");
     }
   }, [query.data, navigate]);
 
   if (!query.data) {
-    navigate(LOGIN);
+    navigate({ to: "/login" });
   }
 
   return (

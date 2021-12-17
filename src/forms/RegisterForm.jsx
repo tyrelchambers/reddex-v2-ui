@@ -5,12 +5,11 @@ import { faAt, faCheck, faKey } from "@fortawesome/pro-duotone-svg-icons";
 import Input from "../components/Input/Input";
 import { Button } from "../components/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { LOGIN } from "../routes/index.routes";
-import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import FormError from "../components/FormError/FormError";
 import { toast } from "react-toastify";
 import { useAuth } from "../hooks/useAuth";
+import { Link } from "react-location";
 
 const RegisterForm = () => {
   const [state, setState] = useState({
@@ -98,7 +97,7 @@ const RegisterForm = () => {
         <FontAwesomeIcon icon={faCheck} className="mr-2" />
         Sign up
       </Button>
-      <Link to={LOGIN} className="underline text-gray-500">
+      <Link to="/login" className="underline text-gray-500">
         Already have an account?
       </Link>
     </Form>

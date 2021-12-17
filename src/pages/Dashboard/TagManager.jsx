@@ -15,8 +15,8 @@ import { StyledLink } from "../../globalStyles";
 import { useTags } from "../../hooks/useTags";
 import Loader from "../../components/Loader/Loader";
 import { useTag } from "../../hooks/useTag";
-import { Link } from "react-router-dom";
 import EditTagForm from "../../forms/EditTagForm";
+import { Link } from "react-location";
 
 const StyledWrapper = styled.section`
   .tag {

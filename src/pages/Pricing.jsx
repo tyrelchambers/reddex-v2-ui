@@ -6,8 +6,9 @@ import { useState } from "react";
 import styled from "styled-components";
 import { useContext } from "react";
 import { ThemeContext } from "../contexts/themeContext";
-import { H2 } from "../components/headings/h2";
 import PricingCard from "../components/PricingCard/PricingCard";
+import { termPricing } from "../constants/pricing";
+import { useNavigate } from "react-location";
 
 const StyledWrapper = styled.div`
   .term-wrapper {
@@ -27,62 +28,7 @@ const StyledWrapper = styled.div`
 const Pricing = () => {
   const [term, setTerm] = useState("monthly");
   const [theme, toggleTheme, themeStyles] = useContext(ThemeContext);
-
-  const termPricing = {
-    basic: {
-      monthly: {
-        price: "10",
-        currency: "CAD",
-        term: "mon",
-      },
-      yearly: {
-        price: "110",
-        currency: "CAD",
-        term: "year",
-        benefit: "Get 1 free month",
-      },
-      features: [
-        "Customize your reading list",
-        "Unlimited reading history",
-        "Message authors",
-        "Contact list",
-        "Save personalized messages",
-        "Searchable Reddit-connected inbox",
-      ],
-      excluded: [
-        "Customizable personal website",
-        "Submission form to receive stories",
-      ],
-      bestFor: "You want organization from stories to contacts",
-    },
-    pro: {
-      monthly: {
-        price: "15",
-
-        currency: "CAD",
-        term: "mon",
-      },
-      yearly: {
-        price: "165",
-        currency: "CAD",
-        term: "year",
-        benefit: "Get 1 free month",
-      },
-      features: [
-        "Customize your reading list",
-        "Unlimited reading history",
-        "Message authors",
-        "Contact list",
-        "Save personalized messages",
-        "Searchable Reddit-connected inbox",
-        "Customizable personal website",
-        "Submission form to receive stories",
-      ],
-      bestFor:
-        "You want organization with a custom website and to receive submissions",
-    },
-  };
-
+  const navigate = useNavigate();
   const basicPlan = termPricing["basic"];
   const proPlan = termPricing["pro"];
 
@@ -128,6 +74,7 @@ const Pricing = () => {
               plan={basicPlan}
               label="Basic"
               term={termPricing["basic"][term]}
+              clickHandler={() => navigate({ to: `/register?plan=basic` })}
             />
 
             <PricingCard
@@ -135,6 +82,7 @@ const Pricing = () => {
               label="Pro"
               term={termPricing["pro"][term]}
               recommended
+              clickHandler={() => navigate({ to: `/register?plan=pro` })}
             />
           </section>
         </main>

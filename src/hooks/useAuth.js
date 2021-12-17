@@ -2,8 +2,7 @@ import { useMutation, useQueryClient } from "react-query";
 import { login } from "../api/login";
 import { register } from "../api/register";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router";
-import { LINK_REDDIT } from "../routes/index.routes";
+import { useNavigate } from "react-location";
 
 export const useAuth = () => {
   const queryClient = useQueryClient();
@@ -18,14 +17,14 @@ export const useAuth = () => {
       }
 
       if (!data.user.Profile.reddit_profile) {
-        return navigate(LINK_REDDIT);
+        return navigate({ to: "/link-reddit" });
       }
 
       toast.success("Logged in");
       localStorage.setItem("token", data.token);
 
       queryClient.setQueryData("currentUser", data.user);
-      navigate("/dashboard/reading_list/approved");
+      navigate({ to: "/dashboard/reading_list/approved" });
     },
   });
 

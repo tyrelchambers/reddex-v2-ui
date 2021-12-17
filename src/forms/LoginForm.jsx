@@ -5,8 +5,6 @@ import {
 } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { FORGOT_PASSWORD, REGISTER } from "../routes/index.routes";
 import { Button } from "../components/Button/Button";
 import Input from "../components/Input/Input";
 import InputWrapper from "../components/InputWrapper/InputWrapper";
@@ -14,6 +12,7 @@ import Form from "./Form";
 import { useAuth } from "../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import FormError from "../components/FormError/FormError";
+import { Link } from "react-location";
 
 const LoginForm = () => {
   const [state, setState] = useState({
@@ -83,10 +82,10 @@ const LoginForm = () => {
         <p className="subtitle">Remember me</p>
       </div>
 
-      <Link to={REGISTER} className="underline text-gray-500 ">
+      <Link to="/register" className="underline text-gray-500 ">
         Don't have an account?
       </Link>
-      <Link to={FORGOT_PASSWORD} className="underline text-gray-500">
+      <Link to="/forgot-password" className="underline text-gray-500">
         Forgot your password?
       </Link>
     </Form>

@@ -45,8 +45,7 @@ const StyledWrapper = styled.div`
   `}
 `;
 
-const PricingCard = ({ plan, label, recommended, term }) => {
-  console.log(recommended);
+const PricingCard = ({ plan, label, recommended, term, clickHandler }) => {
   return (
     <StyledWrapper
       className={`pricing-card flex flex-col p-6 rounded-lg ${
@@ -91,14 +90,19 @@ const PricingCard = ({ plan, label, recommended, term }) => {
       </ul>
       <footer className="mt-10 flex flex-col  text-light">
         <div className="flex items-baseline">
-          <span className="text-3xl font-bold ">${term.price}</span>/{term.term}
+          <span className="text-3xl font-bold text ">${term.price}</span>/
+          {term.term}
         </div>
         {term.benefit && (
           <p className="bg-green-50 text-green-700 p-2 rounded-lg px-4 mt-4 font-medium">
             <FontAwesomeIcon icon={faBolt} className="mr-2 " /> {term.benefit}
           </p>
         )}
-        <Button className="cta mt-8" variant="outline-primary">
+        <Button
+          className="cta mt-8"
+          variant="outline-primary"
+          onClick={clickHandler}
+        >
           Go {label}
         </Button>
       </footer>

@@ -4,10 +4,10 @@ import {
 } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { getLastReplyDate } from "../../utils/getLastReplyDate";
 import { getLastReply } from "../../utils/getLastReply";
+import { Link } from "react-location";
 
 const StyledWrapper = styled.section`
   min-height: 170px;

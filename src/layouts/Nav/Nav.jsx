@@ -1,7 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-location";
 import styled from "styled-components";
-import { LOGIN } from "../../routes/index.routes";
 const routes = [
   {
     path: "/",
@@ -44,7 +43,7 @@ const Nav = () => {
           <StyledLi>
             <Link
               className=" opacity-70 hover:opacity-100 transition-all "
-              to={LOGIN}
+              to="/login"
             >
               Login
             </Link>
