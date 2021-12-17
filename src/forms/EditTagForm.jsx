@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
 import { Button } from "../components/Button/Button";
 import InputWrapper from "../components/InputWrapper/InputWrapper";
 import { useTag } from "../hooks/useTag";

@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router";
 import { useRedditMessage } from "../../hooks/useRedditMessage";
 import { useTokens } from "../../hooks/useTokens";
 import Loader from "../Loader/Loader";

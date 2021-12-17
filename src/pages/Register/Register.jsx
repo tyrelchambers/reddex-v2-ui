@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import { H1 } from "../../components/headings/h1";
 import RegisterForm from "../../forms/RegisterForm";
 import Wrapper from "../../layouts/Wrapper/Wrapper";

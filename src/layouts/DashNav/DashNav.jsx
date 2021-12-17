@@ -1,7 +1,7 @@
 import { faArrowUpLeftFromCircle } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-location";
 import styled from "styled-components";
 import Collapsable from "../../components/Collapsable/Collapsable";
 import { nav } from "../../routes/dashboard.routes";

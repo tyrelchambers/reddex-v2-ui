@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router";
 import { useUser } from "../../../hooks/useUser";
 import Greeting from "./Greeting";
 import Profile from "./Profile";

@@ -9,7 +9,6 @@ import Subtitle from "../../components/Subtitle/Subtitle";
 import { useRedditInbox } from "../../hooks/useRedditInbox";
 import { useTokens } from "../../hooks/useTokens";
 import Loader from "../../components/Loader/Loader";
-import { useParams } from "react-router";
 import InboxItem from "../../components/InboxItem/InboxItem";
 import { useUser } from "../../hooks/useUser";
 import { useRedditInboxSearch } from "../../hooks/useRedditInboxSearch";

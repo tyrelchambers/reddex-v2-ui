@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router";
 import DashWrapper from "../../layouts/DashWrapper/DashWrapper";
 import Settings from "./Settings/Settings";
 import Contacts from "./Contacts";

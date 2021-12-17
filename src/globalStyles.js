@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link } from "react-location";
 
 export const GlobalStyles = createGlobalStyle`
   body {

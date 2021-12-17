@@ -1,5 +1,4 @@
 import React from "react";
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { H1 } from "../components/headings/h1";
 import Loader from "../components/Loader/Loader";

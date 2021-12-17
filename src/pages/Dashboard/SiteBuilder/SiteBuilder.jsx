@@ -1,5 +1,4 @@
 import React, { useEffect, useReducer, useState } from "react";
-import { useParams } from "react-router";
 import { H1 } from "../../../components/headings/h1";
 import RToggle from "../../../components/RToggle/RToggle";
 import Subtitle from "../../../components/Subtitle/Subtitle";
