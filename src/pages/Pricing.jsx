@@ -109,7 +109,7 @@ const Pricing = () => {
               Monthly
             </button>
             <button
-              className={`term-button p-2 rounded-md px-4 ${
+              className={`term-button p-2 rounded-full px-4 ${
                 term === "yearly" && "is-active"
               }`}
               onClick={() => termHandler("yearly")}
@@ -118,7 +118,12 @@ const Pricing = () => {
             </button>
           </div>
 
-          <section className="grid grid-cols-2 max-w-3xl w-full mt-20 gap-6 mb-20">
+          <p className="mt-10  text-accent-primary text-2xl">
+            All plans come with a <span className="font-bold">7 day free</span>{" "}
+            trial!
+          </p>
+
+          <section className="grid grid-cols-2 max-w-3xl w-full mt-10 gap-6 mb-20">
             <PricingCard
               plan={basicPlan}
               label="Basic"
