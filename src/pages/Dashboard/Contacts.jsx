@@ -12,7 +12,6 @@ import { useContacts } from "../../hooks/useContacts";
 
 const Contacts = () => {
   const { contactQuery } = useContacts();
-  const { sub_page } = useParams();
 
   return (
     <section>

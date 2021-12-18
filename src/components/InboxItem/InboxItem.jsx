@@ -17,6 +17,7 @@ import {
 import { isInReadingList } from "../../utils/isInReadingList";
 import Chat from "../Chat/Chat";
 import { useInbox } from "../../hooks/useInbox";
+import { useMatch } from "react-location";
 
 const StyledWrapper = styled.section`
   .text {
@@ -44,12 +45,14 @@ const StyledWrapper = styled.section`
 `;
 
 const InboxItem = () => {
-  const { sub_page } = useParams();
+  const {
+    params: { messageId },
+  } = useMatch();
   const { redditAccessToken } = useTokens();
   const { query } = useUser();
   const access_token = redditAccessToken.data?.access_token;
   const { redditMessage } = useRedditMessage({
-    id: sub_page,
+    id: messageId,
     access_token: access_token,
   });
   const { approvedList, saveToApproved } = useReadingList();

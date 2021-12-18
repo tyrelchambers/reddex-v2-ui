@@ -11,12 +11,14 @@ import Timelines from "./Timelines";
 import { initialState } from "../../../constants/website";
 import { isObjectDifferent } from "../../../utils/isObjectDifferent";
 import { useWebsite } from "../../../hooks/useWebsite";
+import { useRouter } from "react-location";
 
 const SiteBuilder = () => {
-  const { sub_page } = useParams();
   const { websiteQuery, updateWebsiteMutation } = useWebsite();
   const [state, dispatch] = useReducer(websiteReducer, initialState);
   const [isChanged, setIsChanged] = useState(false);
+  const router = useRouter();
+  const activeRoute = router.state.location.pathname;
 
   useEffect(() => {
     if (websiteQuery.data?.config) {
@@ -82,10 +84,12 @@ const SiteBuilder = () => {
       <hr className="mt-10 mb-10" />
 
       <main className="mt-10 max-w-xl">
-        {sub_page === "general" && <General {...props} />}
-        {sub_page === "colour" && <Colour {...props} />}
-        {sub_page === "submission_forms" && <SubmissionForms {...props} />}
-        {sub_page === "timelines" && <Timelines {...props} />}
+        {activeRoute.includes("general") && <General {...props} />}
+        {activeRoute.includes("colour") && <Colour {...props} />}
+        {activeRoute.includes("submission_forms") && (
+          <SubmissionForms {...props} />
+        )}
+        {activeRoute.includes("timelines") && <Timelines {...props} />}
       </main>
     </section>
   );

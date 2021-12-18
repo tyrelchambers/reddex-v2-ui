@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "react-location";
 import { useUser } from "../../../hooks/useUser";
 import Greeting from "./Greeting";
 import Profile from "./Profile";
@@ -7,18 +8,19 @@ import Security from "./Security";
 import Subscription from "./Subscription";
 
 const Settings = () => {
-  const { sub_page } = useParams();
   const { query } = useUser();
+  const router = useRouter();
+  const activeRoute = router.state.location.pathname;
 
   if (!query.data) return null;
 
   return (
     <>
-      {sub_page === "subscription" && <Subscription />}
-      {sub_page === "security" && <Security user={query.data} />}
-      {sub_page === "greeting" && <Greeting user={query.data} />}
-      {sub_page === "recurring" && <Recurring user={query.data} />}
-      {sub_page === "profile" && <Profile user={query.data} />}
+      {activeRoute.includes("subscription") && <Subscription />}
+      {activeRoute.includes("security") && <Security user={query.data} />}
+      {activeRoute.includes("greeting") && <Greeting user={query.data} />}
+      {activeRoute.includes("recurring") && <Recurring user={query.data} />}
+      {activeRoute.includes("profile") && <Profile user={query.data} />}
     </>
   );
 };

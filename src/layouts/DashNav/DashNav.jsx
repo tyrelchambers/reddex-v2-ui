@@ -22,7 +22,6 @@ const StyledHeader = styled(Link)`
 `;
 
 const DashNav = () => {
-  // const { page, sub_page } = useParams();
   const router = useRouter();
   const activeRoute = router.state.location.pathname;
 

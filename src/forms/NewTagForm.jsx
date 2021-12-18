@@ -6,6 +6,7 @@ import { Button } from "../components/Button/Button";
 import { useTag } from "../hooks/useTag";
 import RSelect from "../components/RSelect/RSelect";
 import { useReadingList } from "../hooks/useReadingList";
+import { H2 } from "../components/headings/h2";
 
 const NewTagForm = () => {
   const { saveTagMutation } = useTag();
@@ -32,7 +33,8 @@ const NewTagForm = () => {
     }));
 
   return (
-    <Form>
+    <Form className="max-w-md mt-10">
+      <H2>Create a new tag</H2>
       <InputWrapper label="Name" htmlFor="name">
         <Input
           placeholder="A name for your tag"

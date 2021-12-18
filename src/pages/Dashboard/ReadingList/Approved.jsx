@@ -17,6 +17,7 @@ import {
 } from "@fortawesome/pro-duotone-svg-icons";
 import ImportStory from "../../../components/ImportStory/ImportStory";
 import { observer } from "mobx-react-lite";
+import { useUser } from "../../../hooks/useUser";
 
 const StyledWrapper = styled.section`
   .active-filter {
@@ -24,10 +25,13 @@ const StyledWrapper = styled.section`
   }
 `;
 
-const Approved = observer(({ user, ModalStore }) => {
+const Approved = observer(({ ModalStore }) => {
   const { approvedList, transferToCompleted } = useReadingList();
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState([]);
+  const { query } = useUser();
+
+  const user = query.data;
 
   useEffect(() => {
     if (approvedList.data) {

@@ -28,10 +28,6 @@ const DashWrapper = (props) => {
     }
   }, [query.data, navigate]);
 
-  if (!query.data) {
-    navigate({ to: "/login" });
-  }
-
   return (
     <ThemeProvider
       theme={themeStyles}

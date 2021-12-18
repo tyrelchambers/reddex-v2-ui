@@ -7,10 +7,15 @@ import Input from "../components/Input/Input";
 import { useReadingList } from "../hooks/useReadingList";
 import RSelect from "../components/RSelect/RSelect";
 import Loader from "../components/Loader/Loader";
-const EditNewTagForm = () => {
-  const { third_page } = useParams();
+import { useMatch } from "react-location";
+import { H2 } from "../components/headings/h2";
+
+const EditTagForm = () => {
+  const {
+    params: { tagId },
+  } = useMatch();
   const [state, setState] = useState("");
-  const { updateTagMutation, tagQuery } = useTag(third_page);
+  const { updateTagMutation, tagQuery } = useTag(tagId);
   const { approvedList } = useReadingList();
   const [attachedStories, setAttachedStories] = useState([]);
 
@@ -19,7 +24,7 @@ const EditNewTagForm = () => {
       setState({ ...tagQuery.data });
       setAttachedStories(tagQuery.data.stories);
     }
-  }, [third_page, tagQuery.data]);
+  }, [tagId, tagQuery.data]);
 
   const submitHandler = () => {
     updateTagMutation.mutate({
@@ -37,10 +42,13 @@ const EditNewTagForm = () => {
     }));
 
   return (
-    <Form>
+    <Form className="max-w-md mt-10">
       {tagQuery.isLoading && <Loader />}
       {tagQuery.data && (
         <>
+          <H2>
+            Edit tag - <span className="text-accent-primary">{state.tag}</span>
+          </H2>
           <InputWrapper label="Name" htmlFor="name">
             <Input
               placeholder="A name for your tag"
@@ -72,4 +80,4 @@ const EditNewTagForm = () => {
   );
 };
 
-export default EditNewTagForm;
+export default EditTagForm;

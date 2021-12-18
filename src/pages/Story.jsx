@@ -11,8 +11,6 @@ const StyledDiv = styled.div`
 `;
 
 const Story = () => {
-  const { sub_page } = useParams();
-
   const { submittedStory } = useSubmittedStory(sub_page);
 
   return (
