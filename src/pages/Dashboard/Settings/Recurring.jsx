@@ -2,8 +2,12 @@ import React from "react";
 import { H1 } from "../../../components/headings/h1";
 import Subtitle from "../../../components/Subtitle/Subtitle";
 import RecurringForm from "../../../forms/RecurringForm";
+import { useUser } from "../../../hooks/useUser";
 
-const Recurring = ({ user }) => {
+const Recurring = () => {
+  const {
+    query: { data: user },
+  } = useUser();
   return (
     <section className="max-w-xl">
       <H1>Recurring Message</H1>

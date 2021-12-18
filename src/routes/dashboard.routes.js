@@ -73,23 +73,23 @@ export const nav = [
   {
     label: "Site Builder",
     icon: faHammer,
-    value: "site_builder",
+    value: "site-builder",
     children: [
       {
         label: "General Settings",
-        slug: "/site_builder/general",
+        slug: "/site-builder/general",
       },
       {
         label: "Colour Theme",
-        slug: "/site_builder/colour",
+        slug: "/site-builder/colour",
       },
       {
         label: "Submission Form",
-        slug: "/site_builder/submission_forms",
+        slug: "/site-builder/submission-forms",
       },
       {
         label: "Timelines",
-        slug: "/site_builder/timelines",
+        slug: "/site-builder/timelines",
       },
     ],
   },

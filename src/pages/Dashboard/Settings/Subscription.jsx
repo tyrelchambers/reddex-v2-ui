@@ -7,7 +7,6 @@ import { useSubscription } from "../../../hooks/useSubscription";
 
 const Subscription = () => {
   const { subscription } = useSubscription();
-  console.log(subscription);
   return (
     <div>
       <H1>Subscription</H1>

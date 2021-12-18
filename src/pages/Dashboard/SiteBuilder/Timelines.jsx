@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import EnabledWarning from "../../../components/EnabledWarning/EnabledWarning";
 import { H2 } from "../../../components/headings/h2";
+import { WebsiteContext } from "../../../contexts/websiteContext";
 import SiteBuilderTimelinesForm from "../../../forms/SiteBuilderTimelinesForm";
 
-const Timelines = (props) => {
-  if (!props.state.enabled) {
+const Timelines = () => {
+  const [state, dispatch] = useContext(WebsiteContext);
+
+  if (!state.enabled) {
     return <EnabledWarning />;
   }
 
   return (
     <div>
       <H2>Timelines</H2>
-      <SiteBuilderTimelinesForm {...props} />
+      <SiteBuilderTimelinesForm state={state} dispatch={dispatch} />
     </div>
   );
 };

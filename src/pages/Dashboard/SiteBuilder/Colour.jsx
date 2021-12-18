@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import EnabledWarning from "../../../components/EnabledWarning/EnabledWarning";
+import { WebsiteContext } from "../../../contexts/websiteContext";
 import SiteBuilderColorForm from "../../../forms/SiteBuilderColorForm";
 
-const Colour = (props) => {
-  if (!props.state.enabled) {
+const Colour = () => {
+  const [state, dispatch] = useContext(WebsiteContext);
+
+  if (!state.enabled) {
     return <EnabledWarning />;
   }
-  return <SiteBuilderColorForm {...props} />;
+  return <SiteBuilderColorForm state={state} dispatch={dispatch} />;
 };
 
 export default Colour;

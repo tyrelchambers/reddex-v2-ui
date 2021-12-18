@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useReducer } from "react";
 import styled from "styled-components";
 import SiteBuilderGeneralForm from "../../../forms/SiteBuilderGeneralForm";
 import { H2 } from "../../../components/headings/h2";
@@ -7,6 +7,7 @@ import SiteBuilderSocialForm from "../../../forms/SiteBuilderSocialForm";
 import Form from "../../../forms/Form";
 import { Button } from "../../../components/Button/Button";
 import EnabledWarning from "../../../components/EnabledWarning/EnabledWarning";
+import { WebsiteContext } from "../../../contexts/websiteContext";
 
 const StyledWrapper = styled.section`
   .text {
@@ -14,13 +15,15 @@ const StyledWrapper = styled.section`
   }
 `;
 
-const General = (props) => {
-  if (!props.state.enabled) {
+const General = () => {
+  const [state, dispatch] = useContext(WebsiteContext);
+
+  if (!state.enabled) {
     return <EnabledWarning />;
   }
   return (
     <StyledWrapper>
-      <SiteBuilderGeneralForm {...props} />
+      <SiteBuilderGeneralForm state={state} dispatch={dispatch} />
       <hr className="mt-10 mb-10" />
       <H2>Social Media</H2>
       <Subtitle>
@@ -29,7 +32,7 @@ const General = (props) => {
         blank.
       </Subtitle>
       <div className="mt-10">
-        <SiteBuilderSocialForm {...props} />
+        <SiteBuilderSocialForm state={state} dispatch={dispatch} />
       </div>
       <hr className="mt-10 mb-10" />
       <H2 className="mt-10">Danger Zone</H2>

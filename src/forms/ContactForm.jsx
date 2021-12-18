@@ -7,6 +7,7 @@ import { Button } from "../components/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFloppyDisk } from "@fortawesome/free-solid-svg-icons";
 import { useContacts } from "../hooks/useContacts";
+import { H2 } from "../components/headings/h2";
 
 const ContactForm = () => {
   const { contactMutation } = useContacts();
@@ -25,7 +26,8 @@ const ContactForm = () => {
     contactMutation.mutate(state);
   };
   return (
-    <Form>
+    <Form className="max-w-md mt-10">
+      <H2>Create new contact</H2>
       <InputWrapper label="Name" htmlFor="name">
         <Input
           placeholder="John Smith"

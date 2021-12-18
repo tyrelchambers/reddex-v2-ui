@@ -23,7 +23,7 @@ const Index = () => {
       {activeRoute.includes("tags") && <TagManager />}
       {activeRoute.includes("contacts") && <Contacts />}
       {activeRoute.includes("settings") && <Settings />}
-      {activeRoute.includes("site_builder") && <SiteBuilder />}
+      {activeRoute.includes("site-builder") && <SiteBuilder />}
       {activeRoute.includes("story") && <Story />} */}
       <Outlet />
     </DashWrapper>

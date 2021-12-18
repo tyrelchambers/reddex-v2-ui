@@ -10,6 +10,7 @@ import { redditUrl } from "../../../constants";
 import NotificationsForm from "../../../forms/NotificationsForm";
 import ProfileForm from "../../../forms/ProfileForm";
 import { useSearched } from "../../../hooks/useSearched";
+import { useUser } from "../../../hooks/useUser";
 
 const StyledLink = styled.a`
   background-color: ${(props) => props.theme.backgroundSecondary};
@@ -26,9 +27,11 @@ const StyledWrapper = styled.section`
   }
 `;
 
-const Profile = ({ user }) => {
+const Profile = () => {
   const { searchedQuery, deleteSearch } = useSearched();
-
+  const {
+    query: { data: user },
+  } = useUser();
   return (
     <StyledWrapper className="max-w-lg">
       <H1>Profile</H1>

@@ -5,14 +5,19 @@ import ChangeEmailForm from "../../../forms/ChangeEmailForm";
 import ChangePasswordForm from "../../../forms/ChangePasswordForm";
 import { H2 } from "../../../components/headings/h2";
 import { Button } from "../../../components/Button/Button";
+import { useUser } from "../../../hooks/useUser";
 
 const Security = () => {
+  const {
+    query: { data: user },
+  } = useUser();
+
   return (
     <>
       <H1>Security</H1>
 
       <main className="mt-10 max-w-xl">
-        <ChangeEmailForm />
+        <ChangeEmailForm user={user} />
         <hr className="mt-10 mb-10" />
         <ChangePasswordForm />
 

@@ -1,24 +1,17 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { H1 } from "../../../components/headings/h1";
 import RToggle from "../../../components/RToggle/RToggle";
 import Subtitle from "../../../components/Subtitle/Subtitle";
 import WebsiteSaveBanner from "../../../components/WebsiteSaveBanner/WebsiteSaveBanner";
-import { websiteReducer } from "../../../reducers/websiteReducer";
-import Colour from "./Colour";
-import General from "./General";
-import SubmissionForms from "./SubmissionForms";
-import Timelines from "./Timelines";
-import { initialState } from "../../../constants/website";
 import { isObjectDifferent } from "../../../utils/isObjectDifferent";
 import { useWebsite } from "../../../hooks/useWebsite";
-import { useRouter } from "react-location";
+import { Outlet } from "react-location";
+import { WebsiteContext } from "../../../contexts/websiteContext";
 
 const SiteBuilder = () => {
   const { websiteQuery, updateWebsiteMutation } = useWebsite();
-  const [state, dispatch] = useReducer(websiteReducer, initialState);
+  const [state, dispatch] = useContext(WebsiteContext);
   const [isChanged, setIsChanged] = useState(false);
-  const router = useRouter();
-  const activeRoute = router.state.location.pathname;
 
   useEffect(() => {
     if (websiteQuery.data?.config) {
@@ -35,11 +28,6 @@ const SiteBuilder = () => {
 
   const reset = () => {
     dispatch({ type: "RESET", payload: websiteQuery.data.config });
-  };
-
-  const props = {
-    state,
-    dispatch,
   };
 
   const saveHandler = () => {
@@ -64,7 +52,7 @@ const SiteBuilder = () => {
       <hr className="mt-10 mb-10" />
       <div className="flex mb-2">
         <RToggle
-          name="timelines"
+          name="enabled"
           className="mr-4 flex items-center"
           checked={state.enabled}
           onChange={(e) =>
@@ -84,12 +72,7 @@ const SiteBuilder = () => {
       <hr className="mt-10 mb-10" />
 
       <main className="mt-10 max-w-xl">
-        {activeRoute.includes("general") && <General {...props} />}
-        {activeRoute.includes("colour") && <Colour {...props} />}
-        {activeRoute.includes("submission_forms") && (
-          <SubmissionForms {...props} />
-        )}
-        {activeRoute.includes("timelines") && <Timelines {...props} />}
+        <Outlet />
       </main>
     </section>
   );

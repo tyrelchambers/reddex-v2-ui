@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import EnabledWarning from "../../../components/EnabledWarning/EnabledWarning";
 import { H2 } from "../../../components/headings/h2";
+import { WebsiteContext } from "../../../contexts/websiteContext";
 import SiteBuilderSubmissonForm from "../../../forms/SiteBuilderSubmissonForm";
 
 const StyledWrapper = styled.section`
@@ -14,14 +15,16 @@ const StyledWrapper = styled.section`
   }
 `;
 
-const SubmissionForms = (props) => {
-  if (!props.state.enabled) {
+const SubmissionForms = () => {
+  const [state, dispatch] = useContext(WebsiteContext);
+
+  if (!state.enabled) {
     return <EnabledWarning />;
   }
   return (
     <StyledWrapper>
       <H2>Submission Form</H2>
-      <SiteBuilderSubmissonForm {...props} />
+      <SiteBuilderSubmissonForm state={state} dispatch={dispatch} />
     </StyledWrapper>
   );
 };

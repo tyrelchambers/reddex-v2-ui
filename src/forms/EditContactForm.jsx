@@ -7,9 +7,13 @@ import Input from "../components/Input/Input";
 import Textarea from "../components/Textarea/Textarea";
 import { Button } from "../components/Button/Button";
 import Loader from "../components/Loader/Loader";
+import { useMatch } from "react-location";
 
 const EditContactForm = () => {
-  const { contact, updateContact } = useContact({ uuid: third_page });
+  const {
+    params: { contactId },
+  } = useMatch();
+  const { contact, updateContact } = useContact({ uuid: contactId });
 
   const [state, setstate] = useState({
     name: "",
@@ -20,7 +24,7 @@ const EditContactForm = () => {
     if (contact.data) {
       setstate({ ...contact.data });
     }
-  }, [third_page, contact.data]);
+  }, [contactId, contact.data]);
 
   const submitHandler = () => {
     updateContact.mutate(state);
@@ -29,7 +33,7 @@ const EditContactForm = () => {
   return !contact.data ? (
     <Loader />
   ) : (
-    <Form>
+    <Form className="max-w-md mt-10">
       <H2>
         Edit Contact -{" "}
         <span className="text-accent-primary">{contact.data.name}</span>

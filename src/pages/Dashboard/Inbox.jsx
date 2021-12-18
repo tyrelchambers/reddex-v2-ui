@@ -38,9 +38,6 @@ const Inbox = () => {
   const { query } = useUser();
 
   const params = useMatch();
-  console.log(params);
-
-  const sub_page = false;
 
   return (
     <StyledWrapper>

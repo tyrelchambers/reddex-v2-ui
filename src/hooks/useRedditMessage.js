@@ -12,6 +12,7 @@ export const useRedditMessage = ({ id, access_token }) => {
       },
       staleTime: 1000 * 60 * 60,
       keepPreviousData: true,
+      retry: 2,
     }
   );
   return {

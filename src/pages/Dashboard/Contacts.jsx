@@ -1,18 +1,13 @@
 import { faCirclePlus, faSearch } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import Contact from "../../components/Contact/Contact";
+import { Outlet } from "react-location";
 import { H1 } from "../../components/headings/h1";
 import Input from "../../components/Input/Input";
 import Subtitle from "../../components/Subtitle/Subtitle";
-import ContactForm from "../../forms/ContactForm";
-import EditContactForm from "../../forms/EditContactForm";
 import { StyledLink } from "../../globalStyles";
-import { useContacts } from "../../hooks/useContacts";
 
 const Contacts = () => {
-  const { contactQuery } = useContacts();
-
   return (
     <section>
       <div className="flex gap-4  w-full">
@@ -29,27 +24,7 @@ const Contacts = () => {
           Create contacts in order to keep track of people you've contacted.
         </Subtitle>
 
-        {!sub_page && (
-          <div className="grid grid-cols-3 mt-10 gap-6">
-            {contactQuery.data &&
-              contactQuery.data.length > 0 &&
-              contactQuery.data.map((contact, index) => (
-                <Contact key={index} contact={contact} />
-              ))}
-          </div>
-        )}
-
-        {sub_page === "edit" && (
-          <section className="max-w-md mt-10">
-            <EditContactForm />
-          </section>
-        )}
-
-        {sub_page === "save" && (
-          <section className="max-w-md mt-10">
-            <ContactForm />
-          </section>
-        )}
+        <Outlet />
       </main>
     </section>
   );
