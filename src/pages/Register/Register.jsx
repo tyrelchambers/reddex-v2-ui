@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate, useSearch } from "react-location";
+import { toast } from "react-toastify";
 import { H1 } from "../../components/headings/h1";
 import RegisterForm from "../../forms/RegisterForm";
 import Wrapper from "../../layouts/Wrapper/Wrapper";
+
 const Register = () => {
-  const { plan } = useParams();
+  const { plan } = useSearch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!plan) {
+      toast.warn("Please select a plan");
+      return navigate({ to: "/pricing", replace: true });
+    }
+  }, [plan, navigate]);
 
   return (
     <Wrapper>
@@ -12,7 +23,7 @@ const Register = () => {
           It'll be nice to have you onboard!
         </H1>
         <div className="w-full max-w-md mt-10">
-          <RegisterForm />
+          <RegisterForm plan={plan} />
         </div>
       </main>
     </Wrapper>

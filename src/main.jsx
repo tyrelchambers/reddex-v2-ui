@@ -13,6 +13,7 @@ import CustomSite from "./pages/CustomSite/CustomSite";
 import SubmitStory from "./pages/CustomSite/SubmitStory";
 import { Outlet, ReactLocation, Router } from "react-location";
 import { routes } from "./routes/index.jsx";
+import { ReactLocationDevtools } from "react-location-devtools";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,7 @@ const App = () => {
             <TabProvider>
               <Router location={location} routes={routes}>
                 <Outlet />
+                <ReactLocationDevtools initialIsOpen={false} />
               </Router>
             </TabProvider>
           </Store>

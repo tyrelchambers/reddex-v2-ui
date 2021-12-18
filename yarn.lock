@@ -2221,7 +2221,18 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   "version" "17.0.2"
 
-"react-location@^3.3.0":
+"react-location-devtools@^3.3.0":
+  "integrity" "sha512-o7wEmW7yrB2T66rDN80eQs6tZ+dgNoiZTbCtK2Hku85JQn1wMlR9T83gGBv4zW8bcUz87h0oiG9DEv587zAG/Q=="
+  "resolved" "https://registry.npmjs.org/react-location-devtools/-/react-location-devtools-3.3.0.tgz"
+  "version" "3.3.0"
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    "core-js" "^3.18.3"
+    "fast-async" "7"
+    "react-location" "3.3.0"
+    "ts-toolbelt" "^9.6.0"
+
+"react-location@^3.3.0", "react-location@3.3.0":
   "integrity" "sha512-0ME2sVcldYcTGB4DxbD+00wuXHY9NeACjhub3+MKOsBxnTSMQ5P2XWZZwql5IyL9Fj9IL1CjdUnoT4hCL1bCCQ=="
   "resolved" "https://registry.npmjs.org/react-location/-/react-location-3.3.0.tgz"
   "version" "3.3.0"

@@ -1,15 +1,11 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-location";
+import { useNavigate, useSearch } from "react-location";
 import { toast } from "react-toastify";
 import { confirmEmail } from "../api/confirmEmail";
 
 const CallbackConfirmEmail = () => {
   const navigate = useNavigate();
-  const param = new URLSearchParams(window.location.search);
-  const token = param.get("token");
-
-  // const { confirmEmailQuery } = useUser({ emailToken: token });
-
+  const { token } = useSearch();
   useEffect(() => {
     (async () => {
       if (token) {

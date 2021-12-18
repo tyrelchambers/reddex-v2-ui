@@ -1,7 +1,7 @@
 import { faArrowUpLeftFromCircle } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-location";
+import { Link, useRouter } from "react-location";
 import styled from "styled-components";
 import Collapsable from "../../components/Collapsable/Collapsable";
 import { nav } from "../../routes/dashboard.routes";
@@ -22,7 +22,9 @@ const StyledHeader = styled(Link)`
 `;
 
 const DashNav = () => {
-  const { page, sub_page } = useParams();
+  // const { page, sub_page } = useParams();
+  const router = useRouter();
+  const activeRoute = router.state.location.pathname;
 
   return (
     <nav className="mt-10">
@@ -32,7 +34,7 @@ const DashNav = () => {
             {item.slug ? (
               <StyledHeader
                 to={`/dashboard${item.slug}`}
-                isActive={page === item.slug.replace("/", "")}
+                isActive={activeRoute.includes(item.slug.replace("/", ""))}
               >
                 <div className="header py-2 px-4 gap-4 flex items-center font-bold">
                   <FontAwesomeIcon icon={item.icon} />
@@ -42,7 +44,7 @@ const DashNav = () => {
             ) : (
               <Collapsable
                 isNav
-                isActive={page === item.value}
+                isActive={activeRoute.includes(item.value)}
                 header={
                   <>
                     <FontAwesomeIcon icon={item.icon} className=" mr-4" />
@@ -51,15 +53,12 @@ const DashNav = () => {
                 }
               >
                 {item.children.map((item) => {
-                  const url = item.slug.split("/").slice(1, 3);
-                  const isActive = url[0] === page && url[1] === sub_page;
-
                   return (
                     <StyledLink
                       to={`/dashboard${item.slug}`}
                       key={item.slug}
                       className="p-3 text-sm "
-                      isActive={isActive}
+                      isActive={activeRoute.includes(item.slug)}
                     >
                       {item.label}
                     </StyledLink>

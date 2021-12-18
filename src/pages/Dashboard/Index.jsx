@@ -10,9 +10,11 @@ import TagManager from "./TagManager";
 import ModalStore from "../../stores/ModalStore";
 import { useUser } from "../../hooks/useUser";
 import Story from "../Story";
+import { useMatch } from "react-location";
 
 const Index = () => {
-  const { page } = useParams();
+  const page = useMatch();
+
   const { query } = useUser();
   const user = query.data;
   return (

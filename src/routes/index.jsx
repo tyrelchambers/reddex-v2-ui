@@ -11,6 +11,7 @@
 // export const CALLBACK_EMAIL = "/callback/confirm_email";
 // export const PRICING = "/pricing";
 
+import { Navigate } from "react-location";
 import CallbackConfirmEmail from "../pages/CallbackConfirmEmail";
 import CallbackReddit from "../pages/CallbackReddit";
 import Index from "../pages/Dashboard/Index";
@@ -38,7 +39,7 @@ export const routes = [
     element: <Index />,
     children: [
       {
-        path: "/:page/:sub_page/:third_page",
+        path: "/reading_list",
       },
     ],
   },

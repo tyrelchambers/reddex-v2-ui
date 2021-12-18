@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-location";
+import { useNavigate, useSearch } from "react-location";
 import { getRedditAccessToken } from "../api/getRedditAccessToken";
 import { getRedditProfile } from "../api/getRedditProfile";
 import { getRedditTokens } from "../api/getRedditTokens";
 
 const CallbackReddit = () => {
   const navigate = useNavigate();
+  const { code } = useSearch();
 
   useEffect(() => {
-    const param = new URLSearchParams(window.location.search);
-
-    const code = param.get("code");
     (async () => {
       if (code) {
         await getRedditTokens(code);
