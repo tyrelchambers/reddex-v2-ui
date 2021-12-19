@@ -9,6 +9,7 @@ import Form from "./Form";
 import Textarea from "../components/Textarea/Textarea";
 import styled from "styled-components";
 import { checkSubdomain } from "../api/checkSubdomain";
+import { useWebsite } from "../hooks/useWebsite";
 
 const StyledBanner = styled.div`
   background-color: ${(props) => props.theme.backgroundSecondary};
@@ -26,14 +27,18 @@ const StyledBanner = styled.div`
 
 const SiteBuilderGeneralForm = ({ state, dispatch }) => {
   const [isDomainAvailable, setIsDomainAvailable] = React.useState(null);
+  const {
+    websiteQuery: {
+      data: { config },
+    },
+  } = useWebsite();
 
   const checkSubdomainAvailability = async (e) => {
-    const { isDomainTaken } = await checkSubdomain(e.target.value);
-
-    if (isDomainTaken) {
-      setIsDomainAvailable(true);
-    } else {
+    const { available } = await checkSubdomain(e.target.value);
+    if (available) {
       setIsDomainAvailable(false);
+    } else {
+      setIsDomainAvailable(true);
     }
   };
 
@@ -64,7 +69,7 @@ const SiteBuilderGeneralForm = ({ state, dispatch }) => {
           {formatSiteUrl(state.general.domain)}
         </span>
 
-        {!isDomainAvailable && (
+        {!isDomainAvailable && state.general.domain !== config.general.domain && (
           <span className="domain-check flex items-center">
             <FontAwesomeIcon
               icon={faCircleCheck}
