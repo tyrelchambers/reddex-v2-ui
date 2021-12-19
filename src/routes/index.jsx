@@ -32,6 +32,7 @@ import Colour from "../pages/Dashboard/SiteBuilder/Colour";
 import SubmissionForms from "../pages/Dashboard/SiteBuilder/SubmissionForms";
 import Timelines from "../pages/Dashboard/SiteBuilder/Timelines";
 import WebsiteStore from "../contexts/websiteContext";
+import Submitted from "../pages/Dashboard/Submitted";
 
 export const routes = [
   {
@@ -62,6 +63,10 @@ export const routes = [
             element: <InboxItem />,
           },
         ],
+      },
+      {
+        path: "/submitted",
+        element: <Submitted />,
       },
       {
         path: "/reading_list",

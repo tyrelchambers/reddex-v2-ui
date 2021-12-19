@@ -13,14 +13,18 @@ import { averageReadingTimeWithText } from "../../utils/averageReadingTimeWithTe
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSubmittedStory } from "../../hooks/useSubmittedStory";
 import { Link } from "react-location";
+import { useUser } from "../../hooks/useUser";
 
 const StyledStory = styled.div`
   border: 1.5px solid ${(props) => props.theme.border};
 `;
 
-const Submitted = ({ user }) => {
+const Submitted = () => {
   const { submittedQuery } = useSubmitted();
   const { deleteSubmitted } = useSubmittedStory();
+  const {
+    query: { data: user },
+  } = useUser();
 
   return (
     <>
