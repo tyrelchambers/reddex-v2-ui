@@ -12,14 +12,13 @@ import { createNewStripePortal } from "../../../api/createNewStripePortal";
 
 const StyledWrapper = styled.section`
   .plan-card {
-    background-color: ${(props) => props.theme.backgroundSecondary};
-    border: 1.5px solid ${(props) => props.theme.accentPrimary};
+    border: 1.5px solid ${(props) => props.theme.border};
   }
 
   .manage-subscription {
     color: ${(props) => props.theme.accentPrimary};
     text-decoration: none;
-    background-color: ${(props) => props.theme.backgroundMain};
+    background-color: ${(props) => props.theme.backgroundSecondary};
     width: fit-content;
   }
 `;
@@ -42,9 +41,13 @@ const Subscription = () => {
       <H1>Subscription</H1>
       <Subtitle>Your plan is managed with Stripe.</Subtitle>
 
-      <main className="mt-10">
+      <main className="mt-10 max-w-screen-sm">
         <H2>Your plan</H2>
-
+        <p className="text-light mt-2">
+          You can manage your subscription through Stripe. There you can update
+          your billing information, cancel or update your plan, and add payment
+          information.{" "}
+        </p>
         {data && (
           <div className="w-full max-w-md plan-card p-4 rounded-lg mt-6">
             <header className="flex justify-between">
