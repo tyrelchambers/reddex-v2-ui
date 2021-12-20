@@ -20,7 +20,9 @@ const StyledHeader = styled.header`
 
 const Header = () => {
   const [theme, toggleTheme, themeStyles] = useContext(ThemeContext);
-  const { query } = useUser();
+  const {
+    query: { data: user },
+  } = useUser();
 
   return (
     <StyledHeader
@@ -33,20 +35,20 @@ const Header = () => {
         className="w-14 h-14"
       />
       <div className="flex items-center">
-        <Nav />
+        <Nav user={user} />
         <div className="mr-8 ml-8">
           <ThemeSwitcher toggleTheme={toggleTheme} theme={theme} />
         </div>
-        {query.data && (
+        {user && (
           <>
             <Avatar
               size="small"
-              url={query.data.Profile?.reddit_profile?.snoovatar_img}
+              url={user.Profile?.reddit_profile?.snoovatar_img}
               className="mr-2"
             />
             <Link to="/dashboard/reading_list/approved">
               <p className="username">
-                {query.data.Profile?.reddit_profile?.name || query.data.email}
+                {user.Profile?.reddit_profile?.name || user.email}
               </p>
             </Link>
           </>

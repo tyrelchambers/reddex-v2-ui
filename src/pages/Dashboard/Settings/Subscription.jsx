@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/pro-duotone-svg-icons";
 import { Button } from "../../../components/Button/Button";
 import { createNewStripePortal } from "../../../api/createNewStripePortal";
+import { format, fromUnixTime } from "date-fns";
 
 const StyledWrapper = styled.section`
   .plan-card {
@@ -19,7 +20,6 @@ const StyledWrapper = styled.section`
     color: ${(props) => props.theme.accentPrimary};
     text-decoration: none;
     background-color: ${(props) => props.theme.backgroundSecondary};
-    width: fit-content;
   }
 `;
 
@@ -36,6 +36,8 @@ const Subscription = () => {
     window.open(link, "_blank");
   };
 
+  console.log(data);
+
   return (
     <StyledWrapper>
       <H1>Subscription</H1>
@@ -48,8 +50,9 @@ const Subscription = () => {
           your billing information, cancel or update your plan, and add payment
           information.{" "}
         </p>
+
         {data && (
-          <div className="w-full max-w-md plan-card p-4 rounded-lg mt-6">
+          <div className="w-full max-w-md plan-card p-4 rounded-lg mt-8">
             <header className="flex justify-between">
               <p className="text text-xl font-bold">{data.product.name}</p>
               <div className="flex items-center gap-2">
@@ -59,26 +62,53 @@ const Subscription = () => {
                   </span>
                   /mon
                 </p>
-                <p className="bg-green-100 text-green-600 px-4 py-1 rounded-full">
-                  {data.subscription.discount.coupon.percent_off}% off
-                </p>
+                {data.subscription.discount?.coupon.percent_off && (
+                  <p className="bg-green-100 text-green-600 px-4 py-1 rounded-full">
+                    {data.subscription.discount.coupon.percent_off}% off
+                  </p>
+                )}
               </div>
             </header>
-
-            <Button
+            {data.subscription.trial_end && (
+              <p className="text-sm text-light">
+                Your trial ends{" "}
+                {format(
+                  fromUnixTime(data.subscription.trial_end),
+                  "MMMM d, yyyy"
+                )}
+              </p>
+            )}
+            <button
+              className="underline text-accent-primary mt-4"
               onClick={openPortal}
-              className="manage-subscription mt-4 flex items-center p-3 rounded-lg"
             >
               <FontAwesomeIcon
                 icon={faArrowUpRightFromSquare}
-                className="mr-2"
+                className="mr-2 text-xs"
               />
-              Manage subscription
-            </Button>
+              manage your subscription
+            </button>
           </div>
         )}
+
+        <div className="flex flex-col mt-16">
+          <H2>About your trial</H2>
+          <p className="text-light mt-2">
+            In order to continue using Reddex, please add a payment method via
+            the{" "}
+            <button
+              className="underline text-accent-primary"
+              onClick={openPortal}
+            >
+              <FontAwesomeIcon
+                icon={faArrowUpRightFromSquare}
+                className="mr-2 text-xs"
+              />
+              subscription manager
+            </button>
+          </p>
+        </div>
       </main>
-      {/* <Button className="mt-10">Manage subscription</Button> */}
     </StyledWrapper>
   );
 };

@@ -179,7 +179,7 @@ const Card = observer(
                         ~
                         {averageReadingTime(
                           data.self_text,
-                          user.Profile.words_per_minute
+                          user ? user.Profile.words_per_minute : 150
                         )}{" "}
                         min
                       </p>

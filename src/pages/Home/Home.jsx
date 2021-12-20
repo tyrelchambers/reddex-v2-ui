@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import React, { useState } from "react";
 import { useQueryClient } from "react-query";
 import styled from "styled-components";
@@ -31,7 +32,9 @@ const StyledSide = styled.section`
 
 const Home = () => {
   const queryClient = useQueryClient();
-  const { query } = useUser();
+  const {
+    query: { data: user },
+  } = useUser();
   const { filters, dispatch } = usePostFilter();
   usePostToken();
   const [subreddit, setSubreddit] = useState("");
@@ -46,9 +49,11 @@ const Home = () => {
     subreddit,
     category: categoryState,
   });
+
   const { posts, getPosts } = usePosts({
     page,
     filterQuery: filters,
+    wpm: user?.Profile.words_per_minute,
   });
 
   const isLoading = getPosts.isLoading || redditPostQuery.isFetching;
@@ -78,7 +83,9 @@ const Home = () => {
       subreddit,
     });
 
-    saveSearched.mutate(subreddit);
+    if (user) {
+      saveSearched.mutate(subreddit);
+    }
     queryClient.invalidateQueries("posts");
   };
 
@@ -104,7 +111,7 @@ const Home = () => {
           />
           <hr className="mt-6 mb-6" />
           <RecentlySearched
-            user={query.data}
+            user={user}
             executeSearch={executeSearch}
             setSubreddit={setSubreddit}
           />
@@ -132,7 +139,7 @@ const Home = () => {
                         <Card
                           data={item}
                           key={index}
-                          user={query.data}
+                          user={user}
                           QueueStore={QueueStore}
                         />
                       ))}

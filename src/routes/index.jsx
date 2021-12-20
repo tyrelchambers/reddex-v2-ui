@@ -1,5 +1,4 @@
 import { QueryClient } from "react-query";
-import { getUser } from "../api/getUser";
 import InboxItem from "../components/InboxItem/InboxItem";
 import TagList from "../components/TagList/TagList";
 import EditTagForm from "../forms/EditTagForm";
@@ -33,6 +32,8 @@ import SubmissionForms from "../pages/Dashboard/SiteBuilder/SubmissionForms";
 import Timelines from "../pages/Dashboard/SiteBuilder/Timelines";
 import WebsiteStore from "../contexts/websiteContext";
 import Submitted from "../pages/Dashboard/Submitted";
+
+const queryClient = new QueryClient();
 
 export const routes = [
   {
@@ -187,5 +188,13 @@ export const routes = [
   {
     path: "/pricing",
     element: <Pricing />,
+  },
+  {
+    path: "/signout",
+    element: () => {
+      queryClient.invalidateQueries("*");
+      localStorage.removeItem("token");
+      window.location.href = "/";
+    },
   },
 ];

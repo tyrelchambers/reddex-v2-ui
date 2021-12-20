@@ -2,7 +2,9 @@ import { useState } from "react";
 import { useQuery } from "react-query";
 import { getPostsFromDatabase } from "../api/getPostsFromDatabase";
 
-export const usePosts = ({ page, filterQuery }) => {
+export const usePosts = ({ page, filterQuery, wpm }) => {
+  const token =
+    localStorage.getItem("token") || localStorage.getItem("postToken");
   const [posts, setPosts] = useState({
     maxPages: 0,
     posts: [],
@@ -23,7 +25,7 @@ export const usePosts = ({ page, filterQuery }) => {
 
   const getPosts = useQuery(
     ["posts", page],
-    () => getPostsFromDatabase({ page, query: filterQuery }),
+    () => getPostsFromDatabase({ page, query: filterQuery, wpm }),
     {
       onSuccess: (res) => {
         setPosts({
@@ -33,6 +35,7 @@ export const usePosts = ({ page, filterQuery }) => {
         });
       },
       keepPreviousData: true,
+      enabled: !!token,
     }
   );
 

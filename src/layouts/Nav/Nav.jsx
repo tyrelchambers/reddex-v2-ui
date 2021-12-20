@@ -24,8 +24,7 @@ const StyledLi = styled.li`
   color: ${(props) => props.theme.text};
 `;
 
-const Nav = () => {
-  const user = false;
+const Nav = ({ user }) => {
   return (
     <nav>
       <ul className="flex gap-10">
@@ -39,13 +38,22 @@ const Nav = () => {
             </Link>
           </StyledLi>
         ))}
-        {!user && (
+        {!user ? (
           <StyledLi>
             <Link
               className=" opacity-70 hover:opacity-100 transition-all "
               to="/login"
             >
               Login
+            </Link>
+          </StyledLi>
+        ) : (
+          <StyledLi>
+            <Link
+              className=" opacity-70 hover:opacity-100 transition-all "
+              to="/signout"
+            >
+              Sign out
             </Link>
           </StyledLi>
         )}

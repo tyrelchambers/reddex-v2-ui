@@ -19,7 +19,8 @@ export const useSearched = () => {
     },
   });
 
-  const searchedQuery = useQuery("searched", getSearched);
-
+  const searchedQuery = useQuery("searched", getSearched, {
+    enabled: !!queryClient.getQueryData("currentUser"),
+  });
   return { saveSearched, searchedQuery, deleteSearch };
 };
