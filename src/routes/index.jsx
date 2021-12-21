@@ -32,6 +32,9 @@ import SubmissionForms from "../pages/Dashboard/SiteBuilder/SubmissionForms";
 import Timelines from "../pages/Dashboard/SiteBuilder/Timelines";
 import WebsiteStore from "../contexts/websiteContext";
 import Submitted from "../pages/Dashboard/Submitted";
+import { getStripePlan } from "../api/getStripePlan";
+import { Navigate } from "react-location";
+import { toast } from "react-toastify";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +54,9 @@ export const routes = [
   {
     path: "/dashboard",
     element: <Index />,
+    loader: () =>
+      queryClient.getQueryData("striplePlan") ??
+      queryClient.fetchQuery("striplePlan", getStripePlan),
     children: [
       {
         path: "/inbox",
@@ -71,7 +77,6 @@ export const routes = [
       },
       {
         path: "/reading_list",
-
         children: [
           {
             path: "/approved",

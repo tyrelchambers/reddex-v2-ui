@@ -61,7 +61,7 @@ const Submitted = () => {
                     ~
                     {averageReadingTimeWithText(
                       item.body,
-                      user.Profile.words_per_minute
+                      user?.Profile.words_per_minute
                     )}{" "}
                     minutes
                   </p>

@@ -1,30 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DashWrapper from "../../layouts/DashWrapper/DashWrapper";
-import Settings from "./Settings/Settings";
-import Contacts from "./Contacts";
-import Inbox from "./Inbox";
-import SiteBuilder from "./SiteBuilder/SiteBuilder";
-import Submitted from "./Submitted";
-import TagManager from "./TagManager";
-import ModalStore from "../../stores/ModalStore";
 import { useUser } from "../../hooks/useUser";
-import Story from "../Story";
-import { Outlet, useRouter } from "react-location";
+import { Outlet, useMatch, useNavigate } from "react-location";
+import { toast } from "react-toastify";
 
 const Index = () => {
-  const router = useRouter();
   const { query } = useUser();
-  const activeRoute = router.state.location.pathname;
-  const user = query.data;
+  const { data } = useMatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (query.isSuccess && !query.data) {
+      toast.warn("You need to be logged in to view this page");
+      navigate({ to: "/login" });
+    }
+  }, [data, query]);
 
   return (
     <DashWrapper>
-      {/* {activeRoute.includes("submitted") && <Submitted user={user} />}
-      {activeRoute.includes("tags") && <TagManager />}
-      {activeRoute.includes("contacts") && <Contacts />}
-      {activeRoute.includes("settings") && <Settings />}
-      {activeRoute.includes("site-builder") && <SiteBuilder />}
-      {activeRoute.includes("story") && <Story />} */}
       <Outlet />
     </DashWrapper>
   );

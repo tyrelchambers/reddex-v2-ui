@@ -6,10 +6,14 @@ import Subtitle from "../../../components/Subtitle/Subtitle";
 import { useStripe } from "../../../hooks/useStripe";
 import { useSubscription } from "../../../hooks/useSubscription";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUpRightFromSquare } from "@fortawesome/pro-duotone-svg-icons";
+import {
+  faArrowUpRightFromSquare,
+  faTriangleExclamation,
+} from "@fortawesome/pro-duotone-svg-icons";
 import { Button } from "../../../components/Button/Button";
 import { createNewStripePortal } from "../../../api/createNewStripePortal";
 import { format, fromUnixTime } from "date-fns";
+import { useMatch } from "react-location";
 
 const StyledWrapper = styled.section`
   .plan-card {
@@ -35,8 +39,6 @@ const Subscription = () => {
     });
     window.open(link, "_blank");
   };
-
-  console.log(data);
 
   return (
     <StyledWrapper>
@@ -78,6 +80,18 @@ const Subscription = () => {
                 )}
               </p>
             )}
+
+            {data.subscription.cancel_at && (
+              <p className="text-yellow-500 mt-2">
+                <FontAwesomeIcon icon={faTriangleExclamation} /> Your account
+                will be deleted on{" "}
+                {format(
+                  fromUnixTime(data.subscription.cancel_at),
+                  "MMMM d, yyyy"
+                )}
+              </p>
+            )}
+
             <button
               className="underline text-accent-primary mt-4"
               onClick={openPortal}
