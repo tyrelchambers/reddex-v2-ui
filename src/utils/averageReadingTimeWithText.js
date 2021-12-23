@@ -3,7 +3,7 @@ export const averageReadingTimeWithText = (text, wpm) => {
   let result;
 
   if (text.length > 0) {
-    result = Math.ceil(text.length / wordsPerMinute);
+    result = Math.ceil(text.split(" ").length / wordsPerMinute);
   }
 
   return Number(result);

@@ -1,4 +1,5 @@
 import React from "react";
+import { useMatch } from "react-location";
 import styled from "styled-components";
 import { H1 } from "../components/headings/h1";
 import Loader from "../components/Loader/Loader";
@@ -11,7 +12,11 @@ const StyledDiv = styled.div`
 `;
 
 const Story = () => {
-  const { submittedStory } = useSubmittedStory(sub_page);
+  const {
+    params: { id },
+  } = useMatch();
+
+  const { submittedStory } = useSubmittedStory(id);
 
   return (
     <StyledDiv className="max-w-screen-sm py-3">

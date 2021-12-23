@@ -37,11 +37,11 @@ const App = () => {
               routes={[
                 {
                   path: "/",
-                  element: <CustomSite />,
+                  element: <CustomSite subdomain={subdomain} />,
                 },
                 {
                   path: "/submit",
-                  element: <SubmitStory />,
+                  element: <SubmitStory subdomain={subdomain} />,
                 },
               ]}
             />

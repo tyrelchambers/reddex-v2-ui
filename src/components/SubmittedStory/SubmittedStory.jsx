@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { averageReadingTimeWithText } from "../../utils/averageReadingTimeWithText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-location";
+import { useSubmittedStory } from "../../hooks/useSubmittedStory";
 
 const StyledStory = styled.div`
   border: 1.5px solid ${(props) => props.theme.border};
@@ -18,7 +19,7 @@ const SubmittedStory = ({ item, user }) => {
   const { deleteSubmitted } = useSubmittedStory();
 
   return (
-    <StyledStory className="p-4 rounded-lg" key={index}>
+    <StyledStory className="p-4 rounded-lg">
       <p className="text-light flex items-center">
         <FontAwesomeIcon
           icon={faUserCircle}
@@ -27,7 +28,7 @@ const SubmittedStory = ({ item, user }) => {
         {item.author}
       </p>
       <Link
-        className="text-2xl font-bold text mt-4"
+        className="text-2xl font-bold text mt-2 flex"
         to={`/dashboard/story/${item.uuid}`}
       >
         {item.story_title}

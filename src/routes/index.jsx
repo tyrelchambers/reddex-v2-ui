@@ -33,8 +33,7 @@ import Timelines from "../pages/Dashboard/SiteBuilder/Timelines";
 import WebsiteStore from "../contexts/websiteContext";
 import Submitted from "../pages/Dashboard/Submitted";
 import { getStripePlan } from "../api/getStripePlan";
-import { Navigate } from "react-location";
-import { toast } from "react-toastify";
+import Story from "../pages/Story";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +57,10 @@ export const routes = [
       queryClient.getQueryData("striplePlan") ??
       queryClient.fetchQuery("striplePlan", getStripePlan),
     children: [
+      {
+        path: "/story/:id",
+        element: <Story />,
+      },
       {
         path: "/inbox",
         children: [
