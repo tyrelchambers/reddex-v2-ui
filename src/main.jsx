@@ -32,7 +32,19 @@ const App = () => {
           <ToastContainer />
           <Store>
             <Modal ModalStore={ModalStore} />
-            <TabProvider></TabProvider>
+            <Router
+              location={location}
+              routes={[
+                {
+                  path: "/",
+                  element: <CustomSite />,
+                },
+                {
+                  path: "/submit",
+                  element: <SubmitStory />,
+                },
+              ]}
+            />
           </Store>
         </QueryClientProvider>
       </React.StrictMode>

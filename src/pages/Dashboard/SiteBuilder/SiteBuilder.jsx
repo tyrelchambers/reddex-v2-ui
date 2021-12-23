@@ -3,11 +3,11 @@ import { H1 } from "../../../components/headings/h1";
 import RToggle from "../../../components/RToggle/RToggle";
 import Subtitle from "../../../components/Subtitle/Subtitle";
 import WebsiteSaveBanner from "../../../components/WebsiteSaveBanner/WebsiteSaveBanner";
-import { isObjectDifferent } from "../../../utils/isObjectDifferent";
 import { useWebsite } from "../../../hooks/useWebsite";
 import { Outlet } from "react-location";
 import { WebsiteContext } from "../../../contexts/websiteContext";
 import { initialState } from "../../../constants/website";
+import _ from "lodash";
 
 const SiteBuilder = () => {
   const { websiteQuery, updateWebsiteMutation } = useWebsite();
@@ -17,7 +17,6 @@ const SiteBuilder = () => {
   useEffect(() => {
     if (websiteQuery.data?.config) {
       const clone = JSON.parse(JSON.stringify(websiteQuery.data.config));
-
       dispatch({
         type: "INIT_WEBSITE",
         payload: {
@@ -29,8 +28,10 @@ const SiteBuilder = () => {
   }, [websiteQuery.data]);
 
   useEffect(() => {
-    setIsChanged(isObjectDifferent(websiteQuery.data?.config, state));
-  }, [state, websiteQuery.data?.config]);
+    if (websiteQuery.data?.config) {
+      setIsChanged(!_.isEqual(websiteQuery.data.config, state));
+    }
+  }, [state, websiteQuery.data]);
 
   const reset = () => {
     dispatch({ type: "RESET", payload: websiteQuery.data.config });
@@ -50,7 +51,10 @@ const SiteBuilder = () => {
             Build your website and advertise what you do.
           </Subtitle>
         </div>
-        <a href="/submit" className="text-accent-primary underline">
+        <a
+          href={`${window.location.protocol}//${state.general.domain}.${window.location.host}`}
+          className="text-accent-primary underline"
+        >
           View your site
         </a>
       </div>
