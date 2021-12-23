@@ -65,12 +65,12 @@ const SiteBuilderGeneralForm = ({ state, dispatch }) => {
         </span>
 
         {!isDomainAvailable && (
-          <span className="domain-check flex items-center">
+          <span className="domain-check flex items-center text-green-500 text-xs">
             <FontAwesomeIcon
               icon={faCircleCheck}
               className="text-green-500 mr-2"
             />
-            <p className="text-green-500 text-xs">domain available</p>
+            domain available
           </span>
         )}
       </p>
