@@ -59,8 +59,8 @@ const Pricing = () => {
     <StyledWrapper theme={themeStyles}>
       <Wrapper>
         <main className="max-w-screen-xl ml-auto mr-auto mt-10 flex flex-col items-center">
-          <div className="max-w-4xl">
-            <H1 className="text-5xl text-center title">
+          <div className="max-w-5xl">
+            <H1 className="text-6xl text-center title">
               Stop wasting time finding stories and asking for permission
             </H1>
             <Subtitle className="text-light mt-4 max-w-2xl text-center ml-auto mr-auto">
@@ -92,8 +92,9 @@ const Pricing = () => {
           </div>
 
           <p className="mt-10  text-accent-primary text-2xl">
-            All plans come with a <span className="font-bold">7 day free</span>{" "}
-            trial! Get 1 month free with a yearly plan.
+            All plans come with a{" "}
+            <span className="font-bold">7 day free Pro</span> trial! Get 1 month
+            free with a yearly plan.
           </p>
 
           <section className="grid grid-cols-2 max-w-3xl w-full mt-10 gap-6 mb-20">

@@ -15,16 +15,16 @@ export const useAuth = () => {
           "Please confirm your email. Just in case, we sent you another email"
         );
       }
+      toast.success("Logged in");
+      localStorage.setItem("token", data.token);
+
+      queryClient.setQueryData("currentUser", data.user);
 
       if (!data.user.Profile.reddit_profile) {
         return navigate({ to: "/link-reddit" });
       }
 
-      toast.success("Logged in");
-      localStorage.setItem("token", data.token);
-
-      queryClient.setQueryData("currentUser", data.user);
-      navigate({ to: "/dashboard/reading_list/approved" });
+      navigate({ to: "/" });
     },
   });
 

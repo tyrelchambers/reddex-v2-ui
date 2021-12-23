@@ -27,18 +27,13 @@ const StyledBanner = styled.div`
 
 const SiteBuilderGeneralForm = ({ state, dispatch }) => {
   const [isDomainAvailable, setIsDomainAvailable] = React.useState(null);
-  const {
-    websiteQuery: {
-      data: { config },
-    },
-  } = useWebsite();
 
   const checkSubdomainAvailability = async (e) => {
     const { available } = await checkSubdomain(e.target.value);
-    if (available) {
-      setIsDomainAvailable(false);
-    } else {
+    if (available && state.general.domain) {
       setIsDomainAvailable(true);
+    } else {
+      setIsDomainAvailable(false);
     }
   };
 
@@ -69,7 +64,7 @@ const SiteBuilderGeneralForm = ({ state, dispatch }) => {
           {formatSiteUrl(state.general.domain)}
         </span>
 
-        {!isDomainAvailable && state.general.domain !== config.general.domain && (
+        {!isDomainAvailable && (
           <span className="domain-check flex items-center">
             <FontAwesomeIcon
               icon={faCircleCheck}

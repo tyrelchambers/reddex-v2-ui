@@ -7,6 +7,7 @@ import { isObjectDifferent } from "../../../utils/isObjectDifferent";
 import { useWebsite } from "../../../hooks/useWebsite";
 import { Outlet } from "react-location";
 import { WebsiteContext } from "../../../contexts/websiteContext";
+import { initialState } from "../../../constants/website";
 
 const SiteBuilder = () => {
   const { websiteQuery, updateWebsiteMutation } = useWebsite();
@@ -15,9 +16,14 @@ const SiteBuilder = () => {
 
   useEffect(() => {
     if (websiteQuery.data?.config) {
+      const clone = JSON.parse(JSON.stringify(websiteQuery.data.config));
+
       dispatch({
         type: "INIT_WEBSITE",
-        payload: JSON.parse(JSON.stringify(websiteQuery.data.config)),
+        payload: {
+          ...initialState,
+          ...clone,
+        },
       });
     }
   }, [websiteQuery.data]);
