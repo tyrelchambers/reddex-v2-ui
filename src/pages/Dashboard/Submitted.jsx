@@ -20,6 +20,9 @@ const Submitted = () => {
       <section className="mt-10">
         <H1>Submitted</H1>
 
+        {submittedQuery.data && submittedQuery.data.length === 0 && (
+          <p className="mt-4 text-light">Nothing to show</p>
+        )}
         <div className="grid grid-cols-3 gap-3 mt-10">
           {submittedQuery.data &&
             submittedQuery.data.map((item, index) => (

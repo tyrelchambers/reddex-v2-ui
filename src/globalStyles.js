@@ -22,6 +22,25 @@ export const GlobalStyles = createGlobalStyle`
   .text-super-light {
     color: ${({ theme }) => theme.textSuperLight};
   }
+
+  .gradient-title {
+    background: #fa4166; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #fa4166,
+      #f1bbc9
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #fa4166,
+      #f1bbc9
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent !important;
+
+    padding-bottom: 5px;
+  }
 `;
 
 export const StyledLink = styled(Link)`

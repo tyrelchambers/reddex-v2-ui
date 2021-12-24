@@ -37,8 +37,6 @@ const Inbox = () => {
 
   const { query } = useUser();
 
-  const params = useMatch();
-
   return (
     <StyledWrapper>
       <div className="flex gap-4 h-12 w-full">

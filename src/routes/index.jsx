@@ -34,6 +34,7 @@ import WebsiteStore from "../contexts/websiteContext";
 import Submitted from "../pages/Dashboard/Submitted";
 import { getStripePlan } from "../api/getStripePlan";
 import Story from "../pages/Story";
+import About from "../pages/About";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,10 @@ export const routes = [
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "/about",
+    element: <About />,
   },
   {
     path: "/login",

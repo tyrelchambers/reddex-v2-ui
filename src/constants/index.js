@@ -77,3 +77,15 @@ export const inboxSearchOptions = [
   { label: "Subject", value: "subject" },
   { label: "Author", value: "dest" },
 ];
+
+export const trustedBy = [
+  "Mr.CreepyPasta",
+  "AsTheRavenDreams",
+  "To_42",
+  "TheDarkNarrator",
+  "TheOminousDarkness",
+  "Margbot",
+  "GothicRose",
+  "OriginalGensen",
+  "Dead Leaf Clover",
+];
