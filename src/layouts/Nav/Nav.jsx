@@ -1,3 +1,10 @@
+import {
+  faAvocado,
+  faCircleDollar,
+  faHouse,
+  faRightFromBracket,
+} from "@fortawesome/pro-duotone-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-location";
 import styled from "styled-components";
@@ -5,18 +12,18 @@ const routes = [
   {
     path: "/",
     label: "Home",
+    icon: <FontAwesomeIcon icon={faHouse} className="mr-2" />,
   },
   {
     path: "/about",
     label: "About",
+    icon: <FontAwesomeIcon icon={faAvocado} className="mr-2" />,
   },
-  {
-    path: "/help",
-    label: "Help",
-  },
+
   {
     path: "/pricing",
     label: "Pricing",
+    icon: <FontAwesomeIcon icon={faCircleDollar} className="mr-2" />,
   },
 ];
 
@@ -34,6 +41,7 @@ const Nav = ({ user }) => {
               className=" opacity-70 hover:opacity-100 transition-all "
               to={route.path}
             >
+              {route.icon}
               {route.label}
             </Link>
           </StyledLi>
@@ -53,6 +61,7 @@ const Nav = ({ user }) => {
               className=" opacity-70 hover:opacity-100 transition-all "
               to="/signout"
             >
+              <FontAwesomeIcon icon={faRightFromBracket} className="mr-2" />
               Sign out
             </Link>
           </StyledLi>

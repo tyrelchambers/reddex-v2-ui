@@ -81,8 +81,8 @@ export const inboxSearchOptions = [
 export const trustedBy = [
   "Mr.CreepyPasta",
   "AsTheRavenDreams",
-  "To_42",
   "TheDarkNarrator",
+  "To_42",
   "TheOminousDarkness",
   "Margbot",
   "GothicRose",
