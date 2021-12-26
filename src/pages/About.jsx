@@ -150,18 +150,15 @@ const About = () => {
 
             <div className="flex flex-col">
               <H2 textSize="text-5xl">
-                Get thousands of posts from any subreddit
+                Get up to one thousand posts from any subreddit
               </H2>
               <p className="mt-4 text-light text-xl">
-                Reddex is a toolkit for Youtube narrators. The goal is simple:
-                provide an application to help narrators be productive creators.
+                The headline says it all
               </p>
             </div>
           </div>
 
-          <div className="flex w-full mt-40 gap-10 items-center">
-            <img src={hero} className="w-80" />
-
+          <div className="flex w-full mt-20 gap-10 items-center">
             <div className="flex flex-col">
               <H2 textSize="text-5xl">
                 Show off your work with your own website
@@ -170,6 +167,7 @@ const About = () => {
                 You can use Reddex to show off your work with your own website!
               </p>
             </div>
+            <img src={hero} className="w-80" />
           </div>
 
           <div className="flex w-full mt-40 gap-10 items-center">
@@ -186,8 +184,6 @@ const About = () => {
           </div>
 
           <div className="flex w-full mt-40 gap-10 items-center">
-            <img src={ContactIcon} className="w-80" />
-
             <div className="flex flex-col">
               <H2 textSize="text-5xl">Keep track of your backlog of stories</H2>
               <p className="mt-4 text-light text-xl">
@@ -195,6 +191,7 @@ const About = () => {
                 and the stories you've completed, with a reading list!
               </p>
             </div>
+            <img src={ContactIcon} className="w-80" />
           </div>
 
           <hr className="mt-20" />

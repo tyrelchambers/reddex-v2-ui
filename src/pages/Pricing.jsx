@@ -45,8 +45,8 @@ const Pricing = () => {
               Stop wasting time finding stories and asking for permission
             </H1>
             <p className="text-light mt-8 max-w-2xl text-center ml-auto mr-auto text-2xl">
-              Take back your time and become a more efficient narrator. No
-              credit card required until the trial is over.{" "}
+              Take back your time and become a more efficient creator. No credit
+              card required until the trial is over.{" "}
               <span className="font-bold">No commitments</span>.{" "}
               <span className="font-bold">No hidden fees</span>.
             </p>
