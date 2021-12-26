@@ -23,25 +23,6 @@ const StyledWrapper = styled.div`
     background-color: ${(props) => props.theme.accentPrimary};
     color: white;
   }
-
-  .title {
-    background: #fa4166; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-      to right,
-      #fa4166,
-      #f1bbc9
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-      to right,
-      #fa4166,
-      #f1bbc9
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-
-    padding-bottom: 5px;
-  }
 `;
 
 const Pricing = () => {
@@ -60,16 +41,15 @@ const Pricing = () => {
       <Wrapper>
         <main className="max-w-screen-xl ml-auto mr-auto mt-10 flex flex-col items-center">
           <div className="max-w-5xl">
-            <H1 className="text-6xl text-center title">
+            <H1 className=" text-center " textSize="text-6xl">
               Stop wasting time finding stories and asking for permission
             </H1>
-            <Subtitle className="text-light mt-4 max-w-2xl text-center ml-auto mr-auto">
-              Choose a plan below to take back your time and become a more
-              efficient narrator. You can cancel anytime. No credit card
-              required until the trial is over.{" "}
+            <p className="text-light mt-8 max-w-2xl text-center ml-auto mr-auto text-2xl">
+              Take back your time and become a more efficient narrator. No
+              credit card required until the trial is over.{" "}
               <span className="font-bold">No commitments</span>.{" "}
               <span className="font-bold">No hidden fees</span>.
-            </Subtitle>
+            </p>
           </div>
 
           <div className=" term-wrapper p-2 flex gap-6 rounded-full mt-20">
