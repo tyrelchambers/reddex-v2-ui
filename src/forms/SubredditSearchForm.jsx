@@ -17,6 +17,8 @@ const SubredditSearchForm = ({
   categoryHandler,
   categoryState,
   timeframeHandler,
+  isLoading,
+  disabled,
 }) => {
   const {
     register,
@@ -59,7 +61,12 @@ const SubredditSearchForm = ({
         />
       )}
 
-      <Button className="w-full" type="submit">
+      <Button
+        className="w-full"
+        type="submit"
+        loading={isLoading}
+        disabled={disabled}
+      >
         <FontAwesomeIcon icon={faSearch} className="mr-4" />
         Search
       </Button>

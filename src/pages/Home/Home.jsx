@@ -100,6 +100,8 @@ const Home = () => {
             timeframeHandler={timeframeHandler}
             categoryState={categoryState}
             subreddit={subreddit}
+            isLoading={isLoading}
+            disabled={isLoading}
           />
 
           <hr className="mt-6 mb-6" />

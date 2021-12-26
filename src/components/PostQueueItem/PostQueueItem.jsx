@@ -47,6 +47,8 @@ const PostQueueItem = ({
   const { contactQuery } = useContacts();
   const { contactedQuery, contactedMutation } = useContacted();
   const { storyMutation, addToUsed } = useStory();
+  const [isSending, setIsSending] = useState(false);
+
   const contactExists =
     contactQuery.data &&
     contactQuery.data.filter((c) => c.name === post.author)[0];
@@ -75,7 +77,7 @@ const PostQueueItem = ({
 
   const submitHandler = async () => {
     const { access_token } = await getRedditAccessToken();
-
+    setIsSending(true);
     const body = new FormData();
     body.set("to", `/u/StoriesAfterMidnight`);
     body.set("subject", formatSubject(post.title));
@@ -102,6 +104,7 @@ const PostQueueItem = ({
     addToUsed.mutate({ post_id: post.post_id });
 
     // removeHandler(post);
+    setIsSending(false);
   };
 
   return (
@@ -204,7 +207,11 @@ const PostQueueItem = ({
                 className="text-gray-500"
                 onClick={() => removeHandler(post)}
               />
-              <Button onClick={(e) => submitHandler(e)}>
+              <Button
+                onClick={(e) => submitHandler(e)}
+                loading={isSending}
+                disabled={isSending}
+              >
                 <FontAwesomeIcon icon={faPaperPlaneTop} className="mr-2" /> Send
                 Message
               </Button>

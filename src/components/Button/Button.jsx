@@ -1,3 +1,5 @@
+import { faSpinnerThird } from "@fortawesome/pro-duotone-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import { currentTheme } from "../../constants/theme";
 
@@ -6,10 +8,20 @@ const StyledButton = styled.button`
 `;
 
 const StyledButtonMain = styled(StyledButton)`
-  background-color: ${(props) => props.theme.accentPrimary};
+  background-color: ${(props) =>
+    props.disabled
+      ? props.theme.backgroundSecondary
+      : props.theme.accentPrimary};
+
+  color: ${(props) => (props.disabled ? props.theme.textSecondary : "white")};
+
   transition: all 0.2s ease-in-out;
-  &:hover {
+  &:not(:disabled):hover {
     filter: brightness(90%);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 `;
 
@@ -43,12 +55,17 @@ StyledButton.defaultProps = {
 const primary = (props) => (
   <StyledButtonMain
     type={props.type || "button"}
-    className={` text-white  h-12 px-4 rounded-md  ${
+    className={`   h-12 px-4 rounded-md  ${
       props.className ? props.className : ""
     }`}
     onClick={props.onClick}
+    disabled={props.disabled}
   >
-    {props.children}
+    {props.loading ? (
+      <FontAwesomeIcon icon={faSpinnerThird} className="fa-spin" />
+    ) : (
+      props.children
+    )}
   </StyledButtonMain>
 );
 
