@@ -7,6 +7,10 @@ const StyledButton = styled.button`
 
 const StyledButtonMain = styled(StyledButton)`
   background-color: ${(props) => props.theme.accentPrimary};
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    filter: brightness(90%);
+  }
 `;
 
 const StyledButtonSecond = styled(StyledButton)`
@@ -15,6 +19,10 @@ const StyledButtonSecond = styled(StyledButton)`
   color: ${(props) =>
     props.isSelected ? props.theme.accentPrimary : props.theme.text};
   background-color: ${(props) => props.theme.backgroundSecondary};
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    filter: brightness(90%);
+  }
 `;
 
 const StyledOutlinePrimary = styled(StyledButtonMain)`
