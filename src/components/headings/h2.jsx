@@ -5,8 +5,13 @@ const StyledH2 = styled.h2`
   color: ${({ theme }) => theme.text};
 `;
 
-export const H2 = ({ children, className = "", ...props }) => (
-  <StyledH2 className={`font-bold text-xl  ${className}`} {...props}>
+export const H2 = ({
+  children,
+  className = "",
+  textSize = "text-2xl",
+  ...props
+}) => (
+  <StyledH2 className={`font-bold ${textSize} ${className}`} {...props}>
     {children}
   </StyledH2>
 );
