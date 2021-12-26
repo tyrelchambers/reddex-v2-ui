@@ -58,9 +58,7 @@ export const routes = [
   {
     path: "/dashboard",
     element: <Index />,
-    loader: () =>
-      queryClient.getQueryData("striplePlan") ??
-      queryClient.fetchQuery("striplePlan", getStripePlan),
+
     children: [
       {
         path: "/story/:id",
