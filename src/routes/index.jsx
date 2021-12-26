@@ -32,9 +32,11 @@ import SubmissionForms from "../pages/Dashboard/SiteBuilder/SubmissionForms";
 import Timelines from "../pages/Dashboard/SiteBuilder/Timelines";
 import WebsiteStore from "../contexts/websiteContext";
 import Submitted from "../pages/Dashboard/Submitted";
-import { getStripePlan } from "../api/getStripePlan";
 import Story from "../pages/Story";
 import About from "../pages/About";
+import { getStripePlan } from "../api/getStripePlan";
+import { Navigate } from "react-location";
+import { toast } from "react-toastify";
 
 const queryClient = new QueryClient();
 
@@ -163,6 +165,12 @@ export const routes = [
             <SiteBuilder />
           </WebsiteStore>
         ),
+        loader: async () => {
+          return (
+            queryClient.getQueryData("stripePlan") ??
+            (await queryClient.fetchQuery("stripePlan", getStripePlan))
+          );
+        },
         children: [
           {
             path: "/general",

@@ -4,32 +4,34 @@ import RToggle from "../../../components/RToggle/RToggle";
 import Subtitle from "../../../components/Subtitle/Subtitle";
 import WebsiteSaveBanner from "../../../components/WebsiteSaveBanner/WebsiteSaveBanner";
 import { useWebsite } from "../../../hooks/useWebsite";
-import { Outlet, useNavigate } from "react-location";
+import { Outlet, useMatch, useNavigate } from "react-location";
 import { WebsiteContext } from "../../../contexts/websiteContext";
 import { initialState } from "../../../constants/website";
 import _ from "lodash";
-import { useStripe } from "../../../hooks/useStripe";
 import { toast } from "react-toastify";
 
 const SiteBuilder = () => {
   const { websiteQuery, updateWebsiteMutation } = useWebsite();
   const [state, dispatch] = useContext(WebsiteContext);
   const [isChanged, setIsChanged] = useState(false);
-  const {
-    stripePlan: { data },
-  } = useStripe();
+
   const navigate = useNavigate();
-  const plan = data?.product.name;
-  const subStatus = data?.subscription.status;
+
+  const {
+    data: {
+      product: { name },
+      subscription: { status },
+    },
+  } = useMatch();
 
   useEffect(() => {
-    if (plan === "Basic") {
+    if (name === "Basic") {
       toast.warn(
         "You are using the basic plan. Please upgrade to the pro plan to unlock all features."
       );
       return navigate({ to: "/dashboard/settings/subscription" });
     }
-  }, [plan, subStatus]);
+  }, [name, status]);
 
   useEffect(() => {
     if (websiteQuery.data?.config) {
