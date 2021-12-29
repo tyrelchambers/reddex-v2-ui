@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { H1 } from "../../../components/headings/h1";
 import { H2 } from "../../../components/headings/h2";
 import { H3 } from "../../../components/headings/H3";
+import Loader from "../../../components/Loader/Loader";
 import Subtitle from "../../../components/Subtitle/Subtitle";
 import { redditUrl } from "../../../constants";
 import NotificationsForm from "../../../forms/NotificationsForm";
@@ -30,8 +31,11 @@ const StyledWrapper = styled.section`
 const Profile = () => {
   const { searchedQuery, deleteSearch } = useSearched();
   const {
-    query: { data: user },
+    query: { data: user, isLoading },
   } = useUser();
+
+  if (isLoading) return <Loader />;
+
   return (
     <StyledWrapper className="max-w-lg">
       <H1>Profile</H1>

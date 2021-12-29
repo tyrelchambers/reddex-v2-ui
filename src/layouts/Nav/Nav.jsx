@@ -52,6 +52,7 @@ const Nav = ({ user }) => {
               className=" opacity-70 hover:opacity-100 transition-all "
               to="/login"
             >
+              <FontAwesomeIcon icon={faRightFromBracket} className="mr-2" />
               Login
             </Link>
           </StyledLi>

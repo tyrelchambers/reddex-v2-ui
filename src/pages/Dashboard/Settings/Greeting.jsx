@@ -1,12 +1,13 @@
 import React from "react";
 import { H1 } from "../../../components/headings/h1";
+import Loader from "../../../components/Loader/Loader";
 import Subtitle from "../../../components/Subtitle/Subtitle";
 import GreetingForm from "../../../forms/GreetingForm";
 import { useUser } from "../../../hooks/useUser";
 
 const Greeting = () => {
   const {
-    query: { data: user },
+    query: { data: user, isLoading },
   } = useUser();
 
   return (
@@ -17,9 +18,14 @@ const Greeting = () => {
         of it as an initial greeting. Say hello, introduce yourself, go from
         there.
       </Subtitle>
-      <main className="mt-10">
-        <GreetingForm user={user} />
-      </main>
+
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <main className="mt-10">
+          <GreetingForm user={user} />
+        </main>
+      )}
     </section>
   );
 };

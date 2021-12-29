@@ -60,7 +60,6 @@ export const routes = [
   {
     path: "/dashboard",
     element: <Index />,
-
     children: [
       {
         path: "/story/:id",

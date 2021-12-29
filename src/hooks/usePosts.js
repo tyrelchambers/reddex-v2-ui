@@ -36,6 +36,8 @@ export const usePosts = ({ page, filterQuery, wpm }) => {
       },
       keepPreviousData: true,
       enabled: !!token,
+      retryOnMount: false,
+      refetchOnWindowFocus: false,
     }
   );
 

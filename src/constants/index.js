@@ -89,3 +89,5 @@ export const trustedBy = [
   "OriginalGensen",
   "Dead Leaf Clover",
 ];
+
+export const acceptedRoutes = ["dashboard/settings"];

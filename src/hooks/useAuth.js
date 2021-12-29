@@ -26,6 +26,9 @@ export const useAuth = () => {
 
       navigate({ to: "/" });
     },
+    onError: (err) => {
+      toast.error(err.response.data);
+    },
   });
 
   const registerMutation = useMutation((data) => register(data), {

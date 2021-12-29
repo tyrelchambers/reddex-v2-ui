@@ -14,6 +14,7 @@ import { Button } from "../../../components/Button/Button";
 import { createNewStripePortal } from "../../../api/createNewStripePortal";
 import { format, fromUnixTime } from "date-fns";
 import { useMatch } from "react-location";
+import Loader from "../../../components/Loader/Loader";
 
 const StyledWrapper = styled.section`
   .plan-card {
@@ -30,7 +31,7 @@ const StyledWrapper = styled.section`
 const Subscription = () => {
   const { subscription } = useSubscription();
   const {
-    stripePlan: { data },
+    stripePlan: { data, isLoading },
   } = useStripe();
 
   const openPortal = async () => {
@@ -39,6 +40,8 @@ const Subscription = () => {
     });
     window.open(link, "_blank");
   };
+
+  if (isLoading) return <Loader />;
 
   return (
     <StyledWrapper>
@@ -105,23 +108,25 @@ const Subscription = () => {
           </div>
         )}
 
-        <div className="flex flex-col mt-16">
-          <H2>About your trial</H2>
-          <p className="text-light mt-2">
-            In order to continue using Reddex, please add a payment method via
-            the{" "}
-            <button
-              className="underline text-accent-primary"
-              onClick={openPortal}
-            >
-              <FontAwesomeIcon
-                icon={faArrowUpRightFromSquare}
-                className="mr-2 text-xs"
-              />
-              subscription manager
-            </button>
-          </p>
-        </div>
+        {data.subscription.trial_end > Date.now() && (
+          <div className="flex flex-col mt-16">
+            <H2>About your trial</H2>
+            <p className="text-light mt-2">
+              In order to continue using Reddex, please add a payment method via
+              the{" "}
+              <button
+                className="underline text-accent-primary"
+                onClick={openPortal}
+              >
+                <FontAwesomeIcon
+                  icon={faArrowUpRightFromSquare}
+                  className="mr-2 text-xs"
+                />
+                subscription manager
+              </button>
+            </p>
+          </div>
+        )}
       </main>
     </StyledWrapper>
   );

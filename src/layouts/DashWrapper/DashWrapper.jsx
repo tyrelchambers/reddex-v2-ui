@@ -1,7 +1,13 @@
 import React, { useContext, useEffect } from "react";
-import { useNavigate } from "react-location";
+import {
+  useMatch,
+  useMatches,
+  useMatchRoute,
+  useNavigate,
+} from "react-location";
 import { toast } from "react-toastify";
 import styled, { ThemeProvider } from "styled-components";
+import { acceptedRoutes } from "../../constants";
 import { ThemeContext } from "../../contexts/themeContext";
 import { GlobalStyles } from "../../globalStyles";
 import { useUser } from "../../hooks/useUser";
@@ -20,6 +26,7 @@ const DashWrapper = (props) => {
   const [theme, toggleTheme, themeStyles] = useContext(ThemeContext);
   const { query } = useUser();
   const navigate = useNavigate();
+  const matchRoute = useMatches();
 
   useEffect(() => {
     if (query.data && !query.data.Profile.reddit_profile) {
