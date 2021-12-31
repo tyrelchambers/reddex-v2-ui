@@ -7,9 +7,11 @@ import {
 } from "react-location";
 import { toast } from "react-toastify";
 import styled, { ThemeProvider } from "styled-components";
+import Loader from "../../components/Loader/Loader";
 import { acceptedRoutes } from "../../constants";
 import { ThemeContext } from "../../contexts/themeContext";
 import { GlobalStyles } from "../../globalStyles";
+import { useStripe } from "../../hooks/useStripe";
 import { useUser } from "../../hooks/useUser";
 import DashHeader from "../DashHeader/DashHeader";
 
@@ -26,14 +28,27 @@ const DashWrapper = (props) => {
   const [theme, toggleTheme, themeStyles] = useContext(ThemeContext);
   const { query } = useUser();
   const navigate = useNavigate();
-  const matchRoute = useMatches();
+  const {
+    stripePlan: { data, isLoading },
+  } = useStripe();
 
   useEffect(() => {
-    if (query.data && !query.data.Profile.reddit_profile) {
+    if (query.isSuccess && !query.data.Profile.reddit_profile) {
       toast.warning("Please link your reddit account to your profile");
-      navigate("/link-reddit");
+      navigate({ to: "/link-reddit" });
     }
   }, [query.data, navigate]);
+
+  const canAccessRoute = (subscription) => {
+    if (
+      subscription.status === "active" ||
+      subscription.status === "trialing"
+    ) {
+      return true;
+    }
+
+    return false;
+  };
 
   return (
     <ThemeProvider
@@ -45,7 +60,18 @@ const DashWrapper = (props) => {
 
       <StyledGrid className=" w-full h-screen">
         <DashHeader theme={theme} toggleTheme={toggleTheme} />
-        <section className="p-8 dash-body">{props.children}</section>
+        {isLoading && <Loader />}
+        {!isLoading && data && (
+          <>
+            <section className="p-8 dash-body">
+              {canAccessRoute(data.subscription) ? (
+                <>{props.children}</>
+              ) : (
+                <p>Something's gone wrong</p>
+              )}
+            </section>
+          </>
+        )}
       </StyledGrid>
     </ThemeProvider>
   );

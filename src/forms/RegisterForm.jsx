@@ -41,7 +41,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(submitHandler)}>
+    <Form onSubmit={handleSubmit(submitHandler)} className="w-1/2">
       <InputWrapper label="Email" htmlFor="email">
         <Input
           placeholder="me@example.com"

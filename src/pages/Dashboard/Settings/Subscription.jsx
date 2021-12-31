@@ -62,7 +62,12 @@ const Subscription = () => {
               <p className="text text-xl font-bold">{data.product.name}</p>
               <div className="flex items-center gap-2">
                 <p className="text-light">
-                  <span className="text font-bold text-xl line-through">
+                  <span
+                    className={`text font-bold text-xl ${
+                      data.subscription.discount?.coupon.percent_off &&
+                      "line-through"
+                    }`}
+                  >
                     ${(data.subscription.plan.amount / 100).toFixed(2)}
                   </span>
                   /mon
@@ -74,15 +79,16 @@ const Subscription = () => {
                 )}
               </div>
             </header>
-            {data.subscription.trial_end && (
-              <p className="text-sm text-light">
-                Your trial ends{" "}
-                {format(
-                  fromUnixTime(data.subscription.trial_end),
-                  "MMMM d, yyyy"
-                )}
-              </p>
-            )}
+            {data.subscription.trial_end &&
+              data.subscription.trial_end < Date.now() && (
+                <p className="text-sm text-light">
+                  Your trial ends{" "}
+                  {format(
+                    fromUnixTime(data.subscription.trial_end),
+                    "MMMM d, yyyy"
+                  )}
+                </p>
+              )}
 
             {data.subscription.cancel_at && (
               <p className="text-yellow-500 mt-2">
@@ -108,7 +114,7 @@ const Subscription = () => {
           </div>
         )}
 
-        {data.subscription.trial_end > Date.now() && (
+        {data.subscription.trial_end < Date.now() && (
           <div className="flex flex-col mt-16">
             <H2>About your trial</H2>
             <p className="text-light mt-2">
@@ -123,7 +129,8 @@ const Subscription = () => {
                   className="mr-2 text-xs"
                 />
                 subscription manager
-              </button>
+              </button>{" "}
+              otherwise your account will be inactive.
             </p>
           </div>
         )}

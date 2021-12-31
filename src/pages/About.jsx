@@ -5,7 +5,7 @@ import { H2 } from "../components/headings/h2";
 import guyWithGlasses from "../assets/images/guy_with_glasses.svg";
 import hero from "../assets/images/hero_illustration.svg";
 import { Button } from "../components/Button/Button";
-import { trustedBy } from "../constants";
+import { trustedBy, twitterTestimonies } from "../constants";
 import styled from "styled-components";
 import { ThemeContext } from "../contexts/themeContext";
 import ContactIcon from "../assets/images/monitor_illustration_2.svg";
@@ -82,6 +82,64 @@ const About = () => {
             </div>
           </div>
 
+          <div className="flex flex-col items-center mt-20">
+            <H2>What are people saying about us?</H2>
+            <div className="grid grid-cols-2 mt-6">
+              {twitterTestimonies.map((testimony) => (
+                <img src={testimony} className="rounded-lg shadow-lg" />
+              ))}
+            </div>
+          </div>
+
+          <div className="flex w-full mt-40 gap-16 items-center">
+            <img src={guyWithGlasses} className="w-80" />
+
+            <div className="flex flex-col">
+              <H2 textSize="text-5xl">
+                Get up to one thousand posts from any subreddit
+              </H2>
+              <p className="mt-4 text-light text-xl">
+                The headline says it all
+              </p>
+            </div>
+          </div>
+
+          <div className="flex w-full mt-20 gap-10 items-center">
+            <div className="flex flex-col">
+              <H2 textSize="text-5xl">
+                Show off your work with your own website
+              </H2>
+              <p className="mt-4 text-light text-xl">
+                You can use Reddex to show off your work with your own website!
+              </p>
+            </div>
+            <img src={hero} className="w-80" />
+          </div>
+
+          <div className="flex w-full mt-40 gap-10 items-center">
+            <img src={monitor} className="w-80" />
+
+            <div className="flex flex-col">
+              <H2 textSize="text-5xl">Message authors right from Reddex</H2>
+              <p className="mt-4 text-light text-xl">
+                Forget about about leaving Reddex and trying to fight your way
+                to that author's profile. Queue up your messages and send your
+                request with just one click!
+              </p>
+            </div>
+          </div>
+
+          <div className="flex w-full mt-40 gap-10 items-center">
+            <div className="flex flex-col">
+              <H2 textSize="text-5xl">Keep track of your backlog of stories</H2>
+              <p className="mt-4 text-light text-xl">
+                Keep track of the stories you've been given permission to read,
+                and the stories you've completed, with a reading list!
+              </p>
+            </div>
+            <img src={ContactIcon} className="w-80" />
+          </div>
+
           <div className="grid grid-cols-3 gap-20 mt-40">
             <div className="flex flex-col items-center">
               <img className="h-20" src={contactList} alt="contact list" />
@@ -143,55 +201,6 @@ const About = () => {
                 Easily keep track of the stories you're allowed to read!
               </p>
             </div>
-          </div>
-
-          <div className="flex w-full mt-40 gap-16 items-center">
-            <img src={guyWithGlasses} className="w-80" />
-
-            <div className="flex flex-col">
-              <H2 textSize="text-5xl">
-                Get up to one thousand posts from any subreddit
-              </H2>
-              <p className="mt-4 text-light text-xl">
-                The headline says it all
-              </p>
-            </div>
-          </div>
-
-          <div className="flex w-full mt-20 gap-10 items-center">
-            <div className="flex flex-col">
-              <H2 textSize="text-5xl">
-                Show off your work with your own website
-              </H2>
-              <p className="mt-4 text-light text-xl">
-                You can use Reddex to show off your work with your own website!
-              </p>
-            </div>
-            <img src={hero} className="w-80" />
-          </div>
-
-          <div className="flex w-full mt-40 gap-10 items-center">
-            <img src={monitor} className="w-80" />
-
-            <div className="flex flex-col">
-              <H2 textSize="text-5xl">Message authors right from Reddex</H2>
-              <p className="mt-4 text-light text-xl">
-                Forget about about leaving Reddex and trying to fight your way
-                to that author's profile. Queue up your messages and send your
-                request with just one click!
-              </p>
-            </div>
-          </div>
-
-          <div className="flex w-full mt-40 gap-10 items-center">
-            <div className="flex flex-col">
-              <H2 textSize="text-5xl">Keep track of your backlog of stories</H2>
-              <p className="mt-4 text-light text-xl">
-                Keep track of the stories you've been given permission to read,
-                and the stories you've completed, with a reading list!
-              </p>
-            </div>
-            <img src={ContactIcon} className="w-80" />
           </div>
 
           <hr className="mt-20" />

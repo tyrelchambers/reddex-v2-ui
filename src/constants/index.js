@@ -1,4 +1,5 @@
 import config from "../config/config";
+import tweet1 from "../assets/images/Tweet by AsTheJeffreyDreams🎙️🌌.png";
 
 export const subredditCategories = [
   {
@@ -90,4 +91,5 @@ export const trustedBy = [
   "Dead Leaf Clover",
 ];
 
+export const twitterTestimonies = [tweet1];
 export const acceptedRoutes = ["dashboard/settings"];
