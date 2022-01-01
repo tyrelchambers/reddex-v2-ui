@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useMatch, useNavigate, useSearch } from "react-location";
+import React from "react";
+import { Link, useSearch } from "react-location";
 import styled from "styled-components";
 import { H1 } from "../../components/headings/h1";
 import RegisterForm from "../../forms/RegisterForm";
@@ -9,7 +9,6 @@ import blob from "../../assets/images/blob.svg";
 import { termPricing } from "../../constants/pricing";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/pro-duotone-svg-icons";
-import { toast } from "react-toastify";
 
 const StyledWrapper = styled.div`
   height: 100%;
@@ -21,14 +20,6 @@ const StyledWrapper = styled.div`
 
 const Register = () => {
   const { plan, term } = useSearch();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!plan || !term) {
-      toast.warn("Please select a plan before registering");
-      navigate({ to: "/pricing" });
-    }
-  }, [plan, term]);
 
   return (
     <Wrapper>
@@ -36,6 +27,15 @@ const Register = () => {
         <H1 className="  text-center " textSize="text-5xl">
           It'll be nice to have you onboard!
         </H1>
+        {(!term || !plan) && (
+          <p className="mt-8 bg-red-50 text-red-500 rounded-full p-4 px-6 ">
+            Please select a{" "}
+            <Link to="/pricing" className="underline">
+              plan
+            </Link>{" "}
+            to register
+          </p>
+        )}
         <StyledWrapper className="w-full max-w-screen-lg mt-10 flex gap-10 h-">
           <RegisterForm plan={plan} term={term} />
           <aside className="aside w-1/2 rounded-md p-4 relative overflow-hidden shadow-md">

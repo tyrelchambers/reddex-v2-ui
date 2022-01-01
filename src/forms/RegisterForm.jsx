@@ -98,7 +98,7 @@ const RegisterForm = ({ plan, term }) => {
 
       <Button
         type="submit"
-        disabled={registerMutation.isLoading}
+        disabled={registerMutation.isLoading || !term || !plan}
         loading={registerMutation.isLoading}
       >
         <FontAwesomeIcon icon={faCheck} className="mr-2" />
