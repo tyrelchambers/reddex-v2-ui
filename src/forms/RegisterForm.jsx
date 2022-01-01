@@ -11,14 +11,13 @@ import { toast } from "react-toastify";
 import { useAuth } from "../hooks/useAuth";
 import { Link } from "react-location";
 
-const RegisterForm = () => {
+const RegisterForm = ({ plan, term }) => {
   const [state, setState] = useState({
     email: "",
     password: "",
     confirmPassword: "",
   });
   const { registerMutation } = useAuth();
-
   const {
     register,
     handleSubmit,
@@ -37,7 +36,11 @@ const RegisterForm = () => {
       return toast.error("Passwords do not match");
     }
 
-    await registerMutation.mutate(state);
+    await registerMutation.mutate({
+      term,
+      plan,
+      ...state,
+    });
   };
 
   return (
@@ -93,7 +96,11 @@ const RegisterForm = () => {
         )}
       </InputWrapper>
 
-      <Button type="submit">
+      <Button
+        type="submit"
+        disabled={registerMutation.isLoading}
+        loading={registerMutation.isLoading}
+      >
         <FontAwesomeIcon icon={faCheck} className="mr-2" />
         Sign up
       </Button>

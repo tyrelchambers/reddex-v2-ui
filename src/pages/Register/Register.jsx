@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import { useNavigate, useSearch } from "react-location";
-import { toast } from "react-toastify";
+import { useMatch, useNavigate, useSearch } from "react-location";
 import styled from "styled-components";
 import { H1 } from "../../components/headings/h1";
 import RegisterForm from "../../forms/RegisterForm";
@@ -10,6 +9,7 @@ import blob from "../../assets/images/blob.svg";
 import { termPricing } from "../../constants/pricing";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleCheck } from "@fortawesome/pro-duotone-svg-icons";
+import { toast } from "react-toastify";
 
 const StyledWrapper = styled.div`
   height: 100%;
@@ -20,8 +20,15 @@ const StyledWrapper = styled.div`
 `;
 
 const Register = () => {
-  const { plan } = useSearch();
+  const { plan, term } = useSearch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!plan || !term) {
+      toast.warn("Please select a plan before registering");
+      navigate({ to: "/pricing" });
+    }
+  }, [plan, term]);
 
   return (
     <Wrapper>
@@ -30,7 +37,7 @@ const Register = () => {
           It'll be nice to have you onboard!
         </H1>
         <StyledWrapper className="w-full max-w-screen-lg mt-10 flex gap-10 h-">
-          <RegisterForm plan={plan} />
+          <RegisterForm plan={plan} term={term} />
           <aside className="aside w-1/2 rounded-md p-4 relative overflow-hidden shadow-md">
             <div className="z-10 absolute">
               <H2 textSize="text-lg">🔥 Your 7-day Pro Trial</H2>

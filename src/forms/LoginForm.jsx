@@ -82,7 +82,7 @@ const LoginForm = () => {
         <p className="subtitle">Remember me</p>
       </div>
 
-      <Link to="/register" className="underline text-gray-500 ">
+      <Link to="/pricing" className="underline text-gray-500 ">
         Don't have an account?
       </Link>
       <Link to="/forgot-password" className="underline text-gray-500">

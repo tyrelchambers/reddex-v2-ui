@@ -35,7 +35,7 @@ const DashWrapper = (props) => {
   useEffect(() => {
     if (query.isSuccess && !query.data.Profile.reddit_profile) {
       toast.warning("Please link your reddit account to your profile");
-      navigate({ to: "/link-reddit" });
+      navigate({ to: "/dashboard/settings/profile" });
     }
   }, [query.data, navigate]);
 
