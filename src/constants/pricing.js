@@ -9,7 +9,7 @@ export const termPricing = {
       price: "110",
       currency: "CAD",
       term: "year",
-      benefit: "Get 1 free month",
+      benefit: "Get 1 month free",
     },
     features: [
       "Customize your reading list",
@@ -36,7 +36,7 @@ export const termPricing = {
       price: "165",
       currency: "CAD",
       term: "year",
-      benefit: "Get 1 free month",
+      benefit: "Get 1 month free",
     },
     features: [
       "Customize your reading list",

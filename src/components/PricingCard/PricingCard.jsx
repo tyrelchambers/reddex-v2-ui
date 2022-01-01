@@ -93,6 +93,15 @@ const PricingCard = ({ plan, label, recommended, term, clickHandler }) => {
           <span className="text-3xl font-bold text ">${term.price}</span>/
           {term.term}
         </div>
+
+        {term.term === "year" && (
+          <div className="flex items-baseline">
+            <p className="text-sm mt-2">
+              ${Number(term.price) + Number(plan["monthly"].price)}
+              /year if paid monthly
+            </p>
+          </div>
+        )}
         {term.benefit && (
           <p className="bg-green-50 text-green-700 p-2 rounded-lg px-4 mt-4 font-medium">
             <FontAwesomeIcon icon={faBolt} className="mr-2 " /> {term.benefit}

@@ -10,10 +10,8 @@ import {
   faArrowUpRightFromSquare,
   faTriangleExclamation,
 } from "@fortawesome/pro-duotone-svg-icons";
-import { Button } from "../../../components/Button/Button";
 import { createNewStripePortal } from "../../../api/createNewStripePortal";
 import { format, fromUnixTime } from "date-fns";
-import { useMatch } from "react-location";
 import Loader from "../../../components/Loader/Loader";
 
 const StyledWrapper = styled.section`
@@ -43,6 +41,8 @@ const Subscription = () => {
 
   if (isLoading) return <Loader />;
 
+  console.log(data);
+
   return (
     <StyledWrapper>
       <H1>Subscription</H1>
@@ -70,7 +70,7 @@ const Subscription = () => {
                   >
                     ${(data.subscription.plan.amount / 100).toFixed(2)}
                   </span>
-                  /mon
+                  /{data.subscription.plan.interval}
                 </p>
                 {data.subscription.discount?.coupon.percent_off && (
                   <p className="bg-green-100 text-green-600 px-4 py-1 rounded-full">

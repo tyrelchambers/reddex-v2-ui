@@ -42,7 +42,7 @@ const Pricing = () => {
         <main className="max-w-screen-xl ml-auto mr-auto mt-10 flex flex-col items-center">
           <div className="max-w-5xl">
             <H1 className=" text-center " textSize="text-6xl">
-              Stop wasting time finding stories and asking for permission
+              Stop wasting time finding stories
             </H1>
             <p className="text-light mt-8 max-w-2xl text-center ml-auto mr-auto text-2xl">
               Take back your time and become a more efficient creator. No credit
@@ -82,7 +82,9 @@ const Pricing = () => {
               plan={basicPlan}
               label="Basic"
               term={termPricing["basic"][term]}
-              clickHandler={() => navigate({ to: `/register?plan=basic` })}
+              clickHandler={() =>
+                navigate({ to: `/register?plan=basic&term=${term}` })
+              }
             />
 
             <PricingCard
@@ -90,7 +92,9 @@ const Pricing = () => {
               label="Pro"
               term={termPricing["pro"][term]}
               recommended
-              clickHandler={() => navigate({ to: `/register?plan=pro` })}
+              clickHandler={() =>
+                navigate({ to: `/register?plan=pro&term=${term}` })
+              }
             />
           </section>
         </main>
