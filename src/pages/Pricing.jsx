@@ -26,7 +26,7 @@ const StyledWrapper = styled.div`
 `;
 
 const Pricing = () => {
-  const [term, setTerm] = useState("monthly");
+  const [term, setTerm] = useState("month");
   const [theme, toggleTheme, themeStyles] = useContext(ThemeContext);
   const navigate = useNavigate();
   const basicPlan = termPricing["basic"];
@@ -57,7 +57,7 @@ const Pricing = () => {
               className={`term-button p-2 rounded-full px-4 ${
                 term === "monthly" && "is-active"
               }`}
-              onClick={() => termHandler("monthly")}
+              onClick={() => termHandler("month")}
             >
               Monthly
             </button>
@@ -65,7 +65,7 @@ const Pricing = () => {
               className={`term-button p-2 rounded-full px-4 ${
                 term === "yearly" && "is-active"
               }`}
-              onClick={() => termHandler("yearly")}
+              onClick={() => termHandler("year")}
             >
               Yearly
             </button>

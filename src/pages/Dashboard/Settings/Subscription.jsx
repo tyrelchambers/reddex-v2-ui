@@ -62,7 +62,9 @@ const Subscription = () => {
                 <p className="text-light">
                   <span
                     className={`text font-bold text-xl ${
-                      data.subscription.discount?.coupon.percent_off &&
+                      (data.subscription.discount?.coupon.percent_off ||
+                        data.subscription.trial_end >
+                          Math.floor(Date.now() / 1000)) &&
                       "line-through"
                     }`}
                   >
@@ -85,7 +87,10 @@ const Subscription = () => {
                   {format(
                     fromUnixTime(data.subscription.trial_end),
                     "MMMM d, yyyy"
-                  )}
+                  )}{" "}
+                  , then your plan will switch to{" "}
+                  {subscription.data?.subscription.plan}; billed per{" "}
+                  {subscription.data?.subscription.term}
                 </p>
               )}
 
