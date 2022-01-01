@@ -100,7 +100,7 @@ const PostQueueItem = ({
     //   name: post.author,
     // });
 
-    // storyMutation.mutate(post);
+    storyMutation.mutate(post);
     addToUsed.mutate({ post_id: post.post_id });
 
     // removeHandler(post);

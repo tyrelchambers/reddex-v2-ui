@@ -3,14 +3,14 @@ import { toast } from "react-toastify";
 import { editContact } from "../api/editContact";
 import { getContact } from "../api/getContact";
 
-export const useContact = ({ uuid }) => {
+export const useContact = (data) => {
   const queryClient = useQueryClient();
 
   const singleContactQuery = useQuery(
-    ["contact", uuid],
-    () => getContact(uuid),
+    ["contact", data],
+    () => getContact(data),
     {
-      enabled: !!uuid,
+      enabled: !!data,
     }
   );
 

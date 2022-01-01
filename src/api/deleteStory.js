@@ -1,9 +1,7 @@
 import { request } from "../config/axios";
 
 export const deleteStory = (uuid) => {
-  return request.delete("/story/v1/delete", {
-    data: {
-      uuid,
-    },
+  return request.post("/story/v1/delete", {
+    uuid,
   });
 };

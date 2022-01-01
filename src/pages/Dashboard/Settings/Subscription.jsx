@@ -41,8 +41,6 @@ const Subscription = () => {
 
   if (isLoading) return <Loader />;
 
-  console.log(data);
-
   return (
     <StyledWrapper>
       <H1>Subscription</H1>
@@ -79,8 +77,9 @@ const Subscription = () => {
                 )}
               </div>
             </header>
+
             {data.subscription.trial_end &&
-              data.subscription.trial_end < Date.now() && (
+              data.subscription.trial_end > Math.floor(Date.now() / 1000) && (
                 <p className="text-sm text-light">
                   Your trial ends{" "}
                   {format(

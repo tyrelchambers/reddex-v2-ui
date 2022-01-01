@@ -13,19 +13,14 @@ const StyledWrapper = styled.div`
 const IsInReadingList = ({ message, approvedList }) => {
   const isInApprovedList = isInReadingList(approvedList, message);
 
-  return (
+  return isInApprovedList ? (
     <StyledWrapper>
-      {isInApprovedList && (
-        <div className="flex items-center text-sm mt-6">
-          <FontAwesomeIcon
-            icon={faBookBookmark}
-            className="text-green-500 mr-2"
-          />
-          <p className="text">In reading list</p>
-        </div>
-      )}
+      <div className="flex items-center text-sm">
+        <FontAwesomeIcon icon={faBookBookmark} className="text mr-2" />
+        <p className="text">In reading list</p>
+      </div>
     </StyledWrapper>
-  );
+  ) : null;
 };
 
 export default IsInReadingList;

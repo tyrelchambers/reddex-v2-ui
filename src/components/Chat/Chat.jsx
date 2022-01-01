@@ -33,7 +33,7 @@ const Chat = ({ message, user, isFirstMessage }) => {
               ? `You (${user.Profile.reddit_profile.name})`
               : message.author}
           </p>
-          <p className="text-super-light ">
+          <p className="text-light ">
             {format(new Date(message.created) * 1000, "MMM do, yyy")}
           </p>
         </header>

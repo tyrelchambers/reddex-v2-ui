@@ -1,12 +1,17 @@
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
 import { deleteStory } from "../api/deleteStory";
+import { getStory } from "../api/getStory";
 import { saveStoryToUser } from "../api/saveStoryToUser";
 import { saveTagToStory } from "../api/saveTagToStory";
 import { setUsedOnStory } from "../api/setUsedOnStory";
 
-export const useStory = () => {
+export const useStory = (data) => {
   const queryClient = useQueryClient();
+
+  const storyQuery = useQuery(["story", data], () => getStory(data), {
+    enabled: !!data,
+  });
 
   const storyMutation = useMutation((data) => saveStoryToUser(data), {
     onError: (error) => {
@@ -40,5 +45,6 @@ export const useStory = () => {
     deleteStoryMutation,
     addTagToStory,
     addToUsed,
+    storyQuery,
   };
 };
