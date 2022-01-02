@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import SiteBuilderGeneralForm from "../../../forms/SiteBuilderGeneralForm";
 import { H2 } from "../../../components/headings/h2";
@@ -18,9 +18,6 @@ const StyledWrapper = styled.section`
 const General = () => {
   const [state, dispatch] = useContext(WebsiteContext);
 
-  if (!state.enabled) {
-    return <EnabledWarning />;
-  }
   return (
     <StyledWrapper>
       <SiteBuilderGeneralForm state={state} dispatch={dispatch} />

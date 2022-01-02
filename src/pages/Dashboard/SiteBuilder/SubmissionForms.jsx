@@ -18,9 +18,6 @@ const StyledWrapper = styled.section`
 const SubmissionForms = () => {
   const [state, dispatch] = useContext(WebsiteContext);
 
-  if (!state.enabled) {
-    return <EnabledWarning />;
-  }
   return (
     <StyledWrapper>
       <H2>Submission Form</H2>

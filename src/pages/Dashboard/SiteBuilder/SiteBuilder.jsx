@@ -4,11 +4,12 @@ import RToggle from "../../../components/RToggle/RToggle";
 import Subtitle from "../../../components/Subtitle/Subtitle";
 import WebsiteSaveBanner from "../../../components/WebsiteSaveBanner/WebsiteSaveBanner";
 import { useWebsite } from "../../../hooks/useWebsite";
-import { Outlet, useMatch, useNavigate } from "react-location";
+import { Outlet, useNavigate } from "react-location";
 import { WebsiteContext } from "../../../contexts/websiteContext";
 import { initialState } from "../../../constants/website";
 import _ from "lodash";
 import { toast } from "react-toastify";
+import { useSubscription } from "../../../hooks/useSubscription";
 
 const SiteBuilder = () => {
   const { websiteQuery, updateWebsiteMutation } = useWebsite();
@@ -16,22 +17,18 @@ const SiteBuilder = () => {
   const [isChanged, setIsChanged] = useState(false);
 
   const navigate = useNavigate();
-
   const {
-    data: {
-      product: { name },
-      subscription: { status },
-    },
-  } = useMatch();
+    subscription: { data },
+  } = useSubscription();
 
   useEffect(() => {
-    if (name === "Basic") {
+    if (data?.subscription.plan === "basic") {
       toast.warn(
         "You are using the basic plan. Please upgrade to the pro plan to unlock all features."
       );
       return navigate({ to: "/dashboard/settings/subscription" });
     }
-  }, [name, status]);
+  }, [data]);
 
   useEffect(() => {
     if (websiteQuery.data?.config) {

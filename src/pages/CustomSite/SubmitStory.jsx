@@ -108,6 +108,8 @@ const SubmitStory = ({ subdomain }) => {
     }
   }, [setThemeHandler, websiteData]);
 
+  if (!websiteData?.enabled) return null;
+
   const editor = useEditor({
     extensions: [StarterKit],
   });

@@ -1,11 +1,11 @@
 export const termPricing = {
   basic: {
-    monthly: {
+    month: {
       price: "10",
       currency: "CAD",
       term: "mon",
     },
-    yearly: {
+    year: {
       price: "110",
       currency: "CAD",
       term: "year",
@@ -26,13 +26,13 @@ export const termPricing = {
     bestFor: "You want organization from stories to contacts",
   },
   pro: {
-    monthly: {
+    month: {
       price: "15",
 
       currency: "CAD",
       term: "mon",
     },
-    yearly: {
+    year: {
       price: "165",
       currency: "CAD",
       term: "year",

@@ -7,10 +7,6 @@ import SiteBuilderTimelinesForm from "../../../forms/SiteBuilderTimelinesForm";
 const Timelines = () => {
   const [state, dispatch] = useContext(WebsiteContext);
 
-  if (!state.enabled) {
-    return <EnabledWarning />;
-  }
-
   return (
     <div>
       <H2>Timelines</H2>

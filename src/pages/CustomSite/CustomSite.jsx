@@ -73,6 +73,8 @@ const CustomSite = ({ subdomain }) => {
     }
   }, [setThemeHandler, website.data, websiteData?.theme.mode]);
 
+  if (!websiteData?.enabled) return null;
+
   const isYoutubeEnabled =
     websiteData &&
     websiteData.timelines.find((item) => item.type === "youtube").enabled;

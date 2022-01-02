@@ -6,9 +6,6 @@ import SiteBuilderColorForm from "../../../forms/SiteBuilderColorForm";
 const Colour = () => {
   const [state, dispatch] = useContext(WebsiteContext);
 
-  if (!state.enabled) {
-    return <EnabledWarning />;
-  }
   return <SiteBuilderColorForm state={state} dispatch={dispatch} />;
 };
 
