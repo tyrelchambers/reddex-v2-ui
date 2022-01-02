@@ -55,7 +55,7 @@ const SiteBuilderGeneralForm = ({ state, dispatch }) => {
             dispatch({
               type: "SET_GENERAL",
               field: "domain",
-              payload: e.target.value,
+              payload: e.target.value.trim().replace(/[\W]/g, ""),
             });
           }}
         />
