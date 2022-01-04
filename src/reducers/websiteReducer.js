@@ -62,6 +62,31 @@ export const websiteReducer = (state, action) => {
       };
     }
 
+    case "SET_LOGO": {
+      const clone = { ...state };
+      clone.general.logo = action.payload;
+      return clone;
+    }
+
+    case "SET_BANNER": {
+      const clone = { ...state };
+      clone.general.banner = action.payload;
+
+      return clone;
+    }
+
+    case "REMOVE_BANNER": {
+      const clone = { ...state };
+      clone.general.banner = "";
+      return clone;
+    }
+
+    case "REMOVE_LOGO": {
+      const clone = { ...state };
+      clone.general.logo = "";
+      return clone;
+    }
+
     case "RESET": {
       return action.payload;
     }

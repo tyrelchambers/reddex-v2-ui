@@ -11,10 +11,12 @@ import _ from "lodash";
 import { toast } from "react-toastify";
 import { useSubscription } from "../../../hooks/useSubscription";
 
-const SiteBuilder = () => {
+const SiteBuilder = (props) => {
   const { websiteQuery, updateWebsiteMutation } = useWebsite();
   const [state, dispatch] = useContext(WebsiteContext);
   const [isChanged, setIsChanged] = useState(false);
+  const logoRef = props.logoRef;
+  const bannerRef = props.bannerRef;
 
   const navigate = useNavigate();
   const {
@@ -53,8 +55,27 @@ const SiteBuilder = () => {
     dispatch({ type: "RESET", payload: websiteQuery.data.config });
   };
 
-  const saveHandler = () => {
-    updateWebsiteMutation.mutate(state);
+  const saveHandler = async () => {
+    const logoUrl =
+      logoRef.current?.getFile() &&
+      (await logoRef.current
+        .processFile()
+        .then((file) => JSON.parse(file.serverId)));
+
+    const bannerUrl =
+      logoRef.current?.getFile() &&
+      (await bannerRef.current
+        .processFile()
+        .then((file) => JSON.parse(file.serverId)));
+
+    updateWebsiteMutation.mutate({
+      ...state,
+      general: {
+        ...state.general,
+        ...(logoUrl?.original && { logo: logoUrl.original }),
+        ...(bannerUrl?.original && { banner: bannerUrl.original }),
+      },
+    });
   };
 
   return (
@@ -70,6 +91,8 @@ const SiteBuilder = () => {
         <a
           href={`${window.location.protocol}//${state.general.domain}.${window.location.host}`}
           className="text-accent-primary underline"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           View your site
         </a>

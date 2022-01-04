@@ -35,10 +35,11 @@ import Submitted from "../pages/Dashboard/Submitted";
 import Story from "../pages/Story";
 import About from "../pages/About";
 import { getStripePlan } from "../api/getStripePlan";
-import { Navigate } from "react-location";
-import { toast } from "react-toastify";
+import React from "react";
 
 const queryClient = new QueryClient();
+const logoRef = React.createRef();
+const bannerRef = React.createRef();
 
 export const routes = [
   {
@@ -60,6 +61,7 @@ export const routes = [
   {
     path: "/dashboard",
     element: <Index />,
+
     children: [
       {
         path: "/story/:id",
@@ -161,7 +163,7 @@ export const routes = [
         path: "/site-builder",
         element: (
           <WebsiteStore>
-            <SiteBuilder />
+            <SiteBuilder logoRef={logoRef} bannerRef={bannerRef} />
           </WebsiteStore>
         ),
         loader: async () => {
@@ -173,7 +175,7 @@ export const routes = [
         children: [
           {
             path: "/general",
-            element: <General />,
+            element: <General logoRef={logoRef} bannerRef={bannerRef} />,
           },
           {
             path: "/colour",

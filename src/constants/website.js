@@ -5,6 +5,7 @@ export const initialState = {
     siteName: "",
     description: "",
     bannerUrl: "",
+    logoUrl: "",
   },
   social: {
     facebook: "",

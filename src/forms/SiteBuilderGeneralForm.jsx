@@ -7,26 +7,12 @@ import InputWrapper from "../components/InputWrapper/InputWrapper";
 import { formatSiteUrl } from "../utils/formatSiteUrl";
 import Form from "./Form";
 import Textarea from "../components/Textarea/Textarea";
-import styled from "styled-components";
 import { checkSubdomain } from "../api/checkSubdomain";
-import { useWebsite } from "../hooks/useWebsite";
 import { useEffect } from "react";
+import ImgUploader from "../components/ImgUploader/ImgUploader";
+import { Button } from "../components/Button/Button";
 
-const StyledBanner = styled.div`
-  background-color: ${(props) => props.theme.backgroundSecondary};
-  width: 100%;
-  aspect-ratio: 16/9;
-
-  p {
-    color: ${(props) => props.theme.textSuperLight};
-  }
-
-  .domain-check {
-    background-color: ${(props) => props.theme.backgroundSecondary};
-  }
-`;
-
-const SiteBuilderGeneralForm = ({ state, dispatch }) => {
+const SiteBuilderGeneralForm = ({ state, dispatch, logoRef, bannerRef }) => {
   const [isDomainAvailable, setIsDomainAvailable] = React.useState(null);
 
   useEffect(() => {
@@ -36,7 +22,6 @@ const SiteBuilderGeneralForm = ({ state, dispatch }) => {
   const checkSubdomainAvailability = async () => {
     const { available } = await checkSubdomain(state.general.domain);
 
-    console.log(available);
     if (available && state.general.domain !== "") {
       setIsDomainAvailable(true);
     } else {
@@ -110,16 +95,72 @@ const SiteBuilderGeneralForm = ({ state, dispatch }) => {
         />
       </InputWrapper>
 
-      <InputWrapper label="Logo">
-        <StyledBanner className="logo-image rounded-lg flex items-center justify-center">
-          <p className="font-bold">Upload a logo</p>
-        </StyledBanner>
+      <InputWrapper label="Logo" subLabel="Optimal image size 400 x 400">
+        {typeof state.general.logo === "string" && state.general.logo ? (
+          <div className="flex items-center">
+            <img
+              src={state.general.logo}
+              alt=""
+              className="w-40 mr-6 rounded-lg"
+            />
+            <Button
+              variant="secondary"
+              onClick={() => {
+                dispatch({
+                  type: "REMOVE_LOGO",
+                });
+              }}
+            >
+              Remove logo
+            </Button>
+          </div>
+        ) : (
+          <ImgUploader
+            url="http://localhost:4000/api/upload/v1/logo"
+            ref={logoRef}
+            files={state.general.logo}
+            setFiles={(files) =>
+              dispatch({
+                type: "SET_LOGO",
+                payload: files,
+              })
+            }
+          />
+        )}
       </InputWrapper>
 
-      <InputWrapper label="Banner Image">
-        <StyledBanner className="banner-image rounded-lg flex items-center justify-center">
-          <p className="font-bold">Upload a banner</p>
-        </StyledBanner>
+      <InputWrapper label="Banner" subLabel="Optimal image size 1500 x 500">
+        {typeof state.general.banner === "string" && state.general.banner ? (
+          <div className="flex flex-col">
+            <img
+              src={state.general.banner}
+              alt=""
+              className="w-full  rounded-lg mb-4"
+            />
+            <Button
+              variant="secondary"
+              onClick={() => {
+                dispatch({
+                  type: "REMOVE_BANNER",
+                });
+              }}
+            >
+              Remove banner
+            </Button>
+          </div>
+        ) : (
+          <ImgUploader
+            url="http://localhost:4000/api/upload/v1/banner"
+            files={state.general.banner}
+            setFiles={(files) =>
+              dispatch({
+                type: "SET_BANNER",
+                payload: files,
+              })
+            }
+            ref={bannerRef}
+          />
+        )}
       </InputWrapper>
     </Form>
   );

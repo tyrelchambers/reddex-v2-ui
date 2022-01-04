@@ -6,7 +6,6 @@ import Subtitle from "../../../components/Subtitle/Subtitle";
 import SiteBuilderSocialForm from "../../../forms/SiteBuilderSocialForm";
 import Form from "../../../forms/Form";
 import { Button } from "../../../components/Button/Button";
-import EnabledWarning from "../../../components/EnabledWarning/EnabledWarning";
 import { WebsiteContext } from "../../../contexts/websiteContext";
 
 const StyledWrapper = styled.section`
@@ -15,12 +14,17 @@ const StyledWrapper = styled.section`
   }
 `;
 
-const General = () => {
+const General = (props) => {
   const [state, dispatch] = useContext(WebsiteContext);
 
   return (
     <StyledWrapper>
-      <SiteBuilderGeneralForm state={state} dispatch={dispatch} />
+      <SiteBuilderGeneralForm
+        state={state}
+        dispatch={dispatch}
+        logoRef={props.logoRef}
+        bannerRef={props.bannerRef}
+      />
       <hr className="mt-10 mb-10" />
       <H2>Social Media</H2>
       <Subtitle>
