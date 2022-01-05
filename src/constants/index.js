@@ -92,4 +92,4 @@ export const trustedBy = [
 ];
 
 export const twitterTestimonies = [tweet1];
-export const acceptedRoutes = ["dashboard/settings"];
+export const acceptedRoutes = ["/dashboard/settings/subscription"];

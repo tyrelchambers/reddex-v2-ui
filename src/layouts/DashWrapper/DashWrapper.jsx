@@ -1,19 +1,14 @@
 import React, { useContext, useEffect } from "react";
-import {
-  useMatch,
-  useMatches,
-  useMatchRoute,
-  useNavigate,
-} from "react-location";
+import { Link, useNavigate } from "react-location";
 import { toast } from "react-toastify";
 import styled, { ThemeProvider } from "styled-components";
 import Loader from "../../components/Loader/Loader";
-import { acceptedRoutes } from "../../constants";
 import { ThemeContext } from "../../contexts/themeContext";
 import { GlobalStyles } from "../../globalStyles";
 import { useStripe } from "../../hooks/useStripe";
 import { useUser } from "../../hooks/useUser";
 import DashHeader from "../DashHeader/DashHeader";
+import { canAccessRoute } from "../../utils/canAccessRoute";
 
 const StyledGrid = styled.main`
   display: grid;
@@ -39,17 +34,6 @@ const DashWrapper = (props) => {
     }
   }, [query.data, navigate]);
 
-  const canAccessRoute = (subscription) => {
-    if (
-      subscription.status === "active" ||
-      subscription.status === "trialing"
-    ) {
-      return true;
-    }
-
-    return false;
-  };
-
   return (
     <ThemeProvider
       theme={themeStyles}
@@ -64,10 +48,25 @@ const DashWrapper = (props) => {
         {!isLoading && data && (
           <>
             <section className="p-8 dash-body">
-              {canAccessRoute(data.subscription) ? (
+              {canAccessRoute(data.subscription).status ? (
                 <>{props.children}</>
               ) : (
-                <p>Something's gone wrong</p>
+                <>
+                  <p className="text-3xl font-bold text mb-4">
+                    Something's gone wrong
+                  </p>
+                  <p className="text-light ">
+                    {canAccessRoute(data.subscription).error}. Please head to
+                    your{" "}
+                    <Link
+                      className="underline text-accent-primary"
+                      to="/dashboard/settings/subscription"
+                    >
+                      subscription
+                    </Link>{" "}
+                    page to fix.
+                  </p>
+                </>
               )}
             </section>
           </>
