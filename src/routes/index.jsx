@@ -36,6 +36,7 @@ import Story from "../pages/Story";
 import About from "../pages/About";
 import { getStripePlan } from "../api/getStripePlan";
 import React from "react";
+import NotFound from "../pages/NotFound";
 
 const queryClient = new QueryClient();
 const logoRef = React.createRef();
@@ -216,5 +217,9 @@ export const routes = [
       localStorage.removeItem("token");
       window.location.href = "/";
     },
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ];
