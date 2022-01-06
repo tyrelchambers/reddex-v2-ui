@@ -88,14 +88,16 @@ const SiteBuilder = (props) => {
             Build your website and advertise what you do.
           </Subtitle>
         </div>
-        <a
-          href={`${window.location.protocol}//${state.general.domain}.${window.location.host}`}
-          className="text-accent-primary underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          View your site
-        </a>
+        {websiteQuery.data.config.general.domain && (
+          <a
+            href={`${window.location.protocol}//${state.general.domain}.${window.location.host}`}
+            className="text-accent-primary underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View your site
+          </a>
+        )}
       </div>
 
       <hr className="mt-10 mb-10" />

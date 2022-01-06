@@ -5,9 +5,11 @@ import { faSearch } from "@fortawesome/pro-duotone-svg-icons";
 import { useSubmitted } from "../../hooks/useSubmitted";
 import { useUser } from "../../hooks/useUser";
 import SubmittedStory from "../../components/SubmittedStory/SubmittedStory";
+import { useState } from "react";
 
 const Submitted = () => {
   const { submittedQuery } = useSubmitted();
+  const [search, setSearch] = useState("");
   const {
     query: { data: user },
   } = useUser();
@@ -15,7 +17,12 @@ const Submitted = () => {
   return (
     <>
       <div className="flex gap-4 max-w-xl w-full">
-        <Input placeholder="Search by keywords..." icon={faSearch} />
+        <Input
+          placeholder="Search by keywords..."
+          icon={faSearch}
+          value={search}
+          onInput={(e) => setSearch(e.target.value)}
+        />
       </div>
       <section className="mt-10">
         <H1>Submitted</H1>
@@ -25,9 +32,15 @@ const Submitted = () => {
         )}
         <div className="grid grid-cols-3 gap-3 mt-10">
           {submittedQuery.data &&
-            submittedQuery.data.map((item, index) => (
-              <SubmittedStory user={user} item={item} key={index} />
-            ))}
+            submittedQuery.data
+              .filter((el) =>
+                search
+                  ? el.story_title.toLowerCase().includes(search.toLowerCase())
+                  : el
+              )
+              .map((item, index) => (
+                <SubmittedStory user={user} item={item} key={index} />
+              ))}
         </div>
       </section>
     </>
