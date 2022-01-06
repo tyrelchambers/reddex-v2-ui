@@ -63,7 +63,7 @@ const SiteBuilder = (props) => {
         .then((file) => JSON.parse(file.serverId)));
 
     const bannerUrl =
-      logoRef.current?.getFile() &&
+      bannerRef.current?.getFile() &&
       (await bannerRef.current
         .processFile()
         .then((file) => JSON.parse(file.serverId)));
