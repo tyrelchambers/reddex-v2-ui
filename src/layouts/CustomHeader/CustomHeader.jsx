@@ -3,7 +3,6 @@ import { Link } from "react-location";
 import SiteSocials from "../../components/SiteSocials/SiteSocials";
 
 const CustomHeader = ({ website }) => {
-  console.log(website);
   return (
     <header className="flex items-center p-4 justify-between">
       <div className="flex items-center">

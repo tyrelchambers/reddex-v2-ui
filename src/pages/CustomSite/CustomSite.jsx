@@ -96,7 +96,10 @@ const CustomSite = ({ subdomain }) => {
             <main className="max-w-screen-2xl ml-auto mr-auto mt-10">
               <div className="hero  rounded-lg ">
                 <img
-                  src={website.data.config.general.banner}
+                  src={
+                    website.data.config.general.banner ||
+                    "https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                  }
                   alt=""
                   className="object-cover"
                 />
