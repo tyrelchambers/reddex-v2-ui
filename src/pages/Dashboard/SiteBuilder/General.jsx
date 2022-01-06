@@ -7,6 +7,7 @@ import SiteBuilderSocialForm from "../../../forms/SiteBuilderSocialForm";
 import Form from "../../../forms/Form";
 import { Button } from "../../../components/Button/Button";
 import { WebsiteContext } from "../../../contexts/websiteContext";
+import { useWebsite } from "../../../hooks/useWebsite";
 
 const StyledWrapper = styled.section`
   .text {
@@ -16,7 +17,14 @@ const StyledWrapper = styled.section`
 
 const General = (props) => {
   const [state, dispatch] = useContext(WebsiteContext);
+  const {
+    websiteQuery: { data },
+    deleteWebsiteMutation,
+  } = useWebsite();
 
+  const deleteWebsiteHandler = (uuid) => {
+    deleteWebsiteMutation.mutate(uuid);
+  };
   return (
     <StyledWrapper>
       <SiteBuilderGeneralForm
@@ -41,7 +49,11 @@ const General = (props) => {
         This action is permanent. This will delete your website forever.
       </Subtitle>
       <Form>
-        <Button variant="danger" className="w-full mt-6">
+        <Button
+          variant="danger"
+          className="w-full mt-6"
+          onClick={() => deleteWebsiteHandler(data?.uuid)}
+        >
           Delete Website
         </Button>
       </Form>

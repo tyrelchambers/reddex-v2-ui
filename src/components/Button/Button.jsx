@@ -100,6 +100,7 @@ const danger = (props) => (
     className={`border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-all  h-12 px-4 rounded-md  ${
       props.className ? props.className : ""
     }`}
+    onClick={props.onClick}
   >
     {props.children}
   </StyledButton>
