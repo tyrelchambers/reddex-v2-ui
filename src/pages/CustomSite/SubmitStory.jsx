@@ -199,7 +199,11 @@ const SubmitStory = ({ subdomain }) => {
                 <EditorContent editor={editor} className="editor" />
 
                 <div className="flex justify-end mt-6">
-                  <Button onClick={handleSubmit(submitHandler)}>
+                  <Button
+                    onClick={handleSubmit(submitHandler)}
+                    disabled={submitStory.isLoading}
+                    loading={submitStory.isLoading}
+                  >
                     Submit story
                   </Button>
                 </div>

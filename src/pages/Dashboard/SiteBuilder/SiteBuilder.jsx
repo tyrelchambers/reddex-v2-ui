@@ -88,7 +88,7 @@ const SiteBuilder = (props) => {
             Build your website and advertise what you do.
           </Subtitle>
         </div>
-        {websiteQuery.data.config.general.domain && (
+        {websiteQuery.data?.config.general.domain && (
           <a
             href={`${window.location.protocol}//${state.general.domain}.${window.location.host}`}
             className="text-accent-primary underline"

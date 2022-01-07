@@ -27,9 +27,6 @@ const Security = () => {
         <hr className="mt-10 mb-10" />
 
         <H2>Delete Account</H2>
-        <Subtitle className="mt-2 font-bold">
-          This action is permanent.
-        </Subtitle>
 
         <p className="text-light mt-2">
           To delete your account, manage your{" "}

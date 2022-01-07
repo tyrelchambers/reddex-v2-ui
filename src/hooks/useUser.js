@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { toast } from "react-toastify";
+import { changeUserPassword } from "../api/changeUserPassword";
 import { getUser } from "../api/getUser";
 import { updateUser } from "../api/updateUser";
 
@@ -18,5 +19,12 @@ export const useUser = () => {
     },
   });
 
-  return { query, update };
+  const changePassword = useMutation((data) => changeUserPassword(data), {
+    onSuccess: () => {
+      queryClient.invalidateQueries("currentUser");
+      toast.success("Password changed successfully");
+    },
+  });
+
+  return { query, update, changePassword };
 };
