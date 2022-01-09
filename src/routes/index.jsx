@@ -37,6 +37,8 @@ import About from "../pages/About";
 import { getStripePlan } from "../api/getStripePlan";
 import React from "react";
 import NotFound from "../pages/NotFound";
+import PrivacyPolicy from "../pages/PrivacyPolicy";
+import TOS from "../pages/TOS";
 
 const queryClient = new QueryClient();
 const logoRef = React.createRef();
@@ -209,6 +211,14 @@ export const routes = [
   {
     path: "/pricing",
     element: <Pricing />,
+  },
+  {
+    path: "/privacy",
+    element: <PrivacyPolicy />,
+  },
+  {
+    path: "/terms-of-service",
+    element: <TOS />,
   },
   {
     path: "/signout",
