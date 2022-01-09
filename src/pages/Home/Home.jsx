@@ -6,6 +6,7 @@ import { deleteExistingPosts } from "../../api/deleteExistingPosts";
 import { savePostsToDatabase } from "../../api/savePostsToDatabase";
 import Card from "../../components/Card/Card";
 import Loader from "../../components/Loader/Loader";
+import MiscInfo from "../../components/MiscInfo/MiscInfo";
 import QueueIndicator from "../../components/QueueIndicator/QueueIndicator";
 import RecentlySearched from "../../components/RecentlySearched/RecentlySearched";
 import RPagination from "../../components/RPagination/RPagination";
@@ -117,6 +118,7 @@ const Home = () => {
             executeSearch={executeSearch}
             setSubreddit={setSubreddit}
           />
+          <MiscInfo />
         </StyledSide>
 
         <section className="w-full flex-col">

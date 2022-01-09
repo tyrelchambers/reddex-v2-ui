@@ -7,6 +7,9 @@ export default defineConfig({
   plugins: [
     react({
       include: ["**/*.md"],
+      babel: {
+        plugins: ["babel-plugin-macros", "babel-plugin-styled-components"],
+      },
     }),
     mdPlugin({
       mode: "html",
