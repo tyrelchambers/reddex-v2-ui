@@ -12,8 +12,7 @@ const StyledLink = styled(Link)`
       props.isActive ? props.theme.accentPrimary : props.theme.text};
   }
   font-weight: ${(props) => (props.isActive ? "bold" : "normal")};
-  color: ${(props) =>
-    props.isActive ? props.theme.accentPrimary : "var(--black)"};
+  color: ${(props) => (props.isActive ? props.theme.accentPrimary : "#484848")};
 `;
 
 const StyledHeader = styled(Link)`
@@ -56,7 +55,7 @@ const DashNav = () => {
                     <StyledLink
                       to={`/dashboard${item.slug}`}
                       key={item.slug}
-                      className="p-3 text-sm "
+                      className="p-3 text-sm"
                       isActive={activeRoute.includes(item.slug)}
                     >
                       {item.label}
