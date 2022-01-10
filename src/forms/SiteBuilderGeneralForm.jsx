@@ -95,7 +95,7 @@ const SiteBuilderGeneralForm = ({ state, dispatch, logoRef, bannerRef }) => {
         />
       </InputWrapper>
 
-      <InputWrapper label="Logo" subLabel="Optimal image size 400 x 400">
+      <InputWrapper label="Logo" subLabel="Optimal image size 200 x 200">
         {typeof state.general.logo === "string" && state.general.logo ? (
           <div className="flex items-center">
             <img

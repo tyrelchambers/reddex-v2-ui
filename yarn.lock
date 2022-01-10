@@ -2000,6 +2000,11 @@
   dependencies:
     "flat-cache" "^3.0.4"
 
+"filepond-plugin-file-validate-size@^2.2.5":
+  "integrity" "sha512-x+fYZl317R17w3dExKab1oYZa10Wl2HcXKD6dzIgRKyngEHtjBF99geGaiDPk9IfozV8Zjzx69D7urcthF2CYQ=="
+  "resolved" "https://registry.npmjs.org/filepond-plugin-file-validate-size/-/filepond-plugin-file-validate-size-2.2.5.tgz"
+  "version" "2.2.5"
+
 "filepond-plugin-image-exif-orientation@^1.0.11":
   "integrity" "sha512-hLBc12Fk6Zkj3L8mSAn+elugHOqT5rLUbgVXQQIQjMe0FsGjtpoxqeVR6jt4IWHGat2L9sFAgU2TGmd1mqosCg=="
   "resolved" "https://registry.npmjs.org/filepond-plugin-image-exif-orientation/-/filepond-plugin-image-exif-orientation-1.0.11.tgz"
@@ -2010,7 +2015,7 @@
   "resolved" "https://registry.npmjs.org/filepond-plugin-image-preview/-/filepond-plugin-image-preview-4.6.10.tgz"
   "version" "4.6.10"
 
-"filepond@^4.30.3", "filepond@>=3.7.x < 5.x", "filepond@>=3.x <5.x", "filepond@>=4.x <5.x":
+"filepond@^4.30.3", "filepond@>=3.1.2 <5.x", "filepond@>=3.7.x < 5.x", "filepond@>=3.x <5.x", "filepond@>=4.x <5.x":
   "integrity" "sha512-G2b1LEe90Sq2vH0SYDASTB+vVU735NBctzIaFPlZtb14QAgi/AL89WyQ6LhTfqgyrMyuZur2O9yHAmzS2E9ZnA=="
   "resolved" "https://registry.npmjs.org/filepond/-/filepond-4.30.3.tgz"
   "version" "4.30.3"
