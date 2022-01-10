@@ -69,7 +69,7 @@ const SiteBuilderGeneralForm = ({ state, dispatch, logoRef, bannerRef }) => {
       <InputWrapper label="Site Name" htmlFor="siteName" className="mt-6">
         <Input
           icon={faInputText}
-          placeholder="Your site's headline"
+          placeholder="Give your site a name"
           value={state.general.siteName}
           onInput={(e) =>
             dispatch({

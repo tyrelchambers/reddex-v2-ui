@@ -4,7 +4,7 @@ import SiteSocials from "../../components/SiteSocials/SiteSocials";
 
 const CustomHeader = ({ website }) => {
   return (
-    <header className="flex items-center p-4 justify-between">
+    <header className="flex items-center p-4 justify-between mt-4">
       <div className="flex items-center">
         <img src={website.general.logo} className="w-10 mr-2" />
         <h1 className="font-bold site-name text">{website.general.siteName}</h1>
