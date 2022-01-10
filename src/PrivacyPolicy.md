@@ -28,9 +28,9 @@ Our Terms and Conditions (&quot; **Terms**&quot;) govern all use of our Service 
 
 **DATA PROCESSORS (OR SERVICE PROVIDERS)** means any natural or legal person who processes the data on behalf of the Data Controller. We may use the services of various Service Providers in order to process your data more effectively.
 
-**DATA SUBJECT ** is any living individual who is the subject of Personal Data.
+**DATA SUBJECT** is any living individual who is the subject of Personal Data.
 
-**THE USER ** is the individual using our Service. The User corresponds to the Data Subject, who is the subject of Personal Data.
+**THE USER** is the individual using our Service. The User corresponds to the Data Subject, who is the subject of Personal Data.
 
 3. **Information Collection and Use**
 
@@ -42,7 +42,7 @@ We collect several different types of information for various purposes to provid
 
 While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you (&quot; **Personal Data**&quot;). Personally identifiable information may include, but is not limited to:
 
-1. Email address
+5. Email address
 
 We may use your Personal Data to contact you with newsletters, marketing or promotional materials and other information that may be of interest to you. You may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or by emailing at services@reddex.app.
 
@@ -64,49 +64,49 @@ You can instruct your browser to refuse all cookies or to indicate when a cookie
 
 Examples of Cookies we use:
 
-1. **Session Cookies:** We use Session Cookies to operate our Service.
+   1. **Session Cookies:** We use Session Cookies to operate our Service.
 
-1. **Preference Cookies:** We use Preference Cookies to remember your preferences and various settings.
+   2. **Preference Cookies:** We use Preference Cookies to remember your preferences and various settings.
 
-1. **Security Cookies:** We use Security Cookies for security purposes.
+   3. **Security Cookies:** We use Security Cookies for security purposes.
 
-1. **Advertising Cookies:** Advertising Cookies are used to serve you with advertisements that may be relevant to you and your interests.
+   4. **Advertising Cookies:** Advertising Cookies are used to serve you with advertisements that may be relevant to you and your interests.
 
-1. **Use of Data**
+   5. **Use of Data**
 
 Stanley Tyrel Chambers uses the collected data for various purposes:
 
-1. to provide and maintain our Service;
+   1.  to provide and maintain our Service;
 
-2. to notify you about changes to our Service;
+   2.  to notify you about changes to our Service;
 
-3. to allow you to participate in interactive features of our Service when you choose to do so;
+   3.  to allow you to participate in interactive features of our Service when you choose to do so;
 
-4. to provide customer support;
+   4.  to provide customer support;
 
-5. to gather analysis or valuable information so that we can improve our Service;
+   5.  to gather analysis or valuable information so that we can improve our Service;
 
-6. to monitor the usage of our Service;
+   6.  to monitor the usage of our Service;
 
-7. to detect, prevent and address technical issues;
+   7.  to detect, prevent and address technical issues;
 
-8. to fulfill any other purpose for which you provide it;
+   8.  to fulfill any other purpose for which you provide it;
 
-9. to carry out our obligations and enforce our rights arising from any contracts entered into between you and us, including for billing and collection;
+   9.  to carry out our obligations and enforce our rights arising from any contracts entered into between you and us, including for billing and collection;
 
-10. to provide you with notices about your account and/or subscription, including expiration and renewal notices, email-instructions, etc.;
+   10. to provide you with notices about your account and/or subscription, including expiration and renewal notices, email-instructions, etc.;
 
-11. in any other way we may describe when you provide the information;
+   11. in any other way we may describe when you provide the information;
 
-12. for any other purpose with your consent.
+   12. for any other purpose with your consent.
 
-13. **Retention of Data**
+6. **Retention of Data**
 
 We will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations (for example, if we are required to retain your data to comply with applicable laws), resolve disputes, and enforce our legal agreements and policies.
 
 We will also retain Usage Data for internal analysis purposes. Usage Data is generally retained for a shorter period, except when this data is used to strengthen the security or to improve the functionality of our Service, or we are legally obligated to retain this data for longer time periods.
 
-8. **Transfer of Data**
+7. **Transfer of Data**
 
 Your information, including Personal Data, may be transferred to – and maintained on – computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction.
 
@@ -116,33 +116,33 @@ Your consent to this Privacy Policy followed by your submission of such informat
 
 Stanley Tyrel Chambers will take all the steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organisation or a country unless there are adequate controls in place including the security of your data and other personal information.
 
-9. **Disclosure of Data**
+8. **Disclosure of Data**
 
 We may disclose personal information that we collect, or you provide:
 
-1. **Disclosure for Law Enforcement.**
+9. **Disclosure for Law Enforcement.**
 
 Under certain circumstances, we may be required to disclose your Personal Data if required to do so by law or in response to valid requests by public authorities.
 
-1. **Business Transaction.**
+10. **Business Transaction.**
 
 If we or our subsidiaries are involved in a merger, acquisition or asset sale, your Personal Data may be transferred.
 
-1. **Other cases. We may disclose your information also:**
+11. **Other cases. We may disclose your information also:**
 
-1. to our subsidiaries and affiliates;
+    1. to our subsidiaries and affiliates;
 
-1. for the purpose of including your company&#39;s logo on our website;
+    2. for the purpose of including your company&#39;s logo on our website;
 
-1. with your consent in any other cases;
+    3. with your consent in any other cases;
 
-1. if we believe disclosure is necessary or appropriate to protect the rights, property, or safety of the Company, our customers, or others.
+    4. if we believe disclosure is necessary or appropriate to protect the rights, property, or safety of the Company, our customers, or others.
 
-1. **Security of Data**
+12. **Security of Data**
 
 The security of your data is important to us but remember that no method of transmission over the Internet or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.
 
-11. **Your Data Protection Rights Under General Data Protection Regulation (GDPR)**
+13. **Your Data Protection Rights Under General Data Protection Regulation (GDPR)**
 
 If you are a resident of the European Union (EU) and European Economic Area (EEA), you have certain data protection rights, covered by GDPR. – See more at https://eur-lex.europa.eu/eli/reg/2016/679/oj
 
@@ -152,35 +152,30 @@ If you wish to be informed what Personal Data we hold about you and if you want 
 
 In certain circumstances, you have the following data protection rights:
 
-1. the right to access, update or to delete the information we have on you;
-
-2. the right of rectification. You have the right to have your information rectified if that information is inaccurate or incomplete;
-
-3. the right to object. You have the right to object to our processing of your Personal Data;
-
-4. the right of restriction. You have the right to request that we restrict the processing of your personal information;
-
-5. the right to data portability. You have the right to be provided with a copy of your Personal Data in a structured, machine-readable and commonly used format;
-
-6. the right to withdraw consent. You also have the right to withdraw your consent at any time where we rely on your consent to process your personal information;
+  1. the right to access, update or to delete the information we have on you;
+  2. the right of rectification. You have the right to have your information rectified if that information is inaccurate or incomplete;
+  3. the right to object. You have the right to object to our processing of your Personal Data;
+  4. the right of restriction. You have the right to request that we restrict the processing of your personal information;
+  5. the right to data portability. You have the right to be provided with a copy of your Personal Data in a structured, machine-readable and commonly used format;
+  6. the right to withdraw consent. You also have the right to withdraw your consent at any time where we rely on your consent to process your personal information;
 
 Please note that we may ask you to verify your identity before responding to such requests. Please note, we may not able to provide Service without some necessary data.
 
 You have the right to complain to a Data Protection Authority about our collection and use of your Personal Data. For more information, please contact your local data protection authority in the European Economic Area (EEA).
 
-10. **Your Data Protection Rights under the California Privacy Protection Act (CalOPPA)**
+14. **Your Data Protection Rights under the California Privacy Protection Act (CalOPPA)**
 
 CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy policy. The law&#39;s reach stretches well beyond California to require a person or company in the United States (and conceivable the world) that operates websites collecting personally identifiable information from California consumers to post a conspicuous privacy policy on its website stating exactly the information being collected and those individuals with whom it is being shared, and to comply with this policy. – See more at: https://consumercal.org/about-cfc/cfc-education-foundation/california-online-privacy-protection-act-caloppa-3/
 
 According to CalOPPA we agree to the following:
 
-1. users can visit our site anonymously;
+  1. users can visit our site anonymously;
 
-2. our Privacy Policy link includes the word &quot;Privacy&quot;, and can easily be found on the page specified above on the home page of our website;
+  2. our Privacy Policy link includes the word &quot;Privacy&quot;, and can easily be found on the page specified above on the home page of our website;
 
-3. users will be notified of any privacy policy changes on our Privacy Policy Page;
+  3. users will be notified of any privacy policy changes on our Privacy Policy Page;
 
-4. users are able to change their personal information by emailing us at services@reddex.app.
+  4. users are able to change their personal information by emailing us at services@reddex.app.
 
 Our Policy on &quot;Do Not Track&quot; Signals:
 
@@ -188,13 +183,13 @@ We honor Do Not Track signals and do not track, plant cookies, or use advertisin
 
 You can enable or disable Do Not Track by visiting the Preferences or Settings page of your web browser.
 
-12. **Service Providers**
+15. **Service Providers**
 
 We may employ third party companies and individuals to facilitate our Service (&quot; **Service Providers**&quot;), provide Service on our behalf, perform Service-related services or assist us in analysing how our Service is used.
 
 These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.
 
-13. **CI/CD tools**
+16. **CI/CD tools**
 
 We may use third-party Service Providers to automate the development process of our Service.
 
@@ -206,7 +201,7 @@ GitHub is a development platform to host and review code, manage projects, and b
 
 For more information on what data GitHub collects for what purpose and how the protection of the data is ensured, please visit GitHub Privacy Policy page:[https://help.github.com/en/articles/github-privacy-statement.](https://help.github.com/en/articles/github-privacy-statement)
 
-14. **Payments**
+17. **Payments**
 
 We may provide paid products and/or services within Service. In that case, we use third-party services for payment processing (e.g. payment processors).
 
@@ -218,19 +213,19 @@ The payment processors we work with are:
 
 Their Privacy Policy can be viewed at: https://stripe.com/us/privacy
 
-15. **Links to Other Sites**
+18. **Links to Other Sites**
 
 Our Service may contain links to other sites that are not operated by us. If you click a third party link, you will be directed to that third party&#39;s site. We strongly advise you to review the Privacy Policy of every site you visit.
 
 We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.
 
-16. **Children&#39;s Privacy**
+19. **Children&#39;s Privacy**
 
 Our Services are not intended for use by children under the age of 13 (&quot; **Children**&quot;).
 
 We do not knowingly collect personally identifiable information from Children under 13. If you become aware that a Child has provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from Children without verification of parental consent, we take steps to remove that information from our servers.
 
-17. **Changes to This Privacy Policy**
+20. **Changes to This Privacy Policy**
 
 We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.
 
@@ -238,7 +233,7 @@ We will let you know via email and/or a prominent notice on our Service, prior t
 
 You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
 
-18. **Contact Us**
+21. **Contact Us**
 
 If you have any questions about this Privacy Policy, please contact us:
 

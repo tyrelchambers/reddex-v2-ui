@@ -104,18 +104,6 @@ Additionally, you agree not to:
 
 9. Otherwise attempt to interfere with the proper working of Service.
 
-10. **Analytics**
-
-We may use third-party Service Providers to monitor and analyze the use of our Service.
-
-**Google Analytics**
-
-Google Analytics is a web analytics service offered by Google that tracks and reports website traffic. Google uses the data collected to track and monitor the use of our Service. This data is shared with other Google services. Google may use the collected data to contextualise and personalise the ads of its own advertising network.
-
-For more information on the privacy practices of Google, please visit the Google Privacy Terms web page: [https://policies.google.com/privacy?hl=en](https://policies.google.com/privacy?hl=en)
-
-We also encourage you to review the Google&#39;s policy for safeguarding your data: [https://support.google.com/analytics/answer/6004245](https://support.google.com/analytics/answer/6004245).
-
 10. **No Use By Minors**
 
 Service is intended only for access and use by individuals at least eighteen (18) years old. By accessing or using any of Company, you warrant and represent that you are at least eighteen (18) years of age and with the full authority, right, and capacity to enter into this agreement and abide by all of the terms and conditions of Terms. If you are not at least eighteen (18) years old, you are prohibited from both the access and usage of Service.
