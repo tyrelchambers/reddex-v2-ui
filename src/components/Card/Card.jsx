@@ -25,11 +25,7 @@ const StyledCard = styled.div`
   background-color: ${(props) => props.theme.backgroundSecondary};
 
   .card-author {
-    width: 90%;
-  }
-
-  .card-main {
-    height: calc(100% - 190px);
+    width: 140px;
   }
 
   p {
@@ -42,6 +38,16 @@ const StyledCard = styled.div`
     }
     &-floating-footer {
       background-color: ${(props) => props.theme.backgroundMain};
+    }
+  }
+
+  @media screen and (min-width: 425px) {
+    .card-main {
+      height: calc(100% - 190px);
+    }
+
+    .card-author {
+      width: 90%;
     }
   }
 `;
@@ -95,21 +101,19 @@ const Card = observer(
               ></div>
 
               <div className="card-floating-header absolute top-7 p-4 bg-white flex left-3 right-3 rounded-lg shadow-lg gap-8">
-                {!isSubmitted && (
-                  <div className="flex items-center">
-                    <FontAwesomeIcon
-                      icon={faArrowAltCircleUp}
-                      className="text-accent-primary mr-2"
-                    />
-                    <p className="font-bold text-gray-800">{data.ups}</p>
-                  </div>
-                )}
+                <div className="flex items-center">
+                  <FontAwesomeIcon
+                    icon={faArrowAltCircleUp}
+                    className="text-accent-primary mr-2"
+                  />
+                  <p className="font-bold text-gray-800">{data.ups}</p>
+                </div>
                 <div className="flex items-center">
                   <FontAwesomeIcon
                     icon={faUserCircle}
                     className="text-accent-primary mr-2"
                   />
-                  <p className="text-gray-600 truncate card-author">
+                  <p className="text-gray-600 truncate card-author ">
                     {data.author}
                   </p>
                 </div>
@@ -130,42 +134,39 @@ const Card = observer(
             <hr />
 
             <footer className="p-2 mt-2">
-              {/* is not submitted through the form on custom webpage */}
-              {!isSubmitted && (
-                <section className="flex items-center gap-4 ml-2 mr-2">
-                  {data.flair && (
-                    <div className="flex items-center gap-2">
-                      <FontAwesomeIcon
-                        icon={faHashtag}
-                        className="text-accent-primary"
-                      />{" "}
-                      <p className="text-gray-600 text-sm">{data.flair}</p>
-                    </div>
-                  )}
-
+              <section className="flex items-center gap-4 ml-2 mr-2 flex-wrap">
+                {data.flair && (
                   <div className="flex items-center gap-2">
                     <FontAwesomeIcon
-                      icon={faFolder}
+                      icon={faHashtag}
                       className="text-accent-primary"
                     />{" "}
-                    <p className="text-gray-600 text-sm">{data.subreddit}</p>
+                    <p className="text-gray-600 text-sm">{data.flair}</p>
                   </div>
+                )}
 
-                  <div className="flex items-center gap-2">
-                    <FontAwesomeIcon
-                      icon={faCalendarClock}
-                      className="text-accent-primary"
-                    />{" "}
-                    <p className="text-gray-600 text-sm">
-                      {formatDistanceToNow(
-                        new Date(data.created) * 1000,
-                        "yyyyMMdd"
-                      )}{" "}
-                      ago
-                    </p>
-                  </div>
-                </section>
-              )}
+                <div className="flex items-center gap-2">
+                  <FontAwesomeIcon
+                    icon={faFolder}
+                    className="text-accent-primary"
+                  />{" "}
+                  <p className="text-gray-600 text-sm">{data.subreddit}</p>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <FontAwesomeIcon
+                    icon={faCalendarClock}
+                    className="text-accent-primary"
+                  />{" "}
+                  <p className="text-gray-600 text-sm">
+                    {formatDistanceToNow(
+                      new Date(data.created) * 1000,
+                      "yyyyMMdd"
+                    )}{" "}
+                    ago
+                  </p>
+                </div>
+              </section>
 
               <section className="flex items-center  mt-4 card-floating-footer p-3 rounded-md justify-between">
                 <div className="flex gap-6">
@@ -185,7 +186,6 @@ const Card = observer(
                       </p>
                     </div>
                   )}
-                  {/* is not submitted through the form on custom webpage */}
 
                   {data.upvote_ratio && (
                     <div className="flex items-center">

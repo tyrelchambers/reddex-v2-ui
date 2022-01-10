@@ -10,6 +10,14 @@ const StyledWrapper = styled.div`
   p {
     color: ${(props) => props.theme.textLight};
   }
+
+  @media screen and (max-width: 510px) {
+    flex-direction: column;
+    margin-top: 2em;
+    > p {
+      margin-bottom: 1rem;
+    }
+  }
 `;
 
 const QueueIndicator = observer(({ QueueStore, ModalStore }) => {

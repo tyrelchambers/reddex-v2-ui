@@ -27,13 +27,20 @@ const routes = [
   },
 ];
 
+const StyledNav = styled.nav`
+  display: none;
+
+  @media screen and (min-width: 1024px) {
+    display: flex;
+  }
+`;
 const StyledLi = styled.li`
   color: ${(props) => props.theme.text};
 `;
 
 const Nav = ({ user }) => {
   return (
-    <nav>
+    <StyledNav>
       <ul className="flex gap-10">
         {routes.map((route, index) => (
           <StyledLi key={index}>
@@ -68,7 +75,7 @@ const Nav = ({ user }) => {
           </StyledLi>
         )}
       </ul>
-    </nav>
+    </StyledNav>
   );
 };
 

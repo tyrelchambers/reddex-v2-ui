@@ -46,7 +46,10 @@ const Header = () => {
               url={user.Profile?.reddit_profile?.snoovatar_img}
               className="mr-2"
             />
-            <Link to="/dashboard/reading_list/approved">
+            <Link
+              to="/dashboard/reading_list/approved"
+              className="hidden sm:flex"
+            >
               <p className="username">
                 {user.Profile?.reddit_profile?.name || user.email}
               </p>
