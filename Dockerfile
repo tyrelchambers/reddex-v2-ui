@@ -6,6 +6,8 @@ RUN mkdir /app
 # Set up the working directory
 WORKDIR /app
 
+ARG NPM_TOKEN  
+
 COPY package*.json ./
 
 # Note that we're installing all dependencies, unlike the buildpack
