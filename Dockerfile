@@ -6,7 +6,11 @@ RUN mkdir /app
 # Set up the working directory
 WORKDIR /app
 
-ARG NPM_TOKEN  
+# ENV NPM_TOKEN=F1348F1C-996E-42A3-891E-33AB0188B6F0
+
+# ARG NPM_TOKEN  
+
+COPY .npmrc .npmrc
 
 COPY package*.json ./
 
@@ -37,7 +41,7 @@ RUN npm init -y && \
 
 
 # Copy the built artifacts from the build stage
-COPY --from=build /app/build /app 
+COPY --from=build /app/dist /app 
 
 # Expose port
 EXPOSE 8080
