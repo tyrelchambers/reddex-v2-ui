@@ -126,7 +126,9 @@ const Home = () => {
             executeSearch={executeSearch}
             setSubreddit={setSubreddit}
           />
-          <MiscInfo />
+          <div className="md:flex hidden">
+            <MiscInfo />
+          </div>
         </StyledSide>
 
         <section className="w-full flex-col">

@@ -46,16 +46,14 @@ const Header = () => {
         </div>
         {user && (
           <>
-            <Avatar
-              size="small"
-              url={user.Profile?.reddit_profile?.snoovatar_img}
-              className="mr-2"
-            />
-            <Link
-              to="/dashboard/reading_list/approved"
-              className="hidden sm:flex"
-            >
-              <p className="username">
+            <Link to="/dashboard/reading_list/approved">
+              <Avatar
+                size="small"
+                url={user.Profile?.reddit_profile?.snoovatar_img}
+                className="mr-2"
+              />
+
+              <p className="hidden sm:flex username">
                 {user.Profile?.reddit_profile?.name || user.email}
               </p>
             </Link>
