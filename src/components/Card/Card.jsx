@@ -12,7 +12,7 @@ import {
   faThumbsUp,
   faUserCircle,
 } from "@fortawesome/pro-duotone-svg-icons";
-import { faPaperPlaneTop } from "@fortawesome/pro-solid-svg-icons";
+import { faCheck, faPaperPlaneTop } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { formatDistanceToNow } from "date-fns";
 import { observer } from "mobx-react";
@@ -118,6 +118,15 @@ const Card = observer(
                   </p>
                 </div>
               </div>
+              {data?.used && (
+                <div className="flex items-center justify-center absolute z-10 right-6 bottom-[-40px] h-6 w-6 p-[4px] bg-green-100 rounded-full shadow-lg border-2 border-green-600">
+                  <FontAwesomeIcon
+                    icon={faCheck}
+                    className="text-green-600  rounded-full  "
+                    title={`${data.title} has been saved`}
+                  />
+                </div>
+              )}
             </header>
 
             <main className="mt-8 p-4 card-main">
@@ -139,26 +148,26 @@ const Card = observer(
                   <div className="flex items-center gap-2">
                     <FontAwesomeIcon
                       icon={faHashtag}
-                      className="text-accent-primary"
+                      className="text-accent-primary text-xs"
                     />{" "}
-                    <p className="text-gray-600 text-sm">{data.flair}</p>
+                    <p className="text-gray-600 text-xs">{data.flair}</p>
                   </div>
                 )}
 
                 <div className="flex items-center gap-2">
                   <FontAwesomeIcon
                     icon={faFolder}
-                    className="text-accent-primary"
+                    className="text-accent-primary text-xs"
                   />{" "}
-                  <p className="text-gray-600 text-sm">{data.subreddit}</p>
+                  <p className="text-gray-600 text-xs">{data.subreddit}</p>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <FontAwesomeIcon
                     icon={faCalendarClock}
-                    className="text-accent-primary"
+                    className="text-accent-primary text-xs"
                   />{" "}
-                  <p className="text-gray-600 text-sm">
+                  <p className="text-gray-600 text-xs">
                     {formatDistanceToNow(
                       new Date(data.created) * 1000,
                       "yyyyMMdd"
@@ -174,9 +183,9 @@ const Card = observer(
                     <div className="flex items-center">
                       <FontAwesomeIcon
                         icon={faClock}
-                        className="mr-2 text-accent-primary"
+                        className="mr-2 text-accent-primary text-xs"
                       />
-                      <p className="text-sm text-gray-600">
+                      <p className=" text-gray-600 text-xs">
                         ~
                         {averageReadingTime(
                           data.self_text,
@@ -191,9 +200,9 @@ const Card = observer(
                     <div className="flex items-center">
                       <FontAwesomeIcon
                         icon={faThumbsUp}
-                        className="mr-2 text-accent-primary"
+                        className="mr-2 text-accent-primary text-xs"
                       />
-                      <p className="text-sm text-gray-600">
+                      <p className="text-xs text-gray-600">
                         {(data.upvote_ratio * 100).toFixed(2)}%
                       </p>
                     </div>
@@ -202,17 +211,8 @@ const Card = observer(
 
                 {/* show add-to-queue button */}
 
-                {!isReadingItem && !isCompletedItem && !isSubmitted && (
-                  <div className="flex items-center">
-                    {data.used && (
-                      <FontAwesomeIcon
-                        icon={faPaperPlaneTop}
-                        className="text-green-500 mr-4"
-                        title={`${data.title} has been used`}
-                      />
-                    )}
-                    {addIcon}
-                  </div>
+                {!isReadingItem && !isCompletedItem && (
+                  <div className="flex items-center">{addIcon}</div>
                 )}
 
                 {/* is an item found on approved reading list */}
