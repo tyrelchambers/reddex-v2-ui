@@ -6,16 +6,18 @@ const ContactList = () => {
   const { contactQuery } = useContacts();
 
   return (
-    <div className="grid grid-cols-3 mt-10 gap-6">
+    <>
       {contactQuery.data && contactQuery.data.length === 0 && (
-        <p className="text-light">No contacts to show</p>
+        <p className="text-light mt-10 italic">No contacts to show</p>
       )}
-      {contactQuery.data &&
-        contactQuery.data.length > 0 &&
-        contactQuery.data.map((contact, index) => (
-          <Contact key={index} contact={contact} />
-        ))}
-    </div>
+      <div className="grid grid-cols-3 mt-10 gap-6">
+        {contactQuery.data &&
+          contactQuery.data.length > 0 &&
+          contactQuery.data.map((contact, index) => (
+            <Contact key={index} contact={contact} />
+          ))}
+      </div>
+    </>
   );
 };
 

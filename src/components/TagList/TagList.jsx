@@ -59,7 +59,7 @@ const TagList = () => {
         </main>
       )}
       {tagsQuery.data?.length === 0 && (
-        <p className="text-light">No tags to show</p>
+        <p className="text-light italic">No tags to show</p>
       )}
     </>
   );

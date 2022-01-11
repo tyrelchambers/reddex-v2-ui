@@ -10,9 +10,9 @@ import { StyledLink } from "../../globalStyles";
 const Contacts = () => {
   return (
     <section>
-      <div className="flex gap-4  w-full">
+      <div className="flex flex-col sm:flex-row gap-6 w-full">
         <Input placeholder="Search by keywords..." icon={faSearch} />
-        <StyledLink to="/dashboard/contacts/save">
+        <StyledLink to="/dashboard/contacts/save" className="text-center">
           <FontAwesomeIcon icon={faCirclePlus} className="mr-2" />
           Create contact
         </StyledLink>
