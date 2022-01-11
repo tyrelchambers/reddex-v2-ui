@@ -18,7 +18,7 @@ const Recurring = () => {
       </Subtitle>
 
       {isLoading ? (
-        <Loader />
+        <Loader size="2x" />
       ) : (
         <main className="mt-10">
           <RecurringForm user={user} />

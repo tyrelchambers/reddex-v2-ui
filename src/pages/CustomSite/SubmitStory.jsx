@@ -131,7 +131,7 @@ const SubmitStory = ({ subdomain }) => {
       themeString={theme}
     >
       <GlobalStyles />
-      {website.isLoading && <Loader />}
+      {website.isLoading && <Loader size="2x" />}
 
       <StyledWrapper>
         {websiteData && (

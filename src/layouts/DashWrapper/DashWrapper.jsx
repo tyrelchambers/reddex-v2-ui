@@ -58,7 +58,7 @@ const DashWrapper = (props) => {
           open={open}
           setOpen={setOpen}
         />
-        {isLoading && <Loader />}
+        {isLoading && <Loader size="2x" />}
         {!isLoading && data && (
           <>
             <section className="p-4 sm:p-8 dash-body">

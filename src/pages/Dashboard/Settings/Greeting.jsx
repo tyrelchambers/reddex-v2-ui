@@ -20,7 +20,7 @@ const Greeting = () => {
       </Subtitle>
 
       {isLoading ? (
-        <Loader />
+        <Loader size="2x" />
       ) : (
         <main className="mt-10">
           <GreetingForm user={user} />

@@ -39,7 +39,7 @@ const Subscription = () => {
     window.open(link, "_blank");
   };
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <Loader size="2x" />;
 
   return (
     <StyledWrapper>

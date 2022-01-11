@@ -148,26 +148,30 @@ const Card = observer(
                   <div className="flex items-center gap-2">
                     <FontAwesomeIcon
                       icon={faHashtag}
-                      className="text-accent-primary text-xs"
+                      className="text-accent-primary text-xs sm:text-sm"
                     />{" "}
-                    <p className="text-gray-600 text-xs">{data.flair}</p>
+                    <p className="text-gray-600 text-xs sm:text-sm">
+                      {data.flair}
+                    </p>
                   </div>
                 )}
 
                 <div className="flex items-center gap-2">
                   <FontAwesomeIcon
                     icon={faFolder}
-                    className="text-accent-primary text-xs"
+                    className="text-accent-primary text-xs sm:text-sm"
                   />{" "}
-                  <p className="text-gray-600 text-xs">{data.subreddit}</p>
+                  <p className="text-gray-600 text-xs sm:text-sm">
+                    {data.subreddit}
+                  </p>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <FontAwesomeIcon
                     icon={faCalendarClock}
-                    className="text-accent-primary text-xs"
+                    className="text-accent-primary text-xs sm:text-sm"
                   />{" "}
-                  <p className="text-gray-600 text-xs">
+                  <p className="text-gray-600 text-xs sm:text-sm">
                     {formatDistanceToNow(
                       new Date(data.created) * 1000,
                       "yyyyMMdd"
@@ -183,9 +187,9 @@ const Card = observer(
                     <div className="flex items-center">
                       <FontAwesomeIcon
                         icon={faClock}
-                        className="mr-2 text-accent-primary text-xs"
+                        className="mr-2 text-accent-primary text-xs sm:text-sm"
                       />
-                      <p className=" text-gray-600 text-xs">
+                      <p className=" text-gray-600 text-xs sm:text-sm">
                         ~
                         {averageReadingTime(
                           data.self_text,
@@ -200,9 +204,9 @@ const Card = observer(
                     <div className="flex items-center">
                       <FontAwesomeIcon
                         icon={faThumbsUp}
-                        className="mr-2 text-accent-primary text-xs"
+                        className="mr-2 text-accent-primary text-xs sm:text-sm"
                       />
-                      <p className="text-xs text-gray-600">
+                      <p className="text-xs sm:text-sm text-gray-600">
                         {(data.upvote_ratio * 100).toFixed(2)}%
                       </p>
                     </div>

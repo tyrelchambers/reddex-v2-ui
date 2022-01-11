@@ -127,7 +127,7 @@ const CustomSite = ({ subdomain }) => {
                     Latest YouTube videos
                   </h2>
 
-                  {youtube.isLoading && <Loader />}
+                  {youtube.isLoading && <Loader size="2x" />}
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                     {youtube.data?.data &&
