@@ -24,6 +24,7 @@ const ImportStory = ({ ModalStore }) => {
         <div className="flex items-center">
           <FontAwesomeIcon
             icon={faTimes}
+            className="text"
             onClick={() => ModalStore.closeModal()}
           />
         </div>

@@ -41,8 +41,8 @@ const ImportUrlForm = () => {
         />
       </InputWrapper>
       <div className="flex justify-end">
-        <Button className="w-52" onClick={submitHandler}>
-          <FontAwesomeIcon icon={faArrowDownFromDottedLine} className="mr-4" />
+        <Button className="sm:w-52 w-full" onClick={submitHandler}>
+          <FontAwesomeIcon icon={faArrowDownFromDottedLine} className="mr-4 " />
           Import
         </Button>
       </div>

@@ -39,7 +39,11 @@ const DashHeader = ({ theme, toggleTheme, open, setOpen }) => {
   const { width } = useDevice();
 
   return (
-    <StyledHeader className={`p-4  `} open={open} windowWidth={width}>
+    <StyledHeader
+      className="p-4 overflow-y-auto"
+      open={open}
+      windowWidth={width}
+    >
       <div className="flex items-center w-full justify-between">
         <Link to="/" className="sm:flex">
           <img
