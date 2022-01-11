@@ -14,7 +14,7 @@ const SiteBuilderSubmissonForm = ({ state, dispatch }) => {
         <RToggle
           name="submission_form"
           className="mr-4"
-          value={state.submissionForm.enabled}
+          checked={state.submissionForm.enabled}
           onChange={(e) => {
             dispatch({
               type: "SET_SUBMISSION_FORM",

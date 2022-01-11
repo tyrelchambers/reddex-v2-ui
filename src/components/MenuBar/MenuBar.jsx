@@ -46,7 +46,7 @@ const MenuBar = ({ editor }) => {
   if (!editor) return null;
 
   return (
-    <StyledWrapper className="w-full flex items-center justify-between">
+    <StyledWrapper className="w-full flex items-center justify-betwee flex-wrap gap-2">
       <button
         onClick={() => editor.chain().focus().toggleBold().run()}
         className={editor.isActive("bold") ? "is-active" : ""}

@@ -43,7 +43,7 @@ const Pricing = () => {
           <div className="max-w-5xl">
             <H1
               className=" text-center "
-              textSize="md:md:text-5xl text-3xl text-3xl"
+              textSize="md:text-5xl text-3xl text-3xl"
             >
               Stop wasting time finding stories
             </H1>
