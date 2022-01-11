@@ -77,6 +77,7 @@ const ChangePasswordForm = () => {
           disabled={disabledbtn}
           loading={changePassword.isLoading}
           onClick={submitHandler}
+          className="w-full sm:w-auto"
         >
           Change Password
         </Button>

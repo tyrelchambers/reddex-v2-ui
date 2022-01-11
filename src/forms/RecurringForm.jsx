@@ -24,7 +24,7 @@ const RecurringForm = ({ user }) => {
           onInput={(e) => setRecurring(e.target.value)}
         />
       </InputWrapper>
-      <div className="w-full flex items-center justify-between">
+      <div className="w-full flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <p className="from">
           From:{" "}
           <span className="font-bold">{user.Profile.reddit_profile.name}</span>

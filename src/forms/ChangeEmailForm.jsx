@@ -36,7 +36,9 @@ const ChangeEmailForm = ({ user }) => {
         />
       </InputWrapper>
       <div className="w-full flex justify-end">
-        <Button onClick={handleSubmit}>Change Email</Button>
+        <Button onClick={handleSubmit} className="w-full sm:w-auto">
+          Change Email
+        </Button>
       </div>
     </Form>
   );
