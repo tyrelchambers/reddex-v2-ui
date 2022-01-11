@@ -75,13 +75,6 @@ const Approved = observer(({ ModalStore }) => {
               />
               Import
             </Button>
-            <Button variant="third" className="gap-4">
-              <FontAwesomeIcon
-                icon={faArrowUpFromDottedLine}
-                className="text-accent-primary"
-              />
-              Request
-            </Button>
           </div>
         </div>
         <div className="flex flex-col sm:flex-row gap-6 justify-between ">

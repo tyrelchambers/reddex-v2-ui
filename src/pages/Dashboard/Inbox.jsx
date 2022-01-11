@@ -14,6 +14,7 @@ import { useRedditInboxSearch } from "../../hooks/useRedditInboxSearch";
 import RSelect from "../../components/RSelect/RSelect";
 import { inboxSearchOptions } from "../../constants";
 import { Outlet } from "react-location";
+import { useQueryClient } from "react-query";
 
 const StyledWrapper = styled.div`
   max-height: calc(100vh - 40px);
@@ -21,6 +22,7 @@ const StyledWrapper = styled.div`
 `;
 
 const Inbox = () => {
+  const queryClient = useQueryClient();
   const [search, setSearch] = useState({
     value: "",
     category: inboxSearchOptions[0].value,
@@ -36,12 +38,22 @@ const Inbox = () => {
 
   const { query } = useUser();
 
+  const resetSearch = () => {
+    setSearch({
+      value: "",
+      category: inboxSearchOptions[0].value,
+    });
+
+    queryClient.removeQueries("inboxSearch");
+  };
+
   return (
     <StyledWrapper>
       <header className="flex flex-col-reverse sm:flex-col gap-6">
         <div className="flex flex-col sm:flex-row gap-6 sm:h-12 h-auto w-full">
           <RSelect
             options={inboxSearchOptions}
+            setDefault
             className="w-full sm:w-44 h-full"
             onChange={(e) => setSearch({ ...search, category: e.value })}
           />
@@ -52,6 +64,12 @@ const Inbox = () => {
             onInput={(e) => setSearch({ ...search, value: e.target.value })}
             className="h-full"
           />
+
+          {search.value && (
+            <Button variant="secondary" onClick={resetSearch}>
+              Reset
+            </Button>
+          )}
 
           <Button onClick={() => inboxSearch.refetch()}>Search</Button>
         </div>
@@ -69,8 +87,7 @@ const Inbox = () => {
           </section>
         )}
 
-        {console.log(inboxSearch)}
-        {!inboxSearch.data?.length && inboxSearch.isSuccess && (
+        {!inboxSearch.data?.length && inboxSearch.isFetched && (
           <p className="text">No results found!</p>
         )}
 
@@ -83,7 +100,7 @@ const Inbox = () => {
             </div>
           )}
 
-          {!inboxQuery.isLoading && !inboxSearch.data && (
+          {!inboxQuery.isLoading && !inboxSearch.isFetching && (
             <div className="mt-10 grid grid-cols-1 gap-8 ">
               {inboxQuery.data &&
                 inboxQuery.data.data.data.children.map((message, i) => (
