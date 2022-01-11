@@ -94,10 +94,24 @@ const Subscription = () => {
                 </p>
               )}
 
+            {data.subscription.status === "past_due" && (
+              <p className="text-yellow-500 mt-2">
+                <FontAwesomeIcon
+                  icon={faTriangleExclamation}
+                  className="mr-2"
+                />{" "}
+                Your account is past due. Please update your billing
+                information.
+              </p>
+            )}
+
             {data.subscription.cancel_at && (
               <p className="text-yellow-500 mt-2">
-                <FontAwesomeIcon icon={faTriangleExclamation} /> Your account
-                will be deleted on{" "}
+                <FontAwesomeIcon
+                  icon={faTriangleExclamation}
+                  className="mr-2"
+                />{" "}
+                Your account will be deleted on{" "}
                 {format(
                   fromUnixTime(data.subscription.cancel_at),
                   "MMMM d, yyyy"

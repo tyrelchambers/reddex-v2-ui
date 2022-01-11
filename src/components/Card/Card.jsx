@@ -57,7 +57,6 @@ const Card = observer(
     data,
     isReadingItem,
     isCompletedItem,
-    isSubmitted,
     QueueStore = null,
     user,
     transferToCompleted,
@@ -85,6 +84,7 @@ const Card = observer(
       setAddTag(false);
     };
 
+    console.log(data);
     return (
       <StyledCard
         className="w-full rounded-lg  overflow-hidden shadow-md justify-between"
