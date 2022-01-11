@@ -7,6 +7,7 @@ import reddexDark from "../assets/images/reddex-dark.svg";
 import reddexLight from "../assets/images/reddex-light.svg";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import MiscInfo from "../components/MiscInfo/MiscInfo";
+import { faArrowRight } from "@fortawesome/pro-solid-svg-icons";
 const StyledNav = styled.nav`
   position: fixed;
   top: 0;
@@ -23,6 +24,10 @@ const StyledNav = styled.nav`
     height: 100%;
     background: ${(props) => props.theme.backgroundMain};
   }
+
+  header {
+    border-color: ${(props) => props.theme.border};
+  }
 `;
 
 const StyledLi = styled.li`
@@ -31,13 +36,13 @@ const StyledLi = styled.li`
   font-size: 1.2rem;
 `;
 
-const MobileNav = ({ open, theme, setOpen }) => {
+const MobileNav = ({ open, theme, setOpen, user }) => {
   if (!open) return null;
 
   return (
     <StyledNav>
       <main className="body p-4">
-        <header className="flex items-center justify-between border-b-2 border-gray-100 pb-4">
+        <header className="flex items-center justify-between border-b-2  pb-4">
           <img
             src={theme === "light" ? reddexDark : reddexLight}
             alt="Reddex"
@@ -50,6 +55,19 @@ const MobileNav = ({ open, theme, setOpen }) => {
           />
         </header>
         <div className="mt-10 flex flex-col gap-6">
+          {user && (
+            <StyledLi>
+              <Link
+                className=" opacity-70 hover:opacity-100 transition-all "
+                to={"/dashboard/reading_list/approved"}
+                onClick={() => setOpen(false)}
+              >
+                <FontAwesomeIcon icon={faArrowRight} className="mr-6" />
+                Dashboard
+              </Link>
+            </StyledLi>
+          )}
+
           {routes.map((route, index) => (
             <StyledLi key={index}>
               <Link

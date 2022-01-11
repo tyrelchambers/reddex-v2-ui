@@ -68,7 +68,7 @@ const Header = () => {
           onClick={() => setOpen(!open)}
         />
       </div>
-      <MobileNav open={open} theme={theme} setOpen={setOpen} />
+      <MobileNav open={open} theme={theme} setOpen={setOpen} user={user} />
     </StyledHeader>
   );
 };
