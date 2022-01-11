@@ -11,7 +11,6 @@ import { Link } from "react-location";
 
 const StyledWrapper = styled.section`
   min-height: 170px;
-  max-width: calc(100vw - 18em);
 
   .subject {
     color: ${(props) => props.theme.text};
@@ -34,6 +33,10 @@ const StyledWrapper = styled.section`
     color: ${(props) => props.theme.textLight};
   }
   border-bottom: 1px solid ${(props) => props.theme.border};
+
+  @media screen and (min-width: 426px) {
+    max-width: 100%;
+  }
 `;
 
 const InboxListItem = ({ data }) => {
@@ -43,7 +46,7 @@ const InboxListItem = ({ data }) => {
     <Link to={`/dashboard/inbox/${id}`}>
       <StyledWrapper className="flex flex-col  overflow-hidden">
         <div className="flex items-center justify-between">
-          <p className="text-light p-2 px-4 username rounded-md">
+          <p className="text-light p-2 px-4 username rounded-md truncate w-44 sm:w-auto">
             <FontAwesomeIcon
               icon={faCircleUser}
               className="mr-2 text-accent-primary"

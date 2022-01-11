@@ -9,12 +9,11 @@ import Subtitle from "../../components/Subtitle/Subtitle";
 import { useRedditInbox } from "../../hooks/useRedditInbox";
 import { useTokens } from "../../hooks/useTokens";
 import Loader from "../../components/Loader/Loader";
-import InboxItem from "../../components/InboxItem/InboxItem";
 import { useUser } from "../../hooks/useUser";
 import { useRedditInboxSearch } from "../../hooks/useRedditInboxSearch";
 import RSelect from "../../components/RSelect/RSelect";
 import { inboxSearchOptions } from "../../constants";
-import { Outlet, useMatch } from "react-location";
+import { Outlet } from "react-location";
 
 const StyledWrapper = styled.div`
   max-height: calc(100vh - 40px);
@@ -39,28 +38,31 @@ const Inbox = () => {
 
   return (
     <StyledWrapper>
-      <div className="flex gap-4 h-12 w-full">
-        <RSelect
-          options={inboxSearchOptions}
-          className="w-44 h-full"
-          onChange={(e) => setSearch({ ...search, category: e.value })}
-        />
-        <Input
-          placeholder={`Search...`}
-          icon={faSearch}
-          value={search.value}
-          onInput={(e) => setSearch({ ...search, value: e.target.value })}
-          className="h-full"
-        />
+      <header className="flex flex-col-reverse sm:flex-col gap-6">
+        <div className="flex flex-col sm:flex-row gap-6 sm:h-12 h-auto w-full">
+          <RSelect
+            options={inboxSearchOptions}
+            className="w-full sm:w-44 h-full"
+            onChange={(e) => setSearch({ ...search, category: e.value })}
+          />
+          <Input
+            placeholder={`Search...`}
+            icon={faSearch}
+            value={search.value}
+            onInput={(e) => setSearch({ ...search, value: e.target.value })}
+            className="h-full"
+          />
 
-        <Button onClick={() => inboxSearch.refetch()}>Search</Button>
-      </div>
+          <Button onClick={() => inboxSearch.refetch()}>Search</Button>
+        </div>
+        <div>
+          <H1>Inbox</H1>
+          <Subtitle>
+            Your Reddit-connected inbox. Showing your latest messages.
+          </Subtitle>
+        </div>
+      </header>
       <main className="mt-10">
-        <H1>Inbox</H1>
-        <Subtitle>
-          Your Reddit-connected inbox. Showing your latest messages.
-        </Subtitle>
-
         {(inboxQuery.isLoading || inboxSearch.isFetching) && (
           <section className="w-full flex justify-center mt-10 ">
             <Loader size="2x" />

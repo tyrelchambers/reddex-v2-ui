@@ -57,42 +57,45 @@ const Approved = observer(({ ModalStore }) => {
 
   return (
     <StyledWrapper className="w-full">
-      <header className="flex flex-col sm:flex-row justify-between w-full gap-6">
-        <div className="flex items-center gap-4 max-w-xl w-full">
-          <Input
-            placeholder="Search by keywords..."
-            icon={faSearch}
-            onInput={(e) => inputHandler(e)}
-          />
-        </div>
+      <header className="flex flex-col-reverse sm:flex-col justify-between w-full sm:gap-16 gap-8">
+        <div className="flex sm:justify-between flex-col sm:flex-row gap-6">
+          <div className="flex items-center gap-4 max-w-xl w-full">
+            <Input
+              placeholder="Search by keywords..."
+              icon={faSearch}
+              onInput={(e) => inputHandler(e)}
+            />
+          </div>
 
-        <div className="flex items-center gap-6">
-          <Button variant="third" className="gap-4" onClick={handleImport}>
-            <FontAwesomeIcon
-              icon={faArrowDownFromDottedLine}
-              className="text-accent-primary"
+          <div className="flex items-center gap-6">
+            <Button variant="third" className="gap-4" onClick={handleImport}>
+              <FontAwesomeIcon
+                icon={faArrowDownFromDottedLine}
+                className="text-accent-primary"
+              />
+              Import
+            </Button>
+            <Button variant="third" className="gap-4">
+              <FontAwesomeIcon
+                icon={faArrowUpFromDottedLine}
+                className="text-accent-primary"
+              />
+              Request
+            </Button>
+          </div>
+        </div>
+        <div className="flex flex-col sm:flex-row gap-6 justify-between ">
+          <H1>Approved</H1>
+          <div className="w-full sm:w-60">
+            <RSelect
+              placeholder="Add a filter"
+              options={filters}
+              onChange={(val) => setSelected(val.value)}
             />
-            Import
-          </Button>
-          <Button variant="third" className="gap-4">
-            <FontAwesomeIcon
-              icon={faArrowUpFromDottedLine}
-              className="text-accent-primary"
-            />
-            Request
-          </Button>
+          </div>
         </div>
       </header>
-      <div className="flex flex-col sm:flex-row gap-6 justify-between mt-10">
-        <H1>Approved</H1>
-        <div className="w-full sm:w-60">
-          <RSelect
-            placeholder="Add a filter"
-            options={filters}
-            onChange={(val) => setSelected(val.value)}
-          />
-        </div>
-      </div>
+
       {selected && (
         <div className="flex mt-6 items-center active-filter">
           <FontAwesomeIcon

@@ -10,20 +10,23 @@ import { StyledLink } from "../../globalStyles";
 const Contacts = () => {
   return (
     <section>
-      <div className="flex flex-col sm:flex-row gap-6 w-full">
-        <Input placeholder="Search by keywords..." icon={faSearch} />
-        <StyledLink to="/dashboard/contacts/save" className="text-center">
-          <FontAwesomeIcon icon={faCirclePlus} className="mr-2" />
-          Create contact
-        </StyledLink>
-      </div>
+      <header className="flex flex-col-reverse sm:flex-col gap-6">
+        <div className="flex flex-col sm:flex-row gap-6 w-full">
+          <Input placeholder="Search by keywords..." icon={faSearch} />
+          <StyledLink to="/dashboard/contacts/save" className="text-center">
+            <FontAwesomeIcon icon={faCirclePlus} className="mr-2" />
+            Create contact
+          </StyledLink>
+        </div>
+        <div>
+          <H1>Contacts</H1>
+          <Subtitle>
+            Create contacts in order to keep track of people you've contacted.
+          </Subtitle>
+        </div>
+      </header>
 
       <main className="mt-10">
-        <H1>Contacts</H1>
-        <Subtitle>
-          Create contacts in order to keep track of people you've contacted.
-        </Subtitle>
-
         <Outlet />
       </main>
     </section>
