@@ -8,24 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-location";
 import styled from "styled-components";
-const routes = [
-  {
-    path: "/",
-    label: "Home",
-    icon: <FontAwesomeIcon icon={faHouse} className="mr-2" />,
-  },
-  {
-    path: "/about",
-    label: "About",
-    icon: <FontAwesomeIcon icon={faAvocado} className="mr-2" />,
-  },
-
-  {
-    path: "/pricing",
-    label: "Pricing",
-    icon: <FontAwesomeIcon icon={faCircleDollar} className="mr-2" />,
-  },
-];
+import { routes } from "../../routes/nav.routes";
 
 const StyledNav = styled.nav`
   display: none;
@@ -48,7 +31,7 @@ const Nav = ({ user }) => {
               className=" opacity-70 hover:opacity-100 transition-all "
               to={route.path}
             >
-              {route.icon}
+              <FontAwesomeIcon icon={route.icon} className="mr-2" />
               {route.label}
             </Link>
           </StyledLi>

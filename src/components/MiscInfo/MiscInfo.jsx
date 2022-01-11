@@ -27,7 +27,7 @@ const StyledWrapper = styled.section`
 
 const MiscInfo = () => {
   return (
-    <StyledWrapper className="flex gap-2 flex-wrap text-xs mt-6 items-center">
+    <StyledWrapper className="hidden md:flex gap-2 flex-wrap text-xs mt-6 items-center">
       <Link to="/privacy">Privacy</Link>
       <Link to="/terms-of-service">Terms</Link>
       <p>Reddex &copy; {new Date(Date.now()).getFullYear()}</p>

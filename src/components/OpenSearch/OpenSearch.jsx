@@ -1,19 +1,25 @@
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import styled from "styled-components";
+
+const StyledWrapper = styled.div`
+  background: ${(props) => props.theme.backgroundSecondary};
+  border-color: ${(props) => props.theme.border};
+`;
 
 const OpenSearch = ({ open, setOpen }) => {
   return (
-    <div
-      className="md:hidden flex items-center justify-between border-b-2 border-gray-100 pb-4 mb-4"
+    <StyledWrapper
+      className="lg:hidden flex items-center justify-between p-4 rounded-md border-2  mb-4"
       onClick={() => setOpen(!open)}
     >
-      <p className="text-light">Open search options</p>
+      <p className="text-light font-bold">Open search options</p>
       <FontAwesomeIcon
         icon={faChevronRight}
         className={`text-light transition-all  ${open && "rotate-90"}`}
       />
-    </div>
+    </StyledWrapper>
   );
 };
 

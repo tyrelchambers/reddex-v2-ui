@@ -1,3 +1,5 @@
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useContext } from "react";
 import { Link } from "react-location";
 import styled from "styled-components";
@@ -9,6 +11,8 @@ import ThemeSwitcher from "../../components/ThemeSwitcher/ThemeSwitcher";
 import { ThemeContext } from "../../contexts/themeContext";
 import { useUser } from "../../hooks/useUser";
 import Nav from "../Nav/Nav";
+import { useExpand } from "../../hooks/useExpand";
+import MobileNav from "../MobileNav";
 
 const StyledHeader = styled.header`
   background-color: ${(props) => props.theme.backgroundSecondary};
@@ -23,11 +27,12 @@ const Header = () => {
   const {
     query: { data: user },
   } = useUser();
+  const { open, setOpen } = useExpand();
 
   return (
     <StyledHeader
       theme={themeStyles}
-      className="flex justify-between p-3 items-center bg-gray-100 "
+      className="flex justify-between p-3 px-4 items-center bg-gray-100 "
     >
       <img
         src={theme === "light" ? reddexDark : reddexLight}
@@ -56,7 +61,13 @@ const Header = () => {
             </Link>
           </>
         )}
+        <FontAwesomeIcon
+          icon={faBars}
+          className="ml-6 text-xl text lg:hidden"
+          onClick={() => setOpen(!open)}
+        />
       </div>
+      <MobileNav open={open} theme={theme} setOpen={setOpen} />
     </StyledHeader>
   );
 };

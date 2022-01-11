@@ -28,8 +28,9 @@ import { formatRedditPosts } from "../../utils/formatRedditPosts";
 
 const StyledSide = styled.section`
   width: 100%;
-  @media screen and (min-width: 768px) {
-    max-width: 400px;
+  @media screen and (min-width: 769px) {
+    width: 100%;
+    max-width: 350px;
   }
 `;
 
@@ -98,7 +99,7 @@ const Home = () => {
       <main className="w-full max-w-screen-3xl ml-auto mr-auto p-4 lg:flex gap-6 ">
         <OpenSearch open={open} setOpen={setOpen} />
         <StyledSide>
-          <div className={`md:flex md:flex-col ${!open && "hidden"}`}>
+          <div className={`lg:flex lg:flex-col ${!open && "hidden"}`}>
             <SubredditSearchForm
               executeSearch={executeSearch}
               setSubreddit={setSubreddit}
