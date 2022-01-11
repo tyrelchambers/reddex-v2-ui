@@ -33,6 +33,8 @@ export const getAllRedditMessages = async ({ query, access_token }) => {
 
     if (found.length > 0) {
       return found;
+    } else {
+      return [];
     }
   }
 

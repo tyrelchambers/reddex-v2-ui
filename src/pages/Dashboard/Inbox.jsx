@@ -69,6 +69,11 @@ const Inbox = () => {
           </section>
         )}
 
+        {console.log(inboxSearch)}
+        {!inboxSearch.data?.length && inboxSearch.isSuccess && (
+          <p className="text">No results found!</p>
+        )}
+
         <section className="max-w-3xl">
           {inboxSearch.data && (
             <div className="mt-10 grid grid-cols-1 gap-8 ">

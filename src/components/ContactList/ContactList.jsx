@@ -10,7 +10,7 @@ const ContactList = () => {
       {contactQuery.data && contactQuery.data.length === 0 && (
         <p className="text-light mt-10 italic">No contacts to show</p>
       )}
-      <div className="grid grid-cols-3 mt-10 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-10 gap-6">
         {contactQuery.data &&
           contactQuery.data.length > 0 &&
           contactQuery.data.map((contact, index) => (

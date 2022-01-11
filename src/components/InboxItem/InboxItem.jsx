@@ -83,15 +83,15 @@ const InboxItem = () => {
 
       {redditMessage.data && (
         <main>
-          <header>
-            <div className="flex items-center justify-between">
+          <header className="flex flex-col gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <p className="text-light">
                 {format(
                   new Date(redditMessage.data.created) * 1000,
                   "MMMM do, yyy"
                 )}
               </p>
-              <div className="flex items-center gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                 {!contact.data && (
                   <Button
                     variant="secondary"
@@ -106,6 +106,7 @@ const InboxItem = () => {
                     Add to contacts
                   </Button>
                 )}
+
                 {messageQuery.data &&
                   !isInReadingList(approvedList, redditMessage.data) && (
                     <Button
@@ -121,9 +122,11 @@ const InboxItem = () => {
                   )}
               </div>
             </div>
-            <H2 className="mt-6 text-3xl">{redditMessage.data.subject}</H2>
+            <H2 className="mt-2 sm:mt-6 text-xl sm:text-3xl">
+              {redditMessage.data.subject}
+            </H2>
 
-            <div className="flex items-center mt-2 gap-6">
+            <div className="flex flex-col sm:flex-row sm:items-center mt-2 gap-6">
               <p className="text-light">
                 <FontAwesomeIcon
                   icon={faCircleUser}
