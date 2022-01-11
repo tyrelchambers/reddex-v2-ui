@@ -57,7 +57,7 @@ const Approved = observer(({ ModalStore }) => {
 
   return (
     <StyledWrapper className="w-full">
-      <div className="flex justify-between w-full">
+      <header className="flex flex-col sm:flex-row justify-between w-full gap-6">
         <div className="flex items-center gap-4 max-w-xl w-full">
           <Input
             placeholder="Search by keywords..."
@@ -82,10 +82,10 @@ const Approved = observer(({ ModalStore }) => {
             Request
           </Button>
         </div>
-      </div>
-      <div className="flex justify-between mt-10">
+      </header>
+      <div className="flex flex-col sm:flex-row gap-6 justify-between mt-10">
         <H1>Approved</H1>
-        <div className="w-60">
+        <div className="w-full sm:w-60">
           <RSelect
             placeholder="Add a filter"
             options={filters}
