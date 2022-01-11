@@ -62,8 +62,11 @@ const About = () => {
   return (
     <StyledWrapper theme={themeStyles}>
       <Wrapper>
-        <main className="mt-20 max-w-screen-lg ml-auto mr-auto mb-20">
-          <H1 className="text-center" textSize="text-5xl">
+        <main className="mt-20 max-w-screen-lg ml-auto mr-auto mb-20 p-4">
+          <H1
+            className="text-center"
+            textSize="md:md:text-5xl text-3xl text-3xl"
+          >
             Let's get familiar!
           </H1>
           <p className="text-center text-light text-2xl mt-6">
@@ -82,46 +85,57 @@ const About = () => {
             </div>
           </div>
 
-          <div className="flex flex-col items-center mt-20">
-            <H2>What are people saying about us?</H2>
-            <div className="grid grid-cols-2 mt-6">
+          <div className="flex flex-col items-center mt-20 ">
+            <H2 className="text-center ">What are people saying about us?</H2>
+            <div className="grid grid-cols-1 md:grid-cols-2 mt-6">
               {twitterTestimonies.map((testimony) => (
                 <img src={testimony} className="rounded-lg shadow-lg" />
               ))}
             </div>
           </div>
 
-          <div className="flex w-full mt-40 gap-16 items-center">
+          <div className="flex flex-col md:flex-row  w-full md:mt-40 mt-20 gap-16 items-center ">
             <img src={guyWithGlasses} className="w-80" />
 
             <div className="flex flex-col">
-              <H2 textSize="text-5xl">
+              <H2
+                className="text-center md:text-left"
+                textSize="md:text-5xl text-3xl"
+              >
                 Get up to one thousand posts from any subreddit
               </H2>
-              <p className="mt-4 text-light text-xl">
+              <p className="mt-4 text-light text-xl text-center md:text-left">
                 The headline says it all
               </p>
             </div>
           </div>
 
-          <div className="flex w-full mt-20 gap-10 items-center">
+          <div className="flex flex-col-reverse md:flex-row w-full mt-20 gap-10 items-center ">
             <div className="flex flex-col">
-              <H2 textSize="text-5xl">
+              <H2
+                className="text-center md:text-left"
+                textSize="md:text-5xl text-3xl"
+              >
                 Show off your work with your own website
               </H2>
-              <p className="mt-4 text-light text-xl">
+              <p className="mt-4 text-light text-xl text-center md:text-left">
                 You can use Reddex to show off your work with your own website!
               </p>
             </div>
             <img src={hero} className="w-80" />
           </div>
 
-          <div className="flex w-full mt-40 gap-10 items-center">
+          <div className="flex flex-col md:flex-row w-full md:mt-40 mt-20 gap-10 items-center ">
             <img src={monitor} className="w-80" />
 
             <div className="flex flex-col">
-              <H2 textSize="text-5xl">Message authors right from Reddex</H2>
-              <p className="mt-4 text-light text-xl">
+              <H2
+                className="text-center md:text-left"
+                textSize="md:text-5xl text-3xl"
+              >
+                Message authors right from Reddex
+              </H2>
+              <p className="mt-4 text-light text-xl text-center md:text-left">
                 Forget about about leaving Reddex and trying to fight your way
                 to that author's profile. Queue up your messages and send your
                 request with just one click!
@@ -129,10 +143,15 @@ const About = () => {
             </div>
           </div>
 
-          <div className="flex w-full mt-40 gap-10 items-center">
+          <div className="flex flex-col-reverse md:flex-row w-full md:mt-40 mt-20 gap-10 items-center ">
             <div className="flex flex-col">
-              <H2 textSize="text-5xl">Keep track of your backlog of stories</H2>
-              <p className="mt-4 text-light text-xl">
+              <H2
+                className="text-center md:text-left"
+                textSize="md:text-5xl text-3xl"
+              >
+                Keep track of your backlog of stories
+              </H2>
+              <p className="mt-4 text-light text-xl text-center md:text-left">
                 Keep track of the stories you've been given permission to read,
                 and the stories you've completed, with a reading list!
               </p>
@@ -140,7 +159,7 @@ const About = () => {
             <img src={ContactIcon} className="w-80" />
           </div>
 
-          <div className="grid grid-cols-3 gap-20 mt-40">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20 md:mt-40 mt-20 ">
             <div className="flex flex-col items-center">
               <img className="h-20" src={contactList} alt="contact list" />
               <h2 className="text-center text-light font-bold mt-6">
@@ -206,7 +225,7 @@ const About = () => {
           <hr className="mt-20" />
 
           <div className="mt-20 flex flex-col items-center">
-            <H2 className="text-center" textSize="text-5xl">
+            <H2 className="text-center" textSize="md:text-5xl text-3xl">
               So, whadda ya say? Can we get started?
             </H2>
             <Button className="mt-8">Yes, we can</Button>
