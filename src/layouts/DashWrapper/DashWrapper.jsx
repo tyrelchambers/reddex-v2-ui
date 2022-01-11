@@ -61,10 +61,10 @@ const DashWrapper = (props) => {
           <>
             <section className="p-4 sm:p-8 dash-body">
               {canAccessRoute(data.subscription).status ? (
-                <div className="flex flex-col items-end">
+                <div className="flex flex-col">
                   <FontAwesomeIcon
                     icon={faBars}
-                    className="text-2xl mb-6 text lg:hidden"
+                    className="text-2xl mb-6 text lg:hidden self-end"
                     onClick={() => setOpen(true)}
                   />
                   {props.children}
