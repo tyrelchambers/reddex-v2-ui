@@ -65,11 +65,13 @@ const DashWrapper = (props) => {
               {canAccessRoute(data.subscription).status ? (
                 <div className="flex flex-col">
                   <header className="flex items-center w-full justify-between mb-6 lg:hidden">
-                    <img
-                      src={theme === "light" ? reddexDark : reddexLight}
-                      alt="Reddex"
-                      className="w-14 h-14"
-                    />
+                    <Link to="/">
+                      <img
+                        src={theme === "light" ? reddexDark : reddexLight}
+                        alt="Reddex"
+                        className="w-14 h-14"
+                      />
+                    </Link>
                     <FontAwesomeIcon
                       icon={faBars}
                       className="text-2xl text "
