@@ -12,7 +12,7 @@ const RecentlySearched = ({ user, executeSearch, setSubreddit }) => {
     <div className="flex flex-col w-full">
       <H3>Recently Searched</H3>
 
-      <div className="grid lg:grid-cols-2 grid-cols-3 mt-2  gap-4">
+      <div className="grid lg:grid-cols-2 sm:grid-cols-3 grid-cols-2 mt-2  gap-4">
         {user?.Searcheds &&
           user.Searcheds.map((searched, index) => (
             <Button

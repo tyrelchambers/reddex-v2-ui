@@ -46,7 +46,10 @@ const Header = () => {
         </div>
         {user && (
           <>
-            <Link to="/dashboard/reading_list/approved">
+            <Link
+              to="/dashboard/reading_list/approved"
+              className="flex items-center"
+            >
               <Avatar
                 size="small"
                 url={user.Profile?.reddit_profile?.snoovatar_img}

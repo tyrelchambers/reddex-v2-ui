@@ -79,9 +79,9 @@ const SiteBuilder = (props) => {
   };
 
   return (
-    <section className="max-w-2xl">
+    <section className="max-w-2xl p-2">
       {isChanged && <WebsiteSaveBanner reset={reset} save={saveHandler} />}
-      <div className="flex justify-between mt-10">
+      <div className="flex flex-col sm:flex-row justify-between mt-10 gap-6">
         <div className="flex flex-col">
           <H1>Site Builder</H1>
           <Subtitle className="mt-2">

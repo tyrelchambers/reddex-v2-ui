@@ -28,7 +28,7 @@ import { formatRedditPosts } from "../../utils/formatRedditPosts";
 
 const StyledSide = styled.section`
   width: 100%;
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 1025px) {
     width: 100%;
     max-width: 350px;
   }

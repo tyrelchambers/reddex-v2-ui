@@ -12,6 +12,8 @@ import { canAccessRoute } from "../../utils/canAccessRoute";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useExpand } from "../../hooks/useExpand";
+import reddexDark from "../../assets/images/reddex-dark.svg";
+import reddexLight from "../../assets/images/reddex-light.svg";
 
 const StyledGrid = styled.main`
   display: grid;
@@ -62,11 +64,18 @@ const DashWrapper = (props) => {
             <section className="p-4 sm:p-8 dash-body">
               {canAccessRoute(data.subscription).status ? (
                 <div className="flex flex-col">
-                  <FontAwesomeIcon
-                    icon={faBars}
-                    className="text-2xl mb-6 text lg:hidden self-end"
-                    onClick={() => setOpen(true)}
-                  />
+                  <header className="flex items-center w-full justify-between mb-6 lg:hidden">
+                    <img
+                      src={theme === "light" ? reddexDark : reddexLight}
+                      alt="Reddex"
+                      className="w-14 h-14"
+                    />
+                    <FontAwesomeIcon
+                      icon={faBars}
+                      className="text-2xl text "
+                      onClick={() => setOpen(true)}
+                    />
+                  </header>
                   {props.children}
                 </div>
               ) : (

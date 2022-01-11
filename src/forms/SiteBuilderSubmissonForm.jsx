@@ -79,7 +79,10 @@ const SiteBuilderSubmissonForm = ({ state, dispatch }) => {
       <H2>Customize Modules</H2>
       <div className="flex flex-col gap-4">
         {state.submissionForm.modules.map((module, index) => (
-          <div key={index} className="grid grid-cols-4 module p-3 rounded-lg">
+          <div
+            key={index}
+            className="grid grid-cols-1 sm:grid-cols-4 module p-3 rounded-lg gap-4"
+          >
             <p className="col-span-2 headline font-bold">{module.label}</p>
             <div className="flex items-center">
               <input
