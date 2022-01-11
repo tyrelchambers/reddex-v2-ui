@@ -19,6 +19,10 @@ const StyledWrapper = styled.section`
     height: 500px;
     object-fit: cover;
     overflow: hidden;
+
+    @media screen and (max-width: 768px) {
+      height: auto;
+    }
   }
 
   .bio {
@@ -26,11 +30,14 @@ const StyledWrapper = styled.section`
     margin-top: -3em;
     position: relative;
     z-index: 2;
-
     width: 100%;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
+
+    @media screen and (max-width: 768px) {
+      width: 95%;
+    }
   }
 
   .header {
@@ -93,7 +100,7 @@ const CustomSite = ({ subdomain }) => {
           <>
             <CustomHeader website={website.data.config} />
 
-            <main className="max-w-screen-2xl ml-auto mr-auto mt-10">
+            <main className="max-w-screen-2xl ml-auto mr-auto sm:mt-10">
               <div className="hero  rounded-lg ">
                 <img
                   src={
@@ -115,14 +122,14 @@ const CustomSite = ({ subdomain }) => {
               )}
 
               {isYoutubeEnabled && (
-                <section className="youtube-videos mt-10">
+                <section className="youtube-videos mt-10 p-2">
                   <h2 className="text-2xl font-bold header">
                     Latest YouTube videos
                   </h2>
 
-                  {youtube.isLoading && <Loader />}
+                  {youtube.isLoading && <Loader size="2x" />}
 
-                  <div className="grid grid-cols-2 gap-4 mt-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
                     {youtube.data?.data &&
                       youtube.data.data.items.map((item, id) => (
                         <YouTube

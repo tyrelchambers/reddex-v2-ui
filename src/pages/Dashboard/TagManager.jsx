@@ -36,7 +36,7 @@ const StyledWrapper = styled.section`
 const TagManager = () => {
   return (
     <StyledWrapper>
-      <div className="flex justify-between">
+      <div className="flex flex-col sm:flex-row justify-between gap-6">
         <div className="flex flex-col">
           <H1 className="mb-2">Tag Manager</H1>
           <Subtitle>
@@ -45,7 +45,7 @@ const TagManager = () => {
           </Subtitle>
         </div>
 
-        <StyledLink to="/dashboard/tags/new">
+        <StyledLink to="/dashboard/tags/new" className="flex justify-center">
           <FontAwesomeIcon icon={faCirclePlus} className="mr-2" /> Create a tag
         </StyledLink>
       </div>

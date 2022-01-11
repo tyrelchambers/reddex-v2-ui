@@ -16,21 +16,23 @@ const Submitted = () => {
 
   return (
     <>
-      <div className="flex gap-4 max-w-xl w-full">
-        <Input
-          placeholder="Search by keywords..."
-          icon={faSearch}
-          value={search}
-          onInput={(e) => setSearch(e.target.value)}
-        />
-      </div>
-      <section className="mt-10">
+      <header className="flex flex-col-reverse sm:flex-col gap-6">
+        <div className="flex gap-4 max-w-xl w-full">
+          <Input
+            placeholder="Search by keywords..."
+            icon={faSearch}
+            value={search}
+            onInput={(e) => setSearch(e.target.value)}
+          />
+        </div>
         <H1>Submitted</H1>
+      </header>
 
+      <section className="mt-10">
         {submittedQuery.data && submittedQuery.data.length === 0 && (
           <p className="mt-4 text-light">Nothing to show</p>
         )}
-        <div className="grid grid-cols-3 gap-3 mt-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 mt-10">
           {submittedQuery.data &&
             submittedQuery.data
               .filter((el) =>

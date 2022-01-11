@@ -11,7 +11,7 @@ const SiteBuilderTimelinesForm = ({ state, dispatch }) => {
           <RToggle
             name="timelines"
             className="mr-4 flex items-center"
-            value={state.timelines.find((m) => m.type === "youtube").enabled}
+            checked={state.timelines.find((m) => m.type === "youtube").enabled}
             onChange={(e) =>
               dispatch({
                 type: "SET_TIMELINES",
@@ -48,7 +48,7 @@ const SiteBuilderTimelinesForm = ({ state, dispatch }) => {
           <RToggle
             name="timelines"
             className="mr-4"
-            value={state.timelines.find((m) => m.type === "twitter").enabled}
+            checked={state.timelines.find((m) => m.type === "twitter").enabled}
             onChange={(e) =>
               dispatch({
                 type: "SET_TIMELINES",

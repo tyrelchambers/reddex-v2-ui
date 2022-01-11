@@ -22,18 +22,20 @@ export const getAllRedditMessages = async ({ query, access_token }) => {
         posts.push(res.data.data.children);
       })
       .catch((err) => err);
+  }
 
-    const found = posts
-      .flat()
-      .filter((post) =>
-        post.data[newQuery.category]
-          .toLowerCase()
-          .includes(newQuery.value.toLowerCase())
-      );
+  const found = posts
+    .flat()
+    .filter((post) =>
+      post.data[newQuery.category]
+        .toLowerCase()
+        .includes(newQuery.value.toLowerCase())
+    );
 
-    if (found.length > 0) {
-      return found;
-    }
+  if (found.length > 0) {
+    return found;
+  } else {
+    return [];
   }
 
   return posts.flat();

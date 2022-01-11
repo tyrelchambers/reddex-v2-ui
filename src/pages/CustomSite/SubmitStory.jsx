@@ -14,6 +14,7 @@ import Input from "../../components/Input/Input";
 import StringCount from "../../components/StringCount/StringCount";
 import { useForm } from "react-hook-form";
 import FormError from "../../components/FormError/FormError";
+import { H1 } from "../../components/headings/h1";
 
 const StyledWrapper = styled.div`
   .rules {
@@ -102,6 +103,10 @@ const SubmitStory = ({ subdomain }) => {
 
   const websiteData = website.data?.config;
 
+  const editor = useEditor({
+    extensions: [StarterKit],
+  });
+
   useEffect(() => {
     if (websiteData) {
       setThemeHandler(websiteData.theme.mode);
@@ -109,10 +114,6 @@ const SubmitStory = ({ subdomain }) => {
   }, [setThemeHandler, websiteData]);
 
   if (!websiteData?.enabled) return null;
-
-  const editor = useEditor({
-    extensions: [StarterKit],
-  });
 
   const submitHandler = () => {
     const content = editor.getHTML();
@@ -122,6 +123,7 @@ const SubmitStory = ({ subdomain }) => {
       content,
     });
   };
+
   return (
     <ThemeProvider
       theme={themeStyles}
@@ -129,17 +131,20 @@ const SubmitStory = ({ subdomain }) => {
       themeString={theme}
     >
       <GlobalStyles />
-      {website.isLoading && <Loader />}
+      {website.isLoading && <Loader size="2x" />}
 
       <StyledWrapper>
         {websiteData && (
           <>
             <CustomHeader website={websiteData} />
 
-            <main className="mt-10 max-w-screen-md ml-auto mr-auto pb-10">
-              <h1 className="text-4xl font-bold text">
+            <main className="mt-10 max-w-screen-md ml-auto mr-auto pb-10 p-4">
+              <H1
+                className=" font-bold text"
+                textSize="md:text-5xl text-3xl text-3xl"
+              >
                 {websiteData.submissionForm.title}
-              </h1>
+              </H1>
 
               {websiteData.submissionForm.subTitle && (
                 <p className="subtitle text-light mt-4 font-bold">

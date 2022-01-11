@@ -20,9 +20,9 @@ const TagList = () => {
 
   return (
     <>
-      {tagsQuery.isLoading && <Loader />}
+      {tagsQuery.isLoading && <Loader size="2x" />}
       {tagsQuery.data && (
-        <main className="grid grid-cols-4 gap-6 mt-10">
+        <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
           {tagsQuery.data &&
             tagsQuery.data.map((tag) => (
               <div
@@ -59,7 +59,7 @@ const TagList = () => {
         </main>
       )}
       {tagsQuery.data?.length === 0 && (
-        <p className="text-light">No tags to show</p>
+        <p className="text-light italic">No tags to show</p>
       )}
     </>
   );

@@ -43,7 +43,7 @@ const EditTagForm = () => {
 
   return (
     <Form className="max-w-md mt-10">
-      {tagQuery.isLoading && <Loader />}
+      {tagQuery.isLoading && <Loader size="2x" />}
       {tagQuery.data && (
         <>
           <H2>

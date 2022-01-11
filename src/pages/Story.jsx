@@ -20,7 +20,7 @@ const Story = () => {
 
   return (
     <StyledDiv className="max-w-screen-sm py-3">
-      {submittedStory.isLoading && <Loader />}
+      {submittedStory.isLoading && <Loader size="2x" />}
       {submittedStory.data && (
         <>
           <H1>{submittedStory.data.story_title}</H1>

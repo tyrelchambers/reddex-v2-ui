@@ -34,7 +34,7 @@ const Profile = () => {
     query: { data: user, isLoading },
   } = useUser();
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <Loader size="2x" />;
 
   return (
     <StyledWrapper className="max-w-lg">

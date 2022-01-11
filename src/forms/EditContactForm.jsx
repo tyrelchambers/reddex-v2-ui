@@ -31,7 +31,7 @@ const EditContactForm = () => {
   };
 
   return !contact.data ? (
-    <Loader />
+    <Loader size="2x" />
   ) : (
     <Form className="max-w-md mt-10">
       <H2>

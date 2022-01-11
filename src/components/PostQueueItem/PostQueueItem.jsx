@@ -110,7 +110,7 @@ const PostQueueItem = ({
   return (
     <StyledWrapper>
       <header className="flex justify-between w-full p-6">
-        <H2>Request Permission</H2>
+        <H2 textSize="text-lg sm:text-xl">Request Permission</H2>
 
         <div className="flex items-center gap-8">
           {contactExists && (
@@ -123,20 +123,35 @@ const PostQueueItem = ({
           )}
 
           {showPrevious ? (
-            <FontAwesomeIcon icon={faArrowLeft} onClick={previous} />
+            <FontAwesomeIcon
+              icon={faArrowLeft}
+              onClick={previous}
+              className="text-light"
+            />
           ) : (
-            <FontAwesomeIcon icon={faArrowLeft} className="opacity-40" />
+            <FontAwesomeIcon
+              icon={faArrowLeft}
+              className="opacity-40 text-light"
+            />
           )}
 
           {showNext ? (
-            <FontAwesomeIcon icon={faArrowRight} onClick={next} />
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              onClick={next}
+              className="text-light"
+            />
           ) : (
-            <FontAwesomeIcon icon={faArrowRight} className="opacity-40" />
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              className="opacity-40 text-light"
+            />
           )}
 
           <FontAwesomeIcon
             icon={faTimes}
             onClick={() => ModalStore.closeModal()}
+            className="text"
           />
         </div>
       </header>
@@ -174,7 +189,7 @@ const PostQueueItem = ({
 
           <section className="px-6 message-wrapper">
             <div className="flex items-center gap-6">
-              <p className="font-bold">Message</p>
+              <p className="font-bold text">Message</p>
               {user.Profile.greeting && (
                 <Button
                   variant="third"

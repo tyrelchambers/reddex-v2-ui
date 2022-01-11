@@ -97,7 +97,7 @@ const PricingCard = ({ plan, label, recommended, term, clickHandler }) => {
         {term.term === "year" && (
           <div className="flex items-baseline">
             <p className="text-sm mt-2">
-              ${Number(term.price) + Number(plan["monthly"].price)}
+              ${Number(term.price) + Number(plan["month"].price)}
               /year if paid monthly
             </p>
           </div>

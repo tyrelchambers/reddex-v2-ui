@@ -29,6 +29,7 @@ const RSelect = ({
           backgroundColor: theme.backgroundSecondary,
           height: "100%",
           color: theme.text,
+          borderColor: theme.border,
         }),
         container: (provided) => ({
           ...provided,

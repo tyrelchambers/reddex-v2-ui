@@ -9,13 +9,21 @@ import { useStripe } from "../../hooks/useStripe";
 import { useUser } from "../../hooks/useUser";
 import DashHeader from "../DashHeader/DashHeader";
 import { canAccessRoute } from "../../utils/canAccessRoute";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { useExpand } from "../../hooks/useExpand";
+import reddexDark from "../../assets/images/reddex-dark.svg";
+import reddexLight from "../../assets/images/reddex-light.svg";
 
 const StyledGrid = styled.main`
   display: grid;
-  grid-template-columns: 242px 1fr;
 
   .dash-body {
     background-color: ${(props) => props.theme.backgroundMain};
+  }
+
+  @media screen and (min-width: 1025px) {
+    grid-template-columns: 242px 1fr;
   }
 `;
 
@@ -26,6 +34,7 @@ const DashWrapper = (props) => {
   const {
     stripePlan: { data, isLoading },
   } = useStripe();
+  const { open, setOpen } = useExpand();
 
   useEffect(() => {
     if (query.isSuccess && !query.data.Profile.reddit_profile) {
@@ -42,14 +51,35 @@ const DashWrapper = (props) => {
     >
       <GlobalStyles />
 
-      <StyledGrid className=" w-full h-screen">
-        <DashHeader theme={theme} toggleTheme={toggleTheme} />
-        {isLoading && <Loader />}
+      <StyledGrid className=" w-full h-screen grid-cols-1">
+        <DashHeader
+          theme={theme}
+          toggleTheme={toggleTheme}
+          open={open}
+          setOpen={setOpen}
+        />
+        {isLoading && <Loader size="2x" />}
         {!isLoading && data && (
           <>
-            <section className="p-8 dash-body">
+            <section className="p-4 sm:p-8 dash-body">
               {canAccessRoute(data.subscription).status ? (
-                <>{props.children}</>
+                <div className="flex flex-col">
+                  <header className="flex items-center w-full justify-between mb-6 lg:hidden">
+                    <Link to="/">
+                      <img
+                        src={theme === "light" ? reddexDark : reddexLight}
+                        alt="Reddex"
+                        className="w-14 h-14"
+                      />
+                    </Link>
+                    <FontAwesomeIcon
+                      icon={faBars}
+                      className="text-2xl text "
+                      onClick={() => setOpen(true)}
+                    />
+                  </header>
+                  {props.children}
+                </div>
               ) : (
                 <>
                   <p className="text-3xl font-bold text mb-4">
