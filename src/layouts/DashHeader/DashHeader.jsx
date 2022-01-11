@@ -37,7 +37,7 @@ const StyledHeader = styled.header`
 
 const DashHeader = ({ theme, toggleTheme, open, setOpen }) => {
   const { width } = useDevice();
-  console.log(open);
+
   return (
     <StyledHeader className={`p-4  `} open={open} windowWidth={width}>
       <div className="flex items-center w-full justify-between">
@@ -57,7 +57,7 @@ const DashHeader = ({ theme, toggleTheme, open, setOpen }) => {
           />
         </div>
       </div>
-      <DashNav />
+      <DashNav setOpen={setOpen} />
     </StyledHeader>
   );
 };

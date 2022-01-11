@@ -20,7 +20,7 @@ const StyledHeader = styled(Link)`
     props.isActive ? props.theme.accentPrimary : props.theme.text};
 `;
 
-const DashNav = () => {
+const DashNav = ({ setOpen }) => {
   const router = useRouter();
   const activeRoute = router.state.location.pathname;
 
@@ -33,6 +33,7 @@ const DashNav = () => {
               <StyledHeader
                 to={`/dashboard${item.slug}`}
                 isActive={activeRoute.includes(item.slug.replace("/", ""))}
+                onClick={() => setOpen(false)}
               >
                 <div className="header py-2 px-4 gap-4 flex items-center font-bold">
                   <FontAwesomeIcon icon={item.icon} />
@@ -57,6 +58,7 @@ const DashNav = () => {
                       key={item.slug}
                       className="p-3 text-sm"
                       isActive={activeRoute.includes(item.slug)}
+                      onClick={() => setOpen(false)}
                     >
                       {item.label}
                     </StyledLink>
