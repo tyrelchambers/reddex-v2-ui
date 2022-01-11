@@ -39,12 +39,15 @@ const Pricing = () => {
   return (
     <StyledWrapper theme={themeStyles}>
       <Wrapper>
-        <main className="max-w-screen-xl ml-auto mr-auto mt-10 flex flex-col items-center">
+        <main className="max-w-screen-xl ml-auto mr-auto mt-10 flex flex-col items-center p-4">
           <div className="max-w-5xl">
-            <H1 className=" text-center " textSize="text-6xl">
+            <H1
+              className=" text-center "
+              textSize="md:md:text-5xl text-3xl text-3xl"
+            >
               Stop wasting time finding stories
             </H1>
-            <p className="text-light mt-8 max-w-2xl text-center ml-auto mr-auto text-2xl">
+            <p className="text-light mt-8 max-w-2xl text-center ml-auto mr-auto text-xl md:text-2xl">
               Take back your time and become a more efficient creator. No credit
               card required until the trial is over.{" "}
               <span className="font-bold">No commitments</span>.{" "}
@@ -55,7 +58,7 @@ const Pricing = () => {
           <div className=" term-wrapper p-2 flex gap-6 rounded-full mt-20">
             <button
               className={`term-button p-2 rounded-full px-4 ${
-                term === "monthly" && "is-active"
+                term === "month" && "is-active"
               }`}
               onClick={() => termHandler("month")}
             >
@@ -63,7 +66,7 @@ const Pricing = () => {
             </button>
             <button
               className={`term-button p-2 rounded-full px-4 ${
-                term === "yearly" && "is-active"
+                term === "year" && "is-active"
               }`}
               onClick={() => termHandler("year")}
             >
@@ -71,13 +74,13 @@ const Pricing = () => {
             </button>
           </div>
 
-          <p className="mt-10  text-accent-primary text-2xl">
+          <p className="mt-10  text-accent-primary text-2xl text-center">
             All plans come with a{" "}
             <span className="font-bold">7 day free Pro</span> trial! Get 1 month
             free with a yearly plan.
           </p>
 
-          <section className="grid grid-cols-2 max-w-3xl w-full mt-10 gap-6 mb-20">
+          <section className="grid grid-cols-1 sm:grid-cols-2 max-w-3xl w-full mt-10 gap-6 mb-20">
             <PricingCard
               plan={basicPlan}
               label="Basic"
