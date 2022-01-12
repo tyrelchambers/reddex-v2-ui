@@ -20,7 +20,7 @@ const queryClient = new QueryClient();
 const location = new ReactLocation();
 
 const App = () => {
-  const excludedSubdomains = ["www", "localhost"];
+  const excludedSubdomains = ["www", "localhost", "reddex-staging", "reddex"];
   // get subdomain from url and exclude www from it
   const subdomain = window.location.hostname.split(".")[0].replace("www.", "");
 
