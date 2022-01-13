@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { Button } from "../components/Button/Button";
+import FormError from "../components/FormError/FormError";
 import Input from "../components/Input/Input";
 import InputWrapper from "../components/InputWrapper/InputWrapper";
 import { useUser } from "../hooks/useUser";
@@ -13,6 +15,12 @@ const ChangePasswordForm = () => {
     newPassword: "",
     confirmPassword: "",
   });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const disabledbtn = !(
     state.newPassword ||
@@ -44,6 +52,9 @@ const ChangePasswordForm = () => {
             setstate({ ...state, [e.target.name]: e.target.value })
           }
         />
+        {errors.currentPassword && (
+          <FormError message={errors.currentPassword.message} />
+        )}
       </InputWrapper>
 
       <InputWrapper label="New Password">
@@ -56,7 +67,24 @@ const ChangePasswordForm = () => {
           onInput={(e) =>
             setstate({ ...state, [e.target.name]: e.target.value })
           }
+          {...register("newPassword", {
+            required: {
+              value: true,
+              message: "Password is required",
+            },
+            minLength: {
+              value: 8,
+              message: "Password must be at least 8 characters",
+            },
+            maxLength: {
+              value: 255,
+              message: "Password must be less than 255 characters",
+            },
+          })}
         />
+        {errors.newPassword && (
+          <FormError message={errors.newPassword.message} />
+        )}
       </InputWrapper>
 
       <InputWrapper label="Confirm New Password">
@@ -76,7 +104,7 @@ const ChangePasswordForm = () => {
         <Button
           disabled={disabledbtn}
           loading={changePassword.isLoading}
-          onClick={submitHandler}
+          onClick={handleSubmit(submitHandler)}
           className="w-full sm:w-auto"
         >
           Change Password

@@ -42,6 +42,7 @@ const LoginForm = () => {
     <Form onSubmit={handleSubmit(submitHandler)}>
       <InputWrapper label="Email" htmlFor="email">
         <Input
+          name="email"
           placeholder="me@example.com"
           icon={faAt}
           value={state.email}
@@ -58,6 +59,7 @@ const LoginForm = () => {
 
       <InputWrapper label="Password" htmlFor="password">
         <Input
+          name="password"
           placeholder="***"
           icon={faKey}
           value={state.password}
