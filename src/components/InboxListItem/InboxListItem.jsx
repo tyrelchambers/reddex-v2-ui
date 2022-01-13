@@ -10,7 +10,7 @@ import { getLastReply } from "../../utils/getLastReply";
 import { Link } from "react-location";
 
 const StyledWrapper = styled.section`
-  min-height: 170px;
+  min-height: 150px;
 
   .subject {
     color: ${(props) => props.theme.text};
