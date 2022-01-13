@@ -8,6 +8,7 @@ import Form from "./Form";
 
 const ResetPasswordForm = ({ token }) => {
   const { resetPassword } = useAuth();
+
   const [state, setstate] = useState({
     newPassword: "",
     confirmPassword: "",

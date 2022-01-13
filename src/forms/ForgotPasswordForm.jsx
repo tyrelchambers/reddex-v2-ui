@@ -17,6 +17,7 @@ const ForgotPasswordForm = () => {
     <Form className="w-full max-w-md mt-20">
       <InputWrapper label="Email" htmlFor="email">
         <Input
+          type="email"
           placeholder="Your email"
           name="email"
           onInput={(e) =>
