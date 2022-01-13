@@ -25,10 +25,10 @@ const Submitted = () => {
             onInput={(e) => setSearch(e.target.value)}
           />
         </div>
-        <H1>Submitted</H1>
+        <H1 className="mt-6">Submitted</H1>
       </header>
 
-      <section className="mt-10">
+      <section>
         {submittedQuery.data && submittedQuery.data.length === 0 && (
           <p className="mt-4 text-light">Nothing to show</p>
         )}

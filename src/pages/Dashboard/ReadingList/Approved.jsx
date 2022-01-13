@@ -57,7 +57,7 @@ const Approved = observer(({ ModalStore }) => {
 
   return (
     <StyledWrapper className="w-full">
-      <header className="flex flex-col-reverse sm:flex-col justify-between w-full sm:gap-16 gap-8">
+      <header className="flex flex-col-reverse sm:flex-col justify-between w-full sm:gap-16 gap-6">
         <div className="flex sm:justify-between flex-col sm:flex-row gap-6">
           <div className="flex items-center gap-4 max-w-xl w-full">
             <Input
@@ -90,7 +90,7 @@ const Approved = observer(({ ModalStore }) => {
       </header>
 
       {selected && (
-        <div className="flex mt-6 items-center active-filter">
+        <div className="flex mt-10 items-center active-filter">
           <FontAwesomeIcon
             icon={faXmark}
             className="mr-4"

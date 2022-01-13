@@ -91,7 +91,7 @@ const Inbox = () => {
           <p className="text">No results found!</p>
         )}
 
-        <section className="max-w-3xl">
+        <section>
           {inboxSearch.data && (
             <div className="mt-10 grid grid-cols-1 gap-8 ">
               {inboxSearch.data.map((message, i) => (
