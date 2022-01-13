@@ -3,6 +3,8 @@ import { login } from "../api/login";
 import { register } from "../api/register";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-location";
+import { getPasswordResetLink } from "../api/getPasswordResetLink";
+import { resetUserPassword } from "../api/resetUserPassword";
 
 export const useAuth = () => {
   const queryClient = useQueryClient();
@@ -40,5 +42,17 @@ export const useAuth = () => {
     },
   });
 
-  return { loginMutation, registerMutation };
+  const forgotPassword = useMutation((data) => getPasswordResetLink(data), {
+    onSuccess: (data) => {
+      toast.success("A password reset link has been sent to your email");
+    },
+  });
+
+  const resetPassword = useMutation((data) => resetUserPassword(data), {
+    onSuccess: (data) => {
+      toast.success("Your password has been reset");
+      queryClient.invalidateQueries("currentUser");
+    },
+  });
+  return { loginMutation, registerMutation, forgotPassword, resetPassword };
 };

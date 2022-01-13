@@ -39,6 +39,8 @@ import React from "react";
 import NotFound from "../pages/NotFound";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TOS from "../pages/TOS";
+import ForgotPassword from "../pages/ForgotPassword";
+import ResetPassword from "../pages/ResetPassword";
 
 const queryClient = new QueryClient();
 const logoRef = React.createRef();
@@ -219,6 +221,14 @@ export const routes = [
   {
     path: "/terms-of-service",
     element: <TOS />,
+  },
+  {
+    path: "/forgot-password",
+    element: <ForgotPassword />,
+  },
+  {
+    path: "/reset-password",
+    element: <ResetPassword />,
   },
   {
     path: "/signout",

@@ -6,7 +6,7 @@ const Login = () => {
   return (
     <Wrapper>
       <main className="flex flex-col mt-20 items-center">
-        <H1 className="text-5xl">Welcome back!</H1>
+        <H1 textSize="md:text-5xl text-3xl text-3xl">Welcome back!</H1>
         <div className="w-full max-w-md mt-10">
           <LoginForm />
         </div>

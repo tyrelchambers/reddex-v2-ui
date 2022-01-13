@@ -13,7 +13,7 @@ const StyledButtonMain = styled(StyledButton)`
       ? props.theme.backgroundSecondary
       : props.theme.accentPrimary};
 
-  color: ${(props) => (props.disabled ? props.theme.textSecondary : "white")};
+  color: ${(props) => (props.disabled ? props.theme.text : "white")};
 
   transition: all 0.2s ease-in-out;
   &:not(:disabled):hover {
