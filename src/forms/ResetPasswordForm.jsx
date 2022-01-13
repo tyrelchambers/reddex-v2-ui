@@ -19,7 +19,7 @@ const ResetPasswordForm = ({ token }) => {
       return toast.warn("Passwords do not match");
     }
     resetPassword.mutate({
-      ...state,
+      newPassword: state.newPassword,
       token,
     });
   };
