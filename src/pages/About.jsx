@@ -4,7 +4,6 @@ import { H1 } from "../components/headings/h1";
 import { H2 } from "../components/headings/h2";
 import guyWithGlasses from "../assets/images/guy_with_glasses.svg";
 import hero from "../assets/images/hero_illustration.svg";
-import { Button } from "../components/Button/Button";
 import { trustedBy, twitterTestimonies } from "../constants";
 import styled from "styled-components";
 import { ThemeContext } from "../contexts/themeContext";
@@ -16,7 +15,7 @@ import savedMessage from "../assets/images/ecommerce_icons_1.svg";
 import tagIcon from "../assets/images/organization_icons_4.svg";
 import contactList from "../assets/images/random_icons_6.svg";
 import storySubmission from "../assets/images/seo_icons_6.svg";
-
+import { Link } from "react-location";
 const StyledWrapper = styled.section`
   .trusted-by {
     p {
@@ -228,7 +227,12 @@ const About = () => {
             <H2 className="text-center" textSize="md:text-5xl text-3xl">
               So, whadda ya say? Can we get started?
             </H2>
-            <Button className="mt-8">Yes, we can</Button>
+            <Link
+              to="/pricing"
+              className="bg-accent-primary p-3 mt-6 text-white rounded-lg shadow-md shadow-accent-primary"
+            >
+              Pick a plan
+            </Link>
           </div>
         </main>
       </Wrapper>
