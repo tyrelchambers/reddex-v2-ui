@@ -170,21 +170,16 @@ server {
 {{ end }}
 
 server {
-        {{ if $.NOSSL_SERVER_NAME }}server_name api.{{ $.NOSSL_SERVER_NAME }}; {{ end }}
-        location / {
-            proxy_pass       http://reddex-api-4000;
-        }
- }
-
-{{ if $.DOKKU_APP_WEB_LISTENERS }}
-{{ range $upstream_port := $.PROXY_UPSTREAM_PORTS | split " " }}
-upstream reddex-api-4000 {
-{{ range $listeners := $.DOKKU_APP_WEB_LISTENERS | split " " }}
-{{ $listener_list := $listeners | split ":" }}
-{{ $listener_ip := index $listener_list 0 }}
-  server http://reddex-api:4000;{{ end }}
+  {{ if $.NOSSL_SERVER_NAME }}server_name api.{{ $.NOSSL_SERVER_NAME }}; {{ end }}
+  location / {
+    proxy_pass http://reddex-api-4000;
+  }
 }
-{{ end }}{{ end }}
+
+
+upstream reddex-api-4000 {
+  server http://reddex-api:4000;
+}
 
 {{ if $.DOKKU_APP_WEB_LISTENERS }}
 {{ range $upstream_port := $.PROXY_UPSTREAM_PORTS | split " " }}
