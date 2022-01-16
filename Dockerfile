@@ -39,6 +39,7 @@ WORKDIR /app
 RUN npm init -y && \
   npm install http-server
 
+ADD nginx.conf.sigil /app
 
 # Copy the built artifacts from the build stage
 COPY --from=build /app/dist /app 
