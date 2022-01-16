@@ -10,7 +10,8 @@ server {
   listen      {{ if $.NGINX_BIND_ADDRESS_IP4 }}{{ $.NGINX_BIND_ADDRESS_IP4 }}:{{end}}{{ $listen_port }};
   {{ if $.NOSSL_SERVER_NAME }}server_name {{ $.NOSSL_SERVER_NAME }} *.{{ $.NOSSL_SERVER_NAME }}; {{ end }}
   access_log  {{ $.NGINX_ACCESS_LOG_PATH }}{{ if and ($.NGINX_ACCESS_LOG_FORMAT) (ne $.NGINX_ACCESS_LOG_PATH "off") }} {{ $.NGINX_ACCESS_LOG_FORMAT }}{{ end }};
-  error_log   {{ $.NGINX_ERROR_LOG_PATH }};
+  error_log   {{ $.NGINX_ERROR_LOG_PATH }}; 
+
 {{ if (and (eq $listen_port "80") ($.SSL_INUSE)) }}
   return 301 https://$host:{{ $.PROXY_SSL_PORT }}$request_uri;
 {{ else }}
@@ -167,6 +168,13 @@ server {
 {{ end }}{{ end }}
 {{ end }}
 {{ end }}
+
+server {
+        {{ if $.NOSSL_SERVER_NAME }}server_name api.{{ $.NOSSL_SERVER_NAME }}; {{ end }}
+        location / {
+            proxy_pass       http://reddex-api:4000;
+        }
+ }
 
 {{ if $.DOKKU_APP_WEB_LISTENERS }}
 {{ range $upstream_port := $.PROXY_UPSTREAM_PORTS | split " " }}
