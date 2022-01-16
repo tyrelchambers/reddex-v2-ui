@@ -168,6 +168,15 @@ server {
 {{ end }}
 {{ end }}
 
+server {
+  listen 80;
+server_name api.reddex-staging.com;
+location / {
+             proxy_http_version 1.1;
+             proxy_pass  http://reddex-api:4000;
+}
+}
+
 {{ if $.DOKKU_APP_WEB_LISTENERS }}
 {{ range $upstream_port := $.PROXY_UPSTREAM_PORTS | split " " }}
 upstream {{ $.APP }}-{{ $upstream_port }} {
