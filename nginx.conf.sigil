@@ -158,7 +158,11 @@ server {
   ssl_prefer_server_ciphers off;
 
   location    / {
-    grpc_pass  grpc://{{ $.APP }}-{{ $upstream_port }};
+    grpc_pass  grpc://reddex-backend;
+  }
+
+  location /api {
+    grpc_pass  grpc://reddex-backend;
   }
 
   {{ if $.CLIENT_MAX_BODY_SIZE }}client_max_body_size {{ $.CLIENT_MAX_BODY_SIZE }};{{ end }}
@@ -170,12 +174,11 @@ server {
 
 
 
-{{ if $.DOKKU_APP_WEB_LISTENERS }}
-{{ range $upstream_port := $.PROXY_UPSTREAM_PORTS | split " " }}
-upstream {{ $.APP }}-{{ $upstream_port }} {
-{{ range $listeners := $.DOKKU_APP_WEB_LISTENERS | split " " }}
-{{ $listener_list := $listeners | split ":" }}
-{{ $listener_ip := index $listener_list 0 }}
-  server {{ $listener_ip }}:{{ $upstream_port }};{{ end }}
+upstream reddex-backend {
+
+  server 172.17.0.6:4000;
 }
-{{ end }}{{ end }}
+upstream reddex-ui-8080 {
+
+  server 172.17.0.6:8080;
+}
