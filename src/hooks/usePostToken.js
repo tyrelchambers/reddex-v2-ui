@@ -8,8 +8,10 @@ export const usePostToken = () => {
   useQuery("postToken", getPostToken, {
     enabled: !postToken,
     onSuccess: (res) => {
-      setPostToken(res.postToken);
-      localStorage.setItem("postToken", res.postToken);
+      if (res.postToken) {
+        setPostToken(res.postToken);
+        localStorage.setItem("postToken", res.postToken);
+      }
     },
     retry: 1,
   });
