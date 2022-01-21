@@ -11,8 +11,6 @@ server {
   {{ if $.NOSSL_SERVER_NAME }}server_name {{ $.NOSSL_SERVER_NAME }} *.{{ $.NOSSL_SERVER_NAME }}; {{ end }}
   access_log  {{ $.NGINX_ACCESS_LOG_PATH }}{{ if and ($.NGINX_ACCESS_LOG_FORMAT) (ne $.NGINX_ACCESS_LOG_PATH "off") }} {{ $.NGINX_ACCESS_LOG_FORMAT }}{{ end }};
   error_log   {{ $.NGINX_ERROR_LOG_PATH }};
-
-
 {{ if (and (eq $listen_port "80") ($.SSL_INUSE)) }}
   return 301 https://$host:{{ $.PROXY_SSL_PORT }}$request_uri;
 {{ else }}
@@ -37,6 +35,10 @@ server {
     proxy_set_header X-Forwarded-Proto {{ $.PROXY_X_FORWARDED_PROTO }};
     proxy_set_header X-Request-Start $msec;
     {{ if $.PROXY_X_FORWARDED_SSL }}proxy_set_header X-Forwarded-Ssl {{ $.PROXY_X_FORWARDED_SSL }};{{ end }}
+  }
+
+  location  /api {
+    proxy_pass  http://reddex-api-4000;
   }
 
   {{ if $.CLIENT_MAX_BODY_SIZE }}client_max_body_size {{ $.CLIENT_MAX_BODY_SIZE }};{{ end }}
@@ -163,7 +165,13 @@ server {
   ssl_protocols             TLSv1.2 {{ if eq $.TLS13_SUPPORTED "true" }}TLSv1.3{{ end }};
   ssl_prefer_server_ciphers off;
 
- 
+  location    / {
+    grpc_pass  grpc://{{ $.APP }}-{{ $upstream_port }};
+  }
+
+  location  /api {
+    proxy_pass  http://reddex-api-4000;
+  }
 
   {{ if $.CLIENT_MAX_BODY_SIZE }}client_max_body_size {{ $.CLIENT_MAX_BODY_SIZE }};{{ end }}
   include {{ $.DOKKU_ROOT }}/{{ $.APP }}/nginx.conf.d/*.conf;
@@ -172,12 +180,16 @@ server {
 {{ end }}
 {{ end }}
 
-
 upstream reddex-api-4000 {
-  server 172.17.0.6:4000
+  server {{ $listener_ip }}:4000;
 }
 
-
-upstream reddex-ui-8080 {
-  server 172.17.0.6:8080;
+{{ if $.DOKKU_APP_WEB_LISTENERS }}
+{{ range $upstream_port := $.PROXY_UPSTREAM_PORTS | split " " }}
+upstream {{ $.APP }}-{{ $upstream_port }} {
+{{ range $listeners := $.DOKKU_APP_WEB_LISTENERS | split " " }}
+{{ $listener_list := $listeners | split ":" }}
+{{ $listener_ip := index $listener_list 0 }}
+  server {{ $listener_ip }}:{{ $upstream_port }};{{ end }}
 }
+{{ end }}{{ end }}
