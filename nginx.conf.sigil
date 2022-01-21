@@ -181,7 +181,8 @@ server {
 {{ end }}
 
 upstream reddex-api-4000 {
-  server {{ $listener_ip }}:4000;
+  {{ $listener_ip := index $listener_list 0 }}
+  server {{ $listener_ip }}:4000;{{ end }}
 }
 
 {{ if $.DOKKU_APP_WEB_LISTENERS }}
