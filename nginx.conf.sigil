@@ -157,13 +157,11 @@ server {
   ssl_protocols             TLSv1.2 {{ if eq $.TLS13_SUPPORTED "true" }}TLSv1.3{{ end }};
   ssl_prefer_server_ciphers off;
 
-  location    / {
+  location    /api {
     grpc_pass  grpc://reddex-backend;
   }
 
-  location /api {
-    grpc_pass  grpc://reddex-backend;
-  }
+ 
 
   {{ if $.CLIENT_MAX_BODY_SIZE }}client_max_body_size {{ $.CLIENT_MAX_BODY_SIZE }};{{ end }}
   include {{ $.DOKKU_ROOT }}/{{ $.APP }}/nginx.conf.d/*.conf;
