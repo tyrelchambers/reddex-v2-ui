@@ -180,10 +180,15 @@ server {
 {{ end }}
 {{ end }}
 
+{{ if $.DOKKU_APP_WEB_LISTENERS }}
+{{ range $upstream_port := $.PROXY_UPSTREAM_PORTS | split " " }}
 upstream reddex-api-4000 {
-  {{ $listener_ip := index $listener_list 0 }}
+{{ range $listeners := $.DOKKU_APP_WEB_LISTENERS | split " " }}
+{{ $listener_list := $listeners | split ":" }}
+{{ $listener_ip := index $listener_list 0 }}
   server {{ $listener_ip }}:4000;{{ end }}
 }
+{{ end }}{{ end }}
 
 {{ if $.DOKKU_APP_WEB_LISTENERS }}
 {{ range $upstream_port := $.PROXY_UPSTREAM_PORTS | split " " }}
