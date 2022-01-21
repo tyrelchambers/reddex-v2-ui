@@ -102,6 +102,10 @@ server {
     {{ if $.PROXY_X_FORWARDED_SSL }}proxy_set_header X-Forwarded-Ssl {{ $.PROXY_X_FORWARDED_SSL }};{{ end }}
   }
 
+  location  /api {
+    proxy_pass  http://reddex-api-4000;
+  }
+
   {{ if $.CLIENT_MAX_BODY_SIZE }}client_max_body_size {{ $.CLIENT_MAX_BODY_SIZE }};{{ end }}
   include {{ $.DOKKU_ROOT }}/{{ $.APP }}/nginx.conf.d/*.conf;
 
@@ -169,9 +173,11 @@ server {
 {{ end }}
 
 
+upstream reddex-api-4000 {
+  server 172.17.0.6:4000
+}
 
 
 upstream reddex-ui-8080 {
-
   server 172.17.0.6:8080;
 }
