@@ -18,15 +18,19 @@ import { ReactLocationDevtools } from "react-location-devtools";
 const queryClient = new QueryClient();
 
 const location = new ReactLocation();
+const isProd = process.env.NODE_ENV === "production";
 
 const App = () => {
   const excludedSubdomains = ["www", "localhost"];
   // get subdomain from url and exclude www from it
   const subdomain = window.location.hostname.split(".")[0].replace("www.", "");
   const domainList = window.location.hostname.split(".");
-
   // custom site
-  if (domainList.length === 3 && domainList[1] !== "netlify") {
+  if (
+    isProd
+      ? domainList.length === 3 && domainList[1] !== "netlify"
+      : domainList.length === 2
+  ) {
     return (
       <React.StrictMode>
         <QueryClientProvider client={queryClient}>
