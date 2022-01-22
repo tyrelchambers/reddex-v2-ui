@@ -20,18 +20,13 @@ const queryClient = new QueryClient();
 const location = new ReactLocation();
 
 const App = () => {
-  const excludedSubdomains = [
-    "www",
-    "localhost",
-    "reddex-staging",
-    "reddex",
-    "api",
-  ];
+  const excludedSubdomains = ["www", "localhost"];
   // get subdomain from url and exclude www from it
   const subdomain = window.location.hostname.split(".")[0].replace("www.", "");
+  const domainList = window.location.hostname.split(".");
 
   // custom site
-  if (!excludedSubdomains.includes(subdomain)) {
+  if (domainList.length >= 2 && domainList[1] !== "netlify") {
     return (
       <React.StrictMode>
         <QueryClientProvider client={queryClient}>
