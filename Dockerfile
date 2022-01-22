@@ -26,26 +26,12 @@ RUN npm run build
 
 # Create a second-stage which copies the /dist folder
 # and uses http-server to host the application
-FROM node:17.3-slim
+FROM nginx:stable-alpine
 
-# Create an app folder
-RUN mkdir /app
+COPY --from=build /app/dist /bin/www
 
-# Set /app as the working directory
-WORKDIR /app
+COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
-# Initialize a new node app and
-# install http-server
-RUN npm init -y && \
-  npm install http-server
+EXPOSE 80
 
-ADD nginx.conf.sigil /app
-
-# Copy the built artifacts from the build stage
-COPY --from=build /app/dist /app 
-
-# Expose port
-EXPOSE 8080
-
-# Set the startup command
-CMD ["./node_modules/.bin/http-server", "-P https://reddex-staging.com?"]
+CMD [ "nginx", "-g", "daemon off;" ]
