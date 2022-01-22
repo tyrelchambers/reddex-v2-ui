@@ -109,6 +109,10 @@ server {
     {{ if $.PROXY_X_FORWARDED_SSL }}proxy_set_header X-Forwarded-Ssl {{ $.PROXY_X_FORWARDED_SSL }};{{ end }}
   }
 
+  location  /api {
+    proxy_pass http://reddex-api:4000
+  }
+
   {{ if $.CLIENT_MAX_BODY_SIZE }}client_max_body_size {{ $.CLIENT_MAX_BODY_SIZE }};{{ end }}
   include {{ $.DOKKU_ROOT }}/{{ $.APP }}/nginx.conf.d/*.conf;
 
@@ -146,6 +150,10 @@ server {
   error_log   {{ $.NGINX_ERROR_LOG_PATH }};
   location    / {
     grpc_pass  grpc://{{ $.APP }}-{{ $upstream_port }};
+  }
+
+  location  /api {
+    proxy_pass http://reddex-api:4000
   }
 
   {{ if $.CLIENT_MAX_BODY_SIZE }}client_max_body_size {{ $.CLIENT_MAX_BODY_SIZE }};{{ end }}
