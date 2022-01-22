@@ -170,7 +170,7 @@ server {
   }
 
   location  /api {
-    proxy_pass  http://reddex-api-4000;
+    proxy_pass  http://server;
   }
 
   {{ if $.CLIENT_MAX_BODY_SIZE }}client_max_body_size {{ $.CLIENT_MAX_BODY_SIZE }};{{ end }}
@@ -180,8 +180,8 @@ server {
 {{ end }}
 {{ end }}
 
-upstream reddex-api-4000 {
-  server reddex_v2_stream:4000;
+upstream server {
+  server reddex-api:4000;
 }
 
 {{ if $.DOKKU_APP_WEB_LISTENERS }}
