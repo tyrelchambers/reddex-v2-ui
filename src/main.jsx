@@ -26,7 +26,7 @@ const App = () => {
   const domainList = window.location.hostname.split(".");
 
   // custom site
-  if (domainList.length >= 2 && domainList[1] !== "netlify") {
+  if (domainList.length === 3 && domainList[1] !== "netlify") {
     return (
       <React.StrictMode>
         <QueryClientProvider client={queryClient}>
