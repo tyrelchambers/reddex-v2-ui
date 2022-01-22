@@ -105,7 +105,7 @@ server {
   }
 
   location  /api {
-    proxy_pass  http://reddex-api-4000;
+    proxy_pass  http://reddex-api:4000;
   }
 
   {{ if $.CLIENT_MAX_BODY_SIZE }}client_max_body_size {{ $.CLIENT_MAX_BODY_SIZE }};{{ end }}
