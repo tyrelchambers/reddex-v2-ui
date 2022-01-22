@@ -5,11 +5,13 @@ import FilePondPluginImageExifOrientation from "filepond-plugin-image-exif-orien
 import FilePondPluginImagePreview from "filepond-plugin-image-preview";
 import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
 import FilePondPluginFileValidateSize from "filepond-plugin-file-validate-size";
+import FilePondPluginImageResize from "filepond-plugin-image-resize";
 
 registerPlugin(
   FilePondPluginImageExifOrientation,
   FilePondPluginImagePreview,
-  FilePondPluginFileValidateSize
+  FilePondPluginFileValidateSize,
+  FilePondPluginImageResize
 );
 
 const ImgUploader = React.forwardRef((props, ref) => {
@@ -35,6 +37,10 @@ const ImgUploader = React.forwardRef((props, ref) => {
       instantUpload={false}
       name="files"
       labelIdle='Drag & Drop your files or <span class="filepond--label-action">Browse</span>'
+      allowImageResize={true}
+      imageResizeMode="cover"
+      imageResizeTargetWidth={props.resizeWidth}
+      imageResizeTargetHeight={props.resizeHeight}
     />
   );
 });

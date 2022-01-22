@@ -125,6 +125,8 @@ const SiteBuilderGeneralForm = ({ state, dispatch, logoRef, bannerRef }) => {
                 payload: files,
               })
             }
+            resizeHeight={200}
+            resizeWidth={200}
           />
         )}
       </InputWrapper>
@@ -159,6 +161,8 @@ const SiteBuilderGeneralForm = ({ state, dispatch, logoRef, bannerRef }) => {
               })
             }
             ref={bannerRef}
+            resizeHeight={500}
+            resizeWidth={1500}
           />
         )}
       </InputWrapper>
