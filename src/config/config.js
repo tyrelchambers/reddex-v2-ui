@@ -7,7 +7,7 @@ const config = {
     youtubeKey: "AIzaSyBzE5hSoh6JZsLsepRXULe9yx2o-KcoJrs",
   },
   production: {
-    backend: "http://138.197.146.177:4000",
+    backend: "https://reddex-staging.com",
     frontend: "https://reddex-staging.com",
     redditApp: "Rw_vFfmZPN4uYA",
     redditRedirect: "https://reddex-staging.com/callback/reddit",

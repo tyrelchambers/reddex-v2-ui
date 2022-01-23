@@ -15,8 +15,8 @@ import { useExpand } from "../../hooks/useExpand";
 import MobileNav from "../MobileNav";
 
 const StyledHeader = styled.header`
-  background-color: ${(props) => props.theme.backgroundSecondary};
-
+  background-color: ${(props) => props.theme.backgroundMain};
+  border-bottom: 1px solid ${(props) => props.theme.border};
   .username {
     color: ${(props) => props.theme.textLight};
   }
