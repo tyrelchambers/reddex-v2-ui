@@ -15,10 +15,15 @@ import StringCount from "../../components/StringCount/StringCount";
 import { useForm } from "react-hook-form";
 import FormError from "../../components/FormError/FormError";
 import { H1 } from "../../components/headings/h1";
-
+import { detectLinkInText } from "../../utils/detectLinkInText";
 const StyledWrapper = styled.div`
   .rules {
     line-height: 1.8em;
+  }
+
+  .site-name,
+  .social-icon {
+    color: ${(props) => props.theme.text};
   }
 
   .ProseMirror {
@@ -27,7 +32,7 @@ const StyledWrapper = styled.div`
     min-height: 300px;
     border-radius: 0.5em;
     padding: 1em;
-
+    color: ${(props) => props.theme.text};
     ul {
       list-style-type: disc !important;
     }
@@ -152,9 +157,12 @@ const SubmitStory = ({ subdomain }) => {
                 </p>
               )}
 
-              <p className="whitespace-pre-wrap text-light mt-6 rules">
-                {websiteData.submissionForm.rules}
-              </p>
+              <div
+                className="whitespace-pre-wrap text-light mt-6 rules"
+                dangerouslySetInnerHTML={{
+                  __html: detectLinkInText(websiteData.submissionForm.rules),
+                }}
+              ></div>
               <hr className="mt-10 mb-10" />
               <section>
                 <h2 className="text-xl font-bold mb-6 text mt-8">

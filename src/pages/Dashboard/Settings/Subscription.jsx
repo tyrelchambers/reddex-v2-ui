@@ -8,6 +8,7 @@ import { useSubscription } from "../../../hooks/useSubscription";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowUpRightFromSquare,
+  faHourglassEnd,
   faTriangleExclamation,
 } from "@fortawesome/pro-duotone-svg-icons";
 import { createNewStripePortal } from "../../../api/createNewStripePortal";
@@ -82,15 +83,36 @@ const Subscription = () => {
 
             {data.subscription.trial_end &&
               data.subscription.trial_end > Math.floor(Date.now() / 1000) && (
-                <p className="text-sm text-light">
+                <p className="text-sm text-light mt-2">
                   Your trial ends{" "}
-                  {format(
-                    fromUnixTime(data.subscription.trial_end),
-                    "MMMM d, yyyy"
-                  )}{" "}
+                  <span className="font-bold">
+                    {format(
+                      fromUnixTime(data.subscription.trial_end),
+                      "MMMM d, yyyy"
+                    )}
+                  </span>
                   , then your plan will switch to{" "}
                   {subscription.data?.subscription.plan}; billed per{" "}
                   {subscription.data?.subscription.term}
+                </p>
+              )}
+
+            {data.subscription.discount.end &&
+              data.subscription.discount.end >
+                Math.floor(Date.now() / 1000) && (
+                <p className="text-sm text-light mt-2">
+                  <FontAwesomeIcon
+                    icon={faHourglassEnd}
+                    className="mr-4 text-yellow-500"
+                  />
+                  Your coupon expires{" "}
+                  <span className="font-bold">
+                    {format(
+                      fromUnixTime(data.subscription.discount.end),
+                      "MMMM d, yyyy"
+                    )}
+                  </span>
+                  ,
                 </p>
               )}
 

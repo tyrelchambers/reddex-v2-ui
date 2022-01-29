@@ -58,6 +58,7 @@ const DashWrapper = (props) => {
           open={open}
           setOpen={setOpen}
         />
+
         {isLoading && <Loader size="2x" />}
         {!isLoading && data && (
           <>

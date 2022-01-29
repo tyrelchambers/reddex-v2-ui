@@ -3,7 +3,6 @@ import errors from "../constants/subscriptionErrors";
 
 export const canAccessRoute = (subscription) => {
   const isAcceptedRoute = acceptedRoutes.includes(window.location.pathname);
-
   if (
     subscription.status === "active" ||
     subscription.status === "trialing" ||
