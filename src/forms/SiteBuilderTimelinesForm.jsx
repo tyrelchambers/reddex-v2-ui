@@ -43,7 +43,7 @@ const SiteBuilderTimelinesForm = ({ state, dispatch }) => {
         />
       </div>
 
-      <div className="flex flex-col mt-10">
+      {/* <div className="flex flex-col mt-10">
         <div className="flex mb-2">
           <RToggle
             name="timelines"
@@ -79,7 +79,7 @@ const SiteBuilderTimelinesForm = ({ state, dispatch }) => {
             })
           }
         />
-      </div>
+      </div> */}
     </Form>
   );
 };

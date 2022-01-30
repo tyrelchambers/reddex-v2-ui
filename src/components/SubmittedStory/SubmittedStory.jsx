@@ -33,7 +33,9 @@ const SubmittedStory = ({ item, user }) => {
           {item.author}
         </p>
 
-        <p className="font-bold text-2xl mt-4 truncate">{item.story_title}</p>
+        <p className="font-bold text-2xl mt-4 truncate text">
+          {item.story_title}
+        </p>
 
         <footer className="mt-4 flex justify-between">
           <p className="text-light  text-sm">
