@@ -8,6 +8,7 @@ import reddexLight from "../assets/images/reddex-light.svg";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import MiscInfo from "../components/MiscInfo/MiscInfo";
 import { faArrowRight } from "@fortawesome/pro-solid-svg-icons";
+import { faRightFromBracket } from "@fortawesome/pro-duotone-svg-icons";
 const StyledNav = styled.nav`
   position: fixed;
   top: 0;
@@ -42,7 +43,7 @@ const MobileNav = ({ open, theme, setOpen, user }) => {
   return (
     <StyledNav>
       <main className="body p-4">
-        <header className="flex items-center justify-between border-b-2  pb-4">
+        <header className="flex items-center justify-between   pb-4">
           <img
             src={theme === "light" ? reddexDark : reddexLight}
             alt="Reddex"
@@ -55,7 +56,7 @@ const MobileNav = ({ open, theme, setOpen, user }) => {
           />
         </header>
         <div className="mt-10 flex flex-col gap-6">
-          {user && (
+          {user ? (
             <StyledLi>
               <Link
                 className=" opacity-70 hover:opacity-100 transition-all "
@@ -64,6 +65,16 @@ const MobileNav = ({ open, theme, setOpen, user }) => {
               >
                 <FontAwesomeIcon icon={faArrowRight} className="mr-6" />
                 Dashboard
+              </Link>
+            </StyledLi>
+          ) : (
+            <StyledLi>
+              <Link
+                className=" opacity-70 hover:opacity-100 transition-all "
+                to="/login"
+              >
+                <FontAwesomeIcon icon={faRightFromBracket} className="mr-6" />
+                Login
               </Link>
             </StyledLi>
           )}

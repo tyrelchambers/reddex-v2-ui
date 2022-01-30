@@ -24,7 +24,7 @@ const Register = () => {
   return (
     <Wrapper>
       <main className="flex flex-col mt-20 items-center">
-        <H1 className="  text-center " textSize="text-5xl">
+        <H1 className="  text-center " textSize="md:text-5xl text-3xl text-3xl">
           It'll be nice to have you onboard!
         </H1>
         {(!term || !plan) && (
@@ -36,10 +36,10 @@ const Register = () => {
             to register
           </p>
         )}
-        <StyledWrapper className="w-full max-w-screen-lg mt-10 flex gap-10 h-">
+        <StyledWrapper className="w-full max-w-screen-lg mt-10 flex gap-10 h- flex-col-reverse md:flex-row">
           <RegisterForm plan={plan} term={term} />
-          <aside className="aside w-1/2 rounded-md p-4 relative overflow-hidden shadow-md">
-            <div className="z-10 absolute">
+          <aside className="aside w-full md:w-1/2 rounded-md p-4 relative overflow-hidden shadow-md ">
+            <div className="z-10 md:absolute">
               <H2 textSize="text-lg">🔥 Your 7-day Pro Trial</H2>
               <p className=" mt-6 text-light">
                 Awesome! Once you sign up, you'll be able to access all of the{" "}

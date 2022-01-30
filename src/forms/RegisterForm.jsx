@@ -44,7 +44,7 @@ const RegisterForm = ({ plan, term }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(submitHandler)} className="w-1/2">
+    <Form onSubmit={handleSubmit(submitHandler)} className="md:w-1/2 w-full">
       <InputWrapper label="Email" htmlFor="email">
         <Input
           placeholder="me@example.com"

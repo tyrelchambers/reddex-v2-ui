@@ -9,14 +9,16 @@ const ResetPassword = () => {
 
   return (
     <Wrapper>
-      <main className="max-w-screen-xl ml-auto mr-auto mt-10 flex flex-col items-center">
-        <H1 textSize="md:text-5xl text-3xl text-3xl">Reset your password?</H1>
+      <main className="max-w-screen-xl ml-auto mr-auto mt-10 flex flex-col items-center p-4">
+        <H1 className="text-center" textSize="md:text-5xl text-3xl text-3xl">
+          Reset your password?
+        </H1>
         <p className="max-w-lg w-full text-light mt-6 text-center">
           Enter your email and we will send you a link to the email provided to
           reset your password.
         </p>
 
-        <ResetPasswordForm token={token} />
+        {token && <ResetPasswordForm token={token} />}
       </main>
     </Wrapper>
   );
