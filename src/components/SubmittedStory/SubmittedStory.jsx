@@ -13,6 +13,10 @@ import { useSubmittedStory } from "../../hooks/useSubmittedStory";
 
 const StyledStory = styled.div`
   border: 1.5px solid ${(props) => props.theme.border};
+  transition: all 0.2s ease;
+  &:hover {
+    border: 1.5px solid ${(props) => props.theme.accentPrimary};
+  }
 `;
 
 const SubmittedStory = ({ item, user }) => {
@@ -20,39 +24,37 @@ const SubmittedStory = ({ item, user }) => {
 
   return (
     <StyledStory className="p-4 rounded-lg">
-      <p className="text-light flex items-center">
-        <FontAwesomeIcon
-          icon={faUserCircle}
-          className="text-accent-primary mr-2"
-        />
-        {item.author}
-      </p>
-      <Link
-        className="text-2xl font-bold text mt-2 flex"
-        to={`/dashboard/story/${item.uuid}`}
-      >
-        {item.story_title}
-      </Link>
-
-      <footer className="mt-4 flex justify-between">
-        <p className="text-light  text-sm">
+      <Link to={`/dashboard/story/${item.uuid}`}>
+        <p className="text-light flex items-center ">
           <FontAwesomeIcon
-            icon={faClock}
-            className="mr-2 text-accent-primary"
+            icon={faUserCircle}
+            className="text-accent-primary mr-2"
           />
-          ~
-          {averageReadingTimeWithText(
-            item.body,
-            user?.Profile.words_per_minute
-          )}{" "}
-          minutes
+          {item.author}
         </p>
-        <FontAwesomeIcon
-          icon={faTrashCan}
-          className="text-accent-primary"
-          onClick={() => deleteSubmitted.mutate(item.uuid)}
-        />
-      </footer>
+
+        <p className="font-bold text-2xl mt-4 truncate">{item.story_title}</p>
+
+        <footer className="mt-4 flex justify-between">
+          <p className="text-light  text-sm">
+            <FontAwesomeIcon
+              icon={faClock}
+              className="mr-2 text-accent-primary"
+            />
+            ~
+            {averageReadingTimeWithText(
+              item.body,
+              user?.Profile.words_per_minute
+            )}{" "}
+            minutes
+          </p>
+          <FontAwesomeIcon
+            icon={faTrashCan}
+            className="text-accent-primary"
+            onClick={() => deleteSubmitted.mutate(item.uuid)}
+          />
+        </footer>
+      </Link>
     </StyledStory>
   );
 };
