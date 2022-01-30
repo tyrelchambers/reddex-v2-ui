@@ -75,9 +75,9 @@ const About = () => {
 
           <div className="flex flex-col items-center mt-20 trusted-by">
             <H2>Trusted by:</H2>
-            <div className="flex flex-wrap justify-center mt-4 gap-2">
+            <div className="justify-center mt-4 gap-2 grid grid-cols-2 md:grid-cols-3 w-full">
               {trustedBy.map((person) => (
-                <p className="font-bold p-2 px-4 rounded-full text-super-light">
+                <p className="font-bold p-2 px-4 rounded-full text-super-light w-full text-center">
                   {person}
                 </p>
               ))}

@@ -34,11 +34,13 @@ const Header = () => {
       theme={themeStyles}
       className="flex justify-between p-3 px-4 items-center bg-gray-100 "
     >
-      <img
-        src={theme === "light" ? reddexDark : reddexLight}
-        alt="Reddex"
-        className="w-14 h-14"
-      />
+      <Link to="/">
+        <img
+          src={theme === "light" ? reddexDark : reddexLight}
+          alt="Reddex"
+          className="w-14 h-14"
+        />
+      </Link>
       <div className="flex items-center">
         <Nav user={user} />
         <div className="mr-8 ml-8">
