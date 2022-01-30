@@ -33,7 +33,7 @@ const Contact = ({ contact }) => {
           {contact.name}
         </p>
       </div>
-      <p className="body p-3 ">{contact.notes}</p>
+      <p className="body p-3 break-words">{contact.notes}</p>
       <hr />
       <div className="flex items-center gap-6 p-3 w-full justify-end">
         <Link to={`/dashboard/contacts/edit/${contact.uuid}`}>
