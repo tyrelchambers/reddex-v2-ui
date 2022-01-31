@@ -30,6 +30,7 @@ const MiscInfo = () => {
     <StyledWrapper className="flex gap-2 flex-wrap text-xs mt-6 items-center">
       <Link to="/privacy">Privacy</Link>
       <Link to="/terms-of-service">Terms</Link>
+      <Link to="/bug-report">Bug report/feedback</Link>
       <p>Reddex &copy; {new Date(Date.now()).getFullYear()}</p>
     </StyledWrapper>
   );

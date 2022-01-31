@@ -41,6 +41,7 @@ import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TOS from "../pages/TOS";
 import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
+import BugReport from "../pages/BugReport";
 
 const queryClient = new QueryClient();
 const logoRef = React.createRef();
@@ -237,6 +238,10 @@ export const routes = [
       localStorage.removeItem("token");
       window.location.href = "/";
     },
+  },
+  {
+    path: "/bug-report",
+    element: <BugReport />,
   },
   {
     path: "*",
