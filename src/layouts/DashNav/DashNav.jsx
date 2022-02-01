@@ -25,7 +25,7 @@ const DashNav = ({ setOpen }) => {
   const activeRoute = router.state.location.pathname;
 
   return (
-    <nav className="mt-10 w-full">
+    <nav className="mt-8 w-full">
       <ul className="flex flex-col gap-4">
         {nav.map((item, index) => (
           <li key={index}>

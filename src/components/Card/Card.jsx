@@ -23,9 +23,9 @@ import { averageReadingTime } from "../../utils/averageReadingTime";
 
 const StyledCard = styled.div`
   background-color: ${(props) => props.theme.backgroundSecondary};
-
+  position: relative;
   .card-author {
-    width: 140px;
+    width: 130px;
   }
 
   p {
@@ -41,9 +41,15 @@ const StyledCard = styled.div`
     }
   }
 
+  footer {
+    border-top: 1px solid ${(props) => props.theme.border};
+  }
+
   @media screen and (min-width: 425px) {
-    .card-main {
-      height: calc(100% - 190px);
+    footer {
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
     }
 
     .card-author {
@@ -139,8 +145,6 @@ const Card = observer(
               </a>
             </main>
 
-            <hr />
-
             <footer className="p-2 mt-2">
               <section className="flex items-center gap-4 ml-2 mr-2 flex-wrap">
                 {data.flair && (
@@ -165,19 +169,21 @@ const Card = observer(
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2">
-                  <FontAwesomeIcon
-                    icon={faCalendarClock}
-                    className="text-accent-primary text-xs sm:text-sm"
-                  />{" "}
-                  <p className="text-gray-600 text-xs sm:text-sm">
-                    {formatDistanceToNow(
-                      new Date(data.created) * 1000,
-                      "yyyyMMdd"
-                    )}{" "}
-                    ago
-                  </p>
-                </div>
+                {data.created && (
+                  <div className="flex items-center gap-2">
+                    <FontAwesomeIcon
+                      icon={faCalendarClock}
+                      className="text-accent-primary text-xs sm:text-sm"
+                    />{" "}
+                    <p className="text-gray-600 text-xs sm:text-sm">
+                      {formatDistanceToNow(
+                        new Date(data.created) * 1000,
+                        "yyyyMMdd"
+                      )}{" "}
+                      ago
+                    </p>
+                  </div>
+                )}
               </section>
 
               <section className="flex items-center  mt-4 card-floating-footer p-3 rounded-md justify-between">

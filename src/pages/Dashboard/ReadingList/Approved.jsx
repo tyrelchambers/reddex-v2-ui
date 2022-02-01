@@ -11,10 +11,7 @@ import { useReadingList } from "../../../hooks/useReadingList";
 import Loader from "../../../components/Loader/Loader";
 import { Button } from "../../../components/Button/Button";
 import Input from "../../../components/Input/Input";
-import {
-  faArrowDownFromDottedLine,
-  faArrowUpFromDottedLine,
-} from "@fortawesome/pro-duotone-svg-icons";
+import { faArrowDownFromDottedLine } from "@fortawesome/pro-duotone-svg-icons";
 import ImportStory from "../../../components/ImportStory/ImportStory";
 import { observer } from "mobx-react-lite";
 import { useUser } from "../../../hooks/useUser";

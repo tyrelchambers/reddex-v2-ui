@@ -1,12 +1,15 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBullhorn } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-location";
 import styled from "styled-components";
 import reddexDark from "../../assets/images/reddex-dark.svg";
 import reddexLight from "../../assets/images/reddex-light.svg";
+import AnnouncementLink from "../../components/AnnouncementLink/AnnouncementLink";
 import ThemeSwitcher from "../../components/ThemeSwitcher/ThemeSwitcher";
 import { useDevice } from "../../hooks/useDevice";
+import AnnouncementStore from "../../stores/AnnouncementStore";
 import DashNav from "../DashNav/DashNav";
 
 const StyledHeader = styled.header`
@@ -61,6 +64,7 @@ const DashHeader = ({ theme, toggleTheme, open, setOpen }) => {
           />
         </div>
       </div>
+      <AnnouncementLink AnnouncementStore={AnnouncementStore} />
       <DashNav setOpen={setOpen} />
     </StyledHeader>
   );
