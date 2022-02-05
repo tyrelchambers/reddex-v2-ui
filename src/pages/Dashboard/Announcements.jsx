@@ -12,13 +12,6 @@ let Storyblok = new StoryblokClient({
 });
 
 const StyledWrapper = styled.section`
-  .divider {
-    width: 100%;
-    max-width: 50px;
-    height: 2px;
-    background-color: ${(props) => props.theme.border};
-  }
-
   .announcement {
     border-bottom: 1px solid ${(props) => props.theme.border};
     padding-bottom: 1em;
@@ -43,12 +36,11 @@ const Announcements = observer(({ AnnouncementStore }) => {
       <ul className="mt-8 max-w-2xl">
         {announcements.map((story) => (
           <li className="announcement flex flex-col gap-4">
-            <header className="flex items-center gap-6">
-              <H2>{story.name}</H2>
-              <span className="divider"></span>
+            <header className="flex flex-col gap-2 mb-2">
               <p className="date">
                 {format(new Date(story.first_published_at), "MMMM dd, yyyy")}
               </p>
+              <H2>{story.name}</H2>
             </header>
             {story.content.long_text.content.map((content) => (
               <div
