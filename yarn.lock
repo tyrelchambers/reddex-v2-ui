@@ -1190,7 +1190,7 @@
     "picocolors" "^1.0.0"
     "postcss-value-parser" "^4.1.0"
 
-"axios@^0.24.0":
+"axios@^0.21.1", "axios@^0.24.0":
   "integrity" "sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA=="
   "resolved" "https://registry.npmjs.org/axios/-/axios-0.24.0.tgz"
   "version" "0.24.0"
@@ -3453,6 +3453,11 @@
   "integrity" "sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw="
   "resolved" "https://registry.npmjs.org/sprintf-js/-/sprintf-js-1.0.3.tgz"
   "version" "1.0.3"
+
+"storyblok-js-client@^4.2.0":
+  "integrity" "sha512-dAeZfqFrHdxyvGFEVv0glOTxLx1Y2faGN39qeLZLOGCoeK49Xg53hOl8BddxqrjTqTp93GzbqLx04r/hzXrfxA=="
+  "resolved" "https://registry.npmjs.org/storyblok-js-client/-/storyblok-js-client-4.2.0.tgz"
+  "version" "4.2.0"
 
 "string-similarity@^4.0.3":
   "integrity" "sha512-/q/8Q4Bl4ZKAPjj8WerIBJWALKkaPRfrvhfF8k/B23i4nzrlRj2/go1m90In7nG/3XDSbOo0+pu6RvCTM9RGMQ=="

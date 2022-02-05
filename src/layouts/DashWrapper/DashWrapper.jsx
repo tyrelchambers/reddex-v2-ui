@@ -14,6 +14,8 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useExpand } from "../../hooks/useExpand";
 import reddexDark from "../../assets/images/reddex-dark.svg";
 import reddexLight from "../../assets/images/reddex-light.svg";
+import { useAnnouncements } from "../../hooks/getAnnouncements";
+import AnnouncementStore from "../../stores/AnnouncementStore";
 
 const StyledGrid = styled.main`
   display: grid;
@@ -35,6 +37,20 @@ const DashWrapper = (props) => {
     stripePlan: { data, isLoading },
   } = useStripe();
   const { open, setOpen } = useExpand();
+  const announcements = useAnnouncements();
+
+  useEffect(() => {
+    if (!window.localStorage.getItem("announcements")) {
+      window.localStorage.setItem("announcements", []);
+    }
+    const unread = announcements.data?.stories.filter(
+      (story) =>
+        !window.localStorage.getItem("announcements").includes(story.uuid)
+    );
+
+    AnnouncementStore.setAnnouncements(announcements);
+    AnnouncementStore.setUnread(unread);
+  }, [announcements]);
 
   useEffect(() => {
     if (query.isSuccess && !query.data.Profile.reddit_profile) {

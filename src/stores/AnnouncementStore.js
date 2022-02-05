@@ -13,7 +13,15 @@ class AnnouncementStore {
   }
 
   getUnreadCount() {
-    return this.unreadAnnouncements.length;
+    return this.unreadAnnouncements?.length;
+  }
+
+  setAnnouncements(announcements) {
+    this.announcements = announcements;
+  }
+
+  setUnread(announcements) {
+    this.unreadAnnouncements = announcements;
   }
 }
 

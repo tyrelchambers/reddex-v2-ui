@@ -42,6 +42,8 @@ import TOS from "../pages/TOS";
 import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
 import BugReport from "../pages/BugReport";
+import Announcements from "../pages/Dashboard/Announcements";
+import AnnouncementStore from "../stores/AnnouncementStore";
 
 const queryClient = new QueryClient();
 const logoRef = React.createRef();
@@ -69,6 +71,10 @@ export const routes = [
     element: <Index />,
 
     children: [
+      {
+        path: "/announcements",
+        element: <Announcements AnnouncementStore={AnnouncementStore} />,
+      },
       {
         path: "/story/:id",
         element: <Story />,
@@ -243,6 +249,7 @@ export const routes = [
     path: "/bug-report",
     element: <BugReport />,
   },
+
   {
     path: "*",
     element: <NotFound />,
