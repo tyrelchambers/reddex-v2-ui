@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  faCalendar,
   faClock,
   faTrashCan,
   faUserCircle,
@@ -10,6 +11,8 @@ import { averageReadingTimeWithText } from "../../utils/averageReadingTimeWithTe
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-location";
 import { useSubmittedStory } from "../../hooks/useSubmittedStory";
+import { format } from "date-fns";
+import { parseISO } from "date-fns/esm";
 
 const StyledStory = styled.div`
   border: 1.5px solid ${(props) => props.theme.border};
@@ -37,19 +40,29 @@ const SubmittedStory = ({ item, user }) => {
           {item.story_title}
         </p>
 
-        <footer className="mt-4 flex justify-between">
-          <p className="text-light  text-sm">
-            <FontAwesomeIcon
-              icon={faClock}
-              className="mr-2 text-accent-primary"
-            />
-            ~
-            {averageReadingTimeWithText(
-              item.body,
-              user?.Profile.words_per_minute
-            )}{" "}
-            minutes
-          </p>
+        <footer className="mt-4 flex justify-between flex-wrap gap-6">
+          <div className="flex items-center gap-6">
+            <p className="text-light  text-sm">
+              <FontAwesomeIcon
+                icon={faClock}
+                className="mr-2 text-accent-primary"
+              />
+              ~
+              {averageReadingTimeWithText(
+                item.body,
+                user?.Profile.words_per_minute
+              )}{" "}
+              minutes
+            </p>
+
+            <p className="text-light text-sm flex items-center">
+              <FontAwesomeIcon
+                icon={faCalendar}
+                className="mr-2 text-accent-primary"
+              />
+              {format(parseISO(item.createdAt), "MMM do, yyyy")}
+            </p>
+          </div>
           <FontAwesomeIcon
             icon={faTrashCan}
             className="text-accent-primary"

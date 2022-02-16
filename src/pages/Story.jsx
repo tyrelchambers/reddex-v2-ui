@@ -26,7 +26,7 @@ const Story = () => {
           <H1>{submittedStory.data.story_title}</H1>
           <main
             dangerouslySetInnerHTML={{ __html: submittedStory.data.body }}
-            className="text-light body mt-6"
+            className="text-light body mt-6 indent-10"
           ></main>
         </>
       )}
