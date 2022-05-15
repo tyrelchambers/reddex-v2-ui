@@ -1,6 +1,6 @@
-import { observer } from "mobx-react";
-import React from "react";
 import PostQueueItem from "../../components/PostQueueItem/PostQueueItem";
+import React from "react";
+import { observer } from "mobx-react";
 import { useUser } from "../../hooks/useUser";
 
 const PostQueue = observer(({ ModalStore, QueueStore }) => {

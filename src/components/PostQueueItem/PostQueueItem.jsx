@@ -1,4 +1,4 @@
-import { faNotes } from "@fortawesome/pro-duotone-svg-icons";
+import React, { useEffect, useState } from "react";
 import {
   faArrowLeft,
   faArrowRight,
@@ -7,17 +7,20 @@ import {
   faTimes,
   faTrash,
 } from "@fortawesome/pro-solid-svg-icons";
+
+import { Button } from "../Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useState } from "react";
+import { H2 } from "../headings/h2";
+import Loader from "../Loader/Loader";
+import Textarea from "../Textarea/Textarea";
+import { composeUrl } from "../../constants";
+import { faNotes } from "@fortawesome/pro-duotone-svg-icons";
+import { formatSubject } from "../../utils/formatSubject";
+import { getRedditAccessToken } from "../../api/getRedditAccessToken";
+import { sendMessageToAuthor } from "../../api/sendMessageToAuthor";
 import styled from "styled-components";
 import { useContacted } from "../../hooks/useContacted";
 import { useContacts } from "../../hooks/useContacts";
-import { Button } from "../Button/Button";
-import { H2 } from "../headings/h2";
-import Textarea from "../Textarea/Textarea";
-import Loader from "../Loader/Loader";
-import { formatSubject } from "../../utils/formatSubject";
-import { getRedditAccessToken } from "../../api/getRedditAccessToken";
 import { useStory } from "../../hooks/useStory";
 
 const StyledWrapper = styled.div`
@@ -44,6 +47,8 @@ const PostQueueItem = ({
   user,
   removeHandler,
 }) => {
+  if (!post) return null;
+
   const { contactQuery } = useContacts();
   const { contactedQuery, contactedMutation } = useContacted();
   const { storyMutation, addToUsed } = useStory();
@@ -73,37 +78,32 @@ const PostQueueItem = ({
     };
   }, [post, user.Profile.recurring, user.Profile.greeting, hasBeenContacted]);
 
-  if (!post) return null;
-
   const submitHandler = async () => {
     const { access_token } = await getRedditAccessToken();
     setIsSending(true);
     const body = new FormData();
-    body.set("to", `/u/StoriesAfterMidnight`);
+    body.set("to", "StoriesAfterMidnight");
     body.set("subject", formatSubject(post.title));
     body.set("text", message);
 
-    // sendMessageToAuthor({
-    //   link: composeUrl,
-    //   access_token,
-    //   body,
-    // }).then(() => {
-    //   // contactedMutation.mutate({
-    //   //   name: post.author,
-    //   // });
+    sendMessageToAuthor({
+      link: composeUrl,
+      access_token,
+      body,
+    })
+      .then(() => {
+        contactedMutation.mutate({
+          name: post.author,
+        });
 
-    //   // storyMutation.mutate(post);
+        storyMutation.mutate(post);
+        addToUsed.mutate({ post_id: post.post_id });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    removeHandler(post);
 
-    //   // removeHandler(post);
-    // });
-    // contactedMutation.mutate({
-    //   name: post.author,
-    // });
-
-    storyMutation.mutate(post);
-    addToUsed.mutate({ post_id: post.post_id });
-
-    // removeHandler(post);
     setIsSending(false);
   };
 
