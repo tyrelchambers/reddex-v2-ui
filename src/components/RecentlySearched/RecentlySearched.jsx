@@ -1,6 +1,6 @@
-import React from "react";
 import { Button } from "../Button/Button";
 import { H3 } from "../headings/H3";
+import React from "react";
 
 const RecentlySearched = ({ user, executeSearch, setSubreddit }) => {
   const handleClick = (val) => {
@@ -19,6 +19,7 @@ const RecentlySearched = ({ user, executeSearch, setSubreddit }) => {
               key={index}
               variant="secondary"
               onClick={() => handleClick(searched)}
+              className="overflow-hidden text-ellipsis"
             >
               {searched.subreddit}
             </Button>
