@@ -82,7 +82,7 @@ const PostQueueItem = ({
     const { access_token } = await getRedditAccessToken();
     setIsSending(true);
     const body = new FormData();
-    body.set("to", "StoriesAfterMidnight");
+    body.set("to", post.author);
     body.set("subject", formatSubject(post.title));
     body.set("text", message);
 
