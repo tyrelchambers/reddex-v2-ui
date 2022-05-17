@@ -1,21 +1,22 @@
-import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-location";
-import { toast } from "react-toastify";
+import React, { useContext, useEffect } from "react";
 import styled, { ThemeProvider } from "styled-components";
+
+import AnnouncementStore from "../../stores/AnnouncementStore";
+import DashHeader from "../DashHeader/DashHeader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { GlobalStyles } from "../../globalStyles";
 import Loader from "../../components/Loader/Loader";
 import { ThemeContext } from "../../contexts/themeContext";
-import { GlobalStyles } from "../../globalStyles";
-import { useStripe } from "../../hooks/useStripe";
-import { useUser } from "../../hooks/useUser";
-import DashHeader from "../DashHeader/DashHeader";
 import { canAccessRoute } from "../../utils/canAccessRoute";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { useExpand } from "../../hooks/useExpand";
 import reddexDark from "../../assets/images/reddex-dark.svg";
 import reddexLight from "../../assets/images/reddex-light.svg";
+import { toast } from "react-toastify";
 import { useAnnouncements } from "../../hooks/getAnnouncements";
-import AnnouncementStore from "../../stores/AnnouncementStore";
+import { useExpand } from "../../hooks/useExpand";
+import { useStripe } from "../../hooks/useStripe";
+import { useUser } from "../../hooks/useUser";
 
 const StyledGrid = styled.main`
   display: grid;
@@ -67,7 +68,7 @@ const DashWrapper = (props) => {
     >
       <GlobalStyles />
 
-      <StyledGrid className=" w-full h-screen grid-cols-1">
+      <StyledGrid className=" w-full grid-cols-1 relative">
         <DashHeader
           theme={theme}
           toggleTheme={toggleTheme}

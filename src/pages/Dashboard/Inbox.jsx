@@ -1,24 +1,26 @@
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import React, { useState } from "react";
-import styled from "styled-components";
+
 import { Button } from "../../components/Button/Button";
 import { H1 } from "../../components/headings/h1";
 import InboxListItem from "../../components/InboxListItem/InboxListItem";
 import Input from "../../components/Input/Input";
-import Subtitle from "../../components/Subtitle/Subtitle";
-import { useRedditInbox } from "../../hooks/useRedditInbox";
-import { useTokens } from "../../hooks/useTokens";
 import Loader from "../../components/Loader/Loader";
-import { useUser } from "../../hooks/useUser";
-import { useRedditInboxSearch } from "../../hooks/useRedditInboxSearch";
-import RSelect from "../../components/RSelect/RSelect";
-import { inboxSearchOptions } from "../../constants";
 import { Outlet } from "react-location";
+import RSelect from "../../components/RSelect/RSelect";
+import Subtitle from "../../components/Subtitle/Subtitle";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { inboxSearchOptions } from "../../constants";
+import styled from "styled-components";
 import { useQueryClient } from "react-query";
+import { useRedditInbox } from "../../hooks/useRedditInbox";
+import { useRedditInboxSearch } from "../../hooks/useRedditInboxSearch";
+import { useTokens } from "../../hooks/useTokens";
+import { useUser } from "../../hooks/useUser";
 
 const StyledWrapper = styled.div`
-  max-height: calc(100vh - 40px);
   overflow: auto;
+  height: 100%;
+  min-height: 100vh;
 `;
 
 const Inbox = () => {
@@ -80,7 +82,7 @@ const Inbox = () => {
           </Subtitle>
         </div>
       </header>
-      <main className="mt-10">
+      <main className="mt-10 inbox-main">
         {(inboxQuery.isLoading || inboxSearch.isFetching) && (
           <section className="w-full flex justify-center mt-10 ">
             <Loader size="2x" />
