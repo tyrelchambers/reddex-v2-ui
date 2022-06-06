@@ -25,6 +25,7 @@ jobs:
           platforms: linux/amd64
   deploy:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: SSH into droplet
         uses: appleboy/ssh-action@master
