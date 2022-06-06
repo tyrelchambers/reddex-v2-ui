@@ -1,9 +1,8 @@
 name: Build Reddex UI
-# on:
-#   push:
-#     branches:
-#       - master
-on: [push]
+on:
+  push:
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
