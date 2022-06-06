@@ -1,8 +1,8 @@
-import { faReply } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { format } from "date-fns";
-import React from "react";
 import Avatar from "../Avatar/Avatar";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import { faReply } from "@fortawesome/free-solid-svg-icons";
+import { format } from "date-fns";
 
 const Chat = ({ message, user, isFirstMessage }) => {
   return (
@@ -19,7 +19,7 @@ const Chat = ({ message, user, isFirstMessage }) => {
           <Avatar size="medium" className="mr-4 block" hasBorder />
         )}
       </div>
-      <div className="flex flex-col w-full gap-6">
+      <div className="flex flex-col w-full gap-2">
         <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mt-4 sm:mt-0">
           <p className="text font-bold text-lg">
             {!isFirstMessage && (
@@ -37,7 +37,7 @@ const Chat = ({ message, user, isFirstMessage }) => {
             {format(new Date(message.created) * 1000, "MMM do, yyy")}
           </p>
         </header>
-        <p className="text-light mt-4 whitespace-pre-wrap break-words">
+        <p className="text-light whitespace-pre-wrap break-words">
           {message.body}
         </p>
       </div>

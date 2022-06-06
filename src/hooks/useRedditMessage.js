@@ -1,5 +1,5 @@
-import { useQuery } from "react-query";
 import { getRedditMessage } from "../api/getRedditMessage";
+import { useQuery } from "react-query";
 
 export const useRedditMessage = ({ id, access_token }) => {
   const redditMessage = useQuery(
