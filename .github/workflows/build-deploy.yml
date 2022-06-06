@@ -35,4 +35,9 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
-            pwd
+            docker pull tyrelchambers/reddex-ui
+            cd /reddex
+            docker-compose down
+            docker volume rm reddex_web-root
+            docker-compose up -d
+            echo 'Deployment to DigitalOcean: successful'
