@@ -40,3 +40,4 @@ jobs:
             docker volume rm reddex_web-root
             docker-compose up -d
             echo 'Deployment to DigitalOcean: successful'
+            logout
