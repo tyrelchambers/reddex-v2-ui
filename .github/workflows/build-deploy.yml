@@ -22,3 +22,15 @@ jobs:
         with:
           push: true
           tags: tyrelchambers/reddex-ui:latest
+          platforms: linux/amd64
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH into droplet
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          KEY: ${{ secrets.SSH_KEY }}
+          script: |
+            pwd
