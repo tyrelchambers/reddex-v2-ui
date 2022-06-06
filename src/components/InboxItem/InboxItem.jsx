@@ -1,28 +1,30 @@
-import React from "react";
-import { useRedditMessage } from "../../hooks/useRedditMessage";
-import { useTokens } from "../../hooks/useTokens";
-import Loader from "../Loader/Loader";
-import styled from "styled-components";
-import { format } from "date-fns";
-import { H2 } from "../headings/h2";
-import { useUser } from "../../hooks/useUser";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import IsInReadingList from "../IsInReadingList/IsInReadingList";
-import { useReadingList } from "../../hooks/useReadingList";
-import { Button } from "../Button/Button";
 import {
   faAddressBook,
   faBookCircleArrowRight,
   faCircleUser,
   faLinkHorizontal,
 } from "@fortawesome/pro-duotone-svg-icons";
-import { isInReadingList } from "../../utils/isInReadingList";
+
+import { Button } from "../Button/Button";
 import Chat from "../Chat/Chat";
-import { useInbox } from "../../hooks/useInbox";
-import { useMatch } from "react-location";
+import ChatReply from "../ChatReply/ChatReply";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { H2 } from "../headings/h2";
+import IsInReadingList from "../IsInReadingList/IsInReadingList";
+import Loader from "../Loader/Loader";
+import React from "react";
+import { format } from "date-fns";
+import { isInReadingList } from "../../utils/isInReadingList";
+import styled from "styled-components";
 import { useContact } from "../../hooks/useContact";
 import { useContacts } from "../../hooks/useContacts";
+import { useInbox } from "../../hooks/useInbox";
+import { useMatch } from "react-location";
+import { useReadingList } from "../../hooks/useReadingList";
+import { useRedditMessage } from "../../hooks/useRedditMessage";
 import { useStory } from "../../hooks/useStory";
+import { useTokens } from "../../hooks/useTokens";
+import { useUser } from "../../hooks/useUser";
 
 const StyledWrapper = styled.section`
   .chat {
@@ -83,77 +85,75 @@ const InboxItem = () => {
 
       {redditMessage.data && (
         <main>
-          <header className="flex flex-col gap-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <header className="flex justify-between items-start gap-4 flex-col md:flex-row">
+            <div className="flex flex-col">
               <p className="text-light">
                 {format(
                   new Date(redditMessage.data.created) * 1000,
                   "MMMM do, yyy"
                 )}
               </p>
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                {!contact.data && (
+              <H2 className="mt-4 mb-4 text-xl sm:text-3xl">
+                {redditMessage.data.subject}
+              </H2>
+
+              <div className="flex flex-col sm:flex-row sm:items-center mt-2 gap-6">
+                <p className="text-light">
+                  <FontAwesomeIcon
+                    icon={faCircleUser}
+                    className="text-accent-primary mr-4"
+                  />
+                  {redditMessage.data.dest}
+                </p>
+                <div className="w-10 h-[2px] bg-slate-400"></div>
+                <a
+                  href={storyQuery.data?.url}
+                  className="text-sm text"
+                  target="_blank"
+                  rel="noopenner noreferrer"
+                >
+                  <FontAwesomeIcon icon={faLinkHorizontal} className="mr-2" />
+                  View on Reddit
+                </a>
+                <IsInReadingList
+                  approvedList={approvedList}
+                  message={redditMessage.data}
+                />
+                {contact.data && (
+                  <p className="text-sm text">
+                    <FontAwesomeIcon icon={faAddressBook} className="mr-2" />
+                    {redditMessage.data.dest} is a contact
+                  </p>
+                )}
+              </div>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+              {!contact.data && (
+                <Button
+                  variant="secondary"
+                  onClick={() => addContact({ name: redditMessage.data.dest })}
+                >
+                  <FontAwesomeIcon
+                    icon={faBookCircleArrowRight}
+                    className="mr-2 "
+                  />
+                  Add to contacts
+                </Button>
+              )}
+
+              {messageQuery.data &&
+                !isInReadingList(approvedList, redditMessage.data) && (
                   <Button
-                    variant="secondary"
-                    onClick={() =>
-                      addContact({ name: redditMessage.data.dest })
-                    }
+                    onClick={() => saveToApproved.mutate(redditMessage.data)}
+                    className="text-sm"
                   >
                     <FontAwesomeIcon
                       icon={faBookCircleArrowRight}
                       className="mr-2 "
                     />
-                    Add to contacts
+                    Add to reading list
                   </Button>
                 )}
-
-                {messageQuery.data &&
-                  !isInReadingList(approvedList, redditMessage.data) && (
-                    <Button
-                      onClick={() => saveToApproved.mutate(redditMessage.data)}
-                      className="text-sm"
-                    >
-                      <FontAwesomeIcon
-                        icon={faBookCircleArrowRight}
-                        className="mr-2 "
-                      />
-                      Add to reading list
-                    </Button>
-                  )}
-              </div>
-            </div>
-            <H2 className="mt-2 sm:mt-6 text-xl sm:text-3xl">
-              {redditMessage.data.subject}
-            </H2>
-
-            <div className="flex flex-col sm:flex-row sm:items-center mt-2 gap-6">
-              <p className="text-light">
-                <FontAwesomeIcon
-                  icon={faCircleUser}
-                  className="text-accent-primary mr-4"
-                />
-                {redditMessage.data.dest}
-              </p>
-              <div className="w-10 h-[2px] bg-slate-400"></div>
-              <a
-                href={storyQuery.data?.url}
-                className="text-sm text"
-                target="_blank"
-                rel="noopenner noreferrer"
-              >
-                <FontAwesomeIcon icon={faLinkHorizontal} className="mr-2" />
-                View on Reddit
-              </a>
-              <IsInReadingList
-                approvedList={approvedList}
-                message={redditMessage.data}
-              />
-              {contact.data && (
-                <p className="text-sm text">
-                  <FontAwesomeIcon icon={faAddressBook} className="mr-2" />
-                  {redditMessage.data.dest} is a contact
-                </p>
-              )}
             </div>
           </header>
 
@@ -166,6 +166,7 @@ const InboxItem = () => {
               chatList.replies.map((reply, id) => (
                 <Chat message={reply.data} user={user} key={id} />
               ))}
+            <ChatReply userToSendMessageTo={redditMessage.data?.name} />
           </section>
         </main>
       )}
