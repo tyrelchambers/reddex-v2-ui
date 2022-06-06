@@ -166,7 +166,10 @@ const InboxItem = () => {
               chatList.replies.map((reply, id) => (
                 <Chat message={reply.data} user={user} key={id} />
               ))}
-            <ChatReply userToSendMessageTo={redditMessage.data?.name} />
+            <ChatReply
+              userToSendMessageTo={redditMessage.data?.name}
+              refetch={redditMessage.refetch}
+            />
           </section>
         </main>
       )}
