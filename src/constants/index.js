@@ -73,6 +73,7 @@ export const redditUrl = `https://www.reddit.com/api/v1/authorize?client_id=${
 }&duration=permanent&scope=privatemessages identity`;
 
 export const composeUrl = `https://oauth.reddit.com/api/compose`;
+export const sendMessageUrl = `https://oauth.reddit.com/api/comment`;
 
 export const inboxSearchOptions = [
   { label: "Subject", value: "subject" },

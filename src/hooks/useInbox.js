@@ -1,5 +1,5 @@
-import { useQuery } from "react-query";
 import { checkInboxStoryExists } from "../api/checkInboxStoryExists";
+import { useQuery } from "react-query";
 
 export const useInbox = (data) => {
   const messageQuery = useQuery(
@@ -7,6 +7,8 @@ export const useInbox = (data) => {
     () => checkInboxStoryExists(data),
     {
       enabled: !!data.author || !!data.subject,
+      retry: 1,
+      refetchOnWindowFocus: false,
     }
   );
 
