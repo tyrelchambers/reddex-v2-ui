@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import InputWrapper from "../components/InputWrapper/InputWrapper";
-import Form from "./Form";
-import Input from "../components/Input/Input";
-import { faLinkHorizontal } from "@fortawesome/pro-regular-svg-icons";
+
 import { Button } from "../components/Button/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Form from "./Form";
+import Input from "../components/Input/Input";
+import InputWrapper from "../components/InputWrapper/InputWrapper";
 import { faArrowDownFromDottedLine } from "@fortawesome/pro-duotone-svg-icons";
-import { toast } from "react-toastify";
-import { getStoryFromReddit } from "../api/getStoryFromReddit";
+import { faLinkHorizontal } from "@fortawesome/pro-regular-svg-icons";
 import { formatRedditPost } from "../utils/formatRedditPost";
+import { getStoryFromReddit } from "../api/getStoryFromReddit";
+import { toast } from "react-toastify";
 import { useStory } from "../hooks/useStory";
 
 const ImportUrlForm = () => {
@@ -22,7 +23,20 @@ const ImportUrlForm = () => {
 
     const story = await getStoryFromReddit(url);
     const formattedStory = formatRedditPost(story);
-    storyMutation.mutate(formattedStory);
+    storyMutation.mutate(
+      {
+        ...formattedStory,
+        permission: true,
+      },
+      {
+        onSuccess: () => {
+          toast.success("Story imported successfully");
+        },
+        onError: () => {
+          toast.error("Error importing story");
+        },
+      }
+    );
   };
 
   return (
