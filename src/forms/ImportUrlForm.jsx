@@ -10,11 +10,13 @@ import { faLinkHorizontal } from "@fortawesome/pro-regular-svg-icons";
 import { formatRedditPost } from "../utils/formatRedditPost";
 import { getStoryFromReddit } from "../api/getStoryFromReddit";
 import { toast } from "react-toastify";
+import { useReadingList } from "../hooks/useReadingList";
 import { useStory } from "../hooks/useStory";
 
 const ImportUrlForm = () => {
   const [state, setState] = useState("");
   const { storyMutation } = useStory();
+  const { approvedList } = useReadingList();
 
   const submitHandler = async () => {
     if (!state) return toast.warn("Please enter a URL");
@@ -31,6 +33,7 @@ const ImportUrlForm = () => {
       {
         onSuccess: () => {
           toast.success("Story imported successfully");
+          approvedList.refetch();
           setState("");
         },
         onError: () => {
