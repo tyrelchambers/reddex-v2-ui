@@ -31,6 +31,7 @@ const ImportUrlForm = () => {
       {
         onSuccess: () => {
           toast.success("Story imported successfully");
+          setState("");
         },
         onError: () => {
           toast.error("Error importing story");

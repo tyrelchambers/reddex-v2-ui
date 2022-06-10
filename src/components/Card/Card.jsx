@@ -1,4 +1,4 @@
-import { faCircleCheck, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from "react";
 import {
   faArrowAltCircleUp,
   faBookCircleArrowRight,
@@ -12,14 +12,15 @@ import {
   faThumbsUp,
   faUserCircle,
 } from "@fortawesome/pro-duotone-svg-icons";
-import { faCheck, faPaperPlaneTop } from "@fortawesome/pro-solid-svg-icons";
+import { faCircleCheck, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+
+import AddTagToStoryForm from "../../forms/AddTagToStoryForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { averageReadingTime } from "../../utils/averageReadingTime";
+import { faCheck } from "@fortawesome/pro-solid-svg-icons";
 import { formatDistanceToNow } from "date-fns";
 import { observer } from "mobx-react";
-import React, { useState } from "react";
 import styled from "styled-components";
-import AddTagToStoryForm from "../../forms/AddTagToStoryForm";
-import { averageReadingTime } from "../../utils/averageReadingTime";
 
 const StyledCard = styled.div`
   background-color: ${(props) => props.theme.backgroundSecondary};
