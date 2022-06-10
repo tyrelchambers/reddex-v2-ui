@@ -1,7 +1,7 @@
-import { faSpinnerThird } from "@fortawesome/pro-duotone-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from "styled-components";
 import { currentTheme } from "../../constants/theme";
+import { faSpinnerThird } from "@fortawesome/pro-duotone-svg-icons";
+import styled from "styled-components";
 
 const StyledButton = styled.button`
   white-space: nowrap;
@@ -77,6 +77,7 @@ const secondary = (props) => (
     }`}
     onClick={props.onClick}
     isSelected={props.isSelected}
+    disabled={props.disabled}
   >
     {props.children}
   </StyledButtonSecond>
