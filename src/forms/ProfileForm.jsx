@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+
 import { Button } from "../components/Button/Button";
+import Form from "./Form";
 import Input from "../components/Input/Input";
 import InputWrapper from "../components/InputWrapper/InputWrapper";
-import Form from "./Form";
 import { useUser } from "../hooks/useUser";
 
 const ProfileForm = ({ user }) => {
@@ -19,7 +20,7 @@ const ProfileForm = ({ user }) => {
   };
 
   return (
-    <Form className="mt-10">
+    <Form className="p-0 mt-10 ">
       <InputWrapper
         label="Words per minute"
         htmlFor="wordsPerMinute"
