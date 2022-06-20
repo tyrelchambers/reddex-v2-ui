@@ -22,7 +22,6 @@ import { useInbox } from "../../hooks/useInbox";
 import { useMatch } from "react-location";
 import { useReadingList } from "../../hooks/useReadingList";
 import { useRedditMessage } from "../../hooks/useRedditMessage";
-import { useStory } from "../../hooks/useStory";
 import { useTokens } from "../../hooks/useTokens";
 import { useUser } from "../../hooks/useUser";
 
@@ -60,7 +59,6 @@ const InboxItem = () => {
   const { contact } = useContact({
     username: redditMessage.data?.dest,
   });
-  const { storyQuery } = useStory({ title: redditMessage.data?.subject });
 
   const user = query.data;
 
@@ -113,7 +111,7 @@ const InboxItem = () => {
                 <div className="w-10 h-[2px] bg-slate-400"></div>
                 {messageQuery.data && (
                   <a
-                    href={storyQuery.data?.url}
+                    href={messageQuery.data?.url}
                     className="text-sm text"
                     target="_blank"
                     rel="noopenner noreferrer"
