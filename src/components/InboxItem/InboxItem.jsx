@@ -98,23 +98,30 @@ const InboxItem = () => {
               </H2>
 
               <div className="flex flex-col sm:flex-row sm:items-center mt-2 gap-6">
-                <p className="text-light">
+                <a
+                  href={`https://reddit.com/u/${redditMessage.data.dest}`}
+                  className="text-light"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <FontAwesomeIcon
                     icon={faCircleUser}
                     className="text-accent-primary mr-4"
                   />
                   {redditMessage.data.dest}
-                </p>
-                <div className="w-10 h-[2px] bg-slate-400"></div>
-                <a
-                  href={storyQuery.data?.url}
-                  className="text-sm text"
-                  target="_blank"
-                  rel="noopenner noreferrer"
-                >
-                  <FontAwesomeIcon icon={faLinkHorizontal} className="mr-2" />
-                  View on Reddit
                 </a>
+                <div className="w-10 h-[2px] bg-slate-400"></div>
+                {messageQuery.data && (
+                  <a
+                    href={storyQuery.data?.url}
+                    className="text-sm text"
+                    target="_blank"
+                    rel="noopenner noreferrer"
+                  >
+                    <FontAwesomeIcon icon={faLinkHorizontal} className="mr-2" />
+                    View on Reddit
+                  </a>
+                )}
                 <IsInReadingList
                   approvedList={approvedList}
                   message={redditMessage.data}
